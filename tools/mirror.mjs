@@ -79,10 +79,11 @@ function noteAsset(href, { trusted = false } = {}) {
   if (!assets.has(key)) assets.set(key, null);
 }
 
+// "/" -> index.html, "/about" -> about.html, so URLs stay slash-less like Framer's.
 function pageFile(u) {
-  let p = decodeURIComponent(u.pathname);
-  if (!p.endsWith("/")) p = path.extname(p) ? p : `${p}/`;
-  return path.join(OUT, p.endsWith("/") ? `${p}index.html` : p);
+  const p = decodeURIComponent(u.pathname).replace(/\/+$/, "");
+  if (!p) return path.join(OUT, "index.html");
+  return path.join(OUT, path.extname(p) ? p : `${p}.html`);
 }
 
 async function autoScroll(page) {
@@ -155,6 +156,10 @@ async function crawl() {
 function scanText(text, baseHref) {
   const unescaped = text.replace(/\\\//g, "/").replace(/\\u002F/gi, "/");
   for (const m of unescaped.matchAll(/https?:\/\/[a-z0-9.-]+(?::\d+)?\/[^\s"'`)<>\\]*/gi)) noteAsset(m[0]);
+  // Framer CMS data: new URL(`./x.framercms`, `https://framerusercontent.com/modules/…`).href.replace(`/modules/`, `/cms/`)
+  for (const m of unescaped.matchAll(/new URL\(\s*[`"'](\.\/[^`"']+\.framercms)[`"']\s*,\s*[`"'](https:\/\/framerusercontent\.com\/modules\/[^`"']+)[`"']/g)) {
+    noteAsset(new URL(m[1], m[2]).href.replace("/modules/", "/cms/"), { trusted: true });
+  }
   if (/\.(m?js)$/.test(new URL(baseHref).pathname)) {
     for (const m of text.matchAll(/(?:from\s*|import\s*\(\s*|import\s+)["'](\.\.?\/[^"']+)["']/g)) {
       noteAsset(new URL(m[1], baseHref).href, { trusted: true });
@@ -213,11 +218,29 @@ function rewrite(text, { html = false } = {}) {
   };
   let out = text
     .replace(FORM_API, "/api/forms")
+    .replace(new RegExp(`siteCanonicalURL:([\`"])${START.origin.replace(/[.]/g, "\\.")}`, "g"), `siteCanonicalURL:$1${SITE_URL}`)
+    .replace(new RegExp(`${START.origin.replace(/[.]/g, "\\.")}(?=[\`"'])`, "g"), "/")
     .replace(/https?:\/\/[a-z0-9.-]+(?::\d+)?\/[^\s"'`)<>\\]*/gi, (m) => map(m, false))
     .replace(/https?:\\\/\\\/[a-z0-9.-]+(?::\d+)?(?:\\\/[^\s"'`)<>\\]*)+/gi, (m) => map(m, true));
 
-  if (html) out = cleanHtml(out);
+  out = html ? cleanHtml(cleanJs(out)) : cleanJs(out);
   return out;
+}
+
+// Framer runtime pieces that would call home: the on-page editor bar (loaded
+// from framer.com), and the free-plan "Made in Framer" badge link. (The badge
+// container itself stays in the HTML because React hydrates into it; CSS
+// added in cleanHtml hides it.) Remaining
+// framer.com URLs are only text in dev warnings or template links.
+function cleanJs(js) {
+  return js
+    // new URL(rel, base) needs an absolute base; rewritten bases are root-relative.
+    .replace(/(new URL\([^,()]+,)([`"'])\/_ext\//g, "$1location.origin+$2/_ext/")
+    .replace(/EditorBar:([\w$]+)===void 0\?void 0:/g, "EditorBar:void 0,__editorBarDisabled:$1===void 0?void 0:")
+    .replace(/await import\(`https:\/\/framer\.com\/edit\/init\.mjs`\)/g, "({createEditorBar:()=>()=>null})")
+    .replace(/https?:\/\/(www\.)?framer\.com\/r\/badge\/[^`"']*/g, "/")
+    .replace(/https?:\/\/(www\.)?framer\.com\/?(?=[`"'])/g, "/")
+    .replace(/ ?\(?https?:\/\/(www\.)?framer\.com\/[^\s`"'()$]*\)?/g, "");
 }
 
 function cleanHtml(html) {
@@ -229,9 +252,10 @@ function cleanHtml(html) {
     .replace(/<script[^>]*src="[^"]*(events\.framer\.com|framer\.com\/(edit|m\/|bootstrap))[^"]*"[^>]*><\/script>/gi, "")
     .replace(/<link[^>]+href="https?:\/\/[^"]*framer\.com[^"]*"[^>]*>/gi, "")
     .replace(/<link[^>]+rel="(preconnect|dns-prefetch)"[^>]*>/gi, "")
-    .replace(/<div id="__framer-badge-container"[\s\S]*?<\/div>/gi, "")
-    .replace(/(<link[^>]+rel="canonical"[^>]+href=")[^"]*(")/i, `$1${SITE_URL}$2`)
-    .replace(/(<meta[^>]+property="og:url"[^>]+content=")[^"]*(")/i, `$1${SITE_URL}$2`)
+    .replace(/<script>[^<]*__framer_force_showing_editorbar_since[^<]*<\/script>/g, "")
+    .replace(/(<link[^>]+rel="canonical"[^>]+href=")\/?([^"]*)(")/i, `$1${SITE_URL}/$2$3`)
+    .replace(/(<meta[^>]+property="og:url"[^>]+content=")\/?([^"]*)(")/i, `$1${SITE_URL}/$2$3`)
+    .replace(/(<meta[^>]+(?:property="og:image"|name="twitter:image")[^>]+content=")(\/[^"]*)(")/gi, `$1${SITE_URL}$2$3`)
     .replace("</head>", `<style>#__framer-badge-container{display:none!important}</style><script src="/contact-bridge.js"></script></head>`);
 }
 

@@ -24,9 +24,37 @@ export default {
       return handleContact(request, env, url);
     }
 
+    // Framer's CMS client asks for byte ranges via ?range=a-b,c-d and expects
+    // the requested slices concatenated in a 200 response.
+    if (url.pathname.endsWith(".framercms") && url.searchParams.has("range")) {
+      return serveCmsRanges(request, env, url);
+    }
+
     return env.ASSETS.fetch(request);
   },
 };
+
+async function serveCmsRanges(request, env, url) {
+  const ranges = url.searchParams.get("range").split(",").map((part) => part.split("-").map(Number));
+  if (!ranges.every(([from, to]) => Number.isInteger(from) && Number.isInteger(to) && from >= 0 && to >= from)) {
+    return new Response("Bad range", { status: 400 });
+  }
+  const assetUrl = new URL(url.pathname, url.origin);
+  const res = await env.ASSETS.fetch(new Request(assetUrl, { headers: request.headers }));
+  if (!res.ok) return res;
+  const bytes = new Uint8Array(await res.arrayBuffer());
+  const total = ranges.reduce((sum, [from, to]) => sum + (to - from + 1), 0);
+  if (ranges.some(([, to]) => to >= bytes.length)) return new Response("Range out of bounds", { status: 416 });
+  const out = new Uint8Array(total);
+  let offset = 0;
+  for (const [from, to] of ranges) {
+    out.set(bytes.subarray(from, to + 1), offset);
+    offset += to - from + 1;
+  }
+  return new Response(out, {
+    headers: { "content-type": "application/octet-stream", "cache-control": "public, max-age=31536000, immutable" },
+  });
+}
 
 async function handleContact(request, env, url) {
   if (!isAllowedOrigin(request, env, url)) {

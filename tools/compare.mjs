@@ -44,23 +44,42 @@ async function shoot(base, pagePath, width, outside) {
     const u = new URL(req.url());
     if (/^https?:$/.test(u.protocol) && u.host !== baseHost) outside.add(u.href);
   });
-  await page.goto(new URL(pagePath, base).href, { waitUntil: "networkidle", timeout: 60000 });
-  // Trigger scroll/appear animations, then let them settle.
-  await page.evaluate(async () => {
-    for (let y = 0; y < document.body.scrollHeight; y += 300) {
-      window.scrollTo(0, y);
-      await new Promise((r) => setTimeout(r, 120));
-    }
-    window.scrollTo(0, 0);
+  // Same virtual clock on both sides: the live clock, marquees and appear
+  // animations all land in the same state.
+  // Seeded Math.random so randomised decorations match too.
+  await page.addInitScript(() => {
+    let seed = 42;
+    Math.random = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
   });
+  await page.clock.install({ time: new Date("2026-01-01T12:00:00Z") });
+  await page.clock.pauseAt(new Date("2026-01-01T12:00:01Z"));
+  await page.goto(new URL(pagePath, base).href, { waitUntil: "networkidle", timeout: 60000 });
+  await page.clock.runFor(3000);
+  // Scroll through so every in-view animation fires, then return to the top.
+  const height = await page.evaluate(() => document.documentElement.scrollHeight);
+  for (let y = 0; y < height; y += 300) {
+    await page.evaluate((top) => window.scrollTo(0, top), y);
+    await page.clock.runFor(250);
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForLoadState("networkidle").catch(() => {});
   await page.addStyleTag({ content: "#__framer-badge-container{display:none!important} *{caret-color:transparent!important}" });
-  // Pause videos on their first frame so both sides match.
-  await page.evaluate(() => document.querySelectorAll("video").forEach((v) => { v.pause(); v.currentTime = 0; }));
-  await page.waitForTimeout(1500);
-  const buf = await page.screenshot({ fullPage: true, animations: "disabled" });
+  await page.clock.runFor(5000);
+  // Capture screen by screen (what a visitor sees, with in-view animations
+  // settled) and stitch, rather than one full-page grab of off-screen content.
+  const vh = page.viewportSize().height;
+  const total = await page.evaluate(() => document.documentElement.scrollHeight);
+  const sheet = new PNG({ width, height: total });
+  for (let y = 0; y < total; y += vh) {
+    const top = Math.min(y, Math.max(0, total - vh));
+    await page.evaluate((t) => window.scrollTo(0, t), top);
+    await page.clock.runFor(2000);
+    const tile = PNG.sync.read(await page.screenshot({ animations: "disabled" }));
+    const rows = Math.min(vh, total - y);
+    PNG.bitblt(tile, sheet, 0, y - top, width, rows, 0, y);
+  }
   await context.close();
-  return PNG.sync.read(buf);
+  return sheet;
 }
 
 function pad(img, width, height) {
