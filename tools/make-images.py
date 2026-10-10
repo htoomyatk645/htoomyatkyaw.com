@@ -65,6 +65,26 @@ def logo_card(name, size, scale):
     return card
 
 
+def fit_card(src, scale, size=(1200, 1357)):
+    """Fit a white-background graphic inside a card-shaped white canvas.
+
+    The home page shows case-study covers at 604x683 (this aspect); other
+    pages crop them wider, which only trims the white margins."""
+    im = Image.open(ROOT / "brand" / src).convert("RGBA")
+    flat = Image.new("RGB", im.size, "white")
+    flat.paste(im, mask=im.split()[3])
+    # Trim white margins so the graphic, not the margin, is what gets scaled.
+    ink = flat.convert("L").point(lambda v: 255 if v < 235 else 0).getbbox()
+    pad = round(0.06 * max(ink[2] - ink[0], ink[3] - ink[1]))
+    flat = flat.crop((max(ink[0] - pad, 0), max(ink[1] - pad, 0), min(ink[2] + pad, flat.width), min(ink[3] + pad, flat.height)))
+    w, h = size
+    k = min(w * scale / flat.width, h * scale / flat.height)
+    flat = flat.resize((round(flat.width * k), round(flat.height * k)), Image.LANCZOS)
+    card = Image.new("RGB", size, "white")
+    card.paste(flat, ((w - flat.width) // 2, (h - flat.height) // 2))
+    return card
+
+
 def save(im, name):
     path = IMAGES / name if "/" not in name else ROOT / name
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -85,9 +105,13 @@ save(crop("IMG_4383.jpg", (1269, 1270), 0.40, 0.50, 0.56), "BpemFTgeHqmOEbavaTet
 # Case study card covers (3:2, shown cover-cropped at several aspects, so the
 # subject sits in the middle).
 save(logo_card("briefly-dark.png", (2400, 1603), 0.46), "veyOMFLFvf4bfZJKXrpyPNzQWiw.jpg")  # Briefly: All Things Podcasts
-save(logo_card("briefly-light.png", (2400, 1603), 0.46), "Hp4sdb6mgJqCAExV0ytS7gljgkA.jpg")  # The Briefly Look
-save(crop("IMG_4690.jpg", (1114, 743), 0.42, 0.40, 1.0), "lRamgmULf2QHd5nO7cNT2LpLR5M.jpg")  # Seven Slides a Day
-save(crop("preview-5.jpg", (1092, 728), 0.48, 0.47, 0.67), "77vnsoqQ0X6oMVSzYgh7nMkdh0.jpg")  # Under the Hood
+save(fit_card("briefly/app-icon-tags.png", 0.88), "Hp4sdb6mgJqCAExV0ytS7gljgkA.jpg")  # The Briefly Look
+save(fit_card("briefly/brain-slide-frame.png", 0.94), "lRamgmULf2QHd5nO7cNT2LpLR5M.jpg")  # Seven Slides a Day (frame of brain-slide.mp4)
+save(fit_card("briefly/wordmark.png", 0.8), "77vnsoqQ0X6oMVSzYgh7nMkdh0.jpg")  # Under the Hood
+
+# "my app" polaroid on the home page: the Briefly app screenshot, full height
+# (the card is made taller with CSS in tools/rebrand.json).
+save(Image.open(ROOT / "brand/briefly/app-screenshot.jpg").convert("RGB"), "jaipCY5FvgftEDz3qtilGNnLVk.png")
 
 # Logos: nav mark, favicons (light and dark), touch icon, share image.
 light, _ = mark("briefly-light.png")
