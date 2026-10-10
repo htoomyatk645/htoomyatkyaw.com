@@ -15,7 +15,7 @@ Portfolio site for Htoo Myat Kyaw. It runs on Cloudflare Workers (static assets 
 | `tools/compare.mjs` | Takes side-by-side screenshots of the original and the copy at 390px and 1440px, pixel-diffs them, and flags any request that leaves the site. |
 | `tools/cms-edit.mjs` + `cms-edits.json` | Edits Framer's binary CMS data (case-study titles, taglines, tags, dates) and re-points the index files. `--list <chunk>` prints every field. |
 | `tools/make-images.py` + `brand/` | Builds the site's portraits, case-study covers, logos, favicons and share image from the photos and Briefly logos in `brand/`. Each image keeps its template file name and aspect ratio, cropped around the subject. |
-| `tools/check-no-framer.sh` | Fails if `site/` still references any Framer host. `npm run deploy` runs it first. |
+| `tools/check-no-framer.mjs` | Fails if `site/` still references any Framer host. `npm run deploy` runs it first. |
 
 ## Workflow
 
