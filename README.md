@@ -56,3 +56,50 @@ The mirrored Framer form (Message, then Email) posts multipart form data to Fram
    ```
 
    It should return `{"success":true}` and the email should arrive in your inbox. Watch the Worker logs with `npx wrangler tail`.
+
+## Copy vs. original
+
+`npm run compare` was run against the unmodified mirror (before the rebrand) at 390px (phone) and 1440px (desktop). On both sides the clock is frozen, `Math.random` is seeded, and the page is captured one screen at a time, so animations land in the same state. `compare/*.png` shows original | copy | diff for each page. The full results are in `compare/report.json`.
+
+38/38 pass (threshold: ≤ 0.5% of pixels differ, identical page height, no requests leaving the site). The largest difference, the home page on phone, comes from the template's continuously rotating sticker landing a fraction of a degree apart between captures.
+
+| Page | Viewport | Pixels differing | Height (orig / copy) | Outside requests | Result |
+| --- | --- | --- | --- | --- | --- |
+| `/` | phone | 0.482% | 6053 / 6053 | 0 | pass |
+| `/` | desktop | 0.148% | 7862 / 7862 | 0 | pass |
+| `/about` | phone | 0.006% | 5655 / 5655 | 0 | pass |
+| `/about` | desktop | 0.022% | 5887 / 5887 | 0 | pass |
+| `/blog` | phone | 0.388% | 3984 / 3984 | 0 | pass |
+| `/blog` | desktop | 0.147% | 3088 / 3088 | 0 | pass |
+| `/blog/a-greener-workspace` | phone | 0.042% | 5263 / 5263 | 0 | pass |
+| `/blog/a-greener-workspace` | desktop | 0.054% | 4866 / 4866 | 0 | pass |
+| `/blog/beyond-the-screen` | phone | 0.055% | 5321 / 5321 | 0 | pass |
+| `/blog/beyond-the-screen` | desktop | 0.019% | 4792 / 4792 | 0 | pass |
+| `/blog/everyday-beauty` | phone | 0.039% | 5283 / 5283 | 0 | pass |
+| `/blog/everyday-beauty` | desktop | 0.015% | 4773 / 4773 | 0 | pass |
+| `/blog/geometry-builds-trust` | phone | 0.044% | 5292 / 5292 | 0 | pass |
+| `/blog/geometry-builds-trust` | desktop | 0.017% | 4792 / 4792 | 0 | pass |
+| `/blog/ideas-need-silence` | phone | 0.049% | 5370 / 5370 | 0 | pass |
+| `/blog/ideas-need-silence` | desktop | 0.013% | 4907 / 4907 | 0 | pass |
+| `/blog/materials-and-memory` | phone | 0.067% | 5262 / 5262 | 0 | pass |
+| `/blog/materials-and-memory` | desktop | 0.057% | 4722 / 4722 | 0 | pass |
+| `/blog/the-creative-desk` | phone | 0.382% | 5242 / 5242 | 0 | pass |
+| `/blog/the-creative-desk` | desktop | 0.183% | 4699 / 4699 | 0 | pass |
+| `/blog/the-power-of-focus` | phone | 0.154% | 5184 / 5184 | 0 | pass |
+| `/blog/the-power-of-focus` | desktop | 0.046% | 4699 / 4699 | 0 | pass |
+| `/case-study` | phone | 0.034% | 3418 / 3418 | 0 | pass |
+| `/case-study` | desktop | 0.02% | 3445 / 3445 | 0 | pass |
+| `/case-study/homestead` | phone | 0.125% | 9275 / 9275 | 0 | pass |
+| `/case-study/homestead` | desktop | 0.087% | 11871 / 11871 | 0 | pass |
+| `/case-study/meridian-health` | phone | 0.195% | 9330 / 9330 | 0 | pass |
+| `/case-study/meridian-health` | desktop | 0.014% | 11996 / 11996 | 0 | pass |
+| `/case-study/north-light` | phone | 0.049% | 8211 / 8211 | 0 | pass |
+| `/case-study/north-light` | desktop | 0.005% | 10359 / 10359 | 0 | pass |
+| `/case-study/stylebook` | phone | 0.062% | 8819 / 8819 | 0 | pass |
+| `/case-study/stylebook` | desktop | 0.004% | 11051 / 11051 | 0 | pass |
+| `/contact` | phone | 0% | 844 / 844 | 0 | pass |
+| `/contact` | desktop | 0.004% | 900 / 900 | 0 | pass |
+| `/play-ground` | phone | 0% | 844 / 844 | 0 | pass |
+| `/play-ground` | desktop | 0% | 900 / 900 | 0 | pass |
+| `/services` | phone | 0.015% | 10877 / 10877 | 0 | pass |
+| `/services` | desktop | 0.015% | 10380 / 10380 | 0 | pass |

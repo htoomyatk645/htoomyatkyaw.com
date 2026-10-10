@@ -1,0 +1,496 @@
+[
+  {
+    "page": "/",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 6053,
+      "copy": 6053
+    },
+    "diffPercent": 0.482,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/home-phone.png"
+  },
+  {
+    "page": "/",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 7862,
+      "copy": 7862
+    },
+    "diffPercent": 0.148,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/home-desktop.png"
+  },
+  {
+    "page": "/about",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 5655,
+      "copy": 5655
+    },
+    "diffPercent": 0.006,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/about-phone.png"
+  },
+  {
+    "page": "/about",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 5887,
+      "copy": 5887
+    },
+    "diffPercent": 0.022,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/about-desktop.png"
+  },
+  {
+    "page": "/blog",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 3984,
+      "copy": 3984
+    },
+    "diffPercent": 0.388,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog-phone.png"
+  },
+  {
+    "page": "/blog",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 3088,
+      "copy": 3088
+    },
+    "diffPercent": 0.147,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog-desktop.png"
+  },
+  {
+    "page": "/blog/a-greener-workspace",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 5263,
+      "copy": 5263
+    },
+    "diffPercent": 0.042,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_a-greener-workspace-phone.png"
+  },
+  {
+    "page": "/blog/a-greener-workspace",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 4866,
+      "copy": 4866
+    },
+    "diffPercent": 0.054,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_a-greener-workspace-desktop.png"
+  },
+  {
+    "page": "/blog/beyond-the-screen",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 5321,
+      "copy": 5321
+    },
+    "diffPercent": 0.055,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_beyond-the-screen-phone.png"
+  },
+  {
+    "page": "/blog/beyond-the-screen",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 4792,
+      "copy": 4792
+    },
+    "diffPercent": 0.019,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_beyond-the-screen-desktop.png"
+  },
+  {
+    "page": "/blog/everyday-beauty",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 5283,
+      "copy": 5283
+    },
+    "diffPercent": 0.039,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_everyday-beauty-phone.png"
+  },
+  {
+    "page": "/blog/everyday-beauty",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 4773,
+      "copy": 4773
+    },
+    "diffPercent": 0.015,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_everyday-beauty-desktop.png"
+  },
+  {
+    "page": "/blog/geometry-builds-trust",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 5292,
+      "copy": 5292
+    },
+    "diffPercent": 0.044,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_geometry-builds-trust-phone.png"
+  },
+  {
+    "page": "/blog/geometry-builds-trust",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 4792,
+      "copy": 4792
+    },
+    "diffPercent": 0.017,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_geometry-builds-trust-desktop.png"
+  },
+  {
+    "page": "/blog/ideas-need-silence",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 5370,
+      "copy": 5370
+    },
+    "diffPercent": 0.049,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_ideas-need-silence-phone.png"
+  },
+  {
+    "page": "/blog/ideas-need-silence",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 4907,
+      "copy": 4907
+    },
+    "diffPercent": 0.013,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_ideas-need-silence-desktop.png"
+  },
+  {
+    "page": "/blog/materials-and-memory",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 5262,
+      "copy": 5262
+    },
+    "diffPercent": 0.067,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_materials-and-memory-phone.png"
+  },
+  {
+    "page": "/blog/materials-and-memory",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 4722,
+      "copy": 4722
+    },
+    "diffPercent": 0.057,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_materials-and-memory-desktop.png"
+  },
+  {
+    "page": "/blog/the-creative-desk",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 5242,
+      "copy": 5242
+    },
+    "diffPercent": 0.382,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_the-creative-desk-phone.png"
+  },
+  {
+    "page": "/blog/the-creative-desk",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 4699,
+      "copy": 4699
+    },
+    "diffPercent": 0.183,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_the-creative-desk-desktop.png"
+  },
+  {
+    "page": "/blog/the-power-of-focus",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 5184,
+      "copy": 5184
+    },
+    "diffPercent": 0.154,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_the-power-of-focus-phone.png"
+  },
+  {
+    "page": "/blog/the-power-of-focus",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 4699,
+      "copy": 4699
+    },
+    "diffPercent": 0.046,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/blog_the-power-of-focus-desktop.png"
+  },
+  {
+    "page": "/case-study",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 3418,
+      "copy": 3418
+    },
+    "diffPercent": 0.034,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/case-study-phone.png"
+  },
+  {
+    "page": "/case-study",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 3445,
+      "copy": 3445
+    },
+    "diffPercent": 0.02,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/case-study-desktop.png"
+  },
+  {
+    "page": "/case-study/homestead",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 9275,
+      "copy": 9275
+    },
+    "diffPercent": 0.125,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/case-study_homestead-phone.png"
+  },
+  {
+    "page": "/case-study/homestead",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 11871,
+      "copy": 11871
+    },
+    "diffPercent": 0.087,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/case-study_homestead-desktop.png"
+  },
+  {
+    "page": "/case-study/meridian-health",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 9330,
+      "copy": 9330
+    },
+    "diffPercent": 0.195,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/case-study_meridian-health-phone.png"
+  },
+  {
+    "page": "/case-study/meridian-health",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 11996,
+      "copy": 11996
+    },
+    "diffPercent": 0.014,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/case-study_meridian-health-desktop.png"
+  },
+  {
+    "page": "/case-study/north-light",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 8211,
+      "copy": 8211
+    },
+    "diffPercent": 0.049,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/case-study_north-light-phone.png"
+  },
+  {
+    "page": "/case-study/north-light",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 10359,
+      "copy": 10359
+    },
+    "diffPercent": 0.005,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/case-study_north-light-desktop.png"
+  },
+  {
+    "page": "/case-study/stylebook",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 8819,
+      "copy": 8819
+    },
+    "diffPercent": 0.062,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/case-study_stylebook-phone.png"
+  },
+  {
+    "page": "/case-study/stylebook",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 11051,
+      "copy": 11051
+    },
+    "diffPercent": 0.004,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/case-study_stylebook-desktop.png"
+  },
+  {
+    "page": "/contact",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 844,
+      "copy": 844
+    },
+    "diffPercent": 0,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/contact-phone.png"
+  },
+  {
+    "page": "/contact",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 900,
+      "copy": 900
+    },
+    "diffPercent": 0.004,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/contact-desktop.png"
+  },
+  {
+    "page": "/play-ground",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 844,
+      "copy": 844
+    },
+    "diffPercent": 0,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/play-ground-phone.png"
+  },
+  {
+    "page": "/play-ground",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 900,
+      "copy": 900
+    },
+    "diffPercent": 0,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/play-ground-desktop.png"
+  },
+  {
+    "page": "/services",
+    "viewport": "phone",
+    "width": 390,
+    "heights": {
+      "original": 10877,
+      "copy": 10877
+    },
+    "diffPercent": 0.015,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/services-phone.png"
+  },
+  {
+    "page": "/services",
+    "viewport": "desktop",
+    "width": 1440,
+    "heights": {
+      "original": 10380,
+      "copy": 10380
+    },
+    "diffPercent": 0.015,
+    "pass": true,
+    "outsideRequests": [],
+    "image": "compare/services-desktop.png"
+  }
+]
