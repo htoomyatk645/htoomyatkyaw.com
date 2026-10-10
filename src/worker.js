@@ -11,6 +11,9 @@ const MAX_FIELD_CHARS = 5000;
 
 // Field names visitors never see; bots that fill them get a fake success.
 const HONEYPOT_FIELDS = ["_gotcha", "website", "url", "company_website"];
+// Hidden inputs the Framer form component adds as honeypots (its real fields
+// are capitalised, e.g. "Email" and "Message").
+const FRAMER_HONEYPOT_FIELDS = ["website", "company", "message", "subject", "title", "description", "feedback", "notes", "details", "remarks", "comments"];
 
 export default {
   async fetch(request, env, ctx) {
@@ -77,10 +80,13 @@ async function handleContact(request, env, url) {
     return json({ success: false, error: "Could not read form data" }, 400);
   }
 
-  if (HONEYPOT_FIELDS.some((name) => fields[name])) {
+  const honeypots = url.pathname.startsWith("/api/forms/") ? FRAMER_HONEYPOT_FIELDS : HONEYPOT_FIELDS;
+  if (honeypots.some((name) => fields[name])) {
     return json({ success: true });
   }
-  for (const name of HONEYPOT_FIELDS) delete fields[name];
+  for (const name of honeypots) delete fields[name];
+  // Framer's bot-check metadata (__framer_0, __framer_1, ...).
+  for (const name of Object.keys(fields)) if (name.startsWith("__framer")) delete fields[name];
 
   const entries = Object.entries(fields)
     .map(([key, value]) => [key.slice(0, 100), String(value).slice(0, MAX_FIELD_CHARS)])
