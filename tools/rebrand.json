@@ -1,0 +1,132 @@
+{
+  "profile": {
+    "name": "Htoo Myat Kyaw",
+    "school": "Tufts University",
+    "studies": "Cognitive & Brain Science and Computer Science",
+    "focus": "Design process and projects",
+    "contact_email": "htoo.m.kyaw645@gmail.com",
+    "site": "https://htoomyatkyaw.com"
+  },
+  "replacements": [
+    {
+      "find": "text:`BUY NUDGE`,textColor:`var(--token-4f4ed186-9023-4858-830a-5202d69249c1, rgb(17, 18, 18))`,visible:!0",
+      "replace": "text:`BUY NUDGE`,textColor:`var(--token-4f4ed186-9023-4858-830a-5202d69249c1, rgb(17, 18, 18))`,visible:!1"
+    },
+    {
+      "find": "https://buy.polar.sh/polar_cl_9a5vgJf76xch9cThQ1yzFU4r218QMmvCzyUiR0YxC4R",
+      "replace": "/"
+    },
+    {
+      "find": "https://huehaus.supply/",
+      "replace": "/"
+    },
+    {
+      "find": "Nudge - Premium Portfolio Template",
+      "replace": "Htoo Myat Kyaw — Design Portfolio"
+    },
+    {
+      "find": "Nudge is a bold, personality-driven portfolio template for product designers who want to stand out. Built for storytelling, not just showcasing.",
+      "replace": "Htoo Myat Kyaw studies Cognitive & Brain Science and Computer Science at Tufts University. A portfolio of design process, research, and projects."
+    },
+    {
+      "find": "Currently at Meridian Health",
+      "replace": "Tufts University"
+    },
+    {
+      "find": "Previously at Searchless AI",
+      "replace": "CBS + CS"
+    },
+    {
+      "find": "Product designer",
+      "replace": "Design student"
+    },
+    {
+      "find": "Chicago, IL",
+      "replace": "Medford, MA"
+    },
+    {
+      "find": "a product designer in Chicago who gets excited",
+      "replace": "a Tufts student in cognitive science & CS who gets excited"
+    },
+    {
+      "find": "outstanding digital products",
+      "replace": "intuitive digital products"
+    },
+    {
+      "find": "I spend my days designing for healthcare platforms, booking systems, and other products where 'just figure it out' isn't an option. The people using these tools are busy, stressed, and have actual work to do. My job is to get out of their way.",
+      "replace": "I study Cognitive & Brain Science and Computer Science at Tufts University, which means I spend a lot of time thinking about how people perceive, decide, and remember, and then building things with that in mind. The best interfaces work with the way people think. My job is to get out of their way."
+    },
+    {
+      "find": "I've worked on teams of two and teams of twenty. I've had access to endless user research and I've had to make educated guesses with limited data. I've worked within strict component libraries and I've built design systems from scratch. What stays consistent is asking good questions, collaborating with people who know more than me, and shipping things that actually help",
+      "replace": "Cognitive science gives me the questions: what does someone notice first, what do they expect to happen next, where does their attention break down? Computer science lets me prototype the answers and test them. What stays consistent across my projects is asking good questions, learning from people who know more than me, and making things that actually help"
+    },
+    {
+      "find": "Currently, I'm at Meridian Health working on experiences for mental health clinicians and administrators. Before that, I spent almost two years at StyleBook helping salons manage their businesses (and discovering that stylists have very strong opinions about scheduling interfaces, which I deeply respect). ",
+      "replace": "This portfolio is where I document my design process: the research, the sketches, the dead ends, and the decisions that shaped each project. I care as much about how I got to a solution as about the solution itself. "
+    },
+    {
+      "find": ">Meridian Health</h4>",
+      "replace": ">Tufts University</h4>",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "`Meridian Health`",
+      "replace": "`Tufts University`",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "Sep 2025 - Current",
+      "replace": "Now",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "Designing across scheduling, case management, treatment planning, and clinical documentation for mental health practices. The challenge is balancing what clinicians need with what administrators need—often very different things—while keeping everything HIPAA-compliant and actually usable. ",
+      "replace": "B.S. candidate in Cognitive & Brain Science and Computer Science. Studying how people perceive, learn, and make decisions, and how to build software around that. Coursework and side projects feed directly into my design process. ",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day.",
+      "replace": "I'm most energized by projects where I can dig into how people think, collaborate with curious people, and design things that genuinely improve someone's day."
+    },
+    {
+      "find": "Open to contract work, full-time roles, and interesting conversations about hard design problems.",
+      "replace": "Open to internships, research collaborations, and interesting conversations about design and the mind."
+    },
+    {
+      "find": "Does he build",
+      "replace": "Does Htoo build"
+    },
+    {
+      "find": "Framer Development",
+      "replace": "Front-end Development"
+    },
+    {
+      "find": "mailto:Hello@selenadesigns.com",
+      "replace": "mailto:htoo.m.kyaw645@gmail.com"
+    },
+    {
+      "find": "tel:+123456789",
+      "replace": "/contact"
+    },
+    {
+      "find": "BEJAMAN",
+      "replace": "HTOO"
+    },
+    {
+      "find": "Bejaman",
+      "replace": "Htoo"
+    }
+  ]
+}
