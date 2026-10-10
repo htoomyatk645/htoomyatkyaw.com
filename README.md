@@ -13,13 +13,17 @@ Portfolio site for Htoo Myat Kyaw. It runs on Cloudflare Workers (static assets 
 | `tools/mirror.mjs` | Crawls the Framer site, downloads every asset and rewrites the URLs to local paths. |
 | `tools/rebrand.mjs` + `rebrand.json` | Find/replace copy changes, applied to both the page HTML and the JS modules (the two must match or React swaps the old text back in on load). It also handles headings that are server-rendered one `<span>` per character. An entry can be limited to certain files with `"only"`. |
 | `tools/compare.mjs` | Takes side-by-side screenshots of the original and the copy at 390px and 1440px, pixel-diffs them, and flags any request that leaves the site. |
+| `tools/cms-edit.mjs` + `cms-edits.json` | Edits Framer's binary CMS data (case-study titles, taglines, tags, dates) and re-points the index files. `--list <chunk>` prints every field. |
+| `tools/make-images.py` + `brand/` | Builds the site's portraits, case-study covers, logos, favicons and share image from the photos and Briefly logos in `brand/`. Each image keeps its template file name and aspect ratio, cropped around the subject. |
 | `tools/check-no-framer.sh` | Fails if `site/` still references any Framer host. `npm run deploy` runs it first. |
 
 ## Workflow
 
 ```sh
 npm install
-npm run mirror            # crawl the Framer site into site/
+npm run mirror            # crawl the Framer site into site/ (unmodified copy)
+node tools/cms-edit.mjs   # case-study card data
+python3 tools/make-images.py   # photos and logos from brand/
 npm run rebrand           # apply tools/rebrand.json
 npm run check             # no Framer URLs left
 npm run dev &             # local Worker at http://localhost:8787
@@ -31,7 +35,11 @@ npm run deploy            # wrangler deploy
 
 Text lives in two places: the page HTML in `site/*.html` and the page's JS module under `site/_ext/framerusercontent.com/sites/…`. Add a `{ "find": …, "replace": … }` entry to `tools/rebrand.json` and run `npm run rebrand`. Run `node tools/rebrand.mjs --check` first to confirm each `find` string exists. Don't use backticks or `${` in replacement text (it ends up inside JS template literals).
 
-The case studies and journal posts come from Framer's CMS, which is stored in binary files (`site/_ext/framerusercontent.com/cms/*.framercms`). The find/replace tool can't safely edit them.
+The rebrand edits are not idempotent, so always apply them to an unmodified mirror (`git checkout <mirror commit> -- site`, then the steps above).
+
+The case studies and journal posts come from Framer's CMS, stored in binary files (`site/_ext/framerusercontent.com/cms/*.framercms`); edit those with `tools/cms-edit.mjs`. Each page also embeds a snapshot of the same CMS values ("handover" data), which `rebrand.json` keeps in step.
+
+For now the four case-study pages and the journal posts are unpublished: the Worker redirects `/case-study/<slug>` to `/case-study` and `/blog/<slug>` to `/blog`, the case-study links are inert, and `/blog` shows "coming soon".
 
 ## Contact form
 

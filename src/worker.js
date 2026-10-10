@@ -33,6 +33,11 @@ export default {
       return serveCmsRanges(request, env, url);
     }
 
+    // Case studies and journal posts are not published yet: send their pages
+    // back to the section index (the journal index shows "coming soon").
+    const hidden = url.pathname.match(/^\/(case-study|blog)\/[^/]+\/?$/);
+    if (hidden) return Response.redirect(`${url.origin}/${hidden[1]}`, 302);
+
     return env.ASSETS.fetch(request);
   },
 };

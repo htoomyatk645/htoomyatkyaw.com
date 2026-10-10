@@ -1,0 +1,15 @@
+{
+  "collections": [
+    {
+      "chunk": "site/_ext/framerusercontent.com/cms/PsTaZ1c2LMpd0FsajtPR/SbQj6Atzj5nEjXZjrJku/hu3yniggG-chunk-default-0.framercms",
+      "indexes": ["site/_ext/framerusercontent.com/cms/PsTaZ1c2LMpd0FsajtPR/SbQj6Atzj5nEjXZjrJku/hu3yniggG-indexes-default-0.framercms"],
+      "slugField": "KVCXsWDZS",
+      "items": {
+        "meridian-health": { "rAITKxrzh": "Briefly: All Things Podcasts", "N9PVOHoUg": "2026-05-01T00:00:00Z", "rS05UF0Io": "Podcasts briefs that stay audio.", "ERYmqqg82": "Product", "Dag0GQUu2": "Audio", "vyzMKeGSA": "Co-founder" },
+        "stylebook": { "rAITKxrzh": "The Briefly Look", "N9PVOHoUg": "2026-05-01T00:00:00Z", "rS05UF0Io": "Dark, minimal, and quiet enough to let the voice lead.", "ERYmqqg82": "Brand", "Dag0GQUu2": "UI/UX", "vyzMKeGSA": "Co-founder" },
+        "homestead": { "rAITKxrzh": "Seven Slides a Day", "N9PVOHoUg": "2026-05-01T00:00:00Z", "rS05UF0Io": "How a small team builds an audience on Instagram, one carousel at a time.", "ERYmqqg82": "Content", "Dag0GQUu2": "Growth", "vyzMKeGSA": "Co-founder" },
+        "north-light": { "rAITKxrzh": "Under the Hood", "N9PVOHoUg": "2026-05-01T00:00:00Z", "rS05UF0Io": "The AI pipeline and recommendation engine behind the highlights.", "ERYmqqg82": "Engineering", "Dag0GQUu2": "AI", "vyzMKeGSA": "Co-founder" }
+      }
+    }
+  ]
+}

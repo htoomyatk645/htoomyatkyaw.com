@@ -1,11 +1,11 @@
 {
   "profile": {
     "name": "Htoo Myat Kyaw",
-    "school": "Tufts University",
-    "studies": "Cognitive & Brain Science and Computer Science",
-    "focus": "Design process and projects",
-    "contact_email": "htoo.m.kyaw645@gmail.com",
-    "site": "https://htoomyatkyaw.com"
+    "role": "Co-founder of Briefly (UI/UX, product design, strategy)",
+    "school": "Tufts University, Cognitive Brain Science + Computer Science",
+    "contact_form_inbox": "htoo.m.kyaw645@gmail.com",
+    "public_email": "Htoo.Kyaw@tufts.edu",
+    "source": "Replacement copy: Briefly only (Oct 10, 2026)"
   },
   "replacements": [
     {
@@ -21,112 +21,1338 @@
       "replace": "/"
     },
     {
+      "find": "<style>#__framer-badge-container{display:none!important}</style>",
+      "replace": "<style>#__framer-badge-container,.framer-tg9meo-container,.framer-xso6nc-container{display:none!important}a[href*=\"case-study/\"]{pointer-events:none!important;cursor:default!important}.framer-tdbbdt .framer-text{font-size:min(150px,calc((100vw - 56px) / 7.9))!important;letter-spacing:-.025em!important}.framer-18htyvr{display:none!important}.framer-a06x9c::after{content:\"coming soon\";display:block;text-align:center;margin:24px 0 64px;font-family:'Just Me Again Down Here',cursive;font-size:44px;color:rgb(17,18,18)}</style>",
+      "only": [
+        "site/blog.html"
+      ]
+    },
+    {
+      "find": "<style>#__framer-badge-container{display:none!important}</style>",
+      "replace": "<style>#__framer-badge-container,.framer-tg9meo-container,.framer-xso6nc-container{display:none!important}a[href*=\"case-study/\"]{pointer-events:none!important;cursor:default!important}.framer-tdbbdt .framer-text{font-size:min(150px,calc((100vw - 56px) / 7.9))!important;letter-spacing:-.025em!important}</style>"
+    },
+    {
+      "find": "<link href=\"/_ext/framerusercontent.com/images/wjwqrOUY5j7XeCzEQHXDiOX9dE.png\" rel=\"icon\" media=\"(prefers-color-scheme: dark)\">",
+      "replace": "<link href=\"/brand/favicon-dark.png\" rel=\"icon\" media=\"(prefers-color-scheme: dark)\">"
+    },
+    {
+      "find": "<svg width=\"50\" height=\"25\" viewBox=\"0 0 50 25\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M24.6953 7.73005C33.3767 7.73005 40.5429 14.2176 41.6103 22.6091C41.762 23.8022 40.7725 24.7822 39.5698 24.7822C38.3671 24.7822 37.4116 23.7995 37.2077 22.6142C36.1789 16.6348 30.9684 12.0854 24.6953 12.0854C18.4222 12.0854 13.2117 16.6348 12.1829 22.6142C11.979 23.7995 11.0235 24.7822 9.82082 24.7822C8.61811 24.7822 7.62854 23.8022 7.78029 22.6091C8.84764 14.2176 16.0138 7.73004 24.6953 7.73005Z\" fill=\"black\"/>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M24.6953 0C37.6488 1.13243e-06 48.281 9.9382 49.3832 22.6057C49.4875 23.8039 48.5025 24.7822 47.2998 24.7822C46.0971 24.7822 45.1343 23.804 45.0078 22.6079C43.9223 12.3488 35.2423 4.3554 24.6953 4.3554C14.1483 4.3554 5.46833 12.3488 4.38284 22.6079C4.25629 23.804 3.29349 24.7822 2.09078 24.7822C0.888075 24.7822 -0.0969105 23.8039 0.00734477 22.6057C1.10956 9.9382 11.7418 -1.13243e-06 24.6953 0Z\" fill=\"black\"/>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M24.6953 15.1087C29.2952 15.1087 33.1453 18.3194 34.1267 22.622C34.3942 23.7946 33.3938 24.7822 32.1911 24.7822C30.9884 24.7822 30.0544 23.7674 29.575 22.6644C28.7565 20.7811 26.8797 19.4641 24.6953 19.4641C22.5109 19.4641 20.6341 20.7811 19.8156 22.6644C19.3362 23.7674 18.4022 24.7822 17.1995 24.7822C15.9968 24.7822 14.9965 23.7946 15.2639 22.622C16.2453 18.3194 20.0954 15.1087 24.6953 15.1087Z\" fill=\"black\"/>\n</svg>",
+      "replace": "<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 50 25\" xmlns=\"http://www.w3.org/2000/svg\"><image href=\"/brand/briefly-mark.png\" x=\"12.5\" y=\"0\" width=\"25\" height=\"25\"/></svg>"
+    },
+    {
+      "find": "<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 50 25\" fill=\"var(--token-4f4ed186-9023-4858-830a-5202d69249c1, rgb(17, 18, 18))\" xmlns=\"http://www.w3.org/2000/svg\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M24.6953 7.73005C33.3767 7.73005 40.5429 14.2176 41.6103 22.6091C41.762 23.8022 40.7725 24.7822 39.5698 24.7822C38.3671 24.7822 37.4116 23.7995 37.2077 22.6142C36.1789 16.6348 30.9684 12.0854 24.6953 12.0854C18.4222 12.0854 13.2117 16.6348 12.1829 22.6142C11.979 23.7995 11.0235 24.7822 9.82082 24.7822C8.61811 24.7822 7.62854 23.8022 7.78029 22.6091C8.84764 14.2176 16.0138 7.73004 24.6953 7.73005Z\" fill=\"var(--token-4f4ed186-9023-4858-830a-5202d69249c1, rgb(17, 18, 18))\"/>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M24.6953 0C37.6488 1.13243e-06 48.281 9.9382 49.3832 22.6057C49.4875 23.8039 48.5025 24.7822 47.2998 24.7822C46.0971 24.7822 45.1343 23.804 45.0078 22.6079C43.9223 12.3488 35.2423 4.3554 24.6953 4.3554C14.1483 4.3554 5.46833 12.3488 4.38284 22.6079C4.25629 23.804 3.29349 24.7822 2.09078 24.7822C0.888075 24.7822 -0.0969105 23.8039 0.00734477 22.6057C1.10956 9.9382 11.7418 -1.13243e-06 24.6953 0Z\" fill=\"var(--token-4f4ed186-9023-4858-830a-5202d69249c1, rgb(17, 18, 18))\"/>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M24.6953 15.1087C29.2952 15.1087 33.1453 18.3194 34.1267 22.622C34.3942 23.7946 33.3938 24.7822 32.1911 24.7822C30.9884 24.7822 30.0544 23.7674 29.575 22.6644C28.7565 20.7811 26.8797 19.4641 24.6953 19.4641C22.5109 19.4641 20.6341 20.7811 19.8156 22.6644C19.3362 23.7674 18.4022 24.7822 17.1995 24.7822C15.9968 24.7822 14.9965 23.7946 15.2639 22.622C16.2453 18.3194 20.0954 15.1087 24.6953 15.1087Z\" fill=\"var(--token-4f4ed186-9023-4858-830a-5202d69249c1, rgb(17, 18, 18))\"/>\n</svg>",
+      "replace": "<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 50 25\" xmlns=\"http://www.w3.org/2000/svg\"><image href=\"/brand/briefly-mark.png\" x=\"12.5\" y=\"0\" width=\"25\" height=\"25\"/></svg>"
+    },
+    {
+      "find": " - Nudge - Premium Portfolio Template",
+      "replace": " | Htoo Myat Kyaw"
+    },
+    {
       "find": "Nudge - Premium Portfolio Template",
-      "replace": "Htoo Myat Kyaw — Design Portfolio"
+      "replace": "Htoo Myat Kyaw | Co-founder of Briefly"
     },
     {
       "find": "Nudge is a bold, personality-driven portfolio template for product designers who want to stand out. Built for storytelling, not just showcasing.",
-      "replace": "Htoo Myat Kyaw studies Cognitive & Brain Science and Computer Science at Tufts University. A portfolio of design process, research, and projects."
+      "replace": "Htoo Myat Kyaw is co-founder of Briefly, an audio-native short form podcast discovery app. He leads UI/UX and product design."
+    },
+    {
+      "find": " - My Framer Site",
+      "replace": " | Briefly by Htoo Myat Kyaw"
+    },
+    {
+      "find": "Page Not Found | Framer",
+      "replace": "Page Not Found | Htoo Myat Kyaw"
+    },
+    {
+      "find": "`EM`",
+      "replace": "`HK`"
+    },
+    {
+      "find": ">EM<",
+      "replace": ">HK<"
+    },
+    {
+      "find": "`PH`",
+      "replace": "`BR`"
+    },
+    {
+      "find": ">PH<",
+      "replace": ">BR<"
+    },
+    {
+      "find": "mailto:Hello@selenadesigns.com",
+      "replace": "mailto:Htoo.Kyaw@tufts.edu"
+    },
+    {
+      "find": "tel:+123456789",
+      "replace": "https://briefly.briefa.net"
+    },
+    {
+      "find": "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day.",
+      "replace": "I wear a few hats at Briefly. Here's what I do, and how.",
+      "only": [
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ]
+    },
+    {
+      "find": "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day.",
+      "replace": "I wear a few hats at Briefly. Here's what I do, and how.",
+      "only": [
+        "site/services.html"
+      ],
+      "split": true
+    },
+    {
+      "find": "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day.",
+      "replace": "I'm most energized by making interacting with technology pain-free, and by people who care about the same thing. Podcasters, press, partners, researchers, neuroscientists, recruiters or fellow builders, I'd love to hear from you."
+    },
+    {
+      "find": "Open to contract work, full-time roles, and interesting conversations about hard design problems.",
+      "replace": "Briefly is heading to the App Store. Say hello."
+    },
+    {
+      "find": "COntact me",
+      "replace": "Contact me"
     },
     {
       "find": "Currently at Meridian Health",
-      "replace": "Tufts University"
+      "replace": "Co-founder at Briefly"
     },
     {
       "find": "Previously at Searchless AI",
-      "replace": "CBS + CS"
+      "replace": "Leading UI/UX, Product design, and Strategy"
     },
     {
-      "find": "Product designer",
-      "replace": "Design student"
+      "find": "Available for thoughtful projects",
+      "replace": "Launched October 2026"
     },
     {
-      "find": "Chicago, IL",
-      "replace": "Medford, MA"
+      "find": "I design ",
+      "replace": "I'm building ",
+      "only": [
+        "site/index.html"
+      ]
     },
     {
-      "find": "a product designer in Chicago who gets excited",
-      "replace": "a Tufts student in cognitive science & CS who gets excited"
+      "find": "`I design",
+      "replace": "`I'm building",
+      "only": [
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
     },
     {
       "find": "outstanding digital products",
-      "replace": "intuitive digital products"
+      "replace": "a better way to listen"
     },
     {
-      "find": "I spend my days designing for healthcare platforms, booking systems, and other products where 'just figure it out' isn't an option. The people using these tools are busy, stressed, and have actual work to do. My job is to get out of their way.",
-      "replace": "I study Cognitive & Brain Science and Computer Science at Tufts University, which means I spend a lot of time thinking about how people perceive, decide, and remember, and then building things with that in mind. The best interfaces work with the way people think. My job is to get out of their way."
+      "find": "Product designer",
+      "replace": "Cognitive Science centered builder & designer"
     },
     {
-      "find": "I've worked on teams of two and teams of twenty. I've had access to endless user research and I've had to make educated guesses with limited data. I've worked within strict component libraries and I've built design systems from scratch. What stays consistent is asking good questions, collaborating with people who know more than me, and shipping things that actually help",
-      "replace": "Cognitive science gives me the questions: what does someone notice first, what do they expect to happen next, where does their attention break down? Computer science lets me prototype the answers and test them. What stays consistent across my projects is asking good questions, learning from people who know more than me, and making things that actually help"
+      "find": "Chicago, IL",
+      "replace": "Boston, MA"
     },
     {
-      "find": "Currently, I'm at Meridian Health working on experiences for mental health clinicians and administrators. Before that, I spent almost two years at StyleBook helping salons manage their businesses (and discovering that stylists have very strong opinions about scheduling interfaces, which I deeply respect). ",
-      "replace": "This portfolio is where I document my design process: the research, the sketches, the dead ends, and the decisions that shaped each project. I care as much about how I got to a solution as about the solution itself. "
+      "find": "what's up",
+      "replace": "wassup"
     },
     {
-      "find": ">Meridian Health</h4>",
-      "replace": ">Tufts University</h4>",
+      "find": "I'm Bejaman",
+      "replace": "I'm Htoo",
       "only": [
-        "about.html",
+        "site/index.html",
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
+      "find": "a product designer in Chicago who gets excited",
+      "replace": "a co-founder in Boston who gets excited",
+      "only": [
+        "site/index.html",
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
+      "find": "about making complicated things simple",
+      "replace": "about making podcasts easier to love",
+      "only": [
+        "site/index.html",
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
+      "find": "Interaction Design",
+      "replace": "Product Interaction Design",
+      "only": [
+        "site/index.html",
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
+      "find": "This is a showcase of what happens when curiosity drives the process.",
+      "replace": "Four chapters of building Briefly, from the first idea to the App Store."
+    },
+    {
+      "find": "a product designer in Chicago who gets excited",
+      "replace": "a serial-entrepreneur, Questbridge Scholar at Tufts University, and a founder based in Boston who gets excited",
+      "only": [
+        "site/about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
       ]
     },
     {
-      "find": "`Meridian Health`",
-      "replace": "`Tufts University`",
+      "find": "about making complicated things simple",
+      "replace": "about developing consumer facing technology",
       "only": [
-        "about.html",
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "I spend my days designing for healthcare platforms, booking systems, and other products where 'just figure it out' isn't an option. The people using these tools are busy, stressed, and have actual work to do. My job is to get out of their way.",
+      "replace": "I spend my days on one question: how do you give someone the best part of a podcast without taking away the voice? Briefly is a short-form, audio-only podcast platform. It pulls the best moments out of full episodes and serves them in a feed tuned to your interests, the way Instagram and TikTok learn what you like."
+    },
+    {
+      "find": "I've worked on teams of two and teams of twenty. I've had access to endless user research and I've had to make educated guesses with limited data. I've worked within strict component libraries and I've built design systems from scratch. What stays consistent is asking good questions, collaborating with people who know more than me, and shipping things that actually help",
+      "replace": "Briefly is a team of three: me, a post-grad fellow formerly at Stanford HCI lab, and an engineer. I lead UI/UX, product design, and business strategy. We built the AI pipeline and recommendation engine together, and I direct coding agents and review their code, so I stay close to how an idea becomes a product."
+    },
+    {
+      "find": "Currently, I'm at Meridian Health working on experiences for mental health clinicians and administrators. Before that, I spent almost two years at StyleBook helping salons manage their businesses (and discovering that stylists have very strong opinions about scheduling interfaces, which I deeply respect). ",
+      "replace": "I started Briefly in May 2026 while studying Cognitive Brain Science and Computer Science at Tufts. We're mentored through the Tufts Derby Center for Entrepreneurship by a founder with multiple tech exits. The iOS app is launched on the App Store in October 2026, and fully supports CarPlay. "
+    },
+    {
+      "find": "When I'm not designing, you'll find me thinking about why some interfaces feel intuitive and others make you want to throw your laptop out a window. Usually with coffee. ",
+      "replace": "When I'm not working on Briefly, studying, I'm training Brazilian Jiu-Jitsu, cooking, spending time with family or friends, or practicing languages: English, Urdu, and Burmese (fluent), Chinese (intermediate), Turkish (beginner). "
+    },
+    {
+      "find": "Starting with why, not what",
+      "replace": "Start with the listener"
+    },
+    {
+      "find": "Before jumping into wireframes, I want to understand what problem we're actually solving. Sometimes the thing people ask for isn't the thing they need. My favorite projects start with good questions and end with solutions that feel obvious in hindsight.",
+      "replace": "Before I design a screen, I want to know when and where someone is listening: commuting, cooking, or in the car. The context decides everything else."
+    },
+    {
+      "find": "think first, draw later.",
+      "replace": "listen first, draw later."
+    },
+    {
+      "find": "Designing for real constraints",
+      "replace": "Design for real constraints"
+    },
+    {
+      "find": "Perfect conditions don't exist. Budgets are tight, timelines are aggressive, legacy systems are messy, and sometimes you just can't talk to users directly. I'm comfortable making smart decisions with imperfect information and finding creative solutions within real limitations.",
+      "replace": "A student-founded team of three has limited time and finances. I'd rather make a few things very good than many things half good."
+    },
+    {
+      "find": "no perfect world here!",
+      "replace": "small team, sharp focus."
+    },
+    {
+      "find": "Collaboration over hero design",
+      "replace": "Build with the whole team"
+    },
+    {
+      "find": "The best work happens when designers, engineers, and product folks are actually talking to each other—not throwing things over the wall. I genuinely enjoy the back-and-forth of figuring out what's possible, what's practical, and what's going to create the most value.",
+      "replace": "The best work happens when design, engineering, and growth are in one conversation."
+    },
+    {
+      "find": "Making the invisible visible",
+      "replace": "Make the invisible visible"
+    },
+    {
+      "find": "Some of the most impactful design work isn't flashy—it's the progress indicator that keeps people oriented, the auto-save that prevents panic, the validation message that actually helps instead of just saying 'error.' These details build trust.",
+      "replace": "A podcast brief is only useful if you trust it and if you trust us. Our ingestion pipeline incorporates the full contexts, picks up on small cues, and iterates on human trained data points, to build the trust in our users."
+    },
+    {
+      "find": "Designing across scheduling, case management, treatment planning, and clinical documentation for mental health practices. The challenge is balancing what clinicians need with what administrators need—often very different things—while keeping everything HIPAA-compliant and actually usable. ",
+      "replace": "Co-Founder & Member of Technical Staff. Co-founded a short-form, audio-only podcast app that turns full episodes into a personalized feed of AI-selected highlights. I co-built the AI pipeline and recommendation engine, lead product and UI/UX design, and grew our social presence organically to 2,700 followers and 1.5M+ views. ",
+      "only": [
+        "site/about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
       ]
     },
     {
       "find": "Sep 2025 - Current",
-      "replace": "Now",
+      "replace": "May 2026 - Present",
       "only": [
-        "about.html",
+        "site/about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
       ]
     },
     {
-      "find": "Designing across scheduling, case management, treatment planning, and clinical documentation for mental health practices. The challenge is balancing what clinicians need with what administrators need—often very different things—while keeping everything HIPAA-compliant and actually usable. ",
-      "replace": "B.S. candidate in Cognitive & Brain Science and Computer Science. Studying how people perceive, learn, and make decisions, and how to build software around that. Coursework and side projects feed directly into my design process. ",
+      "find": "Meridian Health",
+      "replace": "Briefly Apps Inc.",
       "only": [
-        "about.html",
+        "site/about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
       ]
     },
     {
-      "find": "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day.",
-      "replace": "I'm most energized by projects where I can dig into how people think, collaborate with curious people, and design things that genuinely improve someone's day."
+      "find": "Redesigned everything from appointment booking to inventory management for a salon management platform. Worked directly with salon owners and stylists to understand their workflows, then rebuilt features to match how they actually work instead of how we thought they worked.",
+      "replace": "Paid Research Assistant in the Human-Robot Interaction & Trustworthy AI Lab. I recruit participants, support IRB-compliant HRI studies, and analyze trust and usability data in R with ggplot2.",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
     },
     {
-      "find": "Open to contract work, full-time roles, and interesting conversations about hard design problems.",
-      "replace": "Open to internships, research collaborations, and interesting conversations about design and the mind."
+      "find": "Mar 2024 - aug 2025",
+      "replace": "Sep 2026 - Present",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
     },
     {
-      "find": "Does he build",
-      "replace": "Does Htoo build"
+      "find": "StyleBook",
+      "replace": "Tufts HRI Lab",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "Led UX strategy and discovery for enterprise clients. Facilitated workshops with stakeholders who had very different ideas about what they were building, then helped everyone land on the same page. Also mentored junior designers, which taught me how to articulate my process instead of just doing it. ",
+      "replace": "Research Student, Computational Biology. Selected for a small national cohort studying spinocerebellar ataxia. I analyzed real RNA datasets in R and on the Linux command line and presented the findings on a research poster. ",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "Feb 2024 - dec 2024",
+      "replace": "Jul 2025 - Aug 2025",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "Northlight Consulting",
+      "replace": "The RNA Institute",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "Joined when the product was technically functional but deeply confusing. Talked to users who were struggling, mapped out where the interface was failing them, and redesigned the core experience to actually make sense. Also helped establish initial brand direction. ",
+      "replace": "Anesthesia Technician. Kept 10+ daily surgical procedures running across 34 ORs, 14 non-ORs, and 5 cath labs, and troubleshot 50+ anesthesia machine and monitoring issues before procedures. ",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "jan 2022 - dec 2023",
+      "replace": "Mar 2025 - Aug 2026",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "Homestead",
+      "replace": "Albany Medical Center",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "available for Q4 projects ots",
+      "replace": "live on the App Store"
+    },
+    {
+      "find": "my services",
+      "replace": "what i do"
+    },
+    {
+      "find": "Product Design",
+      "replace": "Product and UI/UX",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-g58dri"
+    },
+    {
+      "find": "Product Design",
+      "replace": "Product and UI/UX",
+      "only": [
+        "site/services.html"
+      ],
+      "split": true
+    },
+    {
+      "find": "Designing digital products from the first idea to the final interface.",
+      "replace": "Designing Briefly from first idea to final screen.",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-515de4"
+    },
+    {
+      "find": "web design",
+      "replace": "Brand and Visual Identity",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1igbjtj"
+    },
+    {
+      "find": "web design",
+      "replace": "Brand and Visual Identity",
+      "only": [
+        "site/services.html"
+      ],
+      "split": true
+    },
+    {
+      "find": "Strong visual direction with thoughtful structure to create digital experiences that are as effective as they are memorable",
+      "replace": "A dark, minimal look that keeps the voice in front.",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-10v42ac"
+    },
+    {
+      "find": "Design systems",
+      "replace": "Content and Social",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-g4c9lv"
+    },
+    {
+      "find": "Design systems",
+      "replace": "Content and Social",
+      "only": [
+        "site/services.html"
+      ],
+      "split": true
+    },
+    {
+      "find": "Building flexible visual systems that make products easier to design, build, and scale.",
+      "replace": "Daily Instagram carousels, captions, and video that build an audience before launch.",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1b8ygq1"
+    },
+    {
+      "find": "Creative direction",
+      "replace": "Build and Strategy",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1zotpg"
+    },
+    {
+      "find": "Creative direction",
+      "replace": "Build and Strategy",
+      "only": [
+        "site/services.html"
+      ],
+      "split": true
+    },
+    {
+      "find": "Building flexible visual systems that make products easier to design, build, and scale.",
+      "replace": "Working with coding agents, shipping in React Native, and shaping the business side.",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-bbkleu"
+    },
+    {
+      "find": "UX / UI Design",
+      "replace": "UI/UX",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-h4g844-container",
+      "findHtml": "UX / UI Design"
+    },
+    {
+      "find": "project strategy",
+      "replace": "User Flows",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-183rdj3-container",
+      "findHtml": "project strategy"
+    },
+    {
+      "find": "prototyping",
+      "replace": "Prototyping",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-yc6h9r-container",
+      "findHtml": "prototyping"
+    },
+    {
+      "find": "Interaction Design",
+      "replace": "Interaction Design",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-g0c05d-container",
+      "findHtml": "Interaction Design"
+    },
+    {
+      "find": "design systems",
+      "replace": "Mobile",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1lueen2-container",
+      "findHtml": "design systems"
+    },
+    {
+      "find": "Art Direction",
+      "replace": "Visual Identity",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-o4mpja-container",
+      "findHtml": "Art Direction"
+    },
+    {
+      "find": "Web design",
+      "replace": "Color",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-zho5e9-container",
+      "findHtml": "Web design"
+    },
+    {
+      "find": "Responsive design",
+      "replace": "Typography",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1mejb2k-container",
+      "findHtml": "Responsive design"
     },
     {
       "find": "Framer Development",
-      "replace": "Front-end Development"
+      "replace": "Art Direction",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-vpkjn5-container",
+      "findHtml": "Framer Development"
     },
     {
-      "find": "mailto:Hello@selenadesigns.com",
-      "replace": "mailto:htoo.m.kyaw645@gmail.com"
+      "find": "Motion & Interaction",
+      "replace": "Brand Voice",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1slb844-container",
+      "findHtml": "Motion &amp; Interaction"
     },
     {
-      "find": "tel:+123456789",
-      "replace": "/contact"
+      "find": "UI Systems",
+      "replace": "Carousels",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1tlax7p-container",
+      "findHtml": "UI Systems"
+    },
+    {
+      "find": "Component Libraries",
+      "replace": "Captions",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-toxuni-container",
+      "findHtml": "Component Libraries"
+    },
+    {
+      "find": "Design tokens",
+      "replace": "Short-form Video",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1ad3zi6-container",
+      "findHtml": "Design tokens"
+    },
+    {
+      "find": "Documentation",
+      "replace": "English and Arabic",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-mq8bwj-container",
+      "findHtml": "Documentation"
+    },
+    {
+      "find": "System architecture",
+      "replace": "Content Calendar",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1rdpkrn-container",
+      "findHtml": "System architecture"
+    },
+    {
+      "find": "Visual direction",
+      "replace": "Product Strategy",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-49eqph-container",
+      "findHtml": "Visual direction"
+    },
+    {
+      "find": "Brand Expression",
+      "replace": "Business Strategy",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-n6gm6d-container",
+      "findHtml": "Brand Expression"
+    },
+    {
+      "find": "Creative Strategy",
+      "replace": "React Native and Expo",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1kbjuiu-container",
+      "findHtml": "Creative Strategy"
+    },
+    {
+      "find": "Art Direction",
+      "replace": "Agentic Coding",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1ipfo84-container",
+      "findHtml": "Art Direction"
+    },
+    {
+      "find": "Design Leadership",
+      "replace": "AI Pipeline",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-15adn40-container",
+      "findHtml": "Design Leadership"
+    },
+    {
+      "find": "First, I get familiar with the problem, the people, and the bigger picture.",
+      "replace": "First, I get to know the listener, the show, and the moment they press play."
+    },
+    {
+      "find": "I translate what I learn into a clear direction, structure, and set of priorities.",
+      "replace": "I turn that into one clear direction and a short list of priorities."
+    },
+    {
+      "find": "Then I explore, iterate, and refine until the right solution starts to take shape.",
+      "replace": "Then I explore, test, and refine until it feels right."
+    },
+    {
+      "find": "Finally, I bring everything together into a polished, flexible system ready to ship.",
+      "replace": "Finally, I ship it and watch how people actually use it."
+    },
+    {
+      "find": "rTmzt9Hxo:`Strategy`",
+      "replace": "rTmzt9Hxo:`Languages`",
+      "only": [
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ]
+    },
+    {
+      "find": "Strategy",
+      "replace": "Languages",
+      "only": [
+        "site/services.html"
+      ],
+      "near": "framer-s1tccs"
+    },
+    {
+      "find": "rTmzt9Hxo:`design`",
+      "replace": "rTmzt9Hxo:`Build`",
+      "only": [
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ]
+    },
+    {
+      "find": "design",
+      "replace": "Build",
+      "only": [
+        "site/services.html"
+      ],
+      "near": "framer-s1tccs"
+    },
+    {
+      "find": "rTmzt9Hxo:`Systems`",
+      "replace": "rTmzt9Hxo:`AI & Agents`",
+      "only": [
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ]
+    },
+    {
+      "find": "Systems",
+      "replace": "AI & Agents",
+      "only": [
+        "site/services.html"
+      ],
+      "near": "framer-s1tccs"
+    },
+    {
+      "find": "rTmzt9Hxo:`Motion`",
+      "replace": "rTmzt9Hxo:`Design`",
+      "only": [
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ]
+    },
+    {
+      "find": "Motion",
+      "replace": "Design",
+      "only": [
+        "site/services.html"
+      ],
+      "near": "framer-s1tccs"
+    },
+    {
+      "find": "Product Strategy  ",
+      "replace": "Python",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1174bva",
+      "findJs": "Product Strategy\\u2028\\u2028",
+      "findHtml": "Product Strategy  "
+    },
+    {
+      "find": "Design Strategy",
+      "replace": "C++",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-tnni55",
+      "findJs": "Design Strategy",
+      "findHtml": "Design Strategy"
+    },
+    {
+      "find": "Research",
+      "replace": "TypeScript, JavaScript",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-kf7xgw",
+      "findJs": "Research",
+      "findHtml": "Research"
+    },
+    {
+      "find": "User Flows",
+      "replace": "CSS",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1pzv9qn",
+      "findJs": "User Flows",
+      "findHtml": "User Flows"
+    },
+    {
+      "find": "Information Architecture",
+      "replace": "R (ggplot2)",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1h1fn2c",
+      "findJs": "Information Architecture",
+      "findHtml": "Information Architecture"
+    },
+    {
+      "find": "UX Design",
+      "replace": "React Native (Expo)",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1hqf9cr",
+      "findJs": "UX Design",
+      "findHtml": "UX Design"
+    },
+    {
+      "find": "Interaction Design",
+      "replace": "Supabase",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1hmretn",
+      "findJs": "Interaction Design",
+      "findHtml": "Interaction Design"
+    },
+    {
+      "find": "UI Design",
+      "replace": "Vercel",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-hh4awa",
+      "findJs": "UI Design",
+      "findHtml": "UI Design"
+    },
+    {
+      "find": "Web Design",
+      "replace": "FFmpeg",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1uig92t",
+      "findJs": "Web Design",
+      "findHtml": "Web Design"
+    },
+    {
+      "find": "Prototyping",
+      "replace": "Linux command line",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-h2xm5",
+      "findJs": "Prototyping",
+      "findHtml": "Prototyping"
+    },
+    {
+      "find": "Design Systems",
+      "replace": "Claude Code, Codex, Cursor",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1jv364m",
+      "findJs": "Design Systems",
+      "findHtml": "Design Systems"
+    },
+    {
+      "find": "Design Tokens",
+      "replace": "Grok Bot, Dots, Conductor",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1gnhxkk",
+      "findJs": "Design Tokens",
+      "findHtml": "Design Tokens"
+    },
+    {
+      "find": "Component Libraries",
+      "replace": "Skills Diversification",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1agb8lf",
+      "findJs": "Component Libraries",
+      "findHtml": "Component Libraries"
+    },
+    {
+      "find": "Responsive Design",
+      "replace": "Recommendation Systems",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1talren",
+      "findJs": "Responsive Design",
+      "findHtml": "Responsive Design"
+    },
+    {
+      "find": "Micro-interactions",
+      "replace": "Figma, Paper",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-iw1feu",
+      "findJs": "Micro-interactions",
+      "findHtml": "Micro-interactions"
+    },
+    {
+      "find": "Motion Direction",
+      "replace": "Adobe Creative Cloud",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-qr5bbu",
+      "findJs": "Motion Direction",
+      "findHtml": "Motion Direction"
+    },
+    {
+      "find": "Transitions",
+      "replace": "Wireframing",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1griwbb",
+      "findJs": "Transitions",
+      "findHtml": "Transitions"
+    },
+    {
+      "find": "Prototyping",
+      "replace": "UI/UX",
+      "only": [
+        "site/services.html",
+        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
+      ],
+      "near": "framer-1fp0der",
+      "findJs": "Prototyping",
+      "findHtml": "Prototyping"
+    },
+    {
+      "find": "Does Bejaman design websites, or only digital products?",
+      "replace": "What is Briefly?"
+    },
+    {
+      "find": "Both. Alongside app/dashboard product design, Bejaman also designs websites and landing pages with a storytelling approach, not just visuals.",
+      "replace": "A short-form, audio-only podcast platform. It gives you the best parts of episodes as audio, plus recommendations, in a feed tuned to your interests."
+    },
+    {
+      "find": "Does he build Design Systems, or just individual screens?",
+      "replace": "What does Htoo do there?"
+    },
+    {
+      "find": "Yes. Especially for multi stakeholder enterprise work like North Light, where a shared design language and reusable components are key to scaling the product.",
+      "replace": "He co-founded it and leads UI/UX, product design, and business strategy, and he co-built the AI pipeline and recommendation engine."
+    },
+    {
+      "find": "What does the Product Design process look like?",
+      "replace": "When can I get it?"
+    },
+    {
+      "find": "Four pillars: User Research to find the real problem, Interaction Design to shape the flow, Prototyping to test ideas fast, and Motion Design to polish the experience. Meridian Health and StyleBook are good examples of this in action.",
+      "replace": "Now. Briefly launched on the iOS App Store in October 2026 and works with CarPlay. More at briefly.briefa.net."
+    },
+    {
+      "find": "What does Creative Direction mean here?",
+      "replace": "Is Briefly for podcasters or listeners?"
+    },
+    {
+      "find": "It's guiding the overall visual identity, tone, and experience across a project, making sure every design decision (color, motion, storytelling) stays consistent and serves the client's business goals.",
+      "replace": "Both. Listeners get the best moments quickly, and podcasters get their voice heard by more people."
+    },
+    {
+      "find": "dateStyle:`medium`,timeZone:`UTC`",
+      "replace": "year:`numeric`,timeZone:`UTC`",
+      "only": [
+        "dCzIeJ1zOtbadg7gAZ8tOWvZXEVwMIluwXwJJn_9J9A",
+        "jFDzg-Fq9D8SbFZq_IRIC-M9TBUP4nfs0oE7GAAyVUI",
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
+      "find": ">Mar 19, 2026<",
+      "replace": ">2026<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": ">Mar 2, 2026<",
+      "replace": ">2026<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": ">Jan 2, 2025<",
+      "replace": ">2026<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "Meridian Health",
+      "replace": "Briefly: All Things Podcasts",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/",
+        "searchIndex"
+      ]
+    },
+    {
+      "find": "StyleBook",
+      "replace": "The Briefly Look",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/",
+        "searchIndex"
+      ]
+    },
+    {
+      "find": "Homestead",
+      "replace": "Seven Slides a Day",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/",
+        "searchIndex"
+      ]
+    },
+    {
+      "find": "North Light",
+      "replace": "Under the Hood",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/",
+        "searchIndex"
+      ]
+    },
+    {
+      "find": "When therapists spend less time clicking, they have more time for patients.",
+      "replace": "Podcasts briefs that stay audio.",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/",
+        "searchIndex"
+      ]
+    },
+    {
+      "find": "From 'I hate this system' to 'Can we show other salons?",
+      "replace": "Dark, minimal, and quiet enough to let the voice lead.",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/",
+        "searchIndex"
+      ]
+    },
+    {
+      "find": "Helping first-time homebuyers actually understand what they're looking at.",
+      "replace": "How a small team builds an audience on Instagram, one carousel at a time.",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/",
+        "searchIndex"
+      ]
+    },
+    {
+      "find": "Getting seven stakeholders to agree on what they're actually building.",
+      "replace": "The AI pipeline and recommendation engine behind the highlights.",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/",
+        "searchIndex"
+      ]
+    },
+    {
+      "find": ">Healthcare<",
+      "replace": ">Product<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": ">Workflow Design<",
+      "replace": ">Audio<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": ">SaaS<",
+      "replace": ">Brand<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": ">Transformation<",
+      "replace": ">UI/UX<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": ">Proptech<",
+      "replace": ">Content<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": ">0 -&gt; 1<",
+      "replace": ">Growth<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": ">Strategy<",
+      "replace": ">Engineering<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": ">Enterprise<",
+      "replace": ">AI<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": ">Product Designer<",
+      "replace": ">Co-founder<",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "\"2026-03-19T00:00:00.000Z\"",
+      "replace": "\"2026-05-01T00:00:00.000Z\"",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "\"2026-03-02T00:00:00.000Z\"",
+      "replace": "\"2026-05-01T00:00:00.000Z\"",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "\"2025-01-02T00:00:00.000Z\"",
+      "replace": "\"2026-05-01T00:00:00.000Z\"",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "\"Healthcare\"",
+      "replace": "\"Product\"",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "\"Workflow Design\"",
+      "replace": "\"Audio\"",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "\"SaaS\"",
+      "replace": "\"Brand\"",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "\"Transformation\"",
+      "replace": "\"UI/UX\"",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "\"Proptech\"",
+      "replace": "\"Content\"",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "\"0 -> 1\"",
+      "replace": "\"Growth\"",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "\"Strategy\"",
+      "replace": "\"Engineering\"",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "\"Enterprise\"",
+      "replace": "\"AI\"",
+      "only": [
+        "site/index.html",
+        "site/case-study.html",
+        "site/case-study/"
+      ]
+    },
+    {
+      "find": "nothing big, still feels nice",
+      "replace": "tiny details, big difference"
+    },
+    {
+      "find": "Brain’s messy, but it’s okay",
+      "replace": "whiteboard, day 3"
+    },
+    {
+      "find": "Good weather",
+      "replace": "launch-week energy"
+    },
+    {
+      "find": "Random shot",
+      "replace": "random shot"
+    },
+    {
+      "find": "Tiny moments",
+      "replace": "tiny moments"
+    },
+    {
+      "find": "Not sure what I’m doing",
+      "replace": "first draft, don't judge"
+    },
+    {
+      "find": "bus bus bus",
+      "replace": "on the green line, thinking"
+    },
+    {
+      "find": "Where to find you?",
+      "replace": "Where can I reach you?"
+    },
+    {
+      "find": "I'm available for new projects!",
+      "replace": "Podcasters, press, and partners welcome!"
+    },
+    {
+      "find": "CenImty1m:`https://www.facebook.com/`",
+      "replace": "CenImty1m:`mailto:Htoo.Kyaw@tufts.edu`"
+    },
+    {
+      "find": "href=\"https://www.facebook.com/\"",
+      "replace": "href=\"mailto:Htoo.Kyaw@tufts.edu\""
+    },
+    {
+      "find": "https://www.instagram.com/",
+      "replace": "https://www.instagram.com/brieflyhq_/"
+    },
+    {
+      "find": "https://www.linkedin.com/",
+      "replace": "https://www.linkedin.com/in/htoo-myat-kyaw-ny/"
+    },
+    {
+      "find": "`Facebook`",
+      "replace": "`Email`"
+    },
+    {
+      "find": ">Facebook<",
+      "replace": ">Email<"
+    },
+    {
+      "find": "`Linkedin`",
+      "replace": "`LinkedIn`"
+    },
+    {
+      "find": ">Linkedin<",
+      "replace": ">LinkedIn<"
+    },
+    {
+      "find": "M12 2.04004C6.5 2.04004 2 6.53004 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85004C10.44 7.34004 11.93 5.96004 14.22 5.96004C15.31 5.96004 16.45 6.15004 16.45 6.15004V8.62004H15.19C13.95 8.62004 13.56 9.39004 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5879 18.0622 20.3856 19.6099 18.5701C21.1576 16.7546 22.0053 14.4457 22 12.06C22 6.53004 17.5 2.04004 12 2.04004Z",
+      "replace": "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
     },
     {
       "find": "BEJAMAN",
-      "replace": "HTOO"
+      "replace": "HTOO MYAT KYAW"
     },
     {
       "find": "Bejaman",
-      "replace": "Htoo"
+      "replace": "Htoo Myat Kyaw"
     }
   ]
 }
