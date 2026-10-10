@@ -113,6 +113,19 @@ save(fit_card("briefly/wordmark.png", 0.8), "77vnsoqQ0X6oMVSzYgh7nMkdh0.jpg")  #
 # (the card is made taller with CSS in tools/rebrand.json).
 save(Image.open(ROOT / "brand/briefly/app-screenshot.jpg").convert("RGB"), "jaipCY5FvgftEDz3qtilGNnLVk.png")
 
+# Playground: square photos (shown cover-cropped), subject centred.
+for src, fx, fy, name in [
+    ("IMG_6247.jpg", 0.48, 0.33, "dePDiIbQ0pEr3GA9qJX5vggP8c.png"),   # tiny details, big difference
+    ("IMG_3777.jpg", 0.50, 0.45, "hkqAE76OI4thM32d4iwu4EFQps.png"),   # whiteboard, day 3
+    ("IMG_4690.jpg", 0.42, 0.45, "ImWtq4yKP0WdM1PBrSczsl11z1A.png"),  # launch-week energy
+    ("preview-3.jpg", 0.55, 0.45, "h4E4SLgLCRWR0vwuAQOQvUvGn0.png"),  # random shot
+    ("IMG_4257.jpg", 0.50, 0.40, "8WCddJF9lKOfd38rMGa4CTi7egs.png"),  # tiny moments
+    ("IMG_5462.jpg", 0.50, 0.58, "GeBUV4VcRCbGk0YtC0xD3Hts4.png"),    # first draft, don't judge
+    ("preview-4.jpg", 0.52, 0.60, "htQBJ0hwpd8OwRHUnkgEDJuVDo.png"),  # on the green line, thinking
+    ("IMG_3145.jpg", 0.58, 0.62, "HTUAceLZFBiFgG7xm5wwwQXQM.png"),    # flower!
+]:
+    save(crop(src, (1200, 1200), fx, fy, 1.0), name)
+
 # Logos: nav mark, favicons (light and dark), touch icon, share image.
 light, _ = mark("briefly-light.png")
 dark, dark_bg = mark("briefly-dark.png")

@@ -64,6 +64,10 @@
       "replace": "Page Not Found | Htoo Myat Kyaw"
     },
     {
+      "find": "Create a free website with Framer, the website builder loved by startups, designers and agencies.",
+      "replace": "Htoo Myat Kyaw"
+    },
+    {
       "find": "`EM`",
       "replace": "`HK`"
     },
@@ -477,34 +481,34 @@
       "near": "framer-bbkleu"
     },
     {
-      "find": "UX / UI Design",
+      "find": "UI/UX",
       "replace": "UI/UX",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-h4g844-container",
-      "findHtml": "UX / UI Design"
+      "findHtml": "UI/UX"
     },
     {
-      "find": "project strategy",
+      "find": "User Flows",
       "replace": "User Flows",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-183rdj3-container",
-      "findHtml": "project strategy"
+      "findHtml": "User Flows"
     },
     {
-      "find": "prototyping",
+      "find": "Prototyping",
       "replace": "Prototyping",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-yc6h9r-container",
-      "findHtml": "prototyping"
+      "findHtml": "Prototyping"
     },
     {
       "find": "Interaction Design",
@@ -517,164 +521,164 @@
       "findHtml": "Interaction Design"
     },
     {
-      "find": "design systems",
+      "find": "Mobile",
       "replace": "Mobile",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1lueen2-container",
-      "findHtml": "design systems"
+      "findHtml": "Mobile"
     },
     {
-      "find": "Art Direction",
+      "find": "Visual Identity",
       "replace": "Visual Identity",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-o4mpja-container",
-      "findHtml": "Art Direction"
+      "findHtml": "Visual Identity"
     },
     {
-      "find": "Web design",
+      "find": "Color",
       "replace": "Color",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-zho5e9-container",
-      "findHtml": "Web design"
+      "findHtml": "Color"
     },
     {
-      "find": "Responsive design",
+      "find": "Typography",
       "replace": "Typography",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1mejb2k-container",
-      "findHtml": "Responsive design"
+      "findHtml": "Typography"
     },
     {
-      "find": "Framer Development",
+      "find": "Art Direction",
       "replace": "Art Direction",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-vpkjn5-container",
-      "findHtml": "Framer Development"
+      "findHtml": "Art Direction"
     },
     {
-      "find": "Motion & Interaction",
+      "find": "Brand Voice",
       "replace": "Brand Voice",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1slb844-container",
-      "findHtml": "Motion &amp; Interaction"
+      "findHtml": "Brand Voice"
     },
     {
-      "find": "UI Systems",
+      "find": "Carousels",
       "replace": "Carousels",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1tlax7p-container",
-      "findHtml": "UI Systems"
+      "findHtml": "Carousels"
     },
     {
-      "find": "Component Libraries",
+      "find": "Captions",
       "replace": "Captions",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-toxuni-container",
-      "findHtml": "Component Libraries"
+      "findHtml": "Captions"
     },
     {
-      "find": "Design tokens",
+      "find": "Short-form Video",
       "replace": "Short-form Video",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1ad3zi6-container",
-      "findHtml": "Design tokens"
+      "findHtml": "Short-form Video"
     },
     {
-      "find": "Documentation",
+      "find": "English and Arabic",
       "replace": "English and Arabic",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-mq8bwj-container",
-      "findHtml": "Documentation"
+      "findHtml": "English and Arabic"
     },
     {
-      "find": "System architecture",
+      "find": "Content Calendar",
       "replace": "Content Calendar",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1rdpkrn-container",
-      "findHtml": "System architecture"
+      "findHtml": "Content Calendar"
     },
     {
-      "find": "Visual direction",
+      "find": "Product Strategy",
       "replace": "Product Strategy",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-49eqph-container",
-      "findHtml": "Visual direction"
+      "findHtml": "Product Strategy"
     },
     {
-      "find": "Brand Expression",
+      "find": "Business Strategy",
       "replace": "Business Strategy",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-n6gm6d-container",
-      "findHtml": "Brand Expression"
+      "findHtml": "Business Strategy"
     },
     {
-      "find": "Creative Strategy",
+      "find": "React Native and Expo",
       "replace": "React Native and Expo",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1kbjuiu-container",
-      "findHtml": "Creative Strategy"
+      "findHtml": "React Native and Expo"
     },
     {
-      "find": "Art Direction",
+      "find": "Agentic Coding",
       "replace": "Agentic Coding",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1ipfo84-container",
-      "findHtml": "Art Direction"
+      "findHtml": "Agentic Coding"
     },
     {
-      "find": "Design Leadership",
+      "find": "AI Pipeline",
       "replace": "AI Pipeline",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-15adn40-container",
-      "findHtml": "Design Leadership"
+      "findHtml": "AI Pipeline"
     },
     {
       "find": "First, I get familiar with the problem, the people, and the bigger picture.",
@@ -753,202 +757,202 @@
       "near": "framer-s1tccs"
     },
     {
-      "find": "Product Strategy  ",
+      "find": "Python",
       "replace": "Python",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1174bva",
-      "findJs": "Product Strategy\\u2028\\u2028",
-      "findHtml": "Product Strategy  "
+      "findJs": "Python",
+      "findHtml": "Python"
     },
     {
-      "find": "Design Strategy",
+      "find": "C++",
       "replace": "C++",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-tnni55",
-      "findJs": "Design Strategy",
-      "findHtml": "Design Strategy"
+      "findJs": "C++",
+      "findHtml": "C++"
     },
     {
-      "find": "Research",
+      "find": "TypeScript, JavaScript",
       "replace": "TypeScript, JavaScript",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-kf7xgw",
-      "findJs": "Research",
-      "findHtml": "Research"
+      "findJs": "TypeScript, JavaScript",
+      "findHtml": "TypeScript, JavaScript"
     },
     {
-      "find": "User Flows",
+      "find": "CSS",
       "replace": "CSS",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1pzv9qn",
-      "findJs": "User Flows",
-      "findHtml": "User Flows"
+      "findJs": "CSS",
+      "findHtml": "CSS"
     },
     {
-      "find": "Information Architecture",
+      "find": "R (ggplot2)",
       "replace": "R (ggplot2)",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1h1fn2c",
-      "findJs": "Information Architecture",
-      "findHtml": "Information Architecture"
+      "findJs": "R (ggplot2)",
+      "findHtml": "R (ggplot2)"
     },
     {
-      "find": "UX Design",
+      "find": "React Native (Expo)",
       "replace": "React Native (Expo)",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1hqf9cr",
-      "findJs": "UX Design",
-      "findHtml": "UX Design"
+      "findJs": "React Native (Expo)",
+      "findHtml": "React Native (Expo)"
     },
     {
-      "find": "Interaction Design",
+      "find": "Supabase",
       "replace": "Supabase",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1hmretn",
-      "findJs": "Interaction Design",
-      "findHtml": "Interaction Design"
+      "findJs": "Supabase",
+      "findHtml": "Supabase"
     },
     {
-      "find": "UI Design",
+      "find": "Vercel",
       "replace": "Vercel",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-hh4awa",
-      "findJs": "UI Design",
-      "findHtml": "UI Design"
+      "findJs": "Vercel",
+      "findHtml": "Vercel"
     },
     {
-      "find": "Web Design",
+      "find": "FFmpeg",
       "replace": "FFmpeg",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1uig92t",
-      "findJs": "Web Design",
-      "findHtml": "Web Design"
+      "findJs": "FFmpeg",
+      "findHtml": "FFmpeg"
     },
     {
-      "find": "Prototyping",
+      "find": "Linux command line",
       "replace": "Linux command line",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-h2xm5",
-      "findJs": "Prototyping",
-      "findHtml": "Prototyping"
+      "findJs": "Linux command line",
+      "findHtml": "Linux command line"
     },
     {
-      "find": "Design Systems",
+      "find": "Claude Code, Codex, Cursor",
       "replace": "Claude Code, Codex, Cursor",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1jv364m",
-      "findJs": "Design Systems",
-      "findHtml": "Design Systems"
+      "findJs": "Claude Code, Codex, Cursor",
+      "findHtml": "Claude Code, Codex, Cursor"
     },
     {
-      "find": "Design Tokens",
+      "find": "Grok Bot, Dots, Conductor",
       "replace": "Grok Bot, Dots, Conductor",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1gnhxkk",
-      "findJs": "Design Tokens",
-      "findHtml": "Design Tokens"
+      "findJs": "Grok Bot, Dots, Conductor",
+      "findHtml": "Grok Bot, Dots, Conductor"
     },
     {
-      "find": "Component Libraries",
+      "find": "Skills Diversification",
       "replace": "Skills Diversification",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1agb8lf",
-      "findJs": "Component Libraries",
-      "findHtml": "Component Libraries"
+      "findJs": "Skills Diversification",
+      "findHtml": "Skills Diversification"
     },
     {
-      "find": "Responsive Design",
+      "find": "Recommendation Systems",
       "replace": "Recommendation Systems",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1talren",
-      "findJs": "Responsive Design",
-      "findHtml": "Responsive Design"
+      "findJs": "Recommendation Systems",
+      "findHtml": "Recommendation Systems"
     },
     {
-      "find": "Micro-interactions",
+      "find": "Figma, Paper",
       "replace": "Figma, Paper",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-iw1feu",
-      "findJs": "Micro-interactions",
-      "findHtml": "Micro-interactions"
+      "findJs": "Figma, Paper",
+      "findHtml": "Figma, Paper"
     },
     {
-      "find": "Motion Direction",
+      "find": "Adobe Creative Cloud",
       "replace": "Adobe Creative Cloud",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-qr5bbu",
-      "findJs": "Motion Direction",
-      "findHtml": "Motion Direction"
+      "findJs": "Adobe Creative Cloud",
+      "findHtml": "Adobe Creative Cloud"
     },
     {
-      "find": "Transitions",
+      "find": "Wireframing",
       "replace": "Wireframing",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1griwbb",
-      "findJs": "Transitions",
-      "findHtml": "Transitions"
+      "findJs": "Wireframing",
+      "findHtml": "Wireframing"
     },
     {
-      "find": "Prototyping",
+      "find": "UI/UX",
       "replace": "UI/UX",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ],
       "near": "framer-1fp0der",
-      "findJs": "Prototyping",
-      "findHtml": "Prototyping"
+      "findJs": "UI/UX",
+      "findHtml": "UI/UX"
     },
     {
       "find": "Does Bejaman design websites, or only digital products?",
