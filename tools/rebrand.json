@@ -64,6 +64,10 @@
       "replace": "Page Not Found | Htoo Myat Kyaw"
     },
     {
+      "find": "Create a free website with Framer, the website builder loved by startups, designers and agencies.",
+      "replace": "Htoo Myat Kyaw"
+    },
+    {
       "find": "`EM`",
       "replace": "`HK`"
     },
