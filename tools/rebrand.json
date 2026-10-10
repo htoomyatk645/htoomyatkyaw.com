@@ -1,11 +1,8 @@
 {
   "profile": {
     "name": "Htoo Myat Kyaw",
-    "school": "Tufts University",
-    "studies": "Cognitive & Brain Science and Computer Science",
-    "focus": "Design process and projects",
-    "contact_email": "htoo.m.kyaw645@gmail.com",
-    "site": "https://htoomyatkyaw.com"
+    "site": "https://htoomyatkyaw.com",
+    "contact_email": "htoo.m.kyaw645@gmail.com"
   },
   "replacements": [
     {
@@ -21,52 +18,35 @@
       "replace": "/"
     },
     {
+      "find": "href=\"/_ext/framerusercontent.com/images/wjwqrOUY5j7XeCzEQHXDiOX9dE.png\" rel=\"icon\" media=\"(prefers-color-scheme: light)\"",
+      "replace": "href=\"/_ext/framerusercontent.com/images/favicon-light.png\" rel=\"icon\" media=\"(prefers-color-scheme: light)\""
+    },
+    {
+      "find": "href=\"/_ext/framerusercontent.com/images/wjwqrOUY5j7XeCzEQHXDiOX9dE.png\" rel=\"icon\" media=\"(prefers-color-scheme: dark)\"",
+      "replace": "href=\"/_ext/framerusercontent.com/images/favicon-dark.png\" rel=\"icon\" media=\"(prefers-color-scheme: dark)\""
+    },
+    {
+      "find": "</head>",
+      "replace": "<style>.__framer-badge{display:none!important}</style></head>",
+      "only": [
+        ".html"
+      ]
+    },
+    {
       "find": "Nudge - Premium Portfolio Template",
-      "replace": "Htoo Myat Kyaw — Design Portfolio"
+      "replace": "Htoo Myat Kyaw | Co-founder of Briefly"
     },
     {
       "find": "Nudge is a bold, personality-driven portfolio template for product designers who want to stand out. Built for storytelling, not just showcasing.",
-      "replace": "Htoo Myat Kyaw studies Cognitive & Brain Science and Computer Science at Tufts University. A portfolio of design process, research, and projects."
+      "replace": "Htoo Myat Kyaw is co-founder of Briefly, an audio-native podcast highlights app. He leads UI/UX and product design."
     },
     {
-      "find": "Currently at Meridian Health",
-      "replace": "Tufts University"
-    },
-    {
-      "find": "Previously at Searchless AI",
-      "replace": "CBS + CS"
-    },
-    {
-      "find": "Product designer",
-      "replace": "Design student"
-    },
-    {
-      "find": "Chicago, IL",
-      "replace": "Medford, MA"
-    },
-    {
-      "find": "a product designer in Chicago who gets excited",
-      "replace": "a Tufts student in cognitive science & CS who gets excited"
-    },
-    {
-      "find": "outstanding digital products",
-      "replace": "intuitive digital products"
-    },
-    {
-      "find": "I spend my days designing for healthcare platforms, booking systems, and other products where 'just figure it out' isn't an option. The people using these tools are busy, stressed, and have actual work to do. My job is to get out of their way.",
-      "replace": "I study Cognitive & Brain Science and Computer Science at Tufts University, which means I spend a lot of time thinking about how people perceive, decide, and remember, and then building things with that in mind. The best interfaces work with the way people think. My job is to get out of their way."
-    },
-    {
-      "find": "I've worked on teams of two and teams of twenty. I've had access to endless user research and I've had to make educated guesses with limited data. I've worked within strict component libraries and I've built design systems from scratch. What stays consistent is asking good questions, collaborating with people who know more than me, and shipping things that actually help",
-      "replace": "Cognitive science gives me the questions: what does someone notice first, what do they expect to happen next, where does their attention break down? Computer science lets me prototype the answers and test them. What stays consistent across my projects is asking good questions, learning from people who know more than me, and making things that actually help"
-    },
-    {
-      "find": "Currently, I'm at Meridian Health working on experiences for mental health clinicians and administrators. Before that, I spent almost two years at StyleBook helping salons manage their businesses (and discovering that stylists have very strong opinions about scheduling interfaces, which I deeply respect). ",
-      "replace": "This portfolio is where I document my design process: the research, the sketches, the dead ends, and the decisions that shaped each project. I care as much about how I got to a solution as about the solution itself. "
+      "find": " - My Framer Site",
+      "replace": " | Briefly by Htoo Myat Kyaw"
     },
     {
       "find": ">Meridian Health</h4>",
-      "replace": ">Tufts University</h4>",
+      "replace": ">The Idea</h4>",
       "only": [
         "about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
@@ -74,15 +54,55 @@
     },
     {
       "find": "`Meridian Health`",
-      "replace": "`Tufts University`",
+      "replace": "`The Idea`",
       "only": [
         "about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
       ]
     },
     {
-      "find": "Sep 2025 - Current",
-      "replace": "Now",
+      "find": ">StyleBook</h4>",
+      "replace": ">The MVP</h4>",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "`StyleBook`",
+      "replace": "`The MVP`",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": ">Northlight Consulting</h4>",
+      "replace": ">The Audience</h4>",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "`Northlight Consulting`",
+      "replace": "`The Audience`",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": ">Homestead</h4>",
+      "replace": ">The Launch</h4>",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "`Homestead`",
+      "replace": "`The Launch`",
       "only": [
         "about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
@@ -90,27 +110,578 @@
     },
     {
       "find": "Designing across scheduling, case management, treatment planning, and clinical documentation for mental health practices. The challenge is balancing what clinicians need with what administrators need—often very different things—while keeping everything HIPAA-compliant and actually usable. ",
-      "replace": "B.S. candidate in Cognitive & Brain Science and Computer Science. Studying how people perceive, learn, and make decisions, and how to build software around that. Coursework and side projects feed directly into my design process. ",
+      "replace": "Briefly Apps Inc. begins. The question: what if a podcast highlight stayed audio? We chose to be audio-native and deliberately not another AI text summary. ",
       "only": [
         "about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
       ]
     },
     {
-      "find": "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day.",
-      "replace": "I'm most energized by projects where I can dig into how people think, collaborate with curious people, and design things that genuinely improve someone's day."
+      "find": "Redesigned everything from appointment booking to inventory management for a salon management platform. Worked directly with salon owners and stylists to understand their workflows, then rebuilt features to match how they actually work instead of how we thought they worked.",
+      "replace": "We built the first version in React Native with Expo, helped by Tufts Derby Center mentorship and an Entrepreneurial Innovation Fund grant.",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
     },
     {
-      "find": "Open to contract work, full-time roles, and interesting conversations about hard design problems.",
-      "replace": "Open to internships, research collaborations, and interesting conversations about design and the mind."
+      "find": "Led UX strategy and discovery for enterprise clients. Facilitated workshops with stakeholders who had very different ideas about what they were building, then helped everyone land on the same page. Also mentored junior designers, which taught me how to articulate my process instead of just doing it.",
+      "replace": "We started a waitlist and posted daily Instagram carousels as @brieflyhq_, in English and Arabic, plus short-form video.",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
     },
     {
-      "find": "Does he build",
-      "replace": "Does Htoo build"
+      "find": "Joined when the product was technically functional but deeply confusing. Talked to users who were struggling, mapped out where the interface was failing them, and redesigned the core experience to actually make sense. Also helped establish initial brand direction.",
+      "replace": "iOS App Store launch is the next chapter, with CarPlay support in the works.",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "Sep 2025 - Current",
+      "replace": "May 2026",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "Mar 2024 - aug 2025",
+      "replace": "2026",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "Feb 2024 - dec 2024",
+      "replace": "2026",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "jan 2022 - dec 2023",
+      "replace": "Coming soon",
+      "only": [
+        "about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "I spend my days designing for healthcare platforms, booking systems, and other products where 'just figure it out' isn't an option. The people using these tools are busy, stressed, and have actual work to do. My job is to get out of their way.",
+      "replace": "I spend my days on one question: how do you give someone the best part of a podcast without taking away the voice? Briefly is an audio-native highlights app. Instead of turning episodes into AI text summaries, it lets you hear the moments that matter."
+    },
+    {
+      "find": "I've worked on teams of two and teams of twenty. I've had access to endless user research and I've had to make educated guesses with limited data. I've worked within strict component libraries and I've built design systems from scratch. What stays consistent is asking good questions, collaborating with people who know more than me, and shipping things that actually help",
+      "replace": "Briefly is a small team. My co-founder brings the economics side and I bring computer science and cognitive science, and I lead UI/UX, product design, and business strategy. We built the AI pipeline and recommendation engine together, and I direct coding agents and review their code, so I stay close to how an idea becomes a product"
+    },
+    {
+      "find": "Currently, I'm at Meridian Health working on experiences for mental health clinicians and administrators. Before that, I spent almost two years at StyleBook helping salons manage their businesses (and discovering that stylists have very strong opinions about scheduling interfaces, which I deeply respect). ",
+      "replace": "I started Briefly in May 2026 while studying Cognitive Brain Science and Computer Science at Tufts. We've had mentorship from the Tufts Derby Center for Entrepreneurship, and an Entrepreneurial Innovation Fund grant helped cover our early MVP. The iOS app is built in React Native with Expo and is headed to the App Store. "
+    },
+    {
+      "find": "When I'm not designing, you'll find me thinking about why some interfaces feel intuitive and others make you want to throw your laptop out a window. Usually with coffee.",
+      "replace": "When I'm not working on Briefly, I'm training Brazilian Jiu-Jitsu or practicing languages."
+    },
+    {
+      "find": "Starting with why, not what",
+      "replace": "Start with the listener"
+    },
+    {
+      "find": "Before jumping into wireframes, I want to understand what problem we're actually solving. Sometimes the thing people ask for isn't the thing they need. My favorite projects start with good questions and end with solutions that feel obvious in hindsight.",
+      "replace": "Before I design a screen, I want to know when and where someone is listening: commuting, cooking, or in the car. The context decides everything else."
+    },
+    {
+      "find": "think first, draw later.",
+      "replace": "listen first, draw later."
+    },
+    {
+      "find": "Designing for real constraints",
+      "replace": "Design for real constraints"
+    },
+    {
+      "find": "Perfect conditions don't exist. Budgets are tight, timelines are aggressive, legacy systems are messy, and sometimes you just can't talk to users directly. I'm comfortable making smart decisions with imperfect information and finding creative solutions within real limitations.",
+      "replace": "A student-founded, pre-launch team has limited time and money. I'd rather make a few things very good than many things half good."
+    },
+    {
+      "find": "no perfect world here!",
+      "replace": "small team, sharp focus."
+    },
+    {
+      "find": "Collaboration over hero design",
+      "replace": "Build with the whole team"
+    },
+    {
+      "find": "The best work happens when designers, engineers, and product folks are actually talking to each other—not throwing things over the wall. I genuinely enjoy the back-and-forth of figuring out what's possible, what's practical, and what's going to create the most value.",
+      "replace": "The best work happens when design, engineering, and growth are in one conversation. I'm in the code review and in the content calendar."
+    },
+    {
+      "find": "Making the invisible visible",
+      "replace": "Make the invisible visible"
+    },
+    {
+      "find": "Some of the most impactful design work isn't flashy—it's the progress indicator that keeps people oriented, the auto-save that prevents panic, the validation message that actually helps instead of just saying 'error.' These details build trust.",
+      "replace": "A highlight is only useful if you trust it. Small cues, like where it came from and how to hear the full episode, build that trust."
+    },
+    {
+      "find": "Does Bejaman design websites, or only digital products?",
+      "replace": "What is Briefly?"
+    },
+    {
+      "find": "Both. Alongside app/dashboard product design, Bejaman also designs websites and landing pages with a storytelling approach, not just visuals.",
+      "replace": "An audio-native podcast highlights app. It gives you the best moments of an episode as audio, not as an AI text summary."
+    },
+    {
+      "find": "Does he build Design Systems, or just individual screens?",
+      "replace": "What does Htoo do there?"
+    },
+    {
+      "find": "Yes. Especially for multi stakeholder enterprise work like North Light, where a shared design language and reusable components are key to scaling the product.",
+      "replace": "He co-founded it and leads UI/UX, product design, and business strategy, and he co-built the AI pipeline and recommendation engine."
+    },
+    {
+      "find": "What does the Product Design process look like?",
+      "replace": "When can I get it?"
+    },
+    {
+      "find": "Four pillars: User Research to find the real problem, Interaction Design to shape the flow, Prototyping to test ideas fast, and Motion Design to polish the experience. Meridian Health and StyleBook are good examples of this in action.",
+      "replace": "An iOS launch is planned for October 2026. Join the waitlist at briefly.briefa.net."
+    },
+    {
+      "find": "What does Creative Direction mean here?",
+      "replace": "Is Briefly for podcasters or listeners?"
+    },
+    {
+      "find": "It's guiding the overall visual identity, tone, and experience across a project, making sure every design decision (color, motion, storytelling) stays consistent and serves the client's business goals.",
+      "replace": "Both. Listeners get the best moments quickly, and podcasters get their voice heard by more people."
+    },
+    {
+      "find": "available for Q4 projects ots",
+      "replace": "heading to the App Store"
+    },
+    {
+      "find": "my services",
+      "replace": "what i do"
+    },
+    {
+      "find": "Product Design",
+      "replace": "Product and UI/UX"
+    },
+    {
+      "find": "Designing digital products from the first idea to the final interface.",
+      "replace": "Designing Briefly from first idea to final screen."
+    },
+    {
+      "find": "web design",
+      "replace": "Brand and Visual Identity"
+    },
+    {
+      "find": "Strong visual direction with thoughtful structure to create digital experiences that are as effective as they are memorable",
+      "replace": "A dark, minimal look that keeps the voice in front."
+    },
+    {
+      "find": "Design systems",
+      "replace": "Content and Social"
+    },
+    {
+      "find": "Building flexible visual systems that make products easier to design, build, and scale.",
+      "replace": "Daily Instagram carousels, captions, and video that build an audience before launch.",
+      "nth": 1
+    },
+    {
+      "find": "Creative direction",
+      "replace": "Build and Strategy"
+    },
+    {
+      "find": "Building flexible visual systems that make products easier to design, build, and scale.",
+      "replace": "Working with coding agents, shipping in React Native, and shaping the business side."
+    },
+    {
+      "find": "UX / UI Design",
+      "replace": "UI/UX"
+    },
+    {
+      "find": "project strategy",
+      "replace": "User Flows"
+    },
+    {
+      "find": "prototyping",
+      "replace": "Prototyping"
+    },
+    {
+      "find": "design systems",
+      "replace": "Mobile"
+    },
+    {
+      "find": "Art Direction",
+      "replace": "Visual Identity",
+      "nth": 1
+    },
+    {
+      "find": "Web design",
+      "replace": "Color"
+    },
+    {
+      "find": "Responsive design",
+      "replace": "Typography"
     },
     {
       "find": "Framer Development",
-      "replace": "Front-end Development"
+      "replace": "Brand Voice"
+    },
+    {
+      "find": "Motion & Interaction",
+      "replace": "Logo Design"
+    },
+    {
+      "find": "UI Systems",
+      "replace": "Carousels"
+    },
+    {
+      "find": "Component Libraries",
+      "replace": "Captions",
+      "nth": 1
+    },
+    {
+      "find": "Design tokens",
+      "replace": "Short-form Video"
+    },
+    {
+      "find": "Documentation",
+      "replace": "English and Arabic"
+    },
+    {
+      "find": "System architecture",
+      "replace": "Content Calendar"
+    },
+    {
+      "find": "Visual direction",
+      "replace": "Product Strategy"
+    },
+    {
+      "find": "Brand Expression",
+      "replace": "Business Strategy"
+    },
+    {
+      "find": "Creative Strategy",
+      "replace": "React Native and Expo"
+    },
+    {
+      "find": "Art Direction",
+      "replace": "AI Pipeline"
+    },
+    {
+      "find": "Design Leadership",
+      "replace": "Agentic Coding"
+    },
+    {
+      "find": "First, I get familiar with the problem, the people, and the bigger picture.",
+      "replace": "First, I get to know the listener, the show, and the moment they press play."
+    },
+    {
+      "find": "I translate what I learn into a clear direction, structure, and set of priorities.",
+      "replace": "I turn that into one clear direction and a short list of priorities."
+    },
+    {
+      "find": "Then I explore, iterate, and refine until the right solution starts to take shape.",
+      "replace": "Then I explore, test, and refine until it feels right."
+    },
+    {
+      "find": "Finally, I bring everything together into a polished, flexible system ready to ship.",
+      "replace": "Finally, I ship it and watch how people actually use it."
+    },
+    {
+      "find": "Design Strategy",
+      "replace": "Business Strategy"
+    },
+    {
+      "find": ">Research<",
+      "replace": ">Positioning<"
+    },
+    {
+      "find": "Web Design",
+      "replace": "Mobile Mockups"
+    },
+    {
+      "find": "Design Systems",
+      "replace": "Visual Identity"
+    },
+    {
+      "find": "Design Tokens",
+      "replace": "Content Design"
+    },
+    {
+      "find": "Micro-interactions",
+      "replace": "React Native"
+    },
+    {
+      "find": "Motion Direction",
+      "replace": "Expo"
+    },
+    {
+      "find": "Transitions",
+      "replace": "Agentic Coding"
+    },
+    {
+      "find": "`Research`",
+      "replace": "`Positioning`"
+    },
+    {
+      "find": "Component Libraries",
+      "replace": "Social Storytelling"
+    },
+    {
+      "find": "Responsive Design",
+      "replace": "Brand Voice"
+    },
+    {
+      "find": "Prototyping",
+      "replace": "Code Review",
+      "nth": 2
+    },
+    {
+      "find": ">Systems<",
+      "replace": ">Brand<"
+    },
+    {
+      "find": "`Systems`",
+      "replace": "`Brand`"
+    },
+    {
+      "find": ">design<",
+      "replace": ">Design<"
+    },
+    {
+      "find": "`design`",
+      "replace": "`Design`"
+    },
+    {
+      "find": ">Motion<",
+      "replace": ">Build<"
+    },
+    {
+      "find": "`Motion`",
+      "replace": "`Build`"
+    },
+    {
+      "find": "Currently at Meridian Health",
+      "replace": "Co-founder at Briefly"
+    },
+    {
+      "find": "Previously at Searchless AI",
+      "replace": "Leading UI/UX and product design"
+    },
+    {
+      "find": "Available for thoughtful projects",
+      "replace": "Building Briefly for iOS"
+    },
+    {
+      "find": "I design",
+      "replace": "I'm building"
+    },
+    {
+      "find": "outstanding digital products",
+      "replace": "a better way to listen"
+    },
+    {
+      "find": "COntact me",
+      "replace": "Contact me"
+    },
+    {
+      "find": "Product designer",
+      "replace": "Co-founder, UI/UX"
+    },
+    {
+      "find": "Chicago, IL",
+      "replace": "Boston, MA"
+    },
+    {
+      "find": "a product designer in Chicago who gets excited",
+      "replace": "a co-founder in Boston who gets excited"
+    },
+    {
+      "find": "about making complicated things simple",
+      "replace": "about making podcasts easier to love"
+    },
+    {
+      "find": "This is a showcase of what happens when curiosity drives the process.",
+      "replace": "Four chapters of building Briefly, from the first idea to the App Store."
+    },
+    {
+      "find": "Interaction Design",
+      "replace": "Product Design",
+      "only": [
+        "index.html",
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
+      "find": "Prototyping",
+      "replace": "UI/UX",
+      "only": [
+        "index.html",
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
+      "find": "User Research",
+      "replace": "Brand",
+      "only": [
+        "index.html",
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
+      "find": "Motion Design",
+      "replace": "Content",
+      "only": [
+        "index.html",
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
+      "find": "Meridian Healthg",
+      "replace": "Briefly: Highlights You Hear"
+    },
+    {
+      "find": "Meridian Health",
+      "replace": "Briefly: Highlights You Hear"
+    },
+    {
+      "find": "StyleBook",
+      "replace": "The Briefly Look"
+    },
+    {
+      "find": "Homestead",
+      "replace": "Seven Slides a Day"
+    },
+    {
+      "find": "North Light",
+      "replace": "Under the Hood"
+    },
+    {
+      "find": "When therapists spend less time clicking, they have more time for patients.",
+      "replace": "Podcast highlights that stay audio, not text."
+    },
+    {
+      "find": "From 'I hate this system' to 'Can we show other salons?",
+      "replace": "Dark, minimal, and quiet enough to let the voice lead."
+    },
+    {
+      "find": "Helping first-time homebuyers actually understand what they're looking at.",
+      "replace": "How a small team builds an audience on Instagram, one carousel at a time."
+    },
+    {
+      "find": "Getting seven stakeholders to agree on what they're actually building.",
+      "replace": "The AI pipeline and recommendation engine behind the highlights."
+    },
+    {
+      "find": "Healthcare",
+      "replace": "Product"
+    },
+    {
+      "find": "Workflow Design",
+      "replace": "Audio"
+    },
+    {
+      "find": "SaaS",
+      "replace": "Brand"
+    },
+    {
+      "find": "Transformation",
+      "replace": "UI/UX"
+    },
+    {
+      "find": "Proptech",
+      "replace": "Content"
+    },
+    {
+      "find": "0 -&gt; 1",
+      "replace": "Growth"
+    },
+    {
+      "find": "0 -> 1",
+      "replace": "Growth"
+    },
+    {
+      "find": "Enterprise",
+      "replace": "AI"
+    },
+    {
+      "find": ">Strategy<",
+      "replace": ">Engineering<",
+      "only": [
+        "index.html",
+        "case-study/"
+      ]
+    },
+    {
+      "find": "Mar 19, 2026",
+      "replace": "May 1, 2026",
+      "only": [
+        "index.html"
+      ],
+      "nth": 1
+    },
+    {
+      "find": "Mar 19, 2026",
+      "replace": "May 1, 2026",
+      "only": [
+        "index.html"
+      ],
+      "nth": 1
+    },
+    {
+      "find": "Mar 19, 2026",
+      "replace": "May 1, 2026",
+      "only": [
+        "index.html"
+      ],
+      "nth": 1
+    },
+    {
+      "find": "Mar 19, 2026",
+      "replace": "Aug 1, 2026",
+      "only": [
+        "index.html"
+      ]
+    },
+    {
+      "find": "Mar 2, 2026",
+      "replace": "Jun 1, 2026"
+    },
+    {
+      "find": "Jan 2, 2025",
+      "replace": "Jul 1, 2026"
+    },
+    {
+      "find": "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day.",
+      "replace": "I'm most energized by making listening easier, and by people who care about the same thing. Podcasters, press, partners, or fellow builders, I'd love to hear from you."
+    },
+    {
+      "find": "Open to contract work, full-time roles, and interesting conversations about hard design problems.",
+      "replace": "Briefly is heading to the App Store. Say hello."
+    },
+    {
+      "find": ">EM<",
+      "replace": ">HK<"
+    },
+    {
+      "find": "`EM`",
+      "replace": "`HK`"
+    },
+    {
+      "find": ">PH<",
+      "replace": ">BR<"
+    },
+    {
+      "find": "`PH`",
+      "replace": "`BR`"
     },
     {
       "find": "mailto:Hello@selenadesigns.com",
@@ -127,6 +698,58 @@
     {
       "find": "Bejaman",
       "replace": "Htoo"
+    },
+    {
+      "find": "Where to find you?",
+      "replace": "Where can I reach you?"
+    },
+    {
+      "find": "I'm available for new projects!",
+      "replace": "Podcasters, press, and partners welcome!"
+    },
+    {
+      "find": "Facebook",
+      "replace": "Briefly",
+      "only": [
+        "contact.html",
+        "BtP3pvF_fYTo_Pg8rSB"
+      ]
+    },
+    {
+      "find": "https://www.facebook.com/",
+      "replace": "https://briefly.briefa.net",
+      "only": [
+        "contact.html",
+        "BtP3pvF_fYTo_Pg8rSB"
+      ]
+    },
+    {
+      "find": "https://www.instagram.com/",
+      "replace": "https://www.instagram.com/brieflyhq_",
+      "only": [
+        "contact.html",
+        "BtP3pvF_fYTo_Pg8rSB"
+      ]
+    },
+    {
+      "find": "https://www.linkedin.com/",
+      "replace": "https://www.linkedin.com/in/htoo-myat-kyaw-ny",
+      "only": [
+        "contact.html",
+        "BtP3pvF_fYTo_Pg8rSB"
+      ]
+    },
+    {
+      "find": "nothing big, still feels nice",
+      "replace": "tiny details, big difference"
+    },
+    {
+      "find": "bus bus bus",
+      "replace": "on the move"
+    },
+    {
+      "find": "Not sure what I’m doing",
+      "replace": "first draft, don't judge"
     }
   ]
 }

@@ -8,8 +8,9 @@
 //   node tools/rebrand.mjs          apply
 //   node tools/rebrand.mjs --check  list replacements whose "find" text is missing
 //
-// Each replacement is { find, replace, only? }; "only" limits it to files whose
-// path contains one of the given strings. Replacements run in order.
+// Each replacement is { find, replace, only?, nth? }; "only" limits it to files whose
+// path contains one of the given strings; "nth" replaces just the nth occurrence
+// (1-based) in each file. Replacements run in order.
 
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -56,15 +57,23 @@ const hits = new Map(config.replacements.map((r) => [r.find, 0]));
 for await (const file of files(SITE)) {
   let text = await fs.readFile(file, "utf8");
   const before = text;
-  for (const { find, replace, only } of config.replacements) {
+  for (const { find, replace, only, nth } of config.replacements) {
     // Optional "only": apply just to files whose path contains one of these strings.
     if (only && !only.some((part) => file.includes(part))) continue;
     const reps = variants(replace);
     variants(find).forEach((f, i) => {
       const count = text.split(f).length - 1;
       if (!count) return;
+      const r = reps[i] ?? reps[0];
+      if (nth) {
+        // Replace only the nth occurrence (1-based) of this text in the file.
+        if (count < nth) return;
+        hits.set(find, hits.get(find) + 1);
+        if (!check) { const parts = text.split(f); text = parts.slice(0, nth).join(f) + r + parts.slice(nth).join(f); }
+        return;
+      }
       hits.set(find, hits.get(find) + count);
-      if (!check) text = text.split(f).join(reps[i] ?? reps[0]);
+      if (!check) text = text.split(f).join(r);
     });
   }
   if (file.endsWith(".html")) {
