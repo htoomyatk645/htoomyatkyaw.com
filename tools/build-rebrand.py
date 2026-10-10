@@ -150,7 +150,10 @@ TAGS = {  # container -> new tag, in card order
     "framer-49eqph-container": "Product Strategy", "framer-n6gm6d-container": "Business Strategy", "framer-1kbjuiu-container": "React Native and Expo",
     "framer-1ipfo84-container": "Agentic Coding", "framer-15adn40-container": "AI Pipeline",
 }
-vt = open(glob.glob(SITE + "VIGV*.mjs")[0]).read()
+# Read the template text from the unmodified mirror, not the rebranded site/.
+import subprocess
+MIRROR = "1d2ecb4"
+vt = subprocess.run(["git", "show", f"{MIRROR}:" + glob.glob(SITE + "VIGV*.mjs")[0]], capture_output=True, text=True, check=True).stdout
 for cont, new in TAGS.items():
     old = re.search(r"className:`" + cont + r"`,nodeId:`\w+`,scopeId:`\w+`,children:d\(q,\{a_X5HpvjX:`([^`]*)`", vt).group(1)
     rep(old, new, SERVICES, near=cont, findHtml=old.replace("&", "&amp;"))
