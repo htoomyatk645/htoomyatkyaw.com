@@ -5,7 +5,7 @@
   "scripts": {
     "mirror": "node tools/mirror.mjs https://nudge-folio.framer.website/",
     "rebrand": "node tools/rebrand.mjs",
-    "check": "sh tools/check-no-framer.sh",
+    "check": "node tools/check-no-framer.mjs",
     "dev": "wrangler dev",
     "compare": "node tools/compare.mjs https://nudge-folio.framer.website http://localhost:8787",
     "deploy": "npm run check && wrangler deploy"
