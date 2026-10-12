@@ -1,0 +1,44 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+/* Fonts are the site's own copies (paths relative to this file). */
+@font-face{font-family:Flux;src:url(../../site/_ext/framerusercontent.com/assets/fROf9QsA0Xgfcctq630ByO5kbg.woff2);font-weight:1000}
+@font-face{font-family:Hand;src:url(../../site/_ext/fonts.gstatic.com/s/justmeagaindownhere/v25/MwQmbgXtz-Wc6RUEGNMc0QpRrfUh2hSdBBMoAuwCvqDwc_fg.woff2)}
+@font-face{font-family:Mono;src:url(../../site/_ext/fonts.gstatic.com/s/dmmono/v16/aFTR7PB1QTsUX8KYvumzIYGnbKX9Rlk.woff2);font-weight:500}
+@font-face{font-family:InterD;src:url(../../site/_ext/framerusercontent.com/assets/iwWTDc49ENF2tCHbqlNARXw6Ug.woff2);font-weight:500}
+*{margin:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{position:relative;background:#fff;color:#111212;
+  background-image:linear-gradient(#f1f1f1 1px,transparent 1px),linear-gradient(90deg,#f1f1f1 1px,transparent 1px);
+  background-size:100px 100px;background-position:-1px -1px}
+.hand{position:absolute;left:0;right:0;top:104px;text-align:center;font:400 46px/1 Hand}
+.hand svg{display:block;margin:2px auto 0}
+.box{position:absolute;left:70px;right:70px;top:226px;height:176px;border:3px solid #38C1EE;display:flex;align-items:center;justify-content:center}
+.box i{position:absolute;width:16px;height:16px;background:#38C1EE;border:2px solid #111212}
+.box i:nth-child(1){left:-10px;top:-10px}.box i:nth-child(2){right:-10px;top:-10px}
+.box i:nth-child(3){left:-10px;bottom:-10px}.box i:nth-child(4){right:-10px;bottom:-10px}
+.name{font:1000 128px/1 Flux;letter-spacing:.01em;white-space:nowrap;word-spacing:.25em}
+.note{position:absolute;font:500 20px/1 InterD;padding:15px 20px;box-shadow:0 6px 14px rgba(0,0,0,.06)}
+.n1{left:84px;top:170px;background:#A6E0C8;transform:rotate(11deg)}
+.n2{right:70px;top:168px;background:#F3D9A2;transform:rotate(-6deg)}
+.status{position:absolute;left:0;right:0;top:440px;text-align:center;font:500 22px/1 Mono;letter-spacing:.02em}
+.status b{display:inline-block;width:18px;height:18px;border-radius:50%;background:#38C1EE;vertical-align:-2px;margin-right:12px}
+.av{position:absolute;width:76px;height:76px;border-radius:50% 50% 50% 0;background:#A5E3F6;padding:6px}
+.av span{display:block;width:100%;height:100%;border-radius:50%;background:url(../../brand/photos/icon-portrait.jpg) 42% 47%/200% no-repeat}
+.a1{left:40px;top:478px}.a2{right:46px;top:30px;border-radius:50% 50% 0 50%}
+.url{position:absolute;left:0;right:0;bottom:44px;text-align:center;font:500 20px/1 Mono;color:#6b6b6b;letter-spacing:.04em}
+</style></head>
+<body>
+<div class="hand">my name is<svg width="96" height="14" viewBox="0 0 96 14"><path d="M4 5c28-3 60-3 88-1M10 11c24-2 52-2 76 0" stroke="#111212" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
+<div class="note n1">Co-founder at Briefly</div>
+<div class="note n2">Leading UI/UX, Product design, and Strategy</div>
+<div class="box"><i></i><i></i><i></i><i></i><div class="name" id="name">HTOO MYAT KYAW</div></div>
+<div class="status"><b></b>LAUNCHED OCTOBER 2026</div>
+<div class="av a1"><span></span></div>
+<div class="av a2"><span></span></div>
+<div class="url">HTOOMYATKYAW.COM</div>
+<script>
+// Fit the name to the box.
+document.fonts.ready.then(()=>{const n=document.getElementById('name'),max=1060-40;let s=128;while(n.scrollWidth>max&&s>40){s-=2;n.style.fontSize=s+'px'}document.body.dataset.ready=1});
+</script>
+</body></html>
