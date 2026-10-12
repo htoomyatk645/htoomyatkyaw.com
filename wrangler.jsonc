@@ -10,7 +10,7 @@
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page",
-    "run_worker_first": ["/api/*", "/_ext/framerusercontent.com/cms/*", "/case-study/*", "/blog/*", "/case-study", "/blog", "/services", "/services/*"]
+    "run_worker_first": ["/api/*", "/_v2/*", "/_ext/framerusercontent.com/cms/*", "/case-study/*", "/blog/*", "/case-study", "/blog", "/services", "/services/*"]
   },
 
   "routes": [

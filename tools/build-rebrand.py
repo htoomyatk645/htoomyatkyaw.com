@@ -243,6 +243,9 @@ rep("M12 2.04004C6.5 2.04004 2 6.53004 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14
 # Published write-ups (LIVE) open their standalone page instead; card 1
 # (Briefly) opens the product site and its button reads "View Product".
 # In the nav, "HK" copies the email address and "BR" opens Briefly.
+# Backstop: if the page router still tries to show one of those routes (for a
+# tap that slipped past the click handler), load the real destination instead
+# of rendering the template page client-side.
 SITE_JS = r"""(()=>{
 const SOON=/^\/(case-study|services|blog)(\/|$)/;
 const LIVE={"/case-study/north-light":"/under-the-hood","/case-study/stylebook":"/the-briefly-look","/case-study/homestead":"/seven-slides-a-day","/case-study/meridian-health":"https://briefly.briefa.net"};
@@ -251,6 +254,9 @@ let el,t;
 const note=m=>{if(!el){el=document.createElement("div");el.id="coming-soon";el.setAttribute("role","status");document.body.appendChild(el)}el.textContent=m;el.classList.add("on");clearTimeout(t);t=setTimeout(()=>el.classList.remove("on"),1800)};
 const copy=v=>(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).catch(()=>{const a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy")}finally{a.remove()}});
 const open=to=>/^https?:/.test(to)?window.open(to,"_blank","noopener"):location.href=to;
+const target=u=>{const p=u.pathname.replace(/\/$/,"");return LIVE[p]||null};
+const guard=f=>function(st,ti,url){if(url!=null){const u=new URL(url,location.href);if(u.origin===location.origin&&SOON.test(u.pathname)){location.assign(target(u)||location.href);return}}return f.apply(this,arguments)};
+history.pushState=guard(history.pushState);history.replaceState=guard(history.replaceState);
 document.addEventListener("click",e=>{
   const tg=e.target.closest?e.target:e.target.parentElement;
   if(tg.closest(".framer-119y192-container")){e.preventDefault();e.stopImmediatePropagation();copy(EMAIL).then(()=>note("Email Copied"));return}
@@ -259,7 +265,7 @@ document.addEventListener("click",e=>{
   const u=new URL(a.getAttribute("href"),location.href);
   if(u.origin!==location.origin||!SOON.test(u.pathname))return;
   e.preventDefault();e.stopImmediatePropagation();
-  const to=LIVE[u.pathname.replace(/\/$/,"")];if(to)return open(to);
+  const to=target(u);if(to)return open(to);
   note(u.pathname.startsWith("/blog")?"Journal: coming soon":u.pathname.startsWith("/services")?"Services: coming soon":"Case studies: coming soon");
 },true);
 const relabel=()=>document.querySelectorAll('a[href$="case-study/meridian-health"]').forEach(a=>{const w=document.createTreeWalker(a,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()==="View Project")n.nodeValue=n.nodeValue.replace("View Project","View Product")});
@@ -273,9 +279,17 @@ SITE_SCRIPT = "<style>" + SITE_CSS + "</style><script>" + "".join(l.strip() for 
 # Anchor on Framer's bodyEnd marker so standalone pages in site/ are left alone.
 rep("<!-- End of bodyEnd -->", "<!-- End of bodyEnd -->" + SITE_SCRIPT, [".html"])
 
+# ---------------------------------------------------------------- asset URLs
+# Serve every asset under a new prefix so browsers that cached /_ext/* as
+# immutable fetch fresh copies; src/worker.js maps it back to ./site/_ext.
+# Runs after every replacement that mentions an /_ext/ path.
+ASSET_PREFIX = "/_v2/"
+
 # ---------------------------------------------------------------- name (last)
 rep("BEJAMAN", "HTOO MYAT KYAW")
 rep("Bejaman", "Htoo Myat Kyaw")
+
+rep("/_ext/", ASSET_PREFIX)
 
 cfg = {"profile": {"name": "Htoo Myat Kyaw", "role": "Co-founder of Briefly (UI/UX, product design, strategy)",
                    "school": "Tufts University, Cognitive Brain Science + Computer Science", "contact_form_inbox": "htoo.m.kyaw645@gmail.com",
