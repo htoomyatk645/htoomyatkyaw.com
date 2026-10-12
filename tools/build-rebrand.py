@@ -242,6 +242,9 @@ rep("M12 2.04004C6.5 2.04004 2 6.53004 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14
 # of navigating; a capture listener runs before Framer's router sees the click.
 # Published write-ups (LIVE) open their standalone page instead; card 1
 # (Briefly) opens the product site and its button reads "View Product".
+# Card 2 (The Briefly Look) gets a second button under "View Project":
+# "View My Framework", opening /making-of-briefly (a copy of the first button,
+# added after hydration since all cards share one component).
 # In the nav, "HK" copies the email address and "BR" opens Briefly.
 # Backstop: if the page router still tries to show one of those routes (for a
 # tap that slipped past the click handler), load the real destination instead
@@ -249,7 +252,7 @@ rep("M12 2.04004C6.5 2.04004 2 6.53004 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14
 SITE_JS = r"""(()=>{
 const SOON=/^\/(case-study|services|blog)(\/|$)/;
 const LIVE={"/case-study/north-light":"/under-the-hood","/case-study/stylebook":"/the-briefly-look","/case-study/homestead":"/seven-slides-a-day","/case-study/meridian-health":"https://briefly.briefa.net"};
-const EMAIL="htoomyatk645@gmail.com",BRIEFLY="https://briefly.briefa.net";
+const EMAIL="htoomyatk645@gmail.com",BRIEFLY="https://briefly.briefa.net",FRAMEWORK="/making-of-briefly";
 let el,t;
 const note=m=>{if(!el){el=document.createElement("div");el.id="coming-soon";el.setAttribute("role","status");document.body.appendChild(el)}el.textContent=m;el.classList.add("on");clearTimeout(t);t=setTimeout(()=>el.classList.remove("on"),1800)};
 const copy=v=>(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).catch(()=>{const a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy")}finally{a.remove()}});
@@ -269,7 +272,10 @@ document.addEventListener("click",e=>{
   note(u.pathname.startsWith("/blog")?"Journal: coming soon":u.pathname.startsWith("/services")?"Services: coming soon":"Case studies: coming soon");
 },true);
 const relabel=()=>document.querySelectorAll('a[href$="case-study/meridian-health"]').forEach(a=>{const w=document.createTreeWalker(a,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()==="View Project")n.nodeValue=n.nodeValue.replace("View Project","View Product")});
-addEventListener("load",()=>setTimeout(()=>{relabel();new MutationObserver(relabel).observe(document.body,{subtree:true,childList:true,characterData:true})},300));
+const swap=(el,a,b)=>{const w=document.createTreeWalker(el,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()===a)n.nodeValue=n.nodeValue.replace(a,b)};
+const framework=()=>document.querySelectorAll('a[href$="case-study/stylebook"]').forEach(a=>{const c=a.closest(".framer-1nmyz7r-container")||a;if(c.nextElementSibling&&c.nextElementSibling.dataset.framework)return;const n=c.cloneNode(true);n.dataset.framework="1";const l=n.matches("a")?n:n.querySelector("a");l.setAttribute("href",FRAMEWORK);l.removeAttribute("target");swap(n,"View Project","View My Framework");c.after(n)});
+const patch=()=>{relabel();framework()};
+addEventListener("load",()=>setTimeout(()=>{patch();new MutationObserver(patch).observe(document.body,{subtree:true,childList:true,characterData:true})},300));
 })()"""
 SITE_CSS = ("#coming-soon{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:2147483647;"
             "background:#111212;color:#fff;font:500 14px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;padding:12px 18px;border-radius:999px;"
