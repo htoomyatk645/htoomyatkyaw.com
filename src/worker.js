@@ -33,12 +33,16 @@ export default {
       return serveCmsRanges(request, env, url);
     }
 
-    // Case studies, services and the journal are not published yet (their
-    // files stay in ./site): send visitors to the home page. Links to them
-    // show "Coming soon" instead of navigating (see coming-soon.js).
-    if (/^\/case-study\/north-light\/?$/.test(url.pathname)) {
-      return Response.redirect(`${url.origin}/under-the-hood`, 302);
-    }
+    // Published case studies redirect to their standalone pages. The rest,
+    // services and the journal are not published yet (their files stay in
+    // ./site): send visitors home. On the site, links to them show "Coming
+    // soon" instead of navigating (COMING_SOON in tools/build-rebrand.py).
+    const live = {
+      "north-light": `${url.origin}/under-the-hood`,
+      stylebook: `${url.origin}/the-briefly-look`,
+      "meridian-health": "https://briefly.briefa.net",
+    }[url.pathname.match(/^\/case-study\/([^/]+)\/?$/)?.[1]];
+    if (live) return Response.redirect(live, 302);
     if (/^\/(case-study|services|blog)(\/|$)/.test(url.pathname)) {
       return Response.redirect(`${url.origin}/`, 302);
     }
