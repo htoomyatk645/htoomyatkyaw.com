@@ -404,5 +404,5 @@ html.lenis body {
 	<!-- Start of bodyEnd -->
     
     <!-- End of bodyEnd -->
-</body>
+<style>#coming-soon{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:2147483647;background:#111212;color:#fff;font:500 14px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;padding:12px 18px;border-radius:999px;transition:opacity .2s,transform .2s}#coming-soon.on{opacity:1;transform:translate(-50%,0)}</style><script>(()=>{const soon=/^\/(case-study|services|blog)(\/|$)/;let el,t;document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest("a[href]");if(!a)return;const u=new URL(a.getAttribute("href"),location.href);if(u.origin!==location.origin||!soon.test(u.pathname))return;e.preventDefault();e.stopImmediatePropagation();if(!el){el=document.createElement("div");el.id="coming-soon";el.setAttribute("role","status");document.body.appendChild(el)}el.textContent=u.pathname.startsWith("/blog")?"Journal: coming soon":u.pathname.startsWith("/services")?"Services: coming soon":"Case studies: coming soon";el.classList.add("on");clearTimeout(t);t=setTimeout(()=>el.classList.remove("on"),1800)},true)})()</script></body>
 </html>
