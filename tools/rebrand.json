@@ -49,6 +49,13 @@
     },
     {
       "find": "Nudge - Premium Portfolio Template",
+      "replace": "Networking with Professionals | Htoo Myat Kyaw",
+      "only": [
+        "play-ground.html"
+      ]
+    },
+    {
+      "find": "Nudge - Premium Portfolio Template",
       "replace": "Htoo Myat Kyaw | Co-founder of Briefly"
     },
     {
@@ -1284,15 +1291,15 @@
     },
     {
       "find": "nothing big, still feels nice",
-      "replace": "tiny details, big difference"
+      "replace": "Picture Before Getting Promoted"
     },
     {
       "find": "Brain’s messy, but it’s okay",
-      "replace": "whiteboard, day 3"
+      "replace": "Tabling to Cure Bone Cancer"
     },
     {
       "find": "Good weather",
-      "replace": "launch-week energy"
+      "replace": "Thank You!"
     },
     {
       "find": "Random shot",
@@ -1300,15 +1307,26 @@
     },
     {
       "find": "Tiny moments",
-      "replace": "tiny moments"
+      "replace": "First Time Training with a Former UFC Fighter"
     },
     {
       "find": "Not sure what I’m doing",
-      "replace": "first draft, don't judge"
+      "replace": "Muslims in Business Conference"
     },
     {
       "find": "bus bus bus",
       "replace": "on the green line, thinking"
+    },
+    {
+      "find": "flower!",
+      "replace": "First Day Working in the OR at 17"
+    },
+    {
+      "find": "title:`Htoo Myat Kyaw | Co-founder of Briefly`}}",
+      "replace": "title:typeof location<`u`&&location.pathname.startsWith(`/play-ground`)?`Networking with Professionals | Htoo Myat Kyaw`:`Htoo Myat Kyaw | Co-founder of Briefly`}}",
+      "only": [
+        "shared-lib"
+      ]
     },
     {
       "find": "Where to find you?",
