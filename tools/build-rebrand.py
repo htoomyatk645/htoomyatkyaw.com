@@ -232,6 +232,13 @@ rep("`Linkedin`", "`LinkedIn`"); rep(">Linkedin<", ">LinkedIn<")
 rep("M12 2.04004C6.5 2.04004 2 6.53004 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85004C10.44 7.34004 11.93 5.96004 14.22 5.96004C15.31 5.96004 16.45 6.15004 16.45 6.15004V8.62004H15.19C13.95 8.62004 13.56 9.39004 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5879 18.0622 20.3856 19.6099 18.5701C21.1576 16.7546 22.0053 14.4457 22 12.06C22 6.53004 17.5 2.04004 12 2.04004Z",
     "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z")
 
+# ---------------------------------------------------------------- coming soon
+# Case study, Services and Journal aren't published yet (the Worker redirects
+# them home). Links to them stay visible but show a "Coming soon" note instead
+# of navigating; a capture listener runs before Framer's router sees the click.
+COMING_SOON = """<style>#coming-soon{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:2147483647;background:#111212;color:#fff;font:500 14px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;padding:12px 18px;border-radius:999px;transition:opacity .2s,transform .2s}#coming-soon.on{opacity:1;transform:translate(-50%,0)}</style><script>(()=>{const soon=/^\\/(case-study|services|blog)(\\/|$)/;let el,t;document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest("a[href]");if(!a)return;const u=new URL(a.getAttribute("href"),location.href);if(u.origin!==location.origin||!soon.test(u.pathname))return;e.preventDefault();e.stopImmediatePropagation();if(!el){el=document.createElement("div");el.id="coming-soon";el.setAttribute("role","status");document.body.appendChild(el)}el.textContent=u.pathname.startsWith("/blog")?"Journal: coming soon":u.pathname.startsWith("/services")?"Services: coming soon":"Case studies: coming soon";el.classList.add("on");clearTimeout(t);t=setTimeout(()=>el.classList.remove("on"),1800)},true)})()</script></body>"""
+rep("</body>", COMING_SOON, [".html"])
+
 # ---------------------------------------------------------------- name (last)
 rep("BEJAMAN", "HTOO MYAT KYAW")
 rep("Bejaman", "Htoo Myat Kyaw")

@@ -33,10 +33,12 @@ export default {
       return serveCmsRanges(request, env, url);
     }
 
-    // Case studies and journal posts are not published yet: send their pages
-    // back to the section index (the journal index shows "coming soon").
-    const hidden = url.pathname.match(/^\/(case-study|blog)\/[^/]+\/?$/);
-    if (hidden) return Response.redirect(`${url.origin}/${hidden[1]}`, 302);
+    // Case studies, services and the journal are not published yet (their
+    // files stay in ./site): send visitors to the home page. Links to them
+    // show "Coming soon" instead of navigating (see coming-soon.js).
+    if (/^\/(case-study|services|blog)(\/|$)/.test(url.pathname)) {
+      return Response.redirect(`${url.origin}/`, 302);
+    }
 
     return env.ASSETS.fetch(request);
   },
