@@ -27,7 +27,7 @@ const check = process.argv.includes("--check");
 // The Briefly write-ups are standalone pages, not part of the Framer site: leave
 // them exactly as written (a find/replace such as the Instagram link is not
 // idempotent and would be applied again on every run).
-const STANDALONE = ["under-the-hood.html", "the-briefly-look.html", "seven-slides-a-day.html"];
+const STANDALONE = ["under-the-hood.html", "the-briefly-look.html", "seven-slides-a-day.html", "making-of-briefly.html"];
 
 async function* files(dir) {
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
