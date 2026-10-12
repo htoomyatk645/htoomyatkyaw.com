@@ -6,6 +6,7 @@
 
 import { EmailMessage } from "cloudflare:email";
 
+const ASSET_PREFIX = "/_v2/";
 const MAX_BODY_BYTES = 32 * 1024;
 const MAX_FIELD_CHARS = 5000;
 
@@ -18,6 +19,20 @@ const FRAMER_HONEYPOT_FIELDS = ["website", "company", "message", "subject", "tit
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+
+    // Pages reference their assets as /_v2/... while the files stay in
+    // ./site/_ext. Early deploys sent /_ext/* with a one-year immutable cache,
+    // and the rebranded files kept their names, so browsers that visited then
+    // kept running the template's scripts; new URLs make them fetch fresh
+    // copies. Bump the prefix (here, in wrangler.jsonc and in
+    // tools/build-rebrand.py) if that ever happens again.
+    if (url.pathname.startsWith(ASSET_PREFIX)) {
+      url.pathname = "/_ext/" + url.pathname.slice(ASSET_PREFIX.length);
+      if (url.pathname.endsWith(".framercms") && url.searchParams.has("range")) {
+        return serveCmsRanges(request, env, url);
+      }
+      return env.ASSETS.fetch(new Request(url, request));
+    }
 
     // /api/contact is our endpoint. /api/forms/* catches the mirrored Framer
     // form component, whose Framer API URL is rewritten to this path.
