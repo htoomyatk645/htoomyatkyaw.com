@@ -25,7 +25,6 @@ rep("text:`BUY NUDGE`,textColor:`var(--token-4f4ed186-9023-4858-830a-5202d69249c
 rep("https://buy.polar.sh/polar_cl_9a5vgJf76xch9cThQ1yzFU4r218QMmvCzyUiR0YxC4R", "/")
 rep("https://huehaus.supply/", "/")
 BASE_CSS = ("#__framer-badge-container,.framer-tg9meo-container,.framer-xso6nc-container{display:none!important}"
-            "a[href*=\"case-study/\"]{pointer-events:none!important;cursor:default!important}"
             # "Htoo Myat Kyaw" is twice as long as the template name: scale it to fit.
             ".framer-tdbbdt .framer-text{font-size:min(150px,calc((100vw - 56px) / 7.9))!important;letter-spacing:-.025em!important}"
             # "my app" polaroid: taller photo area for the app screenshot (984x2000).
