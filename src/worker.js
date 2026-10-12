@@ -40,6 +40,7 @@ export default {
     const live = {
       "north-light": `${url.origin}/under-the-hood`,
       stylebook: `${url.origin}/the-briefly-look`,
+      homestead: `${url.origin}/seven-slides-a-day`,
       "meridian-health": "https://briefly.briefa.net",
     }[url.pathname.match(/^\/case-study\/([^/]+)\/?$/)?.[1]];
     if (live) return Response.redirect(live, 302);

@@ -56,6 +56,11 @@ rep("Create a free website with Framer, the website builder loved by startups, d
 rep("`EM`", "`HK`"); rep(">EM<", ">HK<")
 rep("`PH`", "`BR`"); rep(">PH<", ">BR<")
 rep("mailto:Hello@selenadesigns.com", "mailto:Htoo.Kyaw@tufts.edu")
+# "download resume" on the nav avatar's hover card (rewritten to the email above).
+rep("href:`mailto:Htoo.Kyaw@tufts.edu`,motionChild:!0,nodeId:`TZH86zigh`", "href:`/Htoo_Myat_Kyaw_Resume.pdf`,motionChild:!0,nodeId:`TZH86zigh`")
+# Clicking that hover card downloads a file: the template's sample resume image.
+rep("file:`/_ext/framerusercontent.com/assets/5D0eDc95VXdjgoSNI5fR7NpyX0k.jpg`,fileName:`Bejamin's Resume`",
+    "file:`/Htoo_Myat_Kyaw_Resume.pdf`,fileName:`Htoo_Myat_Kyaw_Resume.pdf`")
 rep("tel:+123456789", "https://briefly.briefa.net")
 
 # Services hero intro shares its text with the footer; change it first.
@@ -231,15 +236,42 @@ rep("`Linkedin`", "`LinkedIn`"); rep(">Linkedin<", ">LinkedIn<")
 rep("M12 2.04004C6.5 2.04004 2 6.53004 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85004C10.44 7.34004 11.93 5.96004 14.22 5.96004C15.31 5.96004 16.45 6.15004 16.45 6.15004V8.62004H15.19C13.95 8.62004 13.56 9.39004 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5879 18.0622 20.3856 19.6099 18.5701C21.1576 16.7546 22.0053 14.4457 22 12.06C22 6.53004 17.5 2.04004 12 2.04004Z",
     "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z")
 
-# ---------------------------------------------------------------- coming soon
+# ---------------------------------------------------------------- site script
 # Case study, Services and Journal aren't published yet (the Worker redirects
 # them home). Links to them stay visible but show a "Coming soon" note instead
 # of navigating; a capture listener runs before Framer's router sees the click.
-# Published write-ups (live) open their standalone page instead; card 1
+# Published write-ups (LIVE) open their standalone page instead; card 1
 # (Briefly) opens the product site and its button reads "View Product".
-COMING_SOON = """<style>#coming-soon{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:2147483647;background:#111212;color:#fff;font:500 14px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;padding:12px 18px;border-radius:999px;transition:opacity .2s,transform .2s}#coming-soon.on{opacity:1;transform:translate(-50%,0)}</style><script>(()=>{const soon=/^\\/(case-study|services|blog)(\\/|$)/;const live={"/case-study/north-light":"/under-the-hood","/case-study/stylebook":"/the-briefly-look","/case-study/meridian-health":"https://briefly.briefa.net"};let el,t;document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest("a[href]");if(!a)return;const u=new URL(a.getAttribute("href"),location.href);if(u.origin!==location.origin||!soon.test(u.pathname))return;e.preventDefault();e.stopImmediatePropagation();const to=live[u.pathname.replace(/\\/$/,"")];if(to){/^https?:/.test(to)?window.open(to,"_blank","noopener"):location.href=to;return}if(!el){el=document.createElement("div");el.id="coming-soon";el.setAttribute("role","status");document.body.appendChild(el)}el.textContent=u.pathname.startsWith("/blog")?"Journal: coming soon":u.pathname.startsWith("/services")?"Services: coming soon":"Case studies: coming soon";el.classList.add("on");clearTimeout(t);t=setTimeout(()=>el.classList.remove("on"),1800)},true);const relabel=()=>document.querySelectorAll('a[href$="case-study/meridian-health"]').forEach(a=>{const w=document.createTreeWalker(a,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()==="View Project")n.nodeValue=n.nodeValue.replace("View Project","View Product")});addEventListener("load",()=>setTimeout(()=>{relabel();new MutationObserver(relabel).observe(document.body,{subtree:true,childList:true,characterData:true})},300))})()</script>"""
+# In the nav, "HK" copies the email address and "BR" opens Briefly.
+SITE_JS = r"""(()=>{
+const SOON=/^\/(case-study|services|blog)(\/|$)/;
+const LIVE={"/case-study/north-light":"/under-the-hood","/case-study/stylebook":"/the-briefly-look","/case-study/homestead":"/seven-slides-a-day","/case-study/meridian-health":"https://briefly.briefa.net"};
+const EMAIL="htoomyatk645@gmail.com",BRIEFLY="https://briefly.briefa.net";
+let el,t;
+const note=m=>{if(!el){el=document.createElement("div");el.id="coming-soon";el.setAttribute("role","status");document.body.appendChild(el)}el.textContent=m;el.classList.add("on");clearTimeout(t);t=setTimeout(()=>el.classList.remove("on"),1800)};
+const copy=v=>(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).catch(()=>{const a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy")}finally{a.remove()}});
+const open=to=>/^https?:/.test(to)?window.open(to,"_blank","noopener"):location.href=to;
+document.addEventListener("click",e=>{
+  const tg=e.target.closest?e.target:e.target.parentElement;
+  if(tg.closest(".framer-119y192-container")){e.preventDefault();e.stopImmediatePropagation();copy(EMAIL).then(()=>note("Email Copied"));return}
+  if(tg.closest(".framer-1yzdk2p-container")){e.preventDefault();e.stopImmediatePropagation();open(BRIEFLY);return}
+  const a=tg.closest("a[href]");if(!a)return;
+  const u=new URL(a.getAttribute("href"),location.href);
+  if(u.origin!==location.origin||!SOON.test(u.pathname))return;
+  e.preventDefault();e.stopImmediatePropagation();
+  const to=LIVE[u.pathname.replace(/\/$/,"")];if(to)return open(to);
+  note(u.pathname.startsWith("/blog")?"Journal: coming soon":u.pathname.startsWith("/services")?"Services: coming soon":"Case studies: coming soon");
+},true);
+const relabel=()=>document.querySelectorAll('a[href$="case-study/meridian-health"]').forEach(a=>{const w=document.createTreeWalker(a,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()==="View Project")n.nodeValue=n.nodeValue.replace("View Project","View Product")});
+addEventListener("load",()=>setTimeout(()=>{relabel();new MutationObserver(relabel).observe(document.body,{subtree:true,childList:true,characterData:true})},300));
+})()"""
+SITE_CSS = ("#coming-soon{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:2147483647;"
+            "background:#111212;color:#fff;font:500 14px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;padding:12px 18px;border-radius:999px;"
+            "transition:opacity .2s,transform .2s}#coming-soon.on{opacity:1;transform:translate(-50%,0)}"
+            ".framer-119y192-container,.framer-1yzdk2p-container{cursor:pointer}")
+SITE_SCRIPT = "<style>" + SITE_CSS + "</style><script>" + "".join(l.strip() for l in SITE_JS.splitlines()) + "</script>"
 # Anchor on Framer's bodyEnd marker so standalone pages in site/ are left alone.
-rep("<!-- End of bodyEnd -->", "<!-- End of bodyEnd -->" + COMING_SOON, [".html"])
+rep("<!-- End of bodyEnd -->", "<!-- End of bodyEnd -->" + SITE_SCRIPT, [".html"])
 
 # ---------------------------------------------------------------- name (last)
 rep("BEJAMAN", "HTOO MYAT KYAW")

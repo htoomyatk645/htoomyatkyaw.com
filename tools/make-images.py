@@ -85,6 +85,21 @@ def fit_card(src, scale, size=(1200, 1357)):
     return card
 
 
+def fan_card(src, size=(2000, 1700), height=0.84, bg=(250, 248, 247)):
+    """A transparent graphic (with its shadows) centred on a paper-coloured card.
+
+    The card is wider than any frame it is shown in and the graphic sits well
+    inside it, so cover-cropping at the home page's portrait aspect or the
+    wider aspects elsewhere never cuts into it."""
+    im = Image.open(ROOT / "brand" / src).convert("RGBA")
+    im = im.crop(im.getchannel("A").getbbox())
+    k = size[1] * height / im.height
+    im = im.resize((round(im.width * k), round(im.height * k)), Image.LANCZOS)
+    card = Image.new("RGB", size, bg)
+    card.paste(im, ((size[0] - im.width) // 2, (size[1] - im.height) // 2), im)
+    return card
+
+
 def save(im, name):
     path = IMAGES / name if "/" not in name else ROOT / name
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -106,7 +121,7 @@ save(crop("IMG_4383.jpg", (1269, 1270), 0.40, 0.50, 0.56), "BpemFTgeHqmOEbavaTet
 # subject sits in the middle).
 save(logo_card("briefly-dark.png", (2400, 1603), 0.46), "veyOMFLFvf4bfZJKXrpyPNzQWiw.jpg")  # Briefly: All Things Podcasts
 save(fit_card("briefly/app-icon-tags.png", 0.88), "Hp4sdb6mgJqCAExV0ytS7gljgkA.jpg")  # The Briefly Look
-save(fit_card("briefly/brain-slide-frame.png", 0.94), "lRamgmULf2QHd5nO7cNT2LpLR5M.jpg")  # Seven Slides a Day (frame of brain-slide.mp4)
+save(fan_card("briefly/seven-slides-fan.png"), "lRamgmULf2QHd5nO7cNT2LpLR5M.jpg")  # Seven Slides a Day: three example slides
 save(fit_card("briefly/wordmark.png", 0.8), "77vnsoqQ0X6oMVSzYgh7nMkdh0.jpg")  # Under the Hood
 
 # "my app" polaroid on the home page: the Briefly app screenshot, full height
