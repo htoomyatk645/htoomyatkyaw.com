@@ -24,6 +24,10 @@ import path from "node:path";
 const SITE = path.resolve(process.env.SITE_DIR || "site");
 const config = JSON.parse(await fs.readFile(process.env.REBRAND || "tools/rebrand.json", "utf8"));
 const check = process.argv.includes("--check");
+// The Briefly write-ups are standalone pages, not part of the Framer site: leave
+// them exactly as written (a find/replace such as the Instagram link is not
+// idempotent and would be applied again on every run).
+const STANDALONE = ["under-the-hood.html", "the-briefly-look.html", "seven-slides-a-day.html"];
 
 async function* files(dir) {
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
@@ -91,6 +95,7 @@ for await (const file of files(SITE)) {
   let text = await fs.readFile(file, "utf8");
   const before = text;
   const isHtml = file.endsWith(".html");
+  if (STANDALONE.includes(path.basename(file))) continue;
   config.replacements.forEach((entry, n) => {
     const { find, replace, only, near } = entry;
     // Optional "only": apply just to files whose path contains one of these strings.
