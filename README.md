@@ -23,6 +23,7 @@ Portfolio site for Htoo Myat Kyaw. It runs on Cloudflare Workers (static assets 
 npm install
 npm run mirror            # crawl the Framer site into site/ (unmodified copy)
 node tools/cms-edit.mjs   # case-study card data
+node tools/og/render.mjs        # share image: tools/og/og.html -> brand/og.png (only when it changes)
 python3 tools/make-images.py   # photos and logos from brand/
 npm run rebrand           # apply tools/rebrand.json
 npm run check             # no Framer URLs left

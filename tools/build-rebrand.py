@@ -40,7 +40,7 @@ rep(OLD_STYLE, f"<style>{BASE_CSS}{BLOG_CSS}</style>", BLOG)
 rep(OLD_STYLE, f"<style>{BASE_CSS}</style>")
 rep('<link href="/_ext/framerusercontent.com/images/wjwqrOUY5j7XeCzEQHXDiOX9dE.png" rel="icon" media="(prefers-color-scheme: dark)">',
     '<link href="/brand/favicon-dark.png" rel="icon" media="(prefers-color-scheme: dark)">')
-NEW_LOGO = '<svg width="100%" height="100%" viewBox="0 0 50 25" xmlns="http://www.w3.org/2000/svg"><image href="/brand/briefly-mark.png" x="12.5" y="0" width="25" height="25"/></svg>'
+NEW_LOGO = '<svg width="100%" height="100%" viewBox="0 0 50 25" xmlns="http://www.w3.org/2000/svg"><image href="/brand/portrait-mark.png" x="12.5" y="0" width="25" height="25"/></svg>'
 rep(open(f"{S}/logo_js.txt").read(), NEW_LOGO)
 rep(open(f"{S}/logo_html.txt").read(), NEW_LOGO)
 
@@ -289,6 +289,10 @@ ASSET_PREFIX = "/_v2/"
 rep("BEJAMAN", "HTOO MYAT KYAW")
 rep("Bejaman", "Htoo Myat Kyaw")
 
+# New URLs for the icons and the share image so browsers and link-preview
+# caches (iMessage, LinkedIn, Slack...) pick up the portrait versions.
+for f in ["fLhqLc1Zfa1vomoVNhwjalzo.jpg", "wjwqrOUY5j7XeCzEQHXDiOX9dE.png", "ZMWEi8bXq0UHyMgEUcSAtJsVRKg.jpg", "/brand/favicon-dark.png"]:
+    rep(f, f + "?v=portrait")
 rep("/_ext/", ASSET_PREFIX)
 
 cfg = {"profile": {"name": "Htoo Myat Kyaw", "role": "Co-founder of Briefly (UI/UX, product design, strategy)",

@@ -141,22 +141,31 @@ for src, fx, fy, name in [
 ]:
     save(crop(src, (1200, 1200), fx, fy, 1.0), name)
 
-# Logos: nav mark, favicons (light and dark), touch icon, share image.
+# Logos. The tab icon, the nav mark (top left) and the touch icon are a
+# portrait; the Briefly mark stays on the About timeline (below).
 light, _ = mark("briefly-light.png")
-dark, dark_bg = mark("briefly-dark.png")
-save(light.resize((256, 256), Image.LANCZOS), "site/brand/briefly-mark.png")
-save(light.resize((64, 64), Image.LANCZOS), "wjwqrOUY5j7XeCzEQHXDiOX9dE.png")
-save(dark.resize((64, 64), Image.LANCZOS), "site/brand/favicon-dark.png")
-save(light.resize((180, 180), Image.LANCZOS), "ZMWEi8bXq0UHyMgEUcSAtJsVRKg.jpg")
 
-og = Image.new("RGB", (1200, 630), dark_bg)
-og.paste(dark.resize((300, 300), Image.LANCZOS), (110, 165))
-d = ImageDraw.Draw(og)
-bold = ImageFont.truetype("/usr/share/fonts/opentype/inter/Inter-SemiBold.otf", 64)
-regular = ImageFont.truetype("/usr/share/fonts/opentype/inter/Inter-Regular.otf", 34)
-d.text((470, 235), "Htoo Myat Kyaw", font=bold, fill=(245, 243, 240))
-d.text((472, 330), "Co-founder of Briefly", font=regular, fill=(190, 186, 182))
+
+def round_icon(im, size):
+    """Circular icon with transparent corners (supersampled for clean edges)."""
+    big = im.resize((size * 4, size * 4), Image.LANCZOS).convert("RGBA")
+    m = Image.new("L", big.size, 0)
+    ImageDraw.Draw(m).ellipse((0, 0, big.width - 1, big.height - 1), fill=255)
+    big.putalpha(m)
+    return big.resize((size, size), Image.LANCZOS)
+
+
+face = crop("icon-portrait.jpg", (1024, 1024), 0.42, 0.49, 0.46)
+save(round_icon(face, 256), "site/brand/portrait-mark.png")  # nav, top left
+save(round_icon(face, 64), "wjwqrOUY5j7XeCzEQHXDiOX9dE.png")  # favicon
+save(round_icon(face, 64), "site/_ext/framerusercontent.com/assets/wjwqrOUY5j7XeCzEQHXDiOX9dE.png")  # same, as the JS references it
+save(round_icon(face, 64), "site/brand/favicon-dark.png")  # favicon, dark mode
+save(face.resize((180, 180), Image.LANCZOS), "ZMWEi8bXq0UHyMgEUcSAtJsVRKg.jpg")  # apple-touch-icon (iOS rounds it)
+
+# Link preview: rendered from tools/og/og.html by tools/og/render.mjs.
+og = Image.open(ROOT / "brand/og.png").convert("RGB")
 save(og, "fLhqLc1Zfa1vomoVNhwjalzo.jpg")
+save(og, "site/_ext/framerusercontent.com/assets/fLhqLc1Zfa1vomoVNhwjalzo.jpg")
 
 # Timeline icon for the first (Briefly) entry on About: an SVG wrapping the mark.
 buf = io.BytesIO()
