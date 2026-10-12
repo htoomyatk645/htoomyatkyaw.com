@@ -47,6 +47,7 @@ rep(open(f"{S}/logo_html.txt").read(), NEW_LOGO)
 
 # ---------------------------------------------------------------- site-wide
 rep(" - Nudge - Premium Portfolio Template", " | Htoo Myat Kyaw")
+rep("Nudge - Premium Portfolio Template", "Networking with Professionals | Htoo Myat Kyaw", ["play-ground.html"])
 rep("Nudge - Premium Portfolio Template", "Htoo Myat Kyaw | Co-founder of Briefly")
 rep("Nudge is a bold, personality-driven portfolio template for product designers who want to stand out. Built for storytelling, not just showcasing.",
     "Htoo Myat Kyaw is co-founder of Briefly, an audio-native short form podcast discovery app. He leads UI/UX and product design.")
@@ -209,10 +210,15 @@ for o, n in [("Healthcare", "Product"), ("Workflow Design", "Audio"), ("SaaS", "
     rep(f'"{o}"', f'"{n}"', CARDS_HTML)
 
 # ---------------------------------------------------------------- playground
-for o, n in [("nothing big, still feels nice", "tiny details, big difference"), ("Brain’s messy, but it’s okay", "whiteboard, day 3"), 
-             ("Good weather", "launch-week energy"), ("Random shot", "random shot"), ("Tiny moments", "tiny moments"),
-             ("Not sure what I’m doing", "first draft, don't judge"), ("bus bus bus", "on the green line, thinking")]:
+for o, n in [("nothing big, still feels nice", "Picture Before Getting Promoted"), ("Brain’s messy, but it’s okay", "Tabling to Cure Bone Cancer"), 
+             ("Good weather", "Thank You!"), ("Random shot", "random shot"), ("Tiny moments", "First Time Training with a Former UFC Fighter"),
+             ("Not sure what I’m doing", "Muslims in Business Conference"), ("bus bus bus", "on the green line, thinking"), ("flower!", "First Day Working in the OR at 17")]:
     rep(o, n)
+
+# Playground's tab title (all pages share one metadata function).
+rep("title:`Htoo Myat Kyaw | Co-founder of Briefly`}}",
+    "title:typeof location<`u`&&location.pathname.startsWith(`/play-ground`)?`Networking with Professionals | Htoo Myat Kyaw`:`Htoo Myat Kyaw | Co-founder of Briefly`}}",
+    ["shared-lib"])
 
 # ---------------------------------------------------------------- contact
 rep("Where to find you?", "Where can I reach you?")
