@@ -288,6 +288,10 @@
       "replace": "A podcast brief is only useful if you trust it and if you trust us. Our ingestion pipeline incorporates the full contexts, picks up on small cues, and iterates on human trained data points, to build the trust in our users."
     },
     {
+      "find": "What dive into my work",
+      "replace": "A dive into my work"
+    },
+    {
       "find": "Designing across scheduling, case management, treatment planning, and clinical documentation for mental health practices. The challenge is balancing what clinicians need with what administrators need—often very different things—while keeping everything HIPAA-compliant and actually usable. ",
       "replace": "Co-Founder & Member of Technical Staff. Co-founded a short-form, audio-only podcast app that turns full episodes into a personalized feed of AI-selected highlights. I co-built the AI pipeline and recommendation engine, lead product and UI/UX design, and grew our social presence organically to 2,700 followers and 1.5M+ views. ",
       "only": [

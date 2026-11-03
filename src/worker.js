@@ -85,7 +85,8 @@ async function serveCmsRanges(request, env, url) {
     offset += to - from + 1;
   }
   return new Response(out, {
-    headers: { "content-type": "application/octet-stream", "cache-control": "public, max-age=31536000, immutable" },
+    // Not immutable: the CMS files keep their names when their content is edited.
+    headers: { "content-type": "application/octet-stream", "cache-control": "public, max-age=0, must-revalidate" },
   });
 }
 

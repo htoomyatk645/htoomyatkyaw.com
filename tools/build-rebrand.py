@@ -114,6 +114,8 @@ rep("The best work happens when designers, engineers, and product folks are actu
 rep("Making the invisible visible", "Make the invisible visible")
 rep("Some of the most impactful design work isn't flashy—it's the progress indicator that keeps people oriented, the auto-save that prevents panic, the validation message that actually helps instead of just saying 'error.' These details build trust.",
     "A podcast brief is only useful if you trust it and if you trust us. Our ingestion pipeline incorporates the full contexts, picks up on small cues, and iterates on human trained data points, to build the trust in our users.")
+rep("What dive into my work", "A dive into my work")
+
 # timeline (About only; the same names are case-study titles elsewhere)
 TL = [
     ("Meridian Health", "Briefly Apps Inc.", "Sep 2025 - Current", "May 2026 - Present",
