@@ -176,3 +176,18 @@ uri = base64.b64encode(buf.getvalue()).decode()
     f'<image href="data:image/png;base64,{uri}" width="40" height="40"/></svg>\n'
 )
 print("site/_ext/framerusercontent.com/images/aWwxH6dqmUu5jCNRFneN4Z8gLE0.svg  timeline icon")
+
+# Timeline icons for the other About entries (the template had stock logos):
+# square monogram badges in each organisation's colour.
+for name, label, bg in [
+    ("oCWnU4BxvjGfHzEiZF1rhnFs.svg", "HRI", "#3172AE"),     # Tufts HRI Lab (Tufts blue)
+    ("c8llj7bjZDasXPotcD32uirJjwU.svg", "RNA", "#46166B"),  # The RNA Institute, UAlbany (purple)
+    ("yMcXNSNKzTKIukLJc4d9uhurDwE.svg", "AMC", "#00539B"),  # Albany Medical Center (blue)
+]:
+    (IMAGES / name).write_text(
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">'
+        f'<rect width="40" height="40" fill="{bg}"/>'
+        f'<text x="20" y="25" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" '
+        f'font-size="13" letter-spacing=".5" fill="#fff">{label}</text></svg>\n'
+    )
+    print(f"site/_ext/framerusercontent.com/images/{name}  timeline icon {label}")
