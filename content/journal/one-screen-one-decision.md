@@ -68,11 +68,9 @@ The fix was a single spotlight that stays on screen and glides from one target t
 
 ### The tour today
 
-:::phones Recorded on an iPhone, November 2026.
-/media/tour/tour-now.mp4 | The current tour, from the first hello to the Share step. One spotlight, one bubble, one thing to do.
-:::
+One spotlight, one bubble, one thing to do.
 
-:::phones
+:::phones Stills from the current tour, November 2026.
 /media/tour/now-ghost.jpg | The ghost goes first: "Watch, I'll move it first."
 /media/tour/now-ring.jpg | The ring and its label mark the one control to use.
 /media/tour/now-hold.jpg | Hold-to-lock has its own step, and a "Done" reply.
