@@ -75,6 +75,13 @@
       "replace": "Htoo Myat Kyaw"
     },
     {
+      "find": "hour12:!n,timeZone:e}",
+      "replace": "hour12:!n,timeZone:void 0}",
+      "only": [
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
       "find": "`EM`",
       "replace": "`HK`"
     },
@@ -123,11 +130,11 @@
     },
     {
       "find": "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day.",
-      "replace": "I'm most energized by making interacting with technology pain-free, and by people who care about the same thing. Podcasters, press, partners, researchers, neuroscientists, recruiters or fellow builders, I'd love to hear from you."
+      "replace": "I love talking about CPG businesses, human psychology, collaborating on ideas, and poetry. If curiosity and action is the main driver of your pursuits, I'd love to chat with you!"
     },
     {
       "find": "Open to contract work, full-time roles, and interesting conversations about hard design problems.",
-      "replace": "Briefly is heading to the App Store. Say hello."
+      "replace": "My most passionate invention, Briefly, is live on the App Store. Give it a chance to enlighten you!"
     },
     {
       "find": "COntact me",
@@ -181,7 +188,7 @@
     },
     {
       "find": "I'm Bejaman",
-      "replace": "I'm Htoo",
+      "replace": "I'm Htoo a.k.a Zaid,",
       "only": [
         "site/index.html",
         "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
@@ -189,7 +196,7 @@
     },
     {
       "find": "a product designer in Chicago who gets excited",
-      "replace": "a co-founder in Boston who gets excited",
+      "replace": "founder, operator, and a lifelong student who gets excited",
       "only": [
         "site/index.html",
         "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
@@ -197,7 +204,7 @@
     },
     {
       "find": "about making complicated things simple",
-      "replace": "about making podcasts easier to love",
+      "replace": "about making consumer products easy to use and scaling them worldwide",
       "only": [
         "site/index.html",
         "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
@@ -212,12 +219,20 @@
       ]
     },
     {
+      "find": "Motion Design",
+      "replace": "Scaling 🌏",
+      "only": [
+        "site/index.html",
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
       "find": "This is a showcase of what happens when curiosity drives the process.",
-      "replace": "Four chapters of building Briefly, from the first idea to the App Store."
+      "replace": "Here's a sneak peek of the surface level behind the scenes"
     },
     {
       "find": "a product designer in Chicago who gets excited",
-      "replace": "a serial-entrepreneur, Questbridge Scholar at Tufts University, and a founder based in Boston who gets excited",
+      "replace": "a first-generation QuestBridge Scholar studying Cognitive and Brain Science and Computer Science at Tufts, who gets excited",
       "only": [
         "site/about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
@@ -225,7 +240,7 @@
     },
     {
       "find": "about making complicated things simple",
-      "replace": "about developing consumer facing technology",
+      "replace": "about neurotechnology and consumer products built around the mind",
       "only": [
         "site/about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
@@ -233,63 +248,88 @@
     },
     {
       "find": "I spend my days designing for healthcare platforms, booking systems, and other products where 'just figure it out' isn't an option. The people using these tools are busy, stressed, and have actual work to do. My job is to get out of their way.",
-      "replace": "I spend my days on one question: how do you give someone the best part of a podcast without taking away the voice? Briefly is a short-form, audio-only podcast platform. It pulls the best moments out of full episodes and serves them in a feed tuned to your interests, the way Instagram and TikTok learn what you like."
+      "replace": "I study Cognitive and Brain Science alongside Computer Science at Tufts, an interdisciplinary path that combines neuroscience, computer science, and philosophy to study the mind. I'm drawn to neuroscience research for its rigor, to tech policy for its role in protecting human rights, and to consumer neurotechnology and wearables that bring the science into everyday life."
     },
     {
       "find": "I've worked on teams of two and teams of twenty. I've had access to endless user research and I've had to make educated guesses with limited data. I've worked within strict component libraries and I've built design systems from scratch. What stays consistent is asking good questions, collaborating with people who know more than me, and shipping things that actually help",
-      "replace": "Briefly is a team of three: me, a post-grad fellow formerly at Stanford HCI lab, and an engineer. I lead UI/UX, product design, and business strategy. We built the AI pipeline and recommendation engine together, and I direct coding agents and review their code, so I stay close to how an idea becomes a product."
+      "replace": "I'm the co-founder of Briefly, a short-form, audio-only podcast app. I lead product UI/UX design, organic marketing, and day-to-day operations with a team of three, and I direct AI coding agents and review their code, so I stay close to how an idea becomes a product."
     },
     {
       "find": "Currently, I'm at Meridian Health working on experiences for mental health clinicians and administrators. Before that, I spent almost two years at StyleBook helping salons manage their businesses (and discovering that stylists have very strong opinions about scheduling interfaces, which I deeply respect). ",
-      "replace": "I started Briefly in May 2026 while studying Cognitive Brain Science and Computer Science at Tufts. We're mentored through the Tufts Derby Center for Entrepreneurship by a founder with multiple tech exits. The iOS app is launched on the App Store in October 2026, and fully supports CarPlay. "
+      "replace": "I study how legendary operators build, and I run Briefly by the Islamic ideals of commerce. Honest dealing, fair value, and mutual consent turn trade into a relationship instead of an extraction. When both sides can trust what they are getting, customers stay, teams stay, and a business earns something bigger than profit: the trust of the people it serves. If it isn't good for everyone it touches, it isn't worth building. "
     },
     {
       "find": "When I'm not designing, you'll find me thinking about why some interfaces feel intuitive and others make you want to throw your laptop out a window. Usually with coffee. ",
-      "replace": "When I'm not working on Briefly, studying, I'm training Brazilian Jiu-Jitsu, cooking, spending time with family or friends, or practicing languages: English, Urdu, and Burmese (fluent), Chinese (intermediate), Turkish (beginner). "
+      "replace": "When I'm not working on Briefly or studying, I'm training Brazilian Jiu-Jitsu, cooking, spending time with family and friends, or practicing languages: English, Urdu, and Burmese (fluent), Chinese (intermediate), and Turkish (beginner). "
     },
     {
       "find": "Starting with why, not what",
-      "replace": "Start with the listener"
+      "replace": "Start with attention"
     },
     {
       "find": "Before jumping into wireframes, I want to understand what problem we're actually solving. Sometimes the thing people ask for isn't the thing they need. My favorite projects start with good questions and end with solutions that feel obvious in hindsight.",
-      "replace": "Before I design a screen, I want to know when and where someone is listening: commuting, cooking, or in the car. The context decides everything else."
+      "replace": "People often listen while commuting, cooking, or driving, when their hands and eyes are occupied. Because attention is limited, I design experiences that accommodate the listener's environment rather than demanding their full attention."
     },
     {
       "find": "think first, draw later.",
-      "replace": "listen first, draw later."
+      "replace": "Attention is a limited resource."
     },
     {
       "find": "Designing for real constraints",
-      "replace": "Design for real constraints"
+      "replace": "Lower the cognitive load"
     },
     {
       "find": "Perfect conditions don't exist. Budgets are tight, timelines are aggressive, legacy systems are messy, and sometimes you just can't talk to users directly. I'm comfortable making smart decisions with imperfect information and finding creative solutions within real limitations.",
-      "replace": "A student-founded team of three has limited time and finances. I'd rather make a few things very good than many things half good."
+      "replace": "Working memory can only process a limited amount of information at once, so I design each screen around a single clear decision. By using familiar patterns and intuitive navigation, I make interactions easier to understand and the next step easier to recognize."
     },
     {
       "find": "no perfect world here!",
-      "replace": "small team, sharp focus."
+      "replace": "Simplicity reduces mental effort."
     },
     {
       "find": "Collaboration over hero design",
-      "replace": "Build with the whole team"
+      "replace": "Accessible by default"
     },
     {
       "find": "The best work happens when designers, engineers, and product folks are actually talking to each other—not throwing things over the wall. I genuinely enjoy the back-and-forth of figuring out what's possible, what's practical, and what's going to create the most value.",
-      "replace": "The best work happens when design, engineering, and growth are in one conversation."
+      "replace": "Designing for people who are distracted, tired, or navigating noisy environments creates a better experience for everyone, including those with visual or motor impairments. This principle guides my emphasis on audio-first interactions, CarPlay compatibility, and larger touch targets."
     },
     {
       "find": "Making the invisible visible",
-      "replace": "Make the invisible visible"
+      "replace": "Build trust through feedback"
     },
     {
       "find": "Some of the most impactful design work isn't flashy—it's the progress indicator that keeps people oriented, the auto-save that prevents panic, the validation message that actually helps instead of just saying 'error.' These details build trust.",
-      "replace": "A podcast brief is only useful if you trust it and if you trust us. Our ingestion pipeline incorporates the full contexts, picks up on small cues, and iterates on human trained data points, to build the trust in our users."
+      "replace": "Trust develops when people understand what to expect from a product and how it responds to their actions. By preserving the original speaker's voice and providing clear feedback for every interaction, I ensure listeners understand what is happening and remain confident in their experience."
+    },
+    {
+      "find": "Main bio",
+      "replace": "A peek into my world",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "Timeline",
+      "replace": "My non-linear journey so far......",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
     },
     {
       "find": "What dive into my work",
       "replace": "A dive into my work"
+    },
+    {
+      "find": "A dive into my work",
+      "replace": "This is my approach to Briefly",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ],
+      "near": "framer-19x1pr"
     },
     {
       "find": "Designing across scheduling, case management, treatment planning, and clinical documentation for mental health practices. The challenge is balancing what clinicians need with what administrators need—often very different things—while keeping everything HIPAA-compliant and actually usable. ",
@@ -301,7 +341,7 @@
     },
     {
       "find": "Sep 2025 - Current",
-      "replace": "May 2026 - Present",
+      "replace": "Mar 2026 - Present",
       "only": [
         "site/about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
@@ -1389,6 +1429,13 @@
       "replace": "<!-- End of bodyEnd --><style>#coming-soon{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:2147483647;background:#111212;color:#fff;font:500 14px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;padding:12px 18px;border-radius:999px;transition:opacity .2s,transform .2s}#coming-soon.on{opacity:1;transform:translate(-50%,0)}.framer-119y192-container,.framer-1yzdk2p-container{cursor:pointer}</style><script>(()=>{const SOON=/^\\/(case-study|services|blog)(\\/|$)/;const LIVE={\"/case-study/north-light\":\"/under-the-hood\",\"/case-study/stylebook\":\"/the-briefly-look\",\"/case-study/homestead\":\"/seven-slides-a-day\",\"/case-study/meridian-health\":\"https://briefly.briefa.net\"};const EMAIL=\"htoomyatk645@gmail.com\",BRIEFLY=\"https://briefly.briefa.net\",FRAMEWORK=\"/making-of-briefly\";let el,t;const note=m=>{if(!el){el=document.createElement(\"div\");el.id=\"coming-soon\";el.setAttribute(\"role\",\"status\");document.body.appendChild(el)}el.textContent=m;el.classList.add(\"on\");clearTimeout(t);t=setTimeout(()=>el.classList.remove(\"on\"),1800)};const copy=v=>(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).catch(()=>{const a=document.createElement(\"textarea\");a.value=v;a.style.position=\"fixed\";a.style.opacity=\"0\";document.body.appendChild(a);a.select();try{document.execCommand(\"copy\")}finally{a.remove()}});const open=to=>/^https?:/.test(to)?window.open(to,\"_blank\",\"noopener\"):location.href=to;const target=u=>{const p=u.pathname.replace(/\\/$/,\"\");return LIVE[p]||null};const guard=f=>function(st,ti,url){if(url!=null){const u=new URL(url,location.href);if(u.origin===location.origin&&SOON.test(u.pathname)){location.assign(target(u)||location.href);return}}return f.apply(this,arguments)};history.pushState=guard(history.pushState);history.replaceState=guard(history.replaceState);document.addEventListener(\"click\",e=>{const tg=e.target.closest?e.target:e.target.parentElement;if(tg.closest(\".framer-119y192-container\")){e.preventDefault();e.stopImmediatePropagation();copy(EMAIL).then(()=>note(\"Email Copied\"));return}if(tg.closest(\".framer-1yzdk2p-container\")){e.preventDefault();e.stopImmediatePropagation();open(BRIEFLY);return}const a=tg.closest(\"a[href]\");if(!a)return;const u=new URL(a.getAttribute(\"href\"),location.href);if(u.origin!==location.origin||!SOON.test(u.pathname))return;e.preventDefault();e.stopImmediatePropagation();const to=target(u);if(to)return open(to);note(u.pathname.startsWith(\"/blog\")?\"Journal: coming soon\":u.pathname.startsWith(\"/services\")?\"Services: coming soon\":\"Case studies: coming soon\");},true);const relabel=()=>document.querySelectorAll('a[href$=\"case-study/meridian-health\"]').forEach(a=>{const w=document.createTreeWalker(a,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()===\"View Project\")n.nodeValue=n.nodeValue.replace(\"View Project\",\"View Product\")});const swap=(el,a,b)=>{const w=document.createTreeWalker(el,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()===a)n.nodeValue=n.nodeValue.replace(a,b)};const framework=()=>document.querySelectorAll('a[href$=\"case-study/stylebook\"]').forEach(a=>{const c=a.closest(\".framer-1nmyz7r-container\")||a;if(c.nextElementSibling&&c.nextElementSibling.dataset.framework)return;const n=c.cloneNode(true);n.dataset.framework=\"1\";const l=n.matches(\"a\")?n:n.querySelector(\"a\");l.setAttribute(\"href\",FRAMEWORK);l.removeAttribute(\"target\");swap(n,\"View Project\",\"View My Framework\");c.after(n)});const patch=()=>{relabel();framework()};addEventListener(\"load\",()=>setTimeout(()=>{patch();new MutationObserver(patch).observe(document.body,{subtree:true,childList:true,characterData:true})},300));})()</script>",
       "only": [
         ".html"
+      ]
+    },
+    {
+      "find": "<!-- End of bodyEnd -->",
+      "replace": "<!-- End of bodyEnd --><script src=\"/journey.js\" defer></script>",
+      "only": [
+        "site/about.html"
       ]
     },
     {

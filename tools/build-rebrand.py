@@ -53,6 +53,8 @@ rep("Nudge is a bold, personality-driven portfolio template for product designer
 rep(" - My Framer Site", " | Briefly by Htoo Myat Kyaw")
 rep("Page Not Found | Framer", "Page Not Found | Htoo Myat Kyaw")
 rep("Create a free website with Framer, the website builder loved by startups, designers and agencies.", "Htoo Myat Kyaw")
+# Hero clock: show the visitor's local time, not the template's fixed Canada/Pacific zone.
+rep("hour12:!n,timeZone:e}", "hour12:!n,timeZone:void 0}", HOME[1:])
 rep("`EM`", "`HK`"); rep(">EM<", ">HK<")
 rep("`PH`", "`BR`"); rep(">PH<", ">BR<")
 rep("mailto:Hello@selenadesigns.com", "mailto:Htoo.Kyaw@tufts.edu")
@@ -67,8 +69,8 @@ rep("tel:+123456789", "https://briefly.briefa.net")
 FOOTER_OLD = "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day."
 rep(FOOTER_OLD, "I wear a few hats at Briefly. Here's what I do, and how.", ["VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"])
 rep(FOOTER_OLD, "I wear a few hats at Briefly. Here's what I do, and how.", ["site/services.html"], split=True)
-rep(FOOTER_OLD, "I'm most energized by making interacting with technology pain-free, and by people who care about the same thing. Podcasters, press, partners, researchers, neuroscientists, recruiters or fellow builders, I'd love to hear from you.")
-rep("Open to contract work, full-time roles, and interesting conversations about hard design problems.", "Briefly is heading to the App Store. Say hello.")
+rep(FOOTER_OLD, "I love talking about CPG businesses, human psychology, collaborating on ideas, and poetry. If curiosity and action is the main driver of your pursuits, I'd love to chat with you!")
+rep("Open to contract work, full-time roles, and interesting conversations about hard design problems.", "My most passionate invention, Briefly, is live on the App Store. Give it a chance to enlighten you!")
 rep("COntact me", "Contact me")
 
 # ---------------------------------------------------------------- home
@@ -82,43 +84,47 @@ rep("Product designer", "Cognitive Science centered builder & designer")
 rep("Chicago, IL", "Boston, MA")
 rep("what's up", "wassup")
 rep("my workspace", "my app")
-rep("I'm Bejaman", "I'm Htoo", HOME)
-rep("a product designer in Chicago who gets excited", "a co-founder in Boston who gets excited", HOME)
-rep("about making complicated things simple", "about making podcasts easier to love", HOME)
+rep("I'm Bejaman", "I'm Htoo a.k.a Zaid,", HOME)
+rep("a product designer in Chicago who gets excited", "founder, operator, and a lifelong student who gets excited", HOME)
+rep("about making complicated things simple", "about making consumer products easy to use and scaling them worldwide", HOME)
 rep("Interaction Design", "Product Interaction Design", HOME)
-rep("This is a showcase of what happens when curiosity drives the process.", "Four chapters of building Briefly, from the first idea to the App Store.")
+rep("Motion Design", "Scaling 🌏", HOME)
+rep("This is a showcase of what happens when curiosity drives the process.", "Here's a sneak peek of the surface level behind the scenes")
 
 # ---------------------------------------------------------------- about
-rep("a product designer in Chicago who gets excited", "a serial-entrepreneur, Questbridge Scholar at Tufts University, and a founder based in Boston who gets excited", ABOUT)
-rep("about making complicated things simple", "about developing consumer facing technology", ABOUT)
+rep("a product designer in Chicago who gets excited", "a first-generation QuestBridge Scholar studying Cognitive and Brain Science and Computer Science at Tufts, who gets excited", ABOUT)
+rep("about making complicated things simple", "about neurotechnology and consumer products built around the mind", ABOUT)
 rep("I spend my days designing for healthcare platforms, booking systems, and other products where 'just figure it out' isn't an option. The people using these tools are busy, stressed, and have actual work to do. My job is to get out of their way.",
-    "I spend my days on one question: how do you give someone the best part of a podcast without taking away the voice? Briefly is a short-form, audio-only podcast platform. It pulls the best moments out of full episodes and serves them in a feed tuned to your interests, the way Instagram and TikTok learn what you like.")
+    "I study Cognitive and Brain Science alongside Computer Science at Tufts, an interdisciplinary path that combines neuroscience, computer science, and philosophy to study the mind. I'm drawn to neuroscience research for its rigor, to tech policy for its role in protecting human rights, and to consumer neurotechnology and wearables that bring the science into everyday life.")
 rep("I've worked on teams of two and teams of twenty. I've had access to endless user research and I've had to make educated guesses with limited data. I've worked within strict component libraries and I've built design systems from scratch. What stays consistent is asking good questions, collaborating with people who know more than me, and shipping things that actually help",
-    "Briefly is a team of three: me, a post-grad fellow formerly at Stanford HCI lab, and an engineer. I lead UI/UX, product design, and business strategy. We built the AI pipeline and recommendation engine together, and I direct coding agents and review their code, so I stay close to how an idea becomes a product.")
+    "I'm the co-founder of Briefly, a short-form, audio-only podcast app. I lead product UI/UX design, organic marketing, and day-to-day operations with a team of three, and I direct AI coding agents and review their code, so I stay close to how an idea becomes a product.")
 rep("Currently, I'm at Meridian Health working on experiences for mental health clinicians and administrators. Before that, I spent almost two years at StyleBook helping salons manage their businesses (and discovering that stylists have very strong opinions about scheduling interfaces, which I deeply respect). ",
-    "I started Briefly in May 2026 while studying Cognitive Brain Science and Computer Science at Tufts. We're mentored through the Tufts Derby Center for Entrepreneurship by a founder with multiple tech exits. The iOS app is launched on the App Store in October 2026, and fully supports CarPlay. ")
+    "I study how legendary operators build, and I run Briefly by the Islamic ideals of commerce. Honest dealing, fair value, and mutual consent turn trade into a relationship instead of an extraction. When both sides can trust what they are getting, customers stay, teams stay, and a business earns something bigger than profit: the trust of the people it serves. If it isn't good for everyone it touches, it isn't worth building. ")
 rep("When I'm not designing, you'll find me thinking about why some interfaces feel intuitive and others make you want to throw your laptop out a window. Usually with coffee. ",
-    "When I'm not working on Briefly, studying, I'm training Brazilian Jiu-Jitsu, cooking, spending time with family or friends, or practicing languages: English, Urdu, and Burmese (fluent), Chinese (intermediate), Turkish (beginner). ")
+    "When I'm not working on Briefly or studying, I'm training Brazilian Jiu-Jitsu, cooking, spending time with family and friends, or practicing languages: English, Urdu, and Burmese (fluent), Chinese (intermediate), and Turkish (beginner). ")
 # principles
-rep("Starting with why, not what", "Start with the listener")
+rep("Starting with why, not what", "Start with attention")
 rep("Before jumping into wireframes, I want to understand what problem we're actually solving. Sometimes the thing people ask for isn't the thing they need. My favorite projects start with good questions and end with solutions that feel obvious in hindsight.",
-    "Before I design a screen, I want to know when and where someone is listening: commuting, cooking, or in the car. The context decides everything else.")
-rep("think first, draw later.", "listen first, draw later.")
-rep("Designing for real constraints", "Design for real constraints")
+    "People often listen while commuting, cooking, or driving, when their hands and eyes are occupied. Because attention is limited, I design experiences that accommodate the listener's environment rather than demanding their full attention.")
+rep("think first, draw later.", "Attention is a limited resource.")
+rep("Designing for real constraints", "Lower the cognitive load")
 rep("Perfect conditions don't exist. Budgets are tight, timelines are aggressive, legacy systems are messy, and sometimes you just can't talk to users directly. I'm comfortable making smart decisions with imperfect information and finding creative solutions within real limitations.",
-    "A student-founded team of three has limited time and finances. I'd rather make a few things very good than many things half good.")
-rep("no perfect world here!", "small team, sharp focus.")
-rep("Collaboration over hero design", "Build with the whole team")
+    "Working memory can only process a limited amount of information at once, so I design each screen around a single clear decision. By using familiar patterns and intuitive navigation, I make interactions easier to understand and the next step easier to recognize.")
+rep("no perfect world here!", "Simplicity reduces mental effort.")
+rep("Collaboration over hero design", "Accessible by default")
 rep("The best work happens when designers, engineers, and product folks are actually talking to each other—not throwing things over the wall. I genuinely enjoy the back-and-forth of figuring out what's possible, what's practical, and what's going to create the most value.",
-    "The best work happens when design, engineering, and growth are in one conversation.")
-rep("Making the invisible visible", "Make the invisible visible")
+    "Designing for people who are distracted, tired, or navigating noisy environments creates a better experience for everyone, including those with visual or motor impairments. This principle guides my emphasis on audio-first interactions, CarPlay compatibility, and larger touch targets.")
+rep("Making the invisible visible", "Build trust through feedback")
 rep("Some of the most impactful design work isn't flashy—it's the progress indicator that keeps people oriented, the auto-save that prevents panic, the validation message that actually helps instead of just saying 'error.' These details build trust.",
-    "A podcast brief is only useful if you trust it and if you trust us. Our ingestion pipeline incorporates the full contexts, picks up on small cues, and iterates on human trained data points, to build the trust in our users.")
+    "Trust develops when people understand what to expect from a product and how it responds to their actions. By preserving the original speaker's voice and providing clear feedback for every interaction, I ensure listeners understand what is happening and remain confident in their experience.")
+rep("Main bio", "A peek into my world", ABOUT)
+rep("Timeline", "My non-linear journey so far......", ABOUT)
 rep("What dive into my work", "A dive into my work")
+rep("A dive into my work", "This is my approach to Briefly", ABOUT, near="framer-19x1pr")
 
 # timeline (About only; the same names are case-study titles elsewhere)
 TL = [
-    ("Meridian Health", "Briefly Apps Inc.", "Sep 2025 - Current", "May 2026 - Present",
+    ("Meridian Health", "Briefly Apps Inc.", "Sep 2025 - Current", "Mar 2026 - Present",
      "Designing across scheduling, case management, treatment planning, and clinical documentation for mental health practices. The challenge is balancing what clinicians need with what administrators need—often very different things—while keeping everything HIPAA-compliant and actually usable. ",
      "Co-Founder & Member of Technical Staff. Co-founded a short-form, audio-only podcast app that turns full episodes into a personalized feed of AI-selected highlights. I co-built the AI pipeline and recommendation engine, lead product and UI/UX design, and grew our social presence organically to 2,700 followers and 1.5M+ views. "),
     ("StyleBook", "Tufts HRI Lab", "Mar 2024 - aug 2025", "Sep 2026 - Present",
@@ -286,6 +292,8 @@ SITE_CSS = ("#coming-soon{position:fixed;left:50%;bottom:32px;transform:translat
 SITE_SCRIPT = "<style>" + SITE_CSS + "</style><script>" + "".join(l.strip() for l in SITE_JS.splitlines()) + "</script>"
 # Anchor on Framer's bodyEnd marker so standalone pages in site/ are left alone.
 rep("<!-- End of bodyEnd -->", "<!-- End of bodyEnd -->" + SITE_SCRIPT, [".html"])
+# About: collapsible experience list (site/journey.js replaces the template timeline).
+rep("<!-- End of bodyEnd -->", "<!-- End of bodyEnd --><script src=\"/journey.js\" defer></script>", ["site/about.html"])
 
 # ---------------------------------------------------------------- asset URLs
 # Serve every asset under a new prefix so browsers that cached /_ext/* as
