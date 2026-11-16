@@ -1,0 +1,14 @@
+Subject: Thank you for the feedback on Briefly
+
+Hi {{first_name}},
+
+Thank you for taking the time to write. Feedback like yours is how Briefly gets better.
+
+You mentioned {{their_feedback}}. {{what_happens_next}}
+
+We're a team of three, so every note gets read by a person. If you notice anything else, reply to this email.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

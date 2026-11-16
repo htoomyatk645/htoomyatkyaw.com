@@ -10,7 +10,7 @@
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page",
-    "run_worker_first": ["/api/*", "/_v2/*", "/_ext/framerusercontent.com/cms/*", "/case-study/*", "/blog/*", "/case-study", "/blog", "/services", "/services/*"]
+    "run_worker_first": ["/api/*", "/_v2/*", "/_ext/framerusercontent.com/cms/*", "/case-study/*", "/blog/*"]
   },
 
   "routes": [
@@ -21,11 +21,15 @@
   // Contact form -> inbox. Requires Email Routing on htoomyatkyaw.com with
   // htoo.m.kyaw645@gmail.com added and verified as a destination address.
   "send_email": [
-    { "name": "CONTACT_EMAIL", "destination_address": "htoo.m.kyaw645@gmail.com" }
+    { "name": "CONTACT_EMAIL", "destination_address": "htoo.m.kyaw645@gmail.com" },
+    // Automatic replies to visitors. Sending to addresses outside the account
+    // needs Cloudflare Email Sending switched on for htoomyatkyaw.com (see README).
+    { "name": "AUTO_REPLY", "allowed_sender_addresses": ["contact@htoomyatkyaw.com"] }
   ],
   "vars": {
     "CONTACT_TO": "htoo.m.kyaw645@gmail.com",
     "CONTACT_FROM": "contact@htoomyatkyaw.com",
+    "AUTO_REPLY_REPLY_TO": "Htoo.Kyaw@tufts.edu",
     "ALLOWED_ORIGINS": "https://htoomyatkyaw.com,https://www.htoomyatkyaw.com"
   },
 

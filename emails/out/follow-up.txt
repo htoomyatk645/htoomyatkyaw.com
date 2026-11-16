@@ -1,0 +1,14 @@
+Subject: Checking in on {{project}}
+
+Hi {{first_name}},
+
+I wanted to check in on {{project}}. I sent {{what_you_sent}} on {{sent_date}} and haven't heard back.
+
+If the timing has changed or you've gone another way, that's completely fine. A one-line reply is enough, so I know where things stand.
+
+If you're still interested, I can hold a start date of {{start_date}} until {{hold_until}}.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

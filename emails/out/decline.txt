@@ -1,0 +1,16 @@
+Subject: About {{project}}
+
+Hi {{first_name}},
+
+Thank you for thinking of me for {{project}}. I've looked at it carefully, and I can't take it on. {{reason}}
+
+I'd rather tell you now than do a job I can't give my full attention to.
+
+{{referral_line}}
+
+I hope it goes well, and I'd be glad to hear how it turns out.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

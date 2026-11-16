@@ -1,0 +1,19 @@
+Subject: {{project}} is delivered. Thank you.
+
+Hi {{first_name}},
+
+Everything for {{project}} is now with you: {{deliverables_link}}
+
+Thank you for trusting me with it. I enjoyed {{specific_moment}}.
+
+Two small requests, if you have a minute:
+
+- Tell me one thing I could have done better.
+- If the work helped, a sentence or two I can quote on my site would mean a lot.
+
+If questions come up while you build, email me. I'm happy to help.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

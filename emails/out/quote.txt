@@ -1,0 +1,24 @@
+Subject: Scope and quote for {{project}}
+
+Hi {{first_name}},
+
+It was good to talk. Here is what I'd do, how long it would take, and what it would cost.
+
+What I'll deliver
+
+- {{deliverable_1}}
+- {{deliverable_2}}
+- {{deliverable_3}}
+
+Timeline: {{timeline}}, starting {{start_date}}.
+
+Price: {{price}}. {{payment_terms}}
+
+Not included: {{out_of_scope}}
+
+This quote is good until {{valid_until}}. If you'd like to change the scope, tell me and I'll revise it. To go ahead, reply with a yes.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

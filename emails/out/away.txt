@@ -1,0 +1,12 @@
+Subject: Away until {{return_date}}
+
+Hi,
+
+Thank you for your email. I'm away until {{return_date}} and replying more slowly than usual.
+
+I'll answer after I'm back. For anything about Briefly that can't wait, please write to {{backup_contact}}.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

@@ -1,0 +1,13 @@
+{
+  "journal": {
+    "intro": "Notes on building Briefly, the cognitive science behind design, business done honestly, and the life around all of it.",
+    "emptyTitle": "first posts are on the way",
+    "emptyText": "I'm editing the first few now. Here is what I'll be writing about.",
+    "categories": {
+      "building-briefly": { "name": "Building Briefly", "color": "cyan" },
+      "cognitive-science": { "name": "Cognitive Science + Design", "color": "yellow" },
+      "business-ethics": { "name": "Business + Ethics", "color": "green" },
+      "personal": { "name": "Personal", "color": "pink" }
+    }
+  }
+}

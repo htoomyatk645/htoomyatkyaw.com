@@ -1,0 +1,22 @@
+Subject: A quick call about {{project}}?
+
+Hi {{first_name}},
+
+Thanks for the details. This sounds like work I'd enjoy, and I think I can help.
+
+The next step is a {{call_length}} call so I can understand the goal and you can ask me anything. These times work for me:
+
+- {{time_option_1}}
+- {{time_option_2}}
+- {{time_option_3}}
+
+Pick one, or send a time that suits you better.
+
+Book a time: {{booking_link}}
+
+After the call I'll send a written scope and a quote.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

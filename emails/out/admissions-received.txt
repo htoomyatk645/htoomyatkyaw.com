@@ -1,0 +1,18 @@
+Subject: I got your answers, {{first_name}}
+
+Hi {{first_name}},
+
+Thank you for filling out the survey. I've read your answers, and I'll write back by {{reply_by}}.
+
+A few things to know while you wait:
+
+- This help is free. I will never ask you for money.
+- Please don't send Social Security numbers or financial documents.
+- If you're under 18, you're welcome to include a parent, guardian, or counselor on our emails.
+
+You've already done the hard part by asking. Talk soon.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com
