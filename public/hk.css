@@ -401,3 +401,6 @@
 .hk-flow-loop{margin:14px 0 0!important;font-family:var(--hk-mono);font-size:13px!important;text-transform:uppercase;letter-spacing:-.02em;text-align:right}
 .hk-flow-loop i{display:inline-block;font-style:normal;font-size:16px;margin-right:4px}
 @media (max-width:809.98px){.hk-prose .hk-flow ol{grid-template-columns:1fr;gap:20px}.hk-flow li:not(:last-child)::after{content:"↓";left:50%;top:100%;translate:-50% 0;height:20px;line-height:20px}.hk-flow-loop{text-align:left}}
+.hk-phone-shot video{display:block;width:100%;height:auto;background:#fff}
+.hk-phones:has(figure:nth-of-type(4)) figure{max-width:150px;flex-basis:120px}
+.hk-phones:has(figure:nth-of-type(4)){gap:16px}

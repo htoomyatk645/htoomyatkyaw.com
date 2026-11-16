@@ -46,6 +46,13 @@
     $$("[data-progress]").forEach(progress);
     $$("[data-canvas]").forEach(canvas);
     $$("[data-survey]").forEach(survey);
+    // Videos marked data-autoplay play while on screen and pause when they leave.
+    if (!reduce && "IntersectionObserver" in window) {
+      var vio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { var p = e.target.play(); if (p && p.catch) p.catch(function () {}); } else e.target.pause(); });
+      }, { threshold: 0.5 });
+      $$("video[data-autoplay]").forEach(function (v) { vio.observe(v); });
+    }
     $$("[data-thread]").forEach(threadBlock);
     $$("[data-lab]").forEach(labBlock);
     $$("[data-contact]").forEach(contact);

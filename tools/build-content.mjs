@@ -139,7 +139,7 @@ function thread(inner) {
 // :::
 function phones(inner, credit) {
   const items = inner.filter((l) => l.trim()).map((l) => l.split("|").map((s) => s.trim()));
-  return `<div class="hk-phones" data-rise>${items.map(([src, cap]) => `<figure><span class="hk-phone-shot">${HANDLES}<img src="${esc(src)}" alt="${esc(cap || "")}" loading="lazy"></span>${cap ? `<figcaption>${inline(cap)}</figcaption>` : ""}</figure>`).join("")}${credit ? `<p class="hk-credit">${inline(credit)}</p>` : ""}</div>`;
+  return `<div class="hk-phones" data-rise>${items.map(([src, cap]) => `<figure><span class="hk-phone-shot">${HANDLES}${/\.(mp4|webm)$/i.test(src) ? `<video src="${esc(src)}" poster="${esc(src.replace(/\.\w+$/, "-poster.jpg"))}" muted loop playsinline controls preload="none" data-autoplay aria-label="${esc(cap || "")}"></video>` : `<img src="${esc(src)}" alt="${esc(cap || "")}" loading="lazy">`}</span>${cap ? `<figcaption>${inline(cap)}</figcaption>` : ""}</figure>`).join("")}${credit ? `<p class="hk-credit">${inline(credit)}</p>` : ""}</div>`;
 }
 
 // :::flow Text for the way back to the start (optional)

@@ -66,9 +66,17 @@ Two more additions are about order, so they don't show on a single screen.
 
 The fix was a single spotlight that stays on screen and glides from one target to the next, and a bubble that waits until it knows where its control is. Predictable movement lets a person anticipate what comes next instead of reacting to it.
 
+### The tour today
+
+:::phones Recorded on an iPhone, November 2026.
+/media/tour/tour-now.mp4 | The current tour, from the first hello to the Share step. One spotlight, one bubble, one thing to do.
+:::
+
 :::phones
-/media/tour/current-light.jpg | The current tour in light mode.
-/media/tour/current-dark.jpg | And in dark. One spotlight, one bubble, one thing to do.
+/media/tour/now-ghost.jpg | The ghost goes first: "Watch, I'll move it first."
+/media/tour/now-ring.jpg | The ring and its label mark the one control to use.
+/media/tour/now-hold.jpg | Hold-to-lock has its own step, and a "Done" reply.
+/media/tour/now-share.jpg | Share is taught early, while attention is fresh.
 :::
 
 ## How I find out what is wrong
