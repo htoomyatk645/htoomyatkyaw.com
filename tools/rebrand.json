@@ -130,11 +130,11 @@
     },
     {
       "find": "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day.",
-      "replace": "I'm most energized by making interacting with technology pain-free, and by people who care about the same thing. Podcasters, press, partners, researchers, neuroscientists, recruiters or fellow builders, I'd love to hear from you."
+      "replace": "I love talking about CPG businesses, human psychology, collaborating on ideas, and poetry. If curiosity and action is the main driver of your pursuits, I'd love to chat with you!"
     },
     {
       "find": "Open to contract work, full-time roles, and interesting conversations about hard design problems.",
-      "replace": "Briefly is heading to the App Store. Say hello."
+      "replace": "My most passionate invention, Briefly, is headed to the App Store, give it a chance to enlighten you!"
     },
     {
       "find": "COntact me",
@@ -188,7 +188,7 @@
     },
     {
       "find": "I'm Bejaman",
-      "replace": "I'm Htoo",
+      "replace": "I'm Htoo a.k.a Zaid,",
       "only": [
         "site/index.html",
         "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
@@ -196,7 +196,7 @@
     },
     {
       "find": "a product designer in Chicago who gets excited",
-      "replace": "a co-founder in Boston who gets excited",
+      "replace": "founder, operator, and a lifelong student who gets excited",
       "only": [
         "site/index.html",
         "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
@@ -204,7 +204,7 @@
     },
     {
       "find": "about making complicated things simple",
-      "replace": "about making podcasts easier to love",
+      "replace": "about making consumer products easy to use and scaling them worldwide",
       "only": [
         "site/index.html",
         "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
@@ -219,8 +219,16 @@
       ]
     },
     {
+      "find": "Motion Design",
+      "replace": "Scaling 🌏",
+      "only": [
+        "site/index.html",
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
       "find": "This is a showcase of what happens when curiosity drives the process.",
-      "replace": "Four chapters of building Briefly, from the first idea to the App Store."
+      "replace": "Here's a sneak peek of the surface level behind the scenes"
     },
     {
       "find": "a product designer in Chicago who gets excited",

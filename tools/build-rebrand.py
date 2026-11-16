@@ -69,8 +69,8 @@ rep("tel:+123456789", "https://briefly.briefa.net")
 FOOTER_OLD = "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day."
 rep(FOOTER_OLD, "I wear a few hats at Briefly. Here's what I do, and how.", ["VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"])
 rep(FOOTER_OLD, "I wear a few hats at Briefly. Here's what I do, and how.", ["site/services.html"], split=True)
-rep(FOOTER_OLD, "I'm most energized by making interacting with technology pain-free, and by people who care about the same thing. Podcasters, press, partners, researchers, neuroscientists, recruiters or fellow builders, I'd love to hear from you.")
-rep("Open to contract work, full-time roles, and interesting conversations about hard design problems.", "Briefly is heading to the App Store. Say hello.")
+rep(FOOTER_OLD, "I love talking about CPG businesses, human psychology, collaborating on ideas, and poetry. If curiosity and action is the main driver of your pursuits, I'd love to chat with you!")
+rep("Open to contract work, full-time roles, and interesting conversations about hard design problems.", "My most passionate invention, Briefly, is headed to the App Store, give it a chance to enlighten you!")
 rep("COntact me", "Contact me")
 
 # ---------------------------------------------------------------- home
@@ -84,11 +84,12 @@ rep("Product designer", "Cognitive Science centered builder & designer")
 rep("Chicago, IL", "Boston, MA")
 rep("what's up", "wassup")
 rep("my workspace", "my app")
-rep("I'm Bejaman", "I'm Htoo", HOME)
-rep("a product designer in Chicago who gets excited", "a co-founder in Boston who gets excited", HOME)
-rep("about making complicated things simple", "about making podcasts easier to love", HOME)
+rep("I'm Bejaman", "I'm Htoo a.k.a Zaid,", HOME)
+rep("a product designer in Chicago who gets excited", "founder, operator, and a lifelong student who gets excited", HOME)
+rep("about making complicated things simple", "about making consumer products easy to use and scaling them worldwide", HOME)
 rep("Interaction Design", "Product Interaction Design", HOME)
-rep("This is a showcase of what happens when curiosity drives the process.", "Four chapters of building Briefly, from the first idea to the App Store.")
+rep("Motion Design", "Scaling 🌏", HOME)
+rep("This is a showcase of what happens when curiosity drives the process.", "Here's a sneak peek of the surface level behind the scenes")
 
 # ---------------------------------------------------------------- about
 rep("a product designer in Chicago who gets excited", "a serial-entrepreneur, Questbridge Scholar at Tufts University, and a founder based in Boston who gets excited", ABOUT)
