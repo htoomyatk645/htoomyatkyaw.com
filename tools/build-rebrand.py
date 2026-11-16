@@ -103,21 +103,22 @@ rep("Currently, I'm at Meridian Health working on experiences for mental health 
 rep("When I'm not designing, you'll find me thinking about why some interfaces feel intuitive and others make you want to throw your laptop out a window. Usually with coffee. ",
     "When I'm not working on Briefly, studying, I'm training Brazilian Jiu-Jitsu, cooking, spending time with family or friends, or practicing languages: English, Urdu, and Burmese (fluent), Chinese (intermediate), Turkish (beginner). ")
 # principles
-rep("Starting with why, not what", "Start with the listener")
+rep("Starting with why, not what", "Start with attention")
 rep("Before jumping into wireframes, I want to understand what problem we're actually solving. Sometimes the thing people ask for isn't the thing they need. My favorite projects start with good questions and end with solutions that feel obvious in hindsight.",
-    "Before I design a screen, I want to know when and where someone is listening: commuting, cooking, or in the car. The context decides everything else.")
-rep("think first, draw later.", "listen first, draw later.")
-rep("Designing for real constraints", "Design for real constraints")
+    "Listening happens while hands and eyes are busy: commuting, cooking, driving. Attention is limited, so I design for the moment someone is in, not just the screen.")
+rep("think first, draw later.", "attention is a budget.")
+rep("Designing for real constraints", "Lower the cognitive load")
 rep("Perfect conditions don't exist. Budgets are tight, timelines are aggressive, legacy systems are messy, and sometimes you just can't talk to users directly. I'm comfortable making smart decisions with imperfect information and finding creative solutions within real limitations.",
-    "A student-founded team of three has limited time and finances. I'd rather make a few things very good than many things half good.")
-rep("no perfect world here!", "small team, sharp focus.")
-rep("Collaboration over hero design", "Build with the whole team")
+    "Working memory holds only a few things at once. Every screen asks for one decision, uses familiar patterns, and makes the next step obvious.")
+rep("no perfect world here!", "less to think about.")
+rep("Collaboration over hero design", "Accessible by default")
 rep("The best work happens when designers, engineers, and product folks are actually talking to each other—not throwing things over the wall. I genuinely enjoy the back-and-forth of figuring out what's possible, what's practical, and what's going to create the most value.",
-    "The best work happens when design, engineering, and growth are in one conversation.")
-rep("Making the invisible visible", "Make the invisible visible")
+    "Designing for a noisy train or a tired brain helps everyone, including people with limited vision or motor control. Audio-first design, CarPlay and large touch targets come from that.")
+rep("Making the invisible visible", "Build trust through feedback")
 rep("Some of the most impactful design work isn't flashy—it's the progress indicator that keeps people oriented, the auto-save that prevents panic, the validation message that actually helps instead of just saying 'error.' These details build trust.",
-    "A podcast brief is only useful if you trust it and if you trust us. Our ingestion pipeline incorporates the full contexts, picks up on small cues, and iterates on human trained data points, to build the trust in our users.")
+    "People trust what they can predict. Briefs keep the original speaker's voice, and the app responds clearly to every tap, so listeners always know what is happening and why.")
 rep("What dive into my work", "A dive into my work")
+rep("A dive into my work", "This is my approach to Briefly", ABOUT, near="framer-19x1pr")
 
 # timeline (About only; the same names are case-study titles elsewhere)
 TL = [
