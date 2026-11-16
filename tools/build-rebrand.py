@@ -99,9 +99,9 @@ rep("I spend my days designing for healthcare platforms, booking systems, and ot
 rep("I've worked on teams of two and teams of twenty. I've had access to endless user research and I've had to make educated guesses with limited data. I've worked within strict component libraries and I've built design systems from scratch. What stays consistent is asking good questions, collaborating with people who know more than me, and shipping things that actually help",
     "I'm the co-founder of Briefly, a short-form, audio-only podcast app. I lead product UI/UX design, organic marketing, and day-to-day operations with a team of three, and I direct AI coding agents and review their code, so I stay close to how an idea becomes a product.")
 rep("Currently, I'm at Meridian Health working on experiences for mental health clinicians and administrators. Before that, I spent almost two years at StyleBook helping salons manage their businesses (and discovering that stylists have very strong opinions about scheduling interfaces, which I deeply respect). ",
-    "I started Briefly in May 2026 while studying Cognitive Brain Science and Computer Science at Tufts. We're mentored through the Tufts Derby Center for Entrepreneurship by a founder with multiple tech exits. The iOS app is launched on the App Store in October 2026, and fully supports CarPlay. ")
+    "I study how legendary operators build, and I run Briefly by the Islamic ideals of commerce. Honest dealing, fair value, and mutual consent turn trade into a relationship instead of an extraction. When both sides can trust what they are getting, customers stay, teams stay, and a business earns something bigger than profit: the trust of the people it serves. If it isn't good for everyone it touches, it isn't worth building. ")
 rep("When I'm not designing, you'll find me thinking about why some interfaces feel intuitive and others make you want to throw your laptop out a window. Usually with coffee. ",
-    "When I'm not working on Briefly, studying, I'm training Brazilian Jiu-Jitsu, cooking, spending time with family or friends, or practicing languages: English, Urdu, and Burmese (fluent), Chinese (intermediate), Turkish (beginner). ")
+    "When I'm not working on Briefly or studying, I'm training Brazilian Jiu-Jitsu, cooking, spending time with family and friends, or practicing languages: English, Urdu, and Burmese (fluent), Chinese (intermediate), and Turkish (beginner). ")
 # principles
 rep("Starting with why, not what", "Start with attention")
 rep("Before jumping into wireframes, I want to understand what problem we're actually solving. Sometimes the thing people ask for isn't the thing they need. My favorite projects start with good questions and end with solutions that feel obvious in hindsight.",
@@ -124,7 +124,7 @@ rep("A dive into my work", "This is my approach to Briefly", ABOUT, near="framer
 
 # timeline (About only; the same names are case-study titles elsewhere)
 TL = [
-    ("Meridian Health", "Briefly Apps Inc.", "Sep 2025 - Current", "May 2026 - Present",
+    ("Meridian Health", "Briefly Apps Inc.", "Sep 2025 - Current", "Mar 2026 - Present",
      "Designing across scheduling, case management, treatment planning, and clinical documentation for mental health practices. The challenge is balancing what clinicians need with what administrators need—often very different things—while keeping everything HIPAA-compliant and actually usable. ",
      "Co-Founder & Member of Technical Staff. Co-founded a short-form, audio-only podcast app that turns full episodes into a personalized feed of AI-selected highlights. I co-built the AI pipeline and recommendation engine, lead product and UI/UX design, and grew our social presence organically to 2,700 followers and 1.5M+ views. "),
     ("StyleBook", "Tufts HRI Lab", "Mar 2024 - aug 2025", "Sep 2026 - Present",

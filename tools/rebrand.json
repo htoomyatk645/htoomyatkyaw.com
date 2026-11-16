@@ -256,11 +256,11 @@
     },
     {
       "find": "Currently, I'm at Meridian Health working on experiences for mental health clinicians and administrators. Before that, I spent almost two years at StyleBook helping salons manage their businesses (and discovering that stylists have very strong opinions about scheduling interfaces, which I deeply respect). ",
-      "replace": "I started Briefly in May 2026 while studying Cognitive Brain Science and Computer Science at Tufts. We're mentored through the Tufts Derby Center for Entrepreneurship by a founder with multiple tech exits. The iOS app is launched on the App Store in October 2026, and fully supports CarPlay. "
+      "replace": "I study how legendary operators build, and I run Briefly by the Islamic ideals of commerce. Honest dealing, fair value, and mutual consent turn trade into a relationship instead of an extraction. When both sides can trust what they are getting, customers stay, teams stay, and a business earns something bigger than profit: the trust of the people it serves. If it isn't good for everyone it touches, it isn't worth building. "
     },
     {
       "find": "When I'm not designing, you'll find me thinking about why some interfaces feel intuitive and others make you want to throw your laptop out a window. Usually with coffee. ",
-      "replace": "When I'm not working on Briefly, studying, I'm training Brazilian Jiu-Jitsu, cooking, spending time with family or friends, or practicing languages: English, Urdu, and Burmese (fluent), Chinese (intermediate), Turkish (beginner). "
+      "replace": "When I'm not working on Briefly or studying, I'm training Brazilian Jiu-Jitsu, cooking, spending time with family and friends, or practicing languages: English, Urdu, and Burmese (fluent), Chinese (intermediate), and Turkish (beginner). "
     },
     {
       "find": "Starting with why, not what",
@@ -341,7 +341,7 @@
     },
     {
       "find": "Sep 2025 - Current",
-      "replace": "May 2026 - Present",
+      "replace": "Mar 2026 - Present",
       "only": [
         "site/about.html",
         "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
