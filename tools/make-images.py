@@ -111,8 +111,8 @@ def save(im, name):
 
 
 # Portraits replacing the template's model.
-save(crop("preview-6.jpg", (870, 869), 0.59, 0.42, 0.47), "tEtevi8JenLoBT4YdyPpWydOJg.png")  # avatars, "2026", "it's me"
-save(crop("preview-2.jpg", (870, 869), 0.55, 0.40, 0.45), "O9xt0wGigYzX3kxKzDZ20639Y.jpg")  # About signature avatar
+save(crop("graduation.jpg", (870, 869), 0.50, 0.45, 1.0), "tEtevi8JenLoBT4YdyPpWydOJg.png")  # avatars, "2026", "it's me"
+save(crop("graduation.jpg", (870, 869), 0.50, 0.40, 0.75), "O9xt0wGigYzX3kxKzDZ20639Y.jpg")  # About signature avatar
 save(crop("IMG_4047.jpg", (382, 456), 0.52, 0.50, 0.55), "M2iKrRxfHsXjyXQCMHtRP56IA.png")  # inline photo in the hero sentence
 save(crop("IMG_5195.jpg", (938, 898), 0.50, 0.67, 0.56), "wxpAecGN18uH8LxIHrSmqj7J5s.png")  # contact polaroid "random shot"
 save(crop("IMG_4383.jpg", (1269, 1270), 0.40, 0.50, 0.56), "BpemFTgeHqmOEbavaTetbkDYBn0.png")  # contact polaroid "tiny moment!"

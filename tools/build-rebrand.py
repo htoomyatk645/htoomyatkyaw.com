@@ -92,12 +92,12 @@ rep("Motion Design", "Scaling 🌏", HOME)
 rep("This is a showcase of what happens when curiosity drives the process.", "Here's a sneak peek of the surface level behind the scenes")
 
 # ---------------------------------------------------------------- about
-rep("a product designer in Chicago who gets excited", "a serial-entrepreneur, Questbridge Scholar at Tufts University, and a founder based in Boston who gets excited", ABOUT)
-rep("about making complicated things simple", "about developing consumer facing technology", ABOUT)
+rep("a product designer in Chicago who gets excited", "a first-generation QuestBridge Scholar studying Cognitive and Brain Science and Computer Science at Tufts, who gets excited", ABOUT)
+rep("about making complicated things simple", "about neurotechnology and consumer products built around the mind", ABOUT)
 rep("I spend my days designing for healthcare platforms, booking systems, and other products where 'just figure it out' isn't an option. The people using these tools are busy, stressed, and have actual work to do. My job is to get out of their way.",
-    "I spend my days on one question: how do you give someone the best part of a podcast without taking away the voice? Briefly is a short-form, audio-only podcast platform. It pulls the best moments out of full episodes and serves them in a feed tuned to your interests, the way Instagram and TikTok learn what you like.")
+    "I study Cognitive and Brain Science alongside Computer Science at Tufts, an interdisciplinary path that combines neuroscience, computer science, and philosophy to study the mind. I'm drawn to neuroscience research for its rigor, to tech policy for its role in protecting human rights, and to consumer neurotechnology and wearables that bring the science into everyday life.")
 rep("I've worked on teams of two and teams of twenty. I've had access to endless user research and I've had to make educated guesses with limited data. I've worked within strict component libraries and I've built design systems from scratch. What stays consistent is asking good questions, collaborating with people who know more than me, and shipping things that actually help",
-    "Briefly is a team of three: me, a post-grad fellow formerly at Stanford HCI lab, and an engineer. I lead UI/UX, product design, and business strategy. We built the AI pipeline and recommendation engine together, and I direct coding agents and review their code, so I stay close to how an idea becomes a product.")
+    "I'm the co-founder of Briefly, a short-form, audio-only podcast app. I lead product UI/UX design, organic marketing, and day-to-day operations with a team of three, and I direct AI coding agents and review their code, so I stay close to how an idea becomes a product.")
 rep("Currently, I'm at Meridian Health working on experiences for mental health clinicians and administrators. Before that, I spent almost two years at StyleBook helping salons manage their businesses (and discovering that stylists have very strong opinions about scheduling interfaces, which I deeply respect). ",
     "I started Briefly in May 2026 while studying Cognitive Brain Science and Computer Science at Tufts. We're mentored through the Tufts Derby Center for Entrepreneurship by a founder with multiple tech exits. The iOS app is launched on the App Store in October 2026, and fully supports CarPlay. ")
 rep("When I'm not designing, you'll find me thinking about why some interfaces feel intuitive and others make you want to throw your laptop out a window. Usually with coffee. ",
@@ -105,18 +105,19 @@ rep("When I'm not designing, you'll find me thinking about why some interfaces f
 # principles
 rep("Starting with why, not what", "Start with attention")
 rep("Before jumping into wireframes, I want to understand what problem we're actually solving. Sometimes the thing people ask for isn't the thing they need. My favorite projects start with good questions and end with solutions that feel obvious in hindsight.",
-    "Listening happens while hands and eyes are busy: commuting, cooking, driving. Attention is limited, so I design for the moment someone is in, not just the screen.")
-rep("think first, draw later.", "attention is a budget.")
+    "People often listen while commuting, cooking, or driving, when their hands and eyes are occupied. Because attention is limited, I design experiences that accommodate the listener's environment rather than demanding their full attention.")
+rep("think first, draw later.", "Attention is a limited resource.")
 rep("Designing for real constraints", "Lower the cognitive load")
 rep("Perfect conditions don't exist. Budgets are tight, timelines are aggressive, legacy systems are messy, and sometimes you just can't talk to users directly. I'm comfortable making smart decisions with imperfect information and finding creative solutions within real limitations.",
-    "Working memory holds only a few things at once. Every screen asks for one decision, uses familiar patterns, and makes the next step obvious.")
-rep("no perfect world here!", "less to think about.")
+    "Working memory can only process a limited amount of information at once, so I design each screen around a single clear decision. By using familiar patterns and intuitive navigation, I make interactions easier to understand and the next step easier to recognize.")
+rep("no perfect world here!", "Simplicity reduces mental effort.")
 rep("Collaboration over hero design", "Accessible by default")
 rep("The best work happens when designers, engineers, and product folks are actually talking to each other—not throwing things over the wall. I genuinely enjoy the back-and-forth of figuring out what's possible, what's practical, and what's going to create the most value.",
-    "Designing for a noisy train or a tired brain helps everyone, including people with limited vision or motor control. Audio-first design, CarPlay and large touch targets come from that.")
+    "Designing for people who are distracted, tired, or navigating noisy environments creates a better experience for everyone, including those with visual or motor impairments. This principle guides my emphasis on audio-first interactions, CarPlay compatibility, and larger touch targets.")
 rep("Making the invisible visible", "Build trust through feedback")
 rep("Some of the most impactful design work isn't flashy—it's the progress indicator that keeps people oriented, the auto-save that prevents panic, the validation message that actually helps instead of just saying 'error.' These details build trust.",
-    "People trust what they can predict. Briefs keep the original speaker's voice, and the app responds clearly to every tap, so listeners always know what is happening and why.")
+    "Trust develops when people understand what to expect from a product and how it responds to their actions. By preserving the original speaker's voice and providing clear feedback for every interaction, I ensure listeners understand what is happening and remain confident in their experience.")
+rep("Main bio", "A peek into my world", ABOUT)
 rep("What dive into my work", "A dive into my work")
 rep("A dive into my work", "This is my approach to Briefly", ABOUT, near="framer-19x1pr")
 
