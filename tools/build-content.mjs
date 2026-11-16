@@ -74,7 +74,8 @@ function markdown(src) {
       const [, name, arg] = fence;
       if (name === "canvas") { flush(); parts.push({ block: canvas(arg, inner) }); }
       else if (name === "thread") { flush(); parts.push({ block: thread(inner) }); }
-      else if (name === "phones") { flush(); parts.push({ block: phones(inner) }); }
+      else if (name === "phones") { flush(); parts.push({ block: phones(inner, arg) }); }
+      else if (name === "flow") { flush(); parts.push({ block: flow(inner, arg) }); }
       else if (name === "lab") { flush(); parts.push({ block: lab(inner) }); }
       else if (name === "video" || name === "image") { flush(); parts.push({ block: framed(name, arg, inner) }); }
       else html += `<div class="hk-note c-${{ note: "yellow", decision: "cyan", learned: "green" }[name] || "yellow"}" data-label="${esc(arg || name)}">${markdown(inner.join("\n")).map((p) => p.html).join("")}</div>`;
@@ -136,9 +137,17 @@ function thread(inner) {
 // :::phones            Phone screenshots side by side, each with a caption.
 // /media/file.jpg | Caption
 // :::
-function phones(inner) {
+function phones(inner, credit) {
   const items = inner.filter((l) => l.trim()).map((l) => l.split("|").map((s) => s.trim()));
-  return `<div class="hk-phones" data-rise>${items.map(([src, cap]) => `<figure><span class="hk-phone-shot">${HANDLES}<img src="${esc(src)}" alt="${esc(cap || "")}" loading="lazy"></span>${cap ? `<figcaption>${inline(cap)}</figcaption>` : ""}</figure>`).join("")}</div>`;
+  return `<div class="hk-phones" data-rise>${items.map(([src, cap]) => `<figure><span class="hk-phone-shot">${HANDLES}<img src="${esc(src)}" alt="${esc(cap || "")}" loading="lazy"></span>${cap ? `<figcaption>${inline(cap)}</figcaption>` : ""}</figure>`).join("")}${credit ? `<p class="hk-credit">${inline(credit)}</p>` : ""}</div>`;
+}
+
+// :::flow Text for the way back to the start (optional)
+// One step per line; start a line with * to highlight it.
+// :::
+function flow(inner, loop) {
+  const steps = inner.filter((l) => l.trim()).map((l) => l.trim());
+  return `<div class="hk-flow" data-rise><ol>${steps.map((s, i) => `<li${s.startsWith("*") ? ' class="key"' : ""} style="--i:${i}" data-rise><b>${String(i + 1).padStart(2, "0")}</b>${inline(s.replace(/^\*\s*/, ""))}</li>`).join("")}</ol>${loop ? `<p class="hk-flow-loop"><i>↺</i> ${inline(loop)}</p>` : ""}</div>`;
 }
 
 // :::lab               A sketch of a cluttered app tour that the reader fixes.
@@ -274,7 +283,7 @@ posts.forEach((p, i) => {
   const others = posts.filter((o) => o !== p).sort((a, b) => (b.category === p.category) - (a.category === p.category)).slice(0, 3);
   const block = `<div class="hk">${draftBar(p)}<div class="hk-progress" data-progress></div>
 <article class="hk-post">
-<header class="hk-post-side" data-rise><a class="hk-back" href="/blog"><i>←</i> Journal</a><span class="hk-date">${fmtDate(p.date)}</span><span class="hk-tag c-${cat.color}">${esc(cat.name)}</span><h1>${esc(p.title)}</h1><span class="hk-label">Summary</span><p class="hk-summary">${esc(p.summary)}</p><span class="hk-mono">${minutes(p.body)} min read</span></header>
+<header class="hk-post-side" data-rise><a class="hk-back" href="/blog"><i>←</i> Journal</a><span class="hk-date">${fmtDate(p.date)}</span><span class="hk-tag c-${cat.color}">${esc(cat.name)}</span><h1>${esc(p.title)}</h1>${p.deck ? `<p class="hk-deck">${esc(p.deck)}</p>` : ""}<span class="hk-label">Summary</span><p class="hk-summary">${esc(p.summary)}</p><span class="hk-mono">${minutes(p.body)} min read</span></header>
 <div class="hk-post-body" data-article data-rise style="--i:1"><div class="hk-prose">${markdown(p.body).map((x) => x.html || x.block).join("")}</div></div>
 </article>
 ${others.length ? `<aside class="hk-more"><p class="hk-hand hk-more-h" data-rise><span>other articles</span></p><ol class="hk-posts">${others.map(card).join("")}</ol></aside>` : ""}</div>`;

@@ -2,6 +2,7 @@
 title: The tour that talks like a text thread
 date: 2026-11-12
 category: cognitive-science
+deck: Cut what taught nothing. Add what helped people act.
 summary: Briefly's app tour speaks like an iMessage thread. Here is what I cut, what I added, and how watching people think aloud showed me which was which.
 ---
 I study Cognitive and Brain Science alongside Computer Science, and I design a consumer app. The app tour in Briefly is the place where those two subjects meet most clearly. It speaks like a text thread. This post explains why, one decision at a time: what I cut, what I added, and how I check each choice by watching real people use it.
@@ -19,6 +20,12 @@ I study Cognitive and Brain Science alongside Computer Science, and I design a c
 :::
 
 Cognitive scientists call the alternative recognition over recall. A familiar form is understood on sight, with no effort to remember how it works.
+
+:::phones Screens collected on [Mobbin](https://mobbin.com).
+/media/tour/mobbin-messages.jpg | Apple's Messages: grey comes in, blue goes out.
+/media/tour/mobbin-grok-bot.jpg | Grok Bot: grey replies from the other side, and one short line from the person.
+/media/tour/mobbin-badoo.jpg | Badoo: short rounded bubbles, each with room around it.
+:::
 
 The form also keeps every message short. A bubble holds one thought, and a thread has a steady rhythm of them. In the tour, the guide texts in grey and the person answers with a blue "Done" when they have tried the thing it asked for.
 
@@ -69,6 +76,14 @@ The fix was a single spotlight that stays on screen and glides from one target t
 I do not trust my own eyes for this. I have seen these screens every day, and they have stopped being strange to me. So I watch someone else use them.
 
 My method is simple. I sit beside a person while they use the app, and I ask them to think out loud. They say what they see, what they expect, and what confuses them. I do not answer their questions. I write each one down.
+
+:::flow Then I watch the next person
+Watch a person use the app
+They think out loud
+* I stay silent and write down every question
+Debrief when it ends
+Change one thing
+:::
 
 > The question itself is the finding.
 

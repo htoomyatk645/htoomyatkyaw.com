@@ -387,3 +387,17 @@
 .add-reply .ph-nice{display:inline}.add-reply .ph-out{display:block;animation:hk-pop .45s var(--hk-spring) both;transform-origin:100% 100%}
 @media (max-width:809.98px){.hk-lab{grid-template-columns:1fr;padding:14px}.hk-lab-stage{top:56px;z-index:2;background:rgb(247,247,247);padding-bottom:8px}.ph{height:400px;width:230px}.ph-cards{display:none}.hk-lab-item p{padding-left:12px}}
 @media (prefers-reduced-motion:reduce){.ph-tour,.ph-scrim,.ph-ghost{animation:none!important}.add-ghost .ph-ghost{opacity:1}}
+
+.hk-deck{margin:0;font-size:21px;line-height:1.3;letter-spacing:-.02em;color:rgb(60,61,61)}
+.hk-credit{flex-basis:100%;margin:0!important;text-align:center;font-family:var(--hk-mono);font-size:12px!important;text-transform:uppercase;letter-spacing:-.02em;color:var(--hk-mute)}
+.hk-phones:has(figure:nth-of-type(3)) figure{max-width:190px;flex-basis:150px}
+/* A row of steps with one highlighted, and a line for the way back round. */
+.hk-flow{margin:2em 0}
+.hk-prose .hk-flow ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px}
+.hk-flow li{position:relative;margin:0;padding:12px 12px 16px;background:#fff;border:1.5px solid var(--hk-ink);font-size:14.5px;line-height:1.3;font-weight:500}
+.hk-flow li b{display:block;margin-bottom:8px;font-family:var(--hk-mono);font-size:12px;font-weight:500}
+.hk-flow li.key{background:var(--hk-yellow);box-shadow:4px 4px 0 var(--hk-ink);rotate:-1.5deg}
+.hk-flow li:not(:last-child)::after{content:"→";position:absolute;left:100%;top:50%;width:22px;text-align:center;translate:0 -50%;font-family:var(--hk-mono);font-size:15px}
+.hk-flow-loop{margin:14px 0 0!important;font-family:var(--hk-mono);font-size:13px!important;text-transform:uppercase;letter-spacing:-.02em;text-align:right}
+.hk-flow-loop i{display:inline-block;font-style:normal;font-size:16px;margin-right:4px}
+@media (max-width:809.98px){.hk-prose .hk-flow ol{grid-template-columns:1fr;gap:20px}.hk-flow li:not(:last-child)::after{content:"↓";left:50%;top:100%;translate:-50% 0;height:20px;line-height:20px}.hk-flow-loop{text-align:left}}
