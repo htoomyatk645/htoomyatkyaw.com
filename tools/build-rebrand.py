@@ -118,6 +118,7 @@ rep("Making the invisible visible", "Build trust through feedback")
 rep("Some of the most impactful design work isn't flashy—it's the progress indicator that keeps people oriented, the auto-save that prevents panic, the validation message that actually helps instead of just saying 'error.' These details build trust.",
     "Trust develops when people understand what to expect from a product and how it responds to their actions. By preserving the original speaker's voice and providing clear feedback for every interaction, I ensure listeners understand what is happening and remain confident in their experience.")
 rep("Main bio", "A peek into my world", ABOUT)
+rep("Timeline", "My non-linear journey so far......", ABOUT)
 rep("What dive into my work", "A dive into my work")
 rep("A dive into my work", "This is my approach to Briefly", ABOUT, near="framer-19x1pr")
 
@@ -291,6 +292,8 @@ SITE_CSS = ("#coming-soon{position:fixed;left:50%;bottom:32px;transform:translat
 SITE_SCRIPT = "<style>" + SITE_CSS + "</style><script>" + "".join(l.strip() for l in SITE_JS.splitlines()) + "</script>"
 # Anchor on Framer's bodyEnd marker so standalone pages in site/ are left alone.
 rep("<!-- End of bodyEnd -->", "<!-- End of bodyEnd -->" + SITE_SCRIPT, [".html"])
+# About: collapsible experience list (site/journey.js replaces the template timeline).
+rep("<!-- End of bodyEnd -->", "<!-- End of bodyEnd --><script src=\"/journey.js\" defer></script>", ["site/about.html"])
 
 # ---------------------------------------------------------------- asset URLs
 # Serve every asset under a new prefix so browsers that cached /_ext/* as
