@@ -1,0 +1,20 @@
+Subject: Next steps for {{help_topic}}
+
+Hi {{first_name}},
+
+Thanks for your patience. You asked for help with {{help_topic}}, so here is where I'd start.
+
+- {{step_1}}
+- {{step_2}}
+- {{step_3}}
+
+To give you better feedback, please send me {{what_to_send}}. A rough draft is fine. It doesn't need to be finished.
+
+Your next deadline is {{deadline}}, so I'd aim to have this done by {{target_date}}.
+
+This is one student's advice, and it isn't connected to Tufts Admissions or QuestBridge. Use what helps.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

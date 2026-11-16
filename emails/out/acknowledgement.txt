@@ -1,0 +1,12 @@
+Subject: Re: {{their_subject}}
+
+Hi {{first_name}},
+
+I've received this, thank you. I want to give it a real answer, so I'll get back to you by {{reply_by}}.
+
+If it becomes urgent before then, reply with "urgent" in the subject line and I'll see it sooner.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

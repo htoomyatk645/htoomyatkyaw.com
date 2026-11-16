@@ -1,0 +1,18 @@
+Subject: Re: {{their_subject}}
+
+Hi {{first_name}},
+
+Thank you for getting in touch about {{topic}}.
+
+Briefly is a short-form, audio-only podcast app. It finds the moments in an episode that are worth hearing and plays them as real clips, in the host's own voice, with a path back to the full episode.
+
+{{your_answer}}
+
+I'd be glad to talk it through. Does {{time_option}} work for a short call?
+
+See Briefly: https://briefly.briefa.net
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

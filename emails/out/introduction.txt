@@ -1,0 +1,16 @@
+Subject: {{specific_reason}}
+
+Hi {{first_name}},
+
+I'm Htoo, a student at Tufts studying Cognitive and Brain Science and Computer Science, and co-founder of Briefly, a short-form podcast app.
+
+I'm writing because {{why_them}}.
+
+Would you be open to {{the_ask}}? I know your time is limited, so I'll keep it to {{time_needed}} and come prepared.
+
+Either way, thank you for {{their_work}}.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

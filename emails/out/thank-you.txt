@@ -1,0 +1,16 @@
+Subject: Thank you, {{first_name}}
+
+Hi {{first_name}},
+
+Thank you for making time on {{day}}. I learned a lot from our conversation.
+
+What stayed with me most was {{takeaway}}.
+
+As promised, {{follow_through}}.
+
+I'd like to stay in touch. If I can ever be useful to you, please ask.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

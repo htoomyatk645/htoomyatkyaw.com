@@ -76,6 +76,24 @@ The four cards on `/case-study` still open the standalone write-ups (the `LIVE` 
 
 The template's own blog posts and case-study pages are removed from `site/` by `npm run content`, so `npm run compare` no longer has those pages to compare.
 
+## Emails
+
+`emails/templates.json` holds every email: who it is from, and for each template a subject, a heading word and colour, and the body. `npm run emails` (part of `npm run deploy`) builds:
+
+- `emails/out/<id>.html` and `.txt`: each email as mail-safe HTML and plain text.
+- `site/email/*.png`: the pixel-font headings as pictures (mail apps don't load web fonts), served from the live site.
+- `emails/gallery.html`: a page to pick a template, fill in the `{{blanks}}` and copy it into Gmail.
+- `src/auto-replies.js`: the two templates marked `"auto"`, which the Worker sends by itself.
+
+**Automatic replies.** When someone uses the contact form or finishes the admissions survey, the Worker emails you as before and then sends that person a confirmation: `auto-contact` or `auto-admissions`. It adds their first name and, for the survey, the topics they picked. Nothing else they typed is repeated back. Replies to it go to the address in `AUTO_REPLY_REPLY_TO` (`wrangler.jsonc`).
+
+Delivery to visitors needs one of these, set up once:
+
+1. Cloudflare Email Sending switched on for `htoomyatkyaw.com` in the Cloudflare dashboard (Email section), so the `AUTO_REPLY` binding may send to any address. Email Routing alone only delivers to your own verified addresses.
+2. Or a [Resend](https://resend.com) account with `htoomyatkyaw.com` verified, and its key saved with `npx wrangler secret put RESEND_API_KEY`. When that secret exists the Worker uses Resend.
+
+Until one of them is in place the forms keep working and you still get every submission; the confirmation is skipped and `npx wrangler tail` shows "auto-reply failed".
+
 ## Contact form
 
 The mirrored Framer form (Message, then Email) posts multipart form data to Framer's forms API. The mirror rewrites that URL to `/api/forms/…`, and `public/contact-bridge.js` also catches any form request that was missed. The Worker checks the request (allowed origin, honeypot fields including the hidden ones Framer's form adds, 32 KB size limit, 5 requests per minute per IP) and strips Framer's `__framer_*` bot-check fields. It then sends a plain-text email through Cloudflare Email Routing:

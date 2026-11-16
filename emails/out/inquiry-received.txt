@@ -1,0 +1,19 @@
+Subject: Got your message, {{first_name}}
+
+Hi {{first_name}},
+
+Thank you for reaching out about {{project}}. I read every message myself, and I'll send a proper reply by {{reply_by}}.
+
+A few details would help me give you a useful answer:
+
+- What you're building, and who it's for
+- Where it stands today (an idea, a prototype, or a live product)
+- When you'd like to start, and any deadline
+- A rough budget range, if you have one
+
+Reply to this email with whatever you have. Short notes are fine.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

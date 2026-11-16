@@ -1,0 +1,16 @@
+Subject: About your admissions help request
+
+Hi {{first_name}},
+
+Thank you for reaching out. I'm helping as many students as I can right now, and I can't give your application the attention it deserves until {{available_date}}.
+
+If your deadline is before then, please don't wait for me. Your school counselor and the QuestBridge website are good places to start today.
+
+If {{available_date}} still works for you, reply to this email and I'll save you a spot.
+
+I'm sorry I can't start sooner. I'm rooting for you.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

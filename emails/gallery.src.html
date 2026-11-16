@@ -1,0 +1,164 @@
+<title>Htoo's Email Kit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: a template list on the left, the working email on the right; one column on phones. */
+@font-face{font-family:Flux;src:url(data:font/woff2;base64,__FLUX__);font-weight:1000}
+:root{
+  --bg:#ffffff;--fg:#111212;--mute:#6b6c6c;--line:#e4e4e4;--panel:#f7f7f7;--grid:rgba(17,18,18,.05);
+  --cyan:#36c5f0;--cyan-t:#a4e5f8;--yellow:#ecb22e;--yellow-t:#f5dda1;--pink:#e01e5a;--pink-t:#fabed1;--green:#2fbc81;--green-t:#a1dfc5;
+  --on-tint:#111212;--btn:#111212;--btn-fg:#ffffff;
+  --display:Flux,"DM Mono",monospace;--mono:"DM Mono",ui-monospace,Menlo,monospace;--sans:Inter,system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111212;--fg:#f2f2f2;--mute:#a3a4a4;--line:#343535;--panel:#1b1c1c;--grid:rgba(255,255,255,.05);--btn:#f2f2f2;--btn-fg:#111212;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111212;--fg:#f2f2f2;--mute:#a3a4a4;--line:#343535;--panel:#1b1c1c;--grid:rgba(255,255,255,.05);--btn:#f2f2f2;--btn-fg:#111212;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 15px/1.5 var(--sans);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:100px 100px}
+.wrap{max-width:1240px;margin:0 auto;padding-block:36px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font:1000 clamp(52px,9vw,104px)/.8 var(--display);letter-spacing:-.025em;text-transform:uppercase;margin:0 0 18px}
+.lede{max-width:60ch;margin:0 0 32px;font-size:17px}
+.mono{font:500 12px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.04em}
+.cols{display:grid;grid-template-columns:270px minmax(0,1fr);gap:28px;align-items:start}
+nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);display:flex;flex-direction:column;gap:18px}
+nav h2{margin:0 0 6px;color:var(--mute)}
+nav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+nav button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:9px 10px;border:1px solid transparent;background:none;color:inherit;font:500 14px/1.25 var(--sans);cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1),background-color .2s}
+nav button::before{content:"";flex:none;width:9px;height:9px;background:var(--c)}
+nav button:hover{transform:translateX(3px);background:var(--panel)}
+nav button[aria-current=true]{border-color:var(--fg);background:var(--ct);color:var(--on-tint)}
+.c-cyan{--c:var(--cyan);--ct:var(--cyan-t)}.c-yellow{--c:var(--yellow);--ct:var(--yellow-t)}.c-pink{--c:var(--pink);--ct:var(--pink-t)}.c-green{--c:var(--green);--ct:var(--green-t)}
+select{display:none;width:100%;padding:12px;border:1px solid var(--fg);background:var(--bg);color:var(--fg);font:500 15px var(--sans)}
+main{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{border:1px solid var(--fg);background:var(--bg);padding:18px;display:flex;flex-direction:column;gap:14px}
+.when{margin:0;font-size:17px}
+.subject{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.subject output{flex:1;min-width:0;font:500 17px/1.3 var(--sans);overflow-wrap:anywhere}
+.fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.fields label{display:flex;flex-direction:column;gap:5px;color:var(--mute)}
+.fields input{width:100%;padding:9px 10px;border:1px solid var(--line);border-bottom:2px solid var(--fg);background:var(--bg);color:var(--fg);font:400 15px var(--sans);border-radius:0}
+.fields input:focus{outline:2px solid var(--cyan);outline-offset:1px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{padding:11px 14px;border:1px solid var(--btn);background:var(--btn);color:var(--btn-fg);font:500 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.03em;cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--fg)}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:scale(.96)}
+.btn:focus-visible,nav button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+#status{color:var(--mute);min-height:1.2em}
+.preview{border:1px solid var(--fg);background:#f7f7f7;color:#111212;overflow-x:auto}
+.preview mark{background:#f5dda1;color:#111212;font-family:var(--mono);font-size:.85em;padding:0 3px}
+textarea{position:absolute;left:-9999px;top:0}
+.note{margin:0;color:var(--mute);font-size:14px;max-width:70ch}
+@media (max-width:860px){.cols{grid-template-columns:1fr}nav{position:static}nav>div{display:none}select{display:block}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<div class="wrap">
+  <h1>Email kit</h1>
+  <p class="lede">Eighteen emails in the look of htoomyatkyaw.com. Pick one, fill in the blanks, and copy it into Gmail or any other mail app.</p>
+  <div class="cols">
+    <nav aria-label="Templates"><select id="pick" aria-label="Template"></select><div id="list"></div></nav>
+    <main>
+      <div class="card">
+        <span class="mono" id="group"></span>
+        <p class="when" id="when"></p>
+        <div class="subject"><span class="mono">Subject</span><output id="subject"></output><button class="btn ghost" id="copy-subject" type="button">Copy subject</button></div>
+        <div class="fields" id="fields"></div>
+        <div class="actions">
+          <button class="btn" id="copy-rich" type="button">Copy email</button>
+          <button class="btn ghost" id="copy-html" type="button">Copy HTML</button>
+          <button class="btn ghost" id="copy-text" type="button">Copy plain text</button>
+          <span class="mono" id="status" role="status"></span>
+        </div>
+        <p class="note">"Copy email" keeps the design when you paste into a new Gmail message. Blanks you leave empty stay as {{name}} so you can spot them. The heading picture and portrait load from htoomyatkyaw.com, so they appear in sent mail once the site is deployed.</p>
+      </div>
+      <div class="preview" id="preview"></div>
+    </main>
+  </div>
+</div>
+<textarea id="scratch" aria-hidden="true" tabindex="-1"></textarea>
+<script type="application/json" id="data">__DATA__</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById("data").textContent), T = D.templates;
+  var $ = function (id) { return document.getElementById(id); };
+  var values = {}, current = T[0];
+  try { values = JSON.parse(localStorage.getItem("email-kit-values") || "{}") || {}; } catch (e) {}
+  function save() { try { localStorage.setItem("email-kit-values", JSON.stringify(values)); } catch (e) {} }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function label(k) { return k.replace(/_/g, " "); }
+  function keys(t) { var out = []; (t.subject + t.html).replace(/\{\{(\w+)\}\}/g, function (_, k) { if (out.indexOf(k) < 0) out.push(k); }); return out; }
+  // mode: "html" escapes values, "text" leaves them, "preview" also marks empty blanks.
+  function fill(s, mode) {
+    return s.replace(/\{\{(\w+)\}\}/g, function (m, k) {
+      var v = (values[k] || "").trim();
+      if (!v) return mode === "preview" ? "<mark>" + label(k) + "</mark>" : m;
+      return mode === "text" ? v : esc(v);
+    });
+  }
+  function local(html) {
+    return html.split(D.origin + "/email/").map(function (part, i) {
+      if (!i) return part;
+      var file = part.slice(0, part.indexOf('"'));
+      return D.banners[file] + part.slice(file.length);
+    }).join("").split(D.origin + "/brand/portrait-mark.png").join(D.banners.__portrait || "");
+  }
+  function left() { return keys(current).filter(function (k) { return !(values[k] || "").trim(); }).length; }
+  function render() {
+    $("subject").textContent = fill(current.subject, "text").replace(/\{\{(\w+)\}\}/g, function (_, k) { return "[" + label(k) + "]"; });
+    $("preview").innerHTML = local(fill(current.html, "preview"));
+  }
+  function choose(id) {
+    current = T.filter(function (t) { return t.id === id; })[0] || T[0];
+    $("group").textContent = current.group + " · " + current.name;
+    $("when").textContent = current.when;
+    $("pick").value = current.id;
+    [].forEach.call(document.querySelectorAll("#list button"), function (b) { b.setAttribute("aria-current", String(b.dataset.id === current.id)); });
+    $("fields").innerHTML = keys(current).map(function (k) {
+      return '<label class="mono" for="f-' + k + '">' + esc(label(k)) + '<input id="f-' + k + '" data-k="' + k + '" value="' + esc(values[k] || "") + '" autocomplete="off"></label>';
+    }).join("");
+    $("status").textContent = "";
+    render();
+  }
+  $("fields").addEventListener("input", function (e) { var k = e.target.dataset.k; if (!k) return; values[k] = e.target.value; save(); render(); });
+
+  var groups = [];
+  T.forEach(function (t) { if (groups.indexOf(t.group) < 0) groups.push(t.group); });
+  $("list").innerHTML = groups.map(function (g) {
+    return '<div><h2 class="mono">' + esc(g) + "</h2><ul>" + T.filter(function (t) { return t.group === g; }).map(function (t) {
+      return '<li><button type="button" class="c-' + t.color + '" data-id="' + t.id + '">' + esc(t.name) + "</button></li>";
+    }).join("") + "</ul></div>";
+  }).join("");
+  $("list").style.cssText = "display:flex;flex-direction:column;gap:18px";
+  $("pick").innerHTML = groups.map(function (g) {
+    return '<optgroup label="' + esc(g) + '">' + T.filter(function (t) { return t.group === g; }).map(function (t) { return '<option value="' + t.id + '">' + esc(t.name) + "</option>"; }).join("") + "</optgroup>";
+  }).join("");
+  $("list").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) choose(b.dataset.id); });
+  $("pick").addEventListener("change", function () { choose($("pick").value); });
+
+  function done(what) { var n = left(); $("status").textContent = what + " copied" + (n ? " · " + n + " blank" + (n > 1 ? "s" : "") + " left" : ""); }
+  function fail() { $("status").textContent = "Copy was blocked. Select the text and copy it by hand."; }
+  function copyText(s, what) {
+    function fallback() {
+      var a = $("scratch"); a.value = s; a.select();
+      try { document.execCommand("copy") ? done(what) : fail(); } catch (e) { fail(); }
+    }
+    try { navigator.clipboard.writeText(s).then(function () { done(what); }, fallback); } catch (e) { fallback(); }
+  }
+  $("copy-subject").addEventListener("click", function () { copyText(fill(current.subject, "text"), "Subject"); });
+  $("copy-html").addEventListener("click", function () { copyText(fill(current.html, "html"), "HTML"); });
+  $("copy-text").addEventListener("click", function () { copyText(fill(current.text, "text"), "Plain text"); });
+  $("copy-rich").addEventListener("click", function () {
+    var html = fill(current.html, "html"), plain = fill(current.text, "text");
+    // Fallback: put the real (hosted-image) markup in the preview, select it, copy, then restore.
+    function fallback() {
+      var box = $("preview"); box.innerHTML = html;
+      var r = document.createRange(); r.selectNodeContents(box);
+      var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      var ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+      s.removeAllRanges(); render(); ok ? done("Email") : fail();
+    }
+    try {
+      navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob([html], { type: "text/html" }), "text/plain": new Blob([plain], { type: "text/plain" }) })]).then(function () { done("Email"); }, fallback);
+    } catch (e) { fallback(); }
+  });
+  choose(T[0].id);
+})();
+</script>

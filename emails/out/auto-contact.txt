@@ -1,0 +1,18 @@
+Subject: Got your message
+
+Hi {{first_name}},
+
+Thank you for writing. This is an automatic note to confirm that your message reached me. I read every one myself and I'll reply personally, usually within a few days.
+
+If you wrote about a project, these details help me give you a useful answer:
+
+- What you're building, and who it's for
+- Where it stands today (an idea, a prototype, or a live product)
+- When you'd like to start, and any deadline
+
+You can reply to this email to add anything.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

@@ -1,0 +1,22 @@
+Subject: We're on: {{project}}
+
+Hi {{first_name}},
+
+I'm glad we're doing this. Here is how the first week will go.
+
+- Discover: I get to know your users, your product, and the problem worth solving.
+- Define: I turn that into one clear direction and a short list of priorities.
+- Design: I explore, test, and refine until it feels right.
+- Deliver: I hand it over ready to build, and stay close while it ships.
+
+To start, I need these from you by {{needed_by}}:
+
+- {{need_1}}
+- {{need_2}}
+
+I'll send an update every {{update_day}}. If something is unclear before then, email me.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

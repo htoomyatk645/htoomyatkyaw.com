@@ -1,0 +1,376 @@
+{
+  "sender": {
+    "name": "Htoo Myat Kyaw",
+    "role": "Co-founder of Briefly · Product design and consulting",
+    "email": "Htoo.Kyaw@tufts.edu",
+    "site": "https://htoomyatkyaw.com",
+    "briefly": "https://briefly.briefa.net",
+    "from": "contact@htoomyatkyaw.com"
+  },
+  "templates": [
+    {
+      "id": "inquiry-received",
+      "group": "Services",
+      "name": "Inquiry received",
+      "when": "Someone asks about hiring you. Send this first.",
+      "banner": "Got it",
+      "color": "cyan",
+      "subject": "Got your message, {{first_name}}",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for reaching out about {{project}}. I read every message myself, and I'll send a proper reply by {{reply_by}}.",
+        "A few details would help me give you a useful answer:",
+        {
+          "list": [
+            "What you're building, and who it's for",
+            "Where it stands today (an idea, a prototype, or a live product)",
+            "When you'd like to start, and any deadline",
+            "A rough budget range, if you have one"
+          ]
+        },
+        "Reply to this email with whatever you have. Short notes are fine."
+      ]
+    },
+    {
+      "id": "discovery-call",
+      "group": "Services",
+      "name": "Set up a call",
+      "when": "The project looks like a fit and you want to talk.",
+      "banner": "Let's talk",
+      "color": "yellow",
+      "subject": "A quick call about {{project}}?",
+      "body": [
+        "Hi {{first_name}},",
+        "Thanks for the details. This sounds like work I'd enjoy, and I think I can help.",
+        "The next step is a {{call_length}} call so I can understand the goal and you can ask me anything. These times work for me:",
+        {
+          "list": [
+            "{{time_option_1}}",
+            "{{time_option_2}}",
+            "{{time_option_3}}"
+          ]
+        },
+        "Pick one, or send a time that suits you better.",
+        {
+          "button": {
+            "label": "Book a time",
+            "url": "{{booking_link}}"
+          }
+        },
+        "After the call I'll send a written scope and a quote."
+      ]
+    },
+    {
+      "id": "quote",
+      "group": "Services",
+      "name": "Scope and quote",
+      "when": "After the call, to put the offer in writing.",
+      "banner": "The plan",
+      "color": "green",
+      "subject": "Scope and quote for {{project}}",
+      "body": [
+        "Hi {{first_name}},",
+        "It was good to talk. Here is what I'd do, how long it would take, and what it would cost.",
+        "**What I'll deliver**",
+        {
+          "list": [
+            "{{deliverable_1}}",
+            "{{deliverable_2}}",
+            "{{deliverable_3}}"
+          ]
+        },
+        "**Timeline:** {{timeline}}, starting {{start_date}}.",
+        "**Price:** {{price}}. {{payment_terms}}",
+        "**Not included:** {{out_of_scope}}",
+        "This quote is good until {{valid_until}}. If you'd like to change the scope, tell me and I'll revise it. To go ahead, reply with a yes."
+      ]
+    },
+    {
+      "id": "kickoff",
+      "group": "Services",
+      "name": "Project kickoff",
+      "when": "They said yes. Sets out what happens next.",
+      "banner": "Welcome",
+      "color": "green",
+      "subject": "We're on: {{project}}",
+      "body": [
+        "Hi {{first_name}},",
+        "I'm glad we're doing this. Here is how the first week will go.",
+        {
+          "list": [
+            "**Discover:** I get to know your users, your product, and the problem worth solving.",
+            "**Define:** I turn that into one clear direction and a short list of priorities.",
+            "**Design:** I explore, test, and refine until it feels right.",
+            "**Deliver:** I hand it over ready to build, and stay close while it ships."
+          ]
+        },
+        "To start, I need these from you by {{needed_by}}:",
+        {
+          "list": [
+            "{{need_1}}",
+            "{{need_2}}"
+          ]
+        },
+        "I'll send an update every {{update_day}}. If something is unclear before then, email me."
+      ]
+    },
+    {
+      "id": "follow-up",
+      "group": "Services",
+      "name": "Follow-up",
+      "when": "No answer after a week or so.",
+      "banner": "Checking in",
+      "color": "yellow",
+      "subject": "Checking in on {{project}}",
+      "body": [
+        "Hi {{first_name}},",
+        "I wanted to check in on {{project}}. I sent {{what_you_sent}} on {{sent_date}} and haven't heard back.",
+        "If the timing has changed or you've gone another way, that's completely fine. A one-line reply is enough, so I know where things stand.",
+        "If you're still interested, I can hold a start date of {{start_date}} until {{hold_until}}."
+      ]
+    },
+    {
+      "id": "decline",
+      "group": "Services",
+      "name": "Not a fit",
+      "when": "You can't take the project.",
+      "banner": "Not this time",
+      "color": "pink",
+      "subject": "About {{project}}",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for thinking of me for {{project}}. I've looked at it carefully, and I can't take it on. {{reason}}",
+        "I'd rather tell you now than do a job I can't give my full attention to.",
+        "{{referral_line}}",
+        "I hope it goes well, and I'd be glad to hear how it turns out."
+      ]
+    },
+    {
+      "id": "wrap-up",
+      "group": "Services",
+      "name": "Project wrap-up",
+      "when": "The work is delivered.",
+      "banner": "Thank you",
+      "color": "pink",
+      "subject": "{{project}} is delivered. Thank you.",
+      "body": [
+        "Hi {{first_name}},",
+        "Everything for {{project}} is now with you: {{deliverables_link}}",
+        "Thank you for trusting me with it. I enjoyed {{specific_moment}}.",
+        "Two small requests, if you have a minute:",
+        {
+          "list": [
+            "Tell me one thing I could have done better.",
+            "If the work helped, a sentence or two I can quote on my site would mean a lot."
+          ]
+        },
+        "If questions come up while you build, email me. I'm happy to help."
+      ]
+    },
+    {
+      "id": "admissions-received",
+      "group": "Admissions help",
+      "name": "Survey received",
+      "when": "A student filled in the admissions survey.",
+      "banner": "Got it",
+      "color": "cyan",
+      "subject": "I got your answers, {{first_name}}",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for filling out the survey. I've read your answers, and I'll write back by {{reply_by}}.",
+        "A few things to know while you wait:",
+        {
+          "list": [
+            "This help is free. I will never ask you for money.",
+            "Please don't send Social Security numbers or financial documents.",
+            "If you're under 18, you're welcome to include a parent, guardian, or counselor on our emails."
+          ]
+        },
+        "You've already done the hard part by asking. Talk soon."
+      ]
+    },
+    {
+      "id": "admissions-next-steps",
+      "group": "Admissions help",
+      "name": "Next steps for a student",
+      "when": "Your real reply to a student, with what to do next.",
+      "banner": "Let's start",
+      "color": "green",
+      "subject": "Next steps for {{help_topic}}",
+      "body": [
+        "Hi {{first_name}},",
+        "Thanks for your patience. You asked for help with {{help_topic}}, so here is where I'd start.",
+        {
+          "list": [
+            "{{step_1}}",
+            "{{step_2}}",
+            "{{step_3}}"
+          ]
+        },
+        "To give you better feedback, please send me {{what_to_send}}. A rough draft is fine. It doesn't need to be finished.",
+        "Your next deadline is {{deadline}}, so I'd aim to have this done by {{target_date}}.",
+        "This is one student's advice, and it isn't connected to Tufts Admissions or QuestBridge. Use what helps."
+      ]
+    },
+    {
+      "id": "admissions-waitlist",
+      "group": "Admissions help",
+      "name": "At capacity",
+      "when": "You can't help a student right away.",
+      "banner": "Hang tight",
+      "color": "yellow",
+      "subject": "About your admissions help request",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for reaching out. I'm helping as many students as I can right now, and I can't give your application the attention it deserves until {{available_date}}.",
+        "If your deadline is before then, please don't wait for me. Your school counselor and the QuestBridge website are good places to start today.",
+        "If {{available_date}} still works for you, reply to this email and I'll save you a spot.",
+        "I'm sorry I can't start sooner. I'm rooting for you."
+      ]
+    },
+    {
+      "id": "briefly-partner",
+      "group": "Briefly",
+      "name": "Podcaster, press, or partner",
+      "when": "Someone writes about working with Briefly.",
+      "banner": "Hello",
+      "color": "cyan",
+      "subject": "Re: {{their_subject}}",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for getting in touch about {{topic}}.",
+        "Briefly is a short-form, audio-only podcast app. It finds the moments in an episode that are worth hearing and plays them as real clips, in the host's own voice, with a path back to the full episode.",
+        "{{your_answer}}",
+        "I'd be glad to talk it through. Does {{time_option}} work for a short call?",
+        {
+          "button": {
+            "label": "See Briefly",
+            "url": "https://briefly.briefa.net"
+          }
+        }
+      ]
+    },
+    {
+      "id": "briefly-feedback",
+      "group": "Briefly",
+      "name": "Thanks for the feedback",
+      "when": "A listener sends feedback or a bug report.",
+      "banner": "Thank you",
+      "color": "pink",
+      "subject": "Thank you for the feedback on Briefly",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for taking the time to write. Feedback like yours is how Briefly gets better.",
+        "You mentioned {{their_feedback}}. {{what_happens_next}}",
+        "We're a team of three, so every note gets read by a person. If you notice anything else, reply to this email."
+      ]
+    },
+    {
+      "id": "acknowledgement",
+      "group": "Everyday",
+      "name": "Quick acknowledgement",
+      "when": "You've seen an email and need time to answer.",
+      "banner": "On it",
+      "color": "green",
+      "subject": "Re: {{their_subject}}",
+      "body": [
+        "Hi {{first_name}},",
+        "I've received this, thank you. I want to give it a real answer, so I'll get back to you by {{reply_by}}.",
+        "If it becomes urgent before then, reply with \"urgent\" in the subject line and I'll see it sooner."
+      ]
+    },
+    {
+      "id": "thank-you",
+      "group": "Everyday",
+      "name": "Thank you after a conversation",
+      "when": "After a call, coffee, interview, or introduction.",
+      "banner": "Thank you",
+      "color": "pink",
+      "subject": "Thank you, {{first_name}}",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for making time on {{day}}. I learned a lot from our conversation.",
+        "What stayed with me most was {{takeaway}}.",
+        "As promised, {{follow_through}}.",
+        "I'd like to stay in touch. If I can ever be useful to you, please ask."
+      ]
+    },
+    {
+      "id": "introduction",
+      "group": "Everyday",
+      "name": "Introducing yourself",
+      "when": "Reaching out to someone you'd like to learn from or work with.",
+      "banner": "Hello",
+      "color": "cyan",
+      "subject": "{{specific_reason}}",
+      "body": [
+        "Hi {{first_name}},",
+        "I'm Htoo, a student at Tufts studying Cognitive and Brain Science and Computer Science, and co-founder of Briefly, a short-form podcast app.",
+        "I'm writing because {{why_them}}.",
+        "Would you be open to {{the_ask}}? I know your time is limited, so I'll keep it to {{time_needed}} and come prepared.",
+        "Either way, thank you for {{their_work}}."
+      ]
+    },
+    {
+      "id": "away",
+      "group": "Everyday",
+      "name": "Away message",
+      "when": "Auto-reply during exams, travel, or a launch.",
+      "banner": "Be back soon",
+      "color": "yellow",
+      "subject": "Away until {{return_date}}",
+      "body": [
+        "Hi,",
+        "Thank you for your email. I'm away until {{return_date}} and replying more slowly than usual.",
+        "I'll answer after I'm back. For anything about Briefly that can't wait, please write to {{backup_contact}}."
+      ]
+    },
+    {
+      "id": "auto-contact",
+      "auto": "contact",
+      "group": "Automatic",
+      "name": "Contact form reply",
+      "when": "Sent by the site itself, right after someone uses the contact form.",
+      "banner": "Got it",
+      "color": "cyan",
+      "subject": "Got your message",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for writing. This is an automatic note to confirm that your message reached me. I read every one myself and I'll reply personally, usually within a few days.",
+        "If you wrote about a project, these details help me give you a useful answer:",
+        {
+          "list": [
+            "What you're building, and who it's for",
+            "Where it stands today (an idea, a prototype, or a live product)",
+            "When you'd like to start, and any deadline"
+          ]
+        },
+        "You can reply to this email to add anything."
+      ]
+    },
+    {
+      "id": "auto-admissions",
+      "auto": "admissions",
+      "group": "Automatic",
+      "name": "Admissions survey reply",
+      "when": "Sent by the site itself, right after a student finishes the admissions survey.",
+      "banner": "Got it",
+      "color": "cyan",
+      "subject": "I got your answers",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for filling out the survey. This is an automatic note to confirm that your answers reached me. I'll read them and write back personally as soon as I can.",
+        "{{topic_line}}",
+        "A few things to know while you wait:",
+        {
+          "list": [
+            "This help is free. I will never ask you for money.",
+            "Please don't send Social Security numbers or financial documents.",
+            "If you're under 18, you're welcome to include a parent, guardian, or counselor on our emails."
+          ]
+        },
+        "You've already done the hard part by asking. Talk soon."
+      ]
+    }
+  ]
+}
