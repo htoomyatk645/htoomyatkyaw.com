@@ -70,7 +70,7 @@ FOOTER_OLD = "I'm most energized by projects where I can dig into complex proble
 rep(FOOTER_OLD, "I wear a few hats at Briefly. Here's what I do, and how.", ["VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"])
 rep(FOOTER_OLD, "I wear a few hats at Briefly. Here's what I do, and how.", ["site/services.html"], split=True)
 rep(FOOTER_OLD, "I love talking about CPG businesses, human psychology, collaborating on ideas, and poetry. If curiosity and action is the main driver of your pursuits, I'd love to chat with you!")
-rep("Open to contract work, full-time roles, and interesting conversations about hard design problems.", "My most passionate invention, Briefly, is headed to the App Store, give it a chance to enlighten you!")
+rep("Open to contract work, full-time roles, and interesting conversations about hard design problems.", "My most passionate invention, Briefly, is live on the App Store. Give it a chance to enlighten you!")
 rep("COntact me", "Contact me")
 
 # ---------------------------------------------------------------- home
