@@ -222,6 +222,8 @@ for o in ["2026-03-19T00:00:00.000Z", "2026-03-02T00:00:00.000Z", "2025-01-02T00
 for o, n in [("Healthcare", "Product"), ("Workflow Design", "Audio"), ("SaaS", "Brand"), ("Transformation", "UI/UX"), ("Proptech", "Content"), ("0 -> 1", "Growth"), ("Strategy", "Engineering"), ("Enterprise", "AI")]:
     rep(f'"{o}"', f'"{n}"', CARDS_HTML)
 
+rep("random shot", "on my way to reply", ["site/contact.html", "BtP3pvF_fYTo_Pg8rSB-HB_aaFqbK-TxzQyB0k7Exy4"])
+
 # ---------------------------------------------------------------- playground
 for o, n in [("nothing big, still feels nice", "Picture Before Getting Promoted"), ("Brain’s messy, but it’s okay", "Tabling to Cure Bone Cancer"), 
              ("Good weather", "Thank You!"), ("Random shot", "random shot"), ("Tiny moments", "First Time Training with a Former UFC Fighter"),
@@ -246,9 +248,9 @@ rep("M12 2.04004C6.5 2.04004 2 6.53004 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14
     "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z")
 
 # ---------------------------------------------------------------- site script
-# Case study, Services and Journal carry content that tools/build-content.mjs
-# writes into each page's HTML (it is not part of the Framer bundle), so links
-# to them do a full page load instead of a client-side route change; a capture
+# Every page except Home carries content or a script that is in its own HTML
+# and not in the Framer bundle (tools/build-content.mjs, journey.js on About),
+# so links to them do a full page load instead of a client-side route change; a capture
 # listener runs before Framer's router sees the click.
 # Published write-ups (LIVE) open their standalone page instead; card 1
 # (Briefly) opens the product site and its button reads "View Product".
@@ -260,7 +262,7 @@ rep("M12 2.04004C6.5 2.04004 2 6.53004 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14
 # tap that slipped past the click handler), load the real destination instead
 # of rendering the template page client-side.
 SITE_JS = r"""(()=>{
-const SOON=/^\/(case-study|services|blog)(\/|$)/;
+const SOON=/^\/(case-study|services|blog|about|contact|play-ground)(\/|$)/;
 const LIVE={"/case-study/north-light":"/under-the-hood","/case-study/stylebook":"/the-briefly-look","/case-study/homestead":"/seven-slides-a-day","/case-study/meridian-health":"https://briefly.briefa.net"};
 const EMAIL="htoomyatk645@gmail.com",BRIEFLY="https://briefly.briefa.net",FRAMEWORK="/making-of-briefly";
 let el,t;

@@ -268,4 +268,27 @@ const servicesBlock = `<section class="hk hk-adm" id="admissions"><div class="hk
 </div></section>`;
 write("services.html", page(shell("services.html"), { slot: ".framer-3srzoz", place: "before", block: servicesBlock }));
 
+// ---------------------------------------------------------------- contact
+const ct = config.contact;
+const contactBlock = `<section class="hk hk-contact" data-contact>
+<div class="hk-ct-row" data-rise><p class="hk-hand">${esc(ct.startersTitle)}</p><div class="hk-ct-chips">${ct.starters.map((c) => c.href
+    ? `<a class="hk-chip c-${c.color}" href="${esc(c.href)}">${esc(c.label)} <i>→</i></a>`
+    : `<button type="button" class="hk-chip c-${c.color}" data-starter="${esc(c.text)}">${esc(c.label)}</button>`).join("")}</div></div>
+<div class="hk-ct-grid">
+<div data-rise><p class="hk-hand">${esc(ct.nextTitle)}</p><ol class="hk-ct-next">${ct.next.map((t, i) => `<li class="c-${["yellow", "pink", "cyan"][i % 3]}" style="--r:${[-2.5, 1.8, -1.2][i % 3]}deg;--i:${i}" data-rise><b>${String(i + 1).padStart(2, "0")}</b>${esc(t)}</li>`).join("")}</ol></div>
+<div class="hk-ct-clock" data-rise style="--i:2" data-clock='${esc(JSON.stringify(ct.status))}'>${HANDLES}<span class="hk-mono">${esc(ct.clockLabel)}</span><span class="hk-ct-time" data-time>--:--</span><span class="hk-ct-status" data-status></span></div>
+</div></section>`;
+write("contact.html", page(shell("contact.html"), { slot: ".framer-1smnmk7", place: "before", block: contactBlock }));
+
+// ---------------------------------------------------------------- playground
+const pg = config.playground;
+const playBlock = `<a class="hk hk-pg-jump" href="#mind-games" data-jump>${esc(pg.jump)} <i>↓</i></a>
+<section class="hk hk-play" id="mind-games">
+<header data-rise><span class="hk-hand">${esc(pg.kicker)}</span><h2>${pg.heading.map(esc).join("<br>")}</h2><p>${esc(pg.intro)}</p></header>
+<div class="hk-games">${pg.games.map((g, i) => `<article class="hk-game c-${g.color}" data-game="${g.id}" data-rise style="--i:${i}">${HANDLES}
+<h3><span class="hk-mono">0${i + 1}</span>${esc(g.name)}</h3><p class="hk-game-rule">${esc(g.rule)}</p>
+<div class="hk-game-stage" data-stage aria-live="polite"><button type="button" class="hk-game-go" data-go>Play</button></div>
+<p class="hk-game-lesson" data-lesson hidden>${esc(g.lesson)}</p></article>`).join("")}</div></section>`;
+write("play-ground.html", page(shell("play-ground.html"), { slot: ".framer-1smnmk7", place: "before", block: playBlock }));
+
 console.log(`journal: ${posts.length} post(s)${DRAFTS ? " (drafts included)" : ""}; case studies: ${cases.length}; services: admissions survey with ${adm.survey.questions.length} questions`);

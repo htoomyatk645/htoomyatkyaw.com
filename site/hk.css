@@ -244,3 +244,56 @@
   .hk-js [data-rise]{opacity:1;transform:none}
 }
 .hk-empty .hk-tag{color:var(--hk-ink)}
+
+/* ------------------------------------------------------------------ contact */
+.hk-contact{padding:0 max(16px,calc((100% - 1040px)/2)) 120px;display:flex;flex-direction:column;gap:64px}
+.hk-ct-row{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.hk-contact .hk-hand{margin:0 0 4px}
+.hk-ct-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.hk-chip{display:inline-flex!important;align-items:center;gap:8px;padding:12px 16px!important;background:var(--ct)!important;border:1.5px solid var(--hk-ink)!important;font-family:var(--hk-mono)!important;font-size:14px!important;line-height:1;text-transform:uppercase;letter-spacing:-.03em;text-decoration:none;color:var(--hk-ink)!important;transition:transform .4s var(--hk-spring),box-shadow .4s var(--hk-out),background-color .2s}
+.hk-chip:hover{transform:translate(-3px,-3px) rotate(-1.5deg);box-shadow:5px 5px 0 var(--hk-ink);background:var(--c)!important}
+.hk-chip:active{transform:scale(.96)}
+.hk-chip i{font-style:normal}
+.hk-ct-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:48px;align-items:center}
+.hk-ct-next{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.hk-ct-next li{padding:16px 16px 22px;background:var(--ct);font-size:16px;line-height:1.35;box-shadow:0 12px 20px -12px rgba(17,18,18,.35);rotate:var(--r);transition:rotate .5s var(--hk-spring),scale .5s var(--hk-spring)}
+.hk-ct-next li:hover{rotate:0deg;scale:1.04}
+.hk-ct-next b{display:block;margin-bottom:10px;font-family:var(--hk-mono);font-size:13px;font-weight:500}
+.hk-ct-clock{position:relative;display:flex;flex-direction:column;gap:10px;padding:22px;background:#fff;border:1.5px solid var(--hk-cyan)}
+.hk-ct-clock .hk-h{border-color:var(--hk-cyan)}
+.hk-ct-time{font-family:var(--hk-flux);font-weight:1000;font-size:clamp(44px,6vw,72px);line-height:.8;letter-spacing:-.02em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.hk-ct-status{font-size:17px;line-height:1.35}
+
+/* --------------------------------------------------------------- playground */
+.hk-pg-jump{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);z-index:8;width:auto;translate:-50% 0;display:inline-flex;align-items:center;gap:10px;padding:13px 18px;background:var(--hk-ink);color:#fff!important;border:1.5px solid var(--hk-ink);font-family:var(--hk-mono);font-size:14px;line-height:1;text-transform:uppercase;letter-spacing:-.02em;text-decoration:none;box-shadow:4px 4px 0 var(--hk-cyan);transition:transform .4s var(--hk-spring),box-shadow .3s,opacity .3s}
+.hk-pg-jump.gone{opacity:0;pointer-events:none;transform:translateY(20px)}
+.hk-pg-jump:hover{transform:translateY(-3px);box-shadow:6px 7px 0 var(--hk-pink)}
+.hk-pg-jump i{font-style:normal;animation:hk-bob 1.6s ease-in-out infinite}
+@keyframes hk-bob{50%{transform:translateY(4px)}}
+.hk-play{position:relative;z-index:3;background:#fff;border-top:1.5px solid var(--hk-ink);padding:88px max(16px,calc((100% - 1240px)/2)) 120px;background-image:linear-gradient(rgba(17,18,18,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(17,18,18,.05) 1px,transparent 1px);background-size:100px 100px}
+.hk-play header{max-width:640px;margin:0 0 48px}
+.hk-play h2{margin:6px 0 20px;font-family:var(--hk-flux);font-weight:1000;font-size:clamp(64px,11vw,150px);line-height:.8;letter-spacing:-.025em;text-transform:uppercase}
+.hk-play header p{margin:0;font-size:19px;line-height:1.4;letter-spacing:-.01em}
+.hk-games{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}
+.hk-game{position:relative;display:flex;flex-direction:column;gap:12px;padding:22px;background:#fff;border:1.5px solid var(--hk-ink);transition:box-shadow .45s var(--hk-out),transform .45s var(--hk-spring)}
+.hk-game:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--c)}
+.hk-game h3{margin:0;display:flex;align-items:baseline;gap:12px;font-size:28px;line-height:1.1;font-weight:500;letter-spacing:-.035em}
+.hk-game-rule{margin:0;color:rgb(60,61,61)}
+.hk-game-stage{min-height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px;background:var(--ct);text-align:center}
+.hk-game-go{padding:13px 22px!important;background:var(--hk-ink)!important;color:#fff!important;font-family:var(--hk-mono)!important;font-size:15px!important;text-transform:uppercase;letter-spacing:-.02em;transition:transform .35s var(--hk-spring),background-color .2s}
+.hk-game-go:hover{transform:translateY(-2px) scale(1.04);background:var(--hk-pink)!important}
+.hk-game-go.ghost{background:transparent!important;color:var(--hk-ink)!important;border:1.5px solid var(--hk-ink)!important}
+.hk-game-go.ghost:hover{background:#fff!important}
+.hk-game-note{font-family:var(--hk-mono);font-size:13px;text-transform:uppercase;letter-spacing:-.02em}
+.hk-game-word{font-family:var(--hk-flux);font-weight:1000;font-size:64px;line-height:.9;min-height:58px;letter-spacing:-.02em;-webkit-text-stroke:1.5px var(--hk-ink);paint-order:stroke fill}
+.hk-game-score{font-family:var(--hk-flux);font-weight:1000;font-size:56px;line-height:.9;letter-spacing:-.02em;text-transform:uppercase}
+.hk-game-keys{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+.hk-game-keys button{padding:12px 6px!important;background:#fff!important;border:1.5px solid var(--hk-ink)!important;border-bottom:6px solid var(--k)!important;font-size:15px;transition:transform .25s var(--hk-spring)}
+.hk-game-keys button:hover{transform:translateY(-2px)}.hk-game-keys button:active{transform:scale(.95)}
+.hk-game-form{display:flex;flex-direction:column;gap:12px;width:100%;align-items:center}
+.hk-game-form input{width:100%;padding:10px;border:0;border-bottom:2px solid var(--hk-ink);background:rgba(255,255,255,.6);font:500 26px/1.2 var(--hk-mono);letter-spacing:.12em;text-align:center;color:var(--hk-ink);outline:0;border-radius:0}
+.hk-game-pad{width:100%;min-height:190px;background:var(--hk-pink)!important;color:#fff!important;border:1.5px solid var(--hk-ink)!important;font-family:var(--hk-mono)!important;font-size:17px!important;text-transform:uppercase;touch-action:manipulation}
+.hk-game-pad.go{background:var(--hk-green)!important;color:var(--hk-ink)!important}
+.hk-game-lesson{margin:0;padding-top:12px;border-top:1px dashed rgba(17,18,18,.35);font-size:15px;line-height:1.4}
+@media (max-width:1199.98px){.hk-games{grid-template-columns:1fr;max-width:560px}.hk-ct-grid{grid-template-columns:1fr}}
+@media (max-width:809.98px){.hk-ct-next{grid-template-columns:1fr}.hk-contact{padding-bottom:80px;gap:48px}.hk-play{padding-top:64px}}
