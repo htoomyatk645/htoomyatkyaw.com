@@ -404,3 +404,27 @@
 .hk-phone-shot video{display:block;width:100%;height:auto;background:#fff}
 .hk-phones:has(figure:nth-of-type(4)) figure{max-width:150px;flex-basis:120px}
 .hk-phones:has(figure:nth-of-type(4)){gap:16px}
+
+/* ------------------------------------------------------------ phones, touch */
+.hk-touch{display:none}
+@media (pointer:coarse){
+  .hk-touch{display:inline}.hk-mouse{display:none}
+  /* Keyboard hints make no sense on a touch screen. */
+  .hk-sv-opt kbd,.hk-sv-nav [data-sv=hint]{display:none}
+  /* Comfortable tap targets: at least 44px. */
+  .hk-filters button,.hk-back,.hk-lab-meters button,.hk-cv-tools button{min-height:44px}
+  .hk-cv-tools button{min-width:44px}
+  .hk-lab-meters span{min-height:44px;display:inline-flex;align-items:center;gap:6px}
+  .hk-lab-item button{min-height:52px}
+}
+@media (max-width:809.98px){
+  .hk-filters sup{font-size:11px}
+  .hk-thread-top{font-size:12px}
+  /* The tour sketch stays pinned while its switches scroll under it, so it is
+     drawn smaller to leave room for them. */
+  .hk-lab-stage{margin:-14px -14px 0;padding:10px 14px;border-bottom:1.5px solid var(--hk-ink)}
+  .ph{zoom:.66}
+  .hk-lab-meters{flex-wrap:wrap;justify-content:center}
+  .hk-cv-bar{gap:8px}
+  .hk-cv-title{flex-basis:100%}
+}
