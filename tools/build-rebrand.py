@@ -53,6 +53,8 @@ rep("Nudge is a bold, personality-driven portfolio template for product designer
 rep(" - My Framer Site", " | Briefly by Htoo Myat Kyaw")
 rep("Page Not Found | Framer", "Page Not Found | Htoo Myat Kyaw")
 rep("Create a free website with Framer, the website builder loved by startups, designers and agencies.", "Htoo Myat Kyaw")
+# Hero clock: show the visitor's local time, not the template's fixed Canada/Pacific zone.
+rep("hour12:!n,timeZone:e}", "hour12:!n,timeZone:void 0}", HOME[1:])
 rep("`EM`", "`HK`"); rep(">EM<", ">HK<")
 rep("`PH`", "`BR`"); rep(">PH<", ">BR<")
 rep("mailto:Hello@selenadesigns.com", "mailto:Htoo.Kyaw@tufts.edu")

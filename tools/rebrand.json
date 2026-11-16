@@ -75,6 +75,13 @@
       "replace": "Htoo Myat Kyaw"
     },
     {
+      "find": "hour12:!n,timeZone:e}",
+      "replace": "hour12:!n,timeZone:void 0}",
+      "only": [
+        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
+      ]
+    },
+    {
       "find": "`EM`",
       "replace": "`HK`"
     },
