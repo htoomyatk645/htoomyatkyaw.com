@@ -48,19 +48,22 @@ export default {
       return serveCmsRanges(request, env, url);
     }
 
-    // Published case studies redirect to their standalone pages. The rest,
-    // services and the journal are not published yet (their files stay in
-    // ./site): send visitors home. On the site, links to them show "Coming
-    // soon" instead of navigating (COMING_SOON in tools/build-rebrand.py).
-    const live = {
-      "north-light": `${url.origin}/under-the-hood`,
-      stylebook: `${url.origin}/the-briefly-look`,
-      homestead: `${url.origin}/seven-slides-a-day`,
-      "meridian-health": "https://briefly.briefa.net",
-    }[url.pathname.match(/^\/case-study\/([^/]+)\/?$/)?.[1]];
-    if (live) return Response.redirect(live, 302);
-    if (/^\/(case-study|services|blog)(\/|$)/.test(url.pathname)) {
-      return Response.redirect(`${url.origin}/`, 302);
+    // Journal posts and case studies are pages that tools/build-content.mjs
+    // writes to ./site/blog/<slug>.html and ./site/case-study/<slug>.html.
+    // Serve one if it exists. Otherwise the four template case-study slugs
+    // (still linked from the cards) go to their standalone write-ups, and any
+    // other slug goes back to its index page.
+    const detail = url.pathname.match(/^\/(case-study|blog)\/([^/]+)\/?$/);
+    if (detail) {
+      const page = await env.ASSETS.fetch(request);
+      if (page.status !== 404) return page;
+      const live = {
+        "north-light": `${url.origin}/under-the-hood`,
+        stylebook: `${url.origin}/the-briefly-look`,
+        homestead: `${url.origin}/seven-slides-a-day`,
+        "meridian-health": "https://briefly.briefa.net",
+      }[detail[1] === "case-study" ? detail[2] : ""];
+      return Response.redirect(live || `${url.origin}/${detail[1]}`, 302);
     }
 
     return env.ASSETS.fetch(request);
@@ -127,7 +130,10 @@ async function handleContact(request, env, url) {
 
   const replyTo = findEmail(entries);
   const name = findField(entries, /^(full[\s_-]?)?name$/i) || findField(entries, /name/i);
-  const subject = `New message from htoomyatkyaw.com${name ? ` — ${name}` : ""}`;
+  // Forms on the site can label themselves with a "Form" field (the college
+  // admissions survey does), so they are easy to tell apart in the inbox.
+  const form = findField(entries, /^form$/i);
+  const subject = `New ${form || "message"} from htoomyatkyaw.com${name ? ` — ${name}` : ""}`;
 
   const raw = buildMime({
     from: env.CONTACT_FROM,

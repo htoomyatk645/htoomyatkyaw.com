@@ -15,6 +15,9 @@ Portfolio site for Htoo Myat Kyaw. It runs on Cloudflare Workers (static assets 
 | `tools/compare.mjs` | Takes side-by-side screenshots of the original and the copy at 390px and 1440px, pixel-diffs them, and flags any request that leaves the site. |
 | `tools/cms-edit.mjs` + `cms-edits.json` | Edits Framer's binary CMS data (case-study titles, taglines, tags, dates) and re-points the index files. `--list <chunk>` prints every field. |
 | `tools/make-images.py` + `brand/` | Builds the site's portraits, case-study covers, logos, favicons and share image from the photos and Briefly logos in `brand/`. Each image keeps its template file name and aspect ratio, cropped around the subject. |
+| `content/` | The Journal posts, case-study write-ups and the admissions survey, as Markdown and JSON. See "Journal, case studies and services" below. |
+| `tools/build-content.mjs` | Builds `content/` into `site/` (`npm run content`). |
+| `public/hk.css`, `public/hk.js` | Styles and behaviour for that content: scroll reveals, journal filters, the case-study canvas and the survey. |
 | `tools/check-no-framer.mjs` | Fails if `site/` still references any Framer host. `npm run deploy` runs it first. |
 
 ## Workflow
@@ -26,6 +29,7 @@ node tools/cms-edit.mjs   # case-study card data
 node tools/og/render.mjs        # share image: tools/og/og.html -> brand/og.png (only when it changes)
 python3 tools/make-images.py   # photos and logos from brand/
 npm run rebrand           # apply tools/rebrand.json
+npm run content           # journal, case studies, admissions survey (content/ -> site/)
 npm run check             # no Framer URLs left
 npm run dev &             # local Worker at http://localhost:8787
 npm run compare           # screenshots + diffs in compare/
@@ -40,7 +44,37 @@ The rebrand edits are not idempotent, so always apply them to an unmodified mirr
 
 The case studies and journal posts come from Framer's CMS, stored in binary files (`site/_ext/framerusercontent.com/cms/*.framercms`); edit those with `tools/cms-edit.mjs`. Each page also embeds a snapshot of the same CMS values ("handover" data), which `rebrand.json` keeps in step.
 
-For now the four case-study pages and the journal posts are unpublished: the Worker redirects `/case-study/<slug>` to `/case-study` and `/blog/<slug>` to `/blog`, the case-study links are inert, and `/blog` shows "coming soon".
+## Journal, case studies and services
+
+`/blog`, `/case-study` and `/services` are Framer pages with content added by `npm run content`. Each page keeps its nav, heading and footer; the script adds one block to the HTML and `hk.js` moves it into the layout once the page has loaded. Links to these three sections do a full page load (the site script in `tools/build-rebrand.py` handles that), because the added content is not part of the Framer bundle.
+
+**Journal.** One Markdown file per post in `content/journal/`. The file name is the URL (`why-briefly-stays-audio.md` becomes `/blog/why-briefly-stays-audio`).
+
+```
+---
+title: Why Briefly stays audio
+date: 2026-11-16
+category: building-briefly
+summary: One or two sentences shown on the card and beside the post.
+draft: true
+---
+Markdown: ## headings, lists, > quotes, **bold**, [links](https://…), and
+:::note Label … ::: for a callout.
+```
+
+Posts with `draft: true` are left out of the site. Set it to `false` (or delete the line) and run `npm run content` to publish. `npm run content:drafts` builds drafts too, for a local look with `npm run dev`; run `npm run content` again before deploying. `[TODO: …]` marks a spot that still needs your own detail. Categories and the intro line are in `content/site.json`.
+
+**Case studies.** One Markdown file per write-up in `content/case-studies/`, served at `/case-study/<file name>`. `example-canvas.md` is a draft that uses every block; copy it to start a new one. Put videos and images in `content/media/` (they are copied to `/media/`).
+
+- `:::canvas Title` … `:::` is a board the visitor can drag, zoom and tour. Inside it, `frame: Label | /media/file.mp4 | 9:16` adds a video or image, and the lines after it belong to that frame: `text:` (the explanation shown under the board), `note: yellow | …` (a sticky note; yellow, pink, cyan or green) and `pin: 50,20 | …` (a numbered pin at 50% across, 20% down).
+- `:::video /media/file.mp4` … `:::` is a single framed video with a caption. `:::image` does the same for a picture.
+- `:::decision Label` and `:::learned Label` are coloured callouts.
+
+The four cards on `/case-study` still open the standalone write-ups (the `LIVE` map in `tools/build-rebrand.py` and `src/worker.js`). To point a card at a new write-up instead, change its entry in both.
+
+**Services.** The four services, the process steps and the FAQ are Framer text, edited in `tools/build-rebrand.py`. The "Free college admissions help" section and its survey come from `content/services/admissions.json`: edit the copy and the `questions` list there. Answers are emailed through `/api/contact` with the subject "College admissions help request".
+
+The template's own blog posts and case-study pages are removed from `site/` by `npm run content`, so `npm run compare` no longer has those pages to compare.
 
 ## Contact form
 

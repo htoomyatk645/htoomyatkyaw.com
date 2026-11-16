@@ -22,7 +22,7 @@
     },
     {
       "find": "<style>#__framer-badge-container{display:none!important}</style>",
-      "replace": "<style>#__framer-badge-container,.framer-tg9meo-container,.framer-xso6nc-container{display:none!important}.framer-tdbbdt .framer-text{font-size:min(150px,calc((100vw - 56px) / 7.9))!important;letter-spacing:-.025em!important}.framer-1g6trdm-container:has(img[src*=jaipCY]){height:407px!important}.framer-1g6trdm-container:has(img[src*=jaipCY]) .framer-82wh8q{height:auto!important}.framer-1g6trdm-container:has(img[src*=jaipCY]) .framer-1ywu17f{height:auto!important;aspect-ratio:984/2000}@media (max-width:1199.98px){.framer-ljnwxn:has(img[src*=jaipCY]){height:auto!important}}.framer-18htyvr{display:none!important}.framer-a06x9c::after{content:\"coming soon\";display:block;text-align:center;margin:24px 0 64px;font-family:'Just Me Again Down Here',cursive;font-size:44px;color:rgb(17,18,18)}</style>",
+      "replace": "<style>#__framer-badge-container,.framer-tg9meo-container,.framer-xso6nc-container{display:none!important}.framer-tdbbdt .framer-text{font-size:min(150px,calc((100vw - 56px) / 7.9))!important;letter-spacing:-.025em!important}.framer-1g6trdm-container:has(img[src*=jaipCY]){height:407px!important}.framer-1g6trdm-container:has(img[src*=jaipCY]) .framer-82wh8q{height:auto!important}.framer-1g6trdm-container:has(img[src*=jaipCY]) .framer-1ywu17f{height:auto!important;aspect-ratio:984/2000}@media (max-width:1199.98px){.framer-ljnwxn:has(img[src*=jaipCY]){height:auto!important}}.framer-18htyvr{display:none!important}</style>",
       "only": [
         "site/blog.html"
       ]
@@ -115,14 +115,14 @@
     },
     {
       "find": "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day.",
-      "replace": "I wear a few hats at Briefly. Here's what I do, and how.",
+      "replace": "Product design, UI/UX redesigns, and app and product consulting. Every project is custom priced, so reach out first.",
       "only": [
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
       ]
     },
     {
       "find": "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day.",
-      "replace": "I wear a few hats at Briefly. Here's what I do, and how.",
+      "replace": "Product design, UI/UX redesigns, and app and product consulting. Every project is custom priced, so reach out first.",
       "only": [
         "site/services.html"
       ],
@@ -303,6 +303,22 @@
       "replace": "Trust develops when people understand what to expect from a product and how it responds to their actions. By preserving the original speaker's voice and providing clear feedback for every interaction, I ensure listeners understand what is happening and remain confident in their experience."
     },
     {
+      "find": "we, not me.",
+      "replace": "Accessibility benefits everyone.",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
+      "find": "details build trust.",
+      "replace": "Clarity creates confidence and trust.",
+      "only": [
+        "site/about.html",
+        "ebcPKwnxLArQv7NWmWepjkjnomHrDSOje0je1g8Eyp0"
+      ]
+    },
+    {
       "find": "Main bio",
       "replace": "A peek into my world",
       "only": [
@@ -429,32 +445,15 @@
     },
     {
       "find": "available for Q4 projects ots",
-      "replace": "live on the App Store"
+      "replace": "open to new projects"
     },
     {
       "find": "my services",
       "replace": "what i do"
     },
     {
-      "find": "Product Design",
-      "replace": "Product and UI/UX",
-      "only": [
-        "site/services.html",
-        "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
-      ],
-      "near": "framer-g58dri"
-    },
-    {
-      "find": "Product Design",
-      "replace": "Product and UI/UX",
-      "only": [
-        "site/services.html"
-      ],
-      "split": true
-    },
-    {
       "find": "Designing digital products from the first idea to the final interface.",
-      "replace": "Designing Briefly from first idea to final screen.",
+      "replace": "From a first idea to a product people can use: flows, screens, and a prototype you can test.",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -463,7 +462,7 @@
     },
     {
       "find": "web design",
-      "replace": "Brand and Visual Identity",
+      "replace": "UI/UX Reimagining",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -472,7 +471,7 @@
     },
     {
       "find": "web design",
-      "replace": "Brand and Visual Identity",
+      "replace": "UI/UX Reimagining",
       "only": [
         "site/services.html"
       ],
@@ -480,7 +479,7 @@
     },
     {
       "find": "Strong visual direction with thoughtful structure to create digital experiences that are as effective as they are memorable",
-      "replace": "A dark, minimal look that keeps the voice in front.",
+      "replace": "A fresh look at an app or site you already have: what confuses people, what to cut, and a redesign that is easier to use.",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -489,7 +488,7 @@
     },
     {
       "find": "Design systems",
-      "replace": "Content and Social",
+      "replace": "App Development Consulting",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -498,7 +497,7 @@
     },
     {
       "find": "Design systems",
-      "replace": "Content and Social",
+      "replace": "App Development Consulting",
       "only": [
         "site/services.html"
       ],
@@ -506,7 +505,7 @@
     },
     {
       "find": "Building flexible visual systems that make products easier to design, build, and scale.",
-      "replace": "Daily Instagram carousels, captions, and video that build an audience before launch.",
+      "replace": "Advice on building and shipping an app: choosing the stack, working with AI coding agents, and getting to the App Store.",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -515,7 +514,7 @@
     },
     {
       "find": "Creative direction",
-      "replace": "Build and Strategy",
+      "replace": "Product Development Consulting",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -524,7 +523,7 @@
     },
     {
       "find": "Creative direction",
-      "replace": "Build and Strategy",
+      "replace": "Product Development Consulting",
       "only": [
         "site/services.html"
       ],
@@ -532,7 +531,7 @@
     },
     {
       "find": "Building flexible visual systems that make products easier to design, build, and scale.",
-      "replace": "Working with coding agents, shipping in React Native, and shaping the business side.",
+      "replace": "A thinking partner from idea to launch: who it is for, what to build first, and how to grow it.",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -541,7 +540,7 @@
     },
     {
       "find": "UX / UI Design",
-      "replace": "UI/UX",
+      "replace": "Product Strategy",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -561,7 +560,7 @@
     },
     {
       "find": "prototyping",
-      "replace": "Prototyping",
+      "replace": "Wireframes",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -571,7 +570,7 @@
     },
     {
       "find": "Interaction Design",
-      "replace": "Interaction Design",
+      "replace": "Prototyping",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -581,7 +580,7 @@
     },
     {
       "find": "design systems",
-      "replace": "Mobile",
+      "replace": "Mobile and Web",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -591,7 +590,7 @@
     },
     {
       "find": "Art Direction",
-      "replace": "Visual Identity",
+      "replace": "UX Audit",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -601,7 +600,7 @@
     },
     {
       "find": "Web design",
-      "replace": "Color",
+      "replace": "Redesign",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -611,7 +610,7 @@
     },
     {
       "find": "Responsive design",
-      "replace": "Typography",
+      "replace": "Visual Refresh",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -621,7 +620,7 @@
     },
     {
       "find": "Framer Development",
-      "replace": "Art Direction",
+      "replace": "Accessibility",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -631,7 +630,7 @@
     },
     {
       "find": "Motion & Interaction",
-      "replace": "Brand Voice",
+      "replace": "Design System",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -641,7 +640,7 @@
     },
     {
       "find": "UI Systems",
-      "replace": "Carousels",
+      "replace": "React Native and Expo",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -651,7 +650,7 @@
     },
     {
       "find": "Component Libraries",
-      "replace": "Captions",
+      "replace": "Agentic Coding",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -661,7 +660,7 @@
     },
     {
       "find": "Design tokens",
-      "replace": "Short-form Video",
+      "replace": "AI Pipelines",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -671,7 +670,7 @@
     },
     {
       "find": "Documentation",
-      "replace": "English and Arabic",
+      "replace": "App Store Launch",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -681,7 +680,7 @@
     },
     {
       "find": "System architecture",
-      "replace": "Content Calendar",
+      "replace": "Code Review",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -691,7 +690,7 @@
     },
     {
       "find": "Visual direction",
-      "replace": "Product Strategy",
+      "replace": "Positioning",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -701,7 +700,7 @@
     },
     {
       "find": "Brand Expression",
-      "replace": "Business Strategy",
+      "replace": "MVP Scoping",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -711,7 +710,7 @@
     },
     {
       "find": "Creative Strategy",
-      "replace": "React Native and Expo",
+      "replace": "Roadmap",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -721,7 +720,7 @@
     },
     {
       "find": "Art Direction",
-      "replace": "Agentic Coding",
+      "replace": "Organic Growth",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -731,7 +730,7 @@
     },
     {
       "find": "Design Leadership",
-      "replace": "AI Pipeline",
+      "replace": "Launch Plan",
       "only": [
         "site/services.html",
         "VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"
@@ -741,7 +740,7 @@
     },
     {
       "find": "First, I get familiar with the problem, the people, and the bigger picture.",
-      "replace": "First, I get to know the listener, the show, and the moment they press play."
+      "replace": "First, I get to know your users, your product, and the problem worth solving."
     },
     {
       "find": "I translate what I learn into a clear direction, structure, and set of priorities.",
@@ -753,7 +752,7 @@
     },
     {
       "find": "Finally, I bring everything together into a polished, flexible system ready to ship.",
-      "replace": "Finally, I ship it and watch how people actually use it."
+      "replace": "Finally, I hand it over ready to build, and stay close while it ships."
     },
     {
       "find": "rTmzt9Hxo:`Strategy`",
@@ -1015,35 +1014,35 @@
     },
     {
       "find": "Does Bejaman design websites, or only digital products?",
-      "replace": "What is Briefly?"
+      "replace": "How much does it cost?"
     },
     {
       "find": "Both. Alongside app/dashboard product design, Bejaman also designs websites and landing pages with a storytelling approach, not just visuals.",
-      "replace": "A short-form, audio-only podcast platform. It gives you the best parts of episodes as audio, plus recommendations, in a feed tuned to your interests."
+      "replace": "Every project is custom priced. Tell me what you need through the contact page and I will reply with a scope and a quote."
     },
     {
       "find": "Does he build Design Systems, or just individual screens?",
-      "replace": "What does Htoo do there?"
+      "replace": "What kinds of projects do you take?"
     },
     {
       "find": "Yes. Especially for multi stakeholder enterprise work like North Light, where a shared design language and reusable components are key to scaling the product.",
-      "replace": "He co-founded it and leads UI/UX, product design, and business strategy, and he co-built the AI pipeline and recommendation engine."
+      "replace": "Product design, UI/UX redesigns, and consulting on app and product development, mostly for consumer apps."
     },
     {
       "find": "What does the Product Design process look like?",
-      "replace": "When can I get it?"
+      "replace": "What have you built yourself?"
     },
     {
       "find": "Four pillars: User Research to find the real problem, Interaction Design to shape the flow, Prototyping to test ideas fast, and Motion Design to polish the experience. Meridian Health and StyleBook are good examples of this in action.",
-      "replace": "Now. Briefly launched on the iOS App Store in October 2026 and works with CarPlay. More at briefly.briefa.net."
+      "replace": "Briefly, a short-form, audio-only podcast app I co-founded. It launched on the iOS App Store in October 2026 and works with CarPlay."
     },
     {
       "find": "What does Creative Direction mean here?",
-      "replace": "Is Briefly for podcasters or listeners?"
+      "replace": "Is the college admissions help really free?"
     },
     {
       "find": "It's guiding the overall visual identity, tone, and experience across a project, making sure every design decision (color, motion, storytelling) stays consistent and serves the client's business goals.",
-      "replace": "Both. Listeners get the best moments quickly, and podcasters get their voice heard by more people."
+      "replace": "Yes. It is for first-generation, low-income students. Fill out the short survey on this page and I will do my best to help."
     },
     {
       "find": "dateStyle:`medium`,timeZone:`UTC`",
@@ -1426,7 +1425,7 @@
     },
     {
       "find": "<!-- End of bodyEnd -->",
-      "replace": "<!-- End of bodyEnd --><style>#coming-soon{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:2147483647;background:#111212;color:#fff;font:500 14px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;padding:12px 18px;border-radius:999px;transition:opacity .2s,transform .2s}#coming-soon.on{opacity:1;transform:translate(-50%,0)}.framer-119y192-container,.framer-1yzdk2p-container{cursor:pointer}</style><script>(()=>{const SOON=/^\\/(case-study|services|blog)(\\/|$)/;const LIVE={\"/case-study/north-light\":\"/under-the-hood\",\"/case-study/stylebook\":\"/the-briefly-look\",\"/case-study/homestead\":\"/seven-slides-a-day\",\"/case-study/meridian-health\":\"https://briefly.briefa.net\"};const EMAIL=\"htoomyatk645@gmail.com\",BRIEFLY=\"https://briefly.briefa.net\",FRAMEWORK=\"/making-of-briefly\";let el,t;const note=m=>{if(!el){el=document.createElement(\"div\");el.id=\"coming-soon\";el.setAttribute(\"role\",\"status\");document.body.appendChild(el)}el.textContent=m;el.classList.add(\"on\");clearTimeout(t);t=setTimeout(()=>el.classList.remove(\"on\"),1800)};const copy=v=>(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).catch(()=>{const a=document.createElement(\"textarea\");a.value=v;a.style.position=\"fixed\";a.style.opacity=\"0\";document.body.appendChild(a);a.select();try{document.execCommand(\"copy\")}finally{a.remove()}});const open=to=>/^https?:/.test(to)?window.open(to,\"_blank\",\"noopener\"):location.href=to;const target=u=>{const p=u.pathname.replace(/\\/$/,\"\");return LIVE[p]||null};const guard=f=>function(st,ti,url){if(url!=null){const u=new URL(url,location.href);if(u.origin===location.origin&&SOON.test(u.pathname)){location.assign(target(u)||location.href);return}}return f.apply(this,arguments)};history.pushState=guard(history.pushState);history.replaceState=guard(history.replaceState);document.addEventListener(\"click\",e=>{const tg=e.target.closest?e.target:e.target.parentElement;if(tg.closest(\".framer-119y192-container\")){e.preventDefault();e.stopImmediatePropagation();copy(EMAIL).then(()=>note(\"Email Copied\"));return}if(tg.closest(\".framer-1yzdk2p-container\")){e.preventDefault();e.stopImmediatePropagation();open(BRIEFLY);return}const a=tg.closest(\"a[href]\");if(!a)return;const u=new URL(a.getAttribute(\"href\"),location.href);if(u.origin!==location.origin||!SOON.test(u.pathname))return;e.preventDefault();e.stopImmediatePropagation();const to=target(u);if(to)return open(to);note(u.pathname.startsWith(\"/blog\")?\"Journal: coming soon\":u.pathname.startsWith(\"/services\")?\"Services: coming soon\":\"Case studies: coming soon\");},true);const relabel=()=>document.querySelectorAll('a[href$=\"case-study/meridian-health\"]').forEach(a=>{const w=document.createTreeWalker(a,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()===\"View Project\")n.nodeValue=n.nodeValue.replace(\"View Project\",\"View Product\")});const swap=(el,a,b)=>{const w=document.createTreeWalker(el,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()===a)n.nodeValue=n.nodeValue.replace(a,b)};const framework=()=>document.querySelectorAll('a[href$=\"case-study/stylebook\"]').forEach(a=>{const c=a.closest(\".framer-1nmyz7r-container\")||a;if(c.nextElementSibling&&c.nextElementSibling.dataset.framework)return;const n=c.cloneNode(true);n.dataset.framework=\"1\";const l=n.matches(\"a\")?n:n.querySelector(\"a\");l.setAttribute(\"href\",FRAMEWORK);l.removeAttribute(\"target\");swap(n,\"View Project\",\"View My Framework\");c.after(n)});const patch=()=>{relabel();framework()};addEventListener(\"load\",()=>setTimeout(()=>{patch();new MutationObserver(patch).observe(document.body,{subtree:true,childList:true,characterData:true})},300));})()</script>",
+      "replace": "<!-- End of bodyEnd --><style>#coming-soon{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:2147483647;background:#111212;color:#fff;font:500 14px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;padding:12px 18px;border-radius:999px;transition:opacity .2s,transform .2s}#coming-soon.on{opacity:1;transform:translate(-50%,0)}.framer-119y192-container,.framer-1yzdk2p-container{cursor:pointer}</style><script>(()=>{const SOON=/^\\/(case-study|services|blog)(\\/|$)/;const LIVE={\"/case-study/north-light\":\"/under-the-hood\",\"/case-study/stylebook\":\"/the-briefly-look\",\"/case-study/homestead\":\"/seven-slides-a-day\",\"/case-study/meridian-health\":\"https://briefly.briefa.net\"};const EMAIL=\"htoomyatk645@gmail.com\",BRIEFLY=\"https://briefly.briefa.net\",FRAMEWORK=\"/making-of-briefly\";let el,t;const note=m=>{if(!el){el=document.createElement(\"div\");el.id=\"coming-soon\";el.setAttribute(\"role\",\"status\");document.body.appendChild(el)}el.textContent=m;el.classList.add(\"on\");clearTimeout(t);t=setTimeout(()=>el.classList.remove(\"on\"),1800)};const copy=v=>(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).catch(()=>{const a=document.createElement(\"textarea\");a.value=v;a.style.position=\"fixed\";a.style.opacity=\"0\";document.body.appendChild(a);a.select();try{document.execCommand(\"copy\")}finally{a.remove()}});const open=to=>/^https?:/.test(to)?window.open(to,\"_blank\",\"noopener\"):location.href=to;const target=u=>{const p=u.pathname.replace(/\\/$/,\"\");return LIVE[p]||null};const here=location.pathname.replace(/\\/$/,\"\");const same=u=>u.pathname.replace(/\\/$/,\"\")===here;const guard=f=>function(st,ti,url){if(url!=null){const u=new URL(url,location.href);if(u.origin===location.origin&&SOON.test(u.pathname)&&!same(u)){location.assign(target(u)||u.href);return}}return f.apply(this,arguments)};addEventListener(\"popstate\",()=>{if(SOON.test(location.pathname)&&!same(location))location.reload()});history.pushState=guard(history.pushState);history.replaceState=guard(history.replaceState);document.addEventListener(\"click\",e=>{const tg=e.target.closest?e.target:e.target.parentElement;if(tg.closest(\".framer-119y192-container\")){e.preventDefault();e.stopImmediatePropagation();copy(EMAIL).then(()=>note(\"Email Copied\"));return}if(tg.closest(\".framer-1yzdk2p-container\")){e.preventDefault();e.stopImmediatePropagation();open(BRIEFLY);return}const a=tg.closest(\"a[href]\");if(!a)return;const u=new URL(a.getAttribute(\"href\"),location.href);if(u.origin!==location.origin||!SOON.test(u.pathname))return;e.preventDefault();e.stopImmediatePropagation();const to=target(u);if(to)return open(to);if(same(u)&&!u.hash){scrollTo({top:0,behavior:\"smooth\"});return}location.assign(u.href);},true);const relabel=()=>document.querySelectorAll('a[href$=\"case-study/meridian-health\"]').forEach(a=>{const w=document.createTreeWalker(a,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()===\"View Project\")n.nodeValue=n.nodeValue.replace(\"View Project\",\"View Product\")});const swap=(el,a,b)=>{const w=document.createTreeWalker(el,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()===a)n.nodeValue=n.nodeValue.replace(a,b)};const framework=()=>document.querySelectorAll('a[href$=\"case-study/stylebook\"]').forEach(a=>{const c=a.closest(\".framer-1nmyz7r-container\")||a;if(c.nextElementSibling&&c.nextElementSibling.dataset.framework)return;const n=c.cloneNode(true);n.dataset.framework=\"1\";const l=n.matches(\"a\")?n:n.querySelector(\"a\");l.setAttribute(\"href\",FRAMEWORK);l.removeAttribute(\"target\");swap(n,\"View Project\",\"View My Framework\");c.after(n)});const patch=()=>{relabel();framework()};addEventListener(\"load\",()=>setTimeout(()=>{patch();new MutationObserver(patch).observe(document.body,{subtree:true,childList:true,characterData:true})},300));})()</script>",
       "only": [
         ".html"
       ]

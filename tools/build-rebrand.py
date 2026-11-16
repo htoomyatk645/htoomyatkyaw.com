@@ -32,9 +32,7 @@ BASE_CSS = ("#__framer-badge-container,.framer-tg9meo-container,.framer-xso6nc-c
             ".framer-1g6trdm-container:has(img[src*=jaipCY]) .framer-82wh8q{height:auto!important}"
             ".framer-1g6trdm-container:has(img[src*=jaipCY]) .framer-1ywu17f{height:auto!important;aspect-ratio:984/2000}"
             "@media (max-width:1199.98px){.framer-ljnwxn:has(img[src*=jaipCY]){height:auto!important}}")
-BLOG_CSS = (".framer-18htyvr{display:none!important}"
-            ".framer-a06x9c::after{content:\"coming soon\";display:block;text-align:center;margin:24px 0 64px;"
-            "font-family:'Just Me Again Down Here',cursive;font-size:44px;color:rgb(17,18,18)}")
+BLOG_CSS = ".framer-18htyvr{display:none!important}"
 OLD_STYLE = "<style>#__framer-badge-container{display:none!important}</style>"
 rep(OLD_STYLE, f"<style>{BASE_CSS}{BLOG_CSS}</style>", BLOG)
 rep(OLD_STYLE, f"<style>{BASE_CSS}</style>")
@@ -67,8 +65,8 @@ rep("tel:+123456789", "https://briefly.briefa.net")
 
 # Services hero intro shares its text with the footer; change it first.
 FOOTER_OLD = "I'm most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone's day."
-rep(FOOTER_OLD, "I wear a few hats at Briefly. Here's what I do, and how.", ["VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"])
-rep(FOOTER_OLD, "I wear a few hats at Briefly. Here's what I do, and how.", ["site/services.html"], split=True)
+rep(FOOTER_OLD, "Product design, UI/UX redesigns, and app and product consulting. Every project is custom priced, so reach out first.", ["VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"])
+rep(FOOTER_OLD, "Product design, UI/UX redesigns, and app and product consulting. Every project is custom priced, so reach out first.", ["site/services.html"], split=True)
 rep(FOOTER_OLD, "I love talking about CPG businesses, human psychology, collaborating on ideas, and poetry. If curiosity and action is the main driver of your pursuits, I'd love to chat with you!")
 rep("Open to contract work, full-time roles, and interesting conversations about hard design problems.", "My most passionate invention, Briefly, is live on the App Store. Give it a chance to enlighten you!")
 rep("COntact me", "Contact me")
@@ -117,6 +115,8 @@ rep("The best work happens when designers, engineers, and product folks are actu
 rep("Making the invisible visible", "Build trust through feedback")
 rep("Some of the most impactful design work isn't flashy—it's the progress indicator that keeps people oriented, the auto-save that prevents panic, the validation message that actually helps instead of just saying 'error.' These details build trust.",
     "Trust develops when people understand what to expect from a product and how it responds to their actions. By preserving the original speaker's voice and providing clear feedback for every interaction, I ensure listeners understand what is happening and remain confident in their experience.")
+rep("we, not me.", "Accessibility benefits everyone.", ABOUT)
+rep("details build trust.", "Clarity creates confidence and trust.", ABOUT)
 rep("Main bio", "A peek into my world", ABOUT)
 rep("Timeline", "My non-linear journey so far......", ABOUT)
 rep("What dive into my work", "A dive into my work")
@@ -143,25 +143,26 @@ for old, new, od, nd, otext, ntext in TL:
     rep(old, new, ABOUT)
 
 # ---------------------------------------------------------------- services
-rep("available for Q4 projects ots", "live on the App Store")
+rep("available for Q4 projects ots", "open to new projects")
 rep("my services", "what i do")
-CARDS = [("Product Design", "Product and UI/UX", "Designing digital products from the first idea to the final interface.", "Designing Briefly from first idea to final screen.", "framer-515de4"),
-         ("web design", "Brand and Visual Identity", "Strong visual direction with thoughtful structure to create digital experiences that are as effective as they are memorable", "A dark, minimal look that keeps the voice in front.", "framer-10v42ac"),
-         ("Design systems", "Content and Social", "Building flexible visual systems that make products easier to design, build, and scale.", "Daily Instagram carousels, captions, and video that build an audience before launch.", "framer-1b8ygq1"),
-         ("Creative direction", "Build and Strategy", "Building flexible visual systems that make products easier to design, build, and scale.", "Working with coding agents, shipping in React Native, and shaping the business side.", "framer-bbkleu")]
+CARDS = [("Product Design", "Product Design", "Designing digital products from the first idea to the final interface.", "From a first idea to a product people can use: flows, screens, and a prototype you can test.", "framer-515de4"),
+         ("web design", "UI/UX Reimagining", "Strong visual direction with thoughtful structure to create digital experiences that are as effective as they are memorable", "A fresh look at an app or site you already have: what confuses people, what to cut, and a redesign that is easier to use.", "framer-10v42ac"),
+         ("Design systems", "App Development Consulting", "Building flexible visual systems that make products easier to design, build, and scale.", "Advice on building and shipping an app: choosing the stack, working with AI coding agents, and getting to the App Store.", "framer-1b8ygq1"),
+         ("Creative direction", "Product Development Consulting", "Building flexible visual systems that make products easier to design, build, and scale.", "A thinking partner from idea to launch: who it is for, what to build first, and how to grow it.", "framer-bbkleu")]
 for oh, nh, od, nd, cls in CARDS:
-    rep(oh, nh, SERVICES, near={"Product Design": "framer-g58dri", "web design": "framer-1igbjtj", "Design systems": "framer-g4c9lv", "Creative direction": "framer-1zotpg"}[oh])
-    rep(oh, nh, ["site/services.html"], split=True)
+    if oh != nh:
+        rep(oh, nh, SERVICES, near={"Product Design": "framer-g58dri", "web design": "framer-1igbjtj", "Design systems": "framer-g4c9lv", "Creative direction": "framer-1zotpg"}[oh])
+        rep(oh, nh, ["site/services.html"], split=True)
     rep(od, nd, SERVICES, near=cls)
 TAGS = {  # container -> new tag, in card order
-    "framer-h4g844-container": "UI/UX", "framer-183rdj3-container": "User Flows", "framer-yc6h9r-container": "Prototyping",
-    "framer-g0c05d-container": "Interaction Design", "framer-1lueen2-container": "Mobile",
-    "framer-o4mpja-container": "Visual Identity", "framer-zho5e9-container": "Color", "framer-1mejb2k-container": "Typography",
-    "framer-vpkjn5-container": "Art Direction", "framer-1slb844-container": "Brand Voice",
-    "framer-1tlax7p-container": "Carousels", "framer-toxuni-container": "Captions", "framer-1ad3zi6-container": "Short-form Video",
-    "framer-mq8bwj-container": "English and Arabic", "framer-1rdpkrn-container": "Content Calendar",
-    "framer-49eqph-container": "Product Strategy", "framer-n6gm6d-container": "Business Strategy", "framer-1kbjuiu-container": "React Native and Expo",
-    "framer-1ipfo84-container": "Agentic Coding", "framer-15adn40-container": "AI Pipeline",
+    "framer-h4g844-container": "Product Strategy", "framer-183rdj3-container": "User Flows", "framer-yc6h9r-container": "Wireframes",
+    "framer-g0c05d-container": "Prototyping", "framer-1lueen2-container": "Mobile and Web",
+    "framer-o4mpja-container": "UX Audit", "framer-zho5e9-container": "Redesign", "framer-1mejb2k-container": "Visual Refresh",
+    "framer-vpkjn5-container": "Accessibility", "framer-1slb844-container": "Design System",
+    "framer-1tlax7p-container": "React Native and Expo", "framer-toxuni-container": "Agentic Coding", "framer-1ad3zi6-container": "AI Pipelines",
+    "framer-mq8bwj-container": "App Store Launch", "framer-1rdpkrn-container": "Code Review",
+    "framer-49eqph-container": "Positioning", "framer-n6gm6d-container": "MVP Scoping", "framer-1kbjuiu-container": "Roadmap",
+    "framer-1ipfo84-container": "Organic Growth", "framer-15adn40-container": "Launch Plan",
 }
 # Read the template text from the unmodified mirror, not the rebranded site/.
 import subprocess
@@ -170,10 +171,10 @@ vt = subprocess.run(["git", "show", f"{MIRROR}:" + glob.glob(SITE + "VIGV*.mjs")
 for cont, new in TAGS.items():
     old = re.search(r"className:`" + cont + r"`,nodeId:`\w+`,scopeId:`\w+`,children:d\(q,\{a_X5HpvjX:`([^`]*)`", vt).group(1)
     rep(old, new, SERVICES, near=cont, findHtml=old.replace("&", "&amp;"))
-STEPS = [("First, I get familiar with the problem, the people, and the bigger picture.", "First, I get to know the listener, the show, and the moment they press play."),
+STEPS = [("First, I get familiar with the problem, the people, and the bigger picture.", "First, I get to know your users, your product, and the problem worth solving."),
          ("I translate what I learn into a clear direction, structure, and set of priorities.", "I turn that into one clear direction and a short list of priorities."),
          ("Then I explore, iterate, and refine until the right solution starts to take shape.", "Then I explore, test, and refine until it feels right."),
-         ("Finally, I bring everything together into a polished, flexible system ready to ship.", "Finally, I ship it and watch how people actually use it.")]
+         ("Finally, I bring everything together into a polished, flexible system ready to ship.", "Finally, I hand it over ready to build, and stay close while it ships.")]
 for o, n in STEPS: rep(o, n)
 GROUPS = [("Strategy", "Languages"), ("design", "Build"), ("Systems", "AI & Agents"), ("Motion", "Design")]
 for o, n in GROUPS:
@@ -188,18 +189,18 @@ for cls, new in ITEMS:
     old_js = re.findall(r"children:`([^`]*)`", vt[i - 600:i])[-1]
     old_html = old_js.replace("\\u2028", " ")
     rep(old_html, new, SERVICES, near=cls, findJs=old_js, findHtml=old_html)
-FAQ = [("Does Bejaman design websites, or only digital products?", "What is Briefly?"),
+FAQ = [("Does Bejaman design websites, or only digital products?", "How much does it cost?"),
        ("Both. Alongside app/dashboard product design, Bejaman also designs websites and landing pages with a storytelling approach, not just visuals.",
-        "A short-form, audio-only podcast platform. It gives you the best parts of episodes as audio, plus recommendations, in a feed tuned to your interests."),
-       ("Does he build Design Systems, or just individual screens?", "What does Htoo do there?"),
+        "Every project is custom priced. Tell me what you need through the contact page and I will reply with a scope and a quote."),
+       ("Does he build Design Systems, or just individual screens?", "What kinds of projects do you take?"),
        ("Yes. Especially for multi stakeholder enterprise work like North Light, where a shared design language and reusable components are key to scaling the product.",
-        "He co-founded it and leads UI/UX, product design, and business strategy, and he co-built the AI pipeline and recommendation engine."),
-       ("What does the Product Design process look like?", "When can I get it?"),
+        "Product design, UI/UX redesigns, and consulting on app and product development, mostly for consumer apps."),
+       ("What does the Product Design process look like?", "What have you built yourself?"),
        ("Four pillars: User Research to find the real problem, Interaction Design to shape the flow, Prototyping to test ideas fast, and Motion Design to polish the experience. Meridian Health and StyleBook are good examples of this in action.",
-        "Now. Briefly launched on the iOS App Store in October 2026 and works with CarPlay. More at briefly.briefa.net."),
-       ("What does Creative Direction mean here?", "Is Briefly for podcasters or listeners?"),
+        "Briefly, a short-form, audio-only podcast app I co-founded. It launched on the iOS App Store in October 2026 and works with CarPlay."),
+       ("What does Creative Direction mean here?", "Is the college admissions help really free?"),
        ("It's guiding the overall visual identity, tone, and experience across a project, making sure every design decision (color, motion, storytelling) stays consistent and serves the client's business goals.",
-        "Both. Listeners get the best moments quickly, and podcasters get their voice heard by more people.")]
+        "Yes. It is for first-generation, low-income students. Fill out the short survey on this page and I will do my best to help.")]
 for o, n in FAQ: rep(o, n)
 
 # ---------------------------------------------------------------- case-study cards (HTML side; CMS edited by cms-edit.mjs)
@@ -245,9 +246,10 @@ rep("M12 2.04004C6.5 2.04004 2 6.53004 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14
     "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z")
 
 # ---------------------------------------------------------------- site script
-# Case study, Services and Journal aren't published yet (the Worker redirects
-# them home). Links to them stay visible but show a "Coming soon" note instead
-# of navigating; a capture listener runs before Framer's router sees the click.
+# Case study, Services and Journal carry content that tools/build-content.mjs
+# writes into each page's HTML (it is not part of the Framer bundle), so links
+# to them do a full page load instead of a client-side route change; a capture
+# listener runs before Framer's router sees the click.
 # Published write-ups (LIVE) open their standalone page instead; card 1
 # (Briefly) opens the product site and its button reads "View Product".
 # Card 2 (The Briefly Look) gets a second button under "View Project":
@@ -266,7 +268,10 @@ const note=m=>{if(!el){el=document.createElement("div");el.id="coming-soon";el.s
 const copy=v=>(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).catch(()=>{const a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy")}finally{a.remove()}});
 const open=to=>/^https?:/.test(to)?window.open(to,"_blank","noopener"):location.href=to;
 const target=u=>{const p=u.pathname.replace(/\/$/,"");return LIVE[p]||null};
-const guard=f=>function(st,ti,url){if(url!=null){const u=new URL(url,location.href);if(u.origin===location.origin&&SOON.test(u.pathname)){location.assign(target(u)||location.href);return}}return f.apply(this,arguments)};
+const here=location.pathname.replace(/\/$/,"");
+const same=u=>u.pathname.replace(/\/$/,"")===here;
+const guard=f=>function(st,ti,url){if(url!=null){const u=new URL(url,location.href);if(u.origin===location.origin&&SOON.test(u.pathname)&&!same(u)){location.assign(target(u)||u.href);return}}return f.apply(this,arguments)};
+addEventListener("popstate",()=>{if(SOON.test(location.pathname)&&!same(location))location.reload()});
 history.pushState=guard(history.pushState);history.replaceState=guard(history.replaceState);
 document.addEventListener("click",e=>{
   const tg=e.target.closest?e.target:e.target.parentElement;
@@ -277,7 +282,8 @@ document.addEventListener("click",e=>{
   if(u.origin!==location.origin||!SOON.test(u.pathname))return;
   e.preventDefault();e.stopImmediatePropagation();
   const to=target(u);if(to)return open(to);
-  note(u.pathname.startsWith("/blog")?"Journal: coming soon":u.pathname.startsWith("/services")?"Services: coming soon":"Case studies: coming soon");
+  if(same(u)&&!u.hash){scrollTo({top:0,behavior:"smooth"});return}
+  location.assign(u.href);
 },true);
 const relabel=()=>document.querySelectorAll('a[href$="case-study/meridian-health"]').forEach(a=>{const w=document.createTreeWalker(a,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()==="View Project")n.nodeValue=n.nodeValue.replace("View Project","View Product")});
 const swap=(el,a,b)=>{const w=document.createTreeWalker(el,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()===a)n.nodeValue=n.nodeValue.replace(a,b)};
