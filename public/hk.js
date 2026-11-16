@@ -46,6 +46,8 @@
     $$("[data-progress]").forEach(progress);
     $$("[data-canvas]").forEach(canvas);
     $$("[data-survey]").forEach(survey);
+    $$("[data-thread]").forEach(threadBlock);
+    $$("[data-lab]").forEach(labBlock);
     $$("[data-contact]").forEach(contact);
     $$("[data-game]").forEach(game);
     $$("[data-jump]").forEach(function (a) {
@@ -53,6 +55,46 @@
       // The button is only useful while the games are off screen.
       if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { a.classList.toggle("gone", es[0].isIntersecting); }, { threshold: 0.05 }).observe($("#mind-games"));
     });
+  }
+
+  // ------------------------------------------------------------ text thread
+  // Bubbles arrive one at a time, with typing dots before each grey one, the
+  // first time the thread scrolls into view.
+  function threadBlock(el) {
+    var bubbles = $$(".hk-b", el), typing = $(".hk-typing", el);
+    if (reduce || !("IntersectionObserver" in window)) return;
+    el.classList.add("play");
+    function show(i) {
+      if (i >= bubbles.length) { el.classList.remove("typing"); return; }
+      var b = bubbles[i], incoming = b.classList.contains("in");
+      el.insertBefore(typing, b);
+      el.classList.toggle("typing", incoming);
+      setTimeout(function () {
+        el.classList.remove("typing"); b.classList.add("shown");
+        setTimeout(function () { show(i + 1); }, incoming ? 380 : 620);
+      }, incoming ? Math.min(1500, 420 + b.textContent.length * 9) : 520);
+    }
+    var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); show(0); } }, { threshold: 0.35 });
+    io.observe(el);
+  }
+
+  // -------------------------------------------------------- cut-and-add lab
+  function labBlock(el) {
+    var buttons = $$("[data-lab-toggle]", el), noise = $("[data-noise]", el), help = $("[data-help]", el);
+    function sync() {
+      var cuts = 0, adds = 0, total = 0;
+      buttons.forEach(function (b) {
+        var on = b.getAttribute("aria-pressed") === "true", key = b.dataset.labToggle;
+        el.classList.toggle(key, on);
+        if (key.indexOf("cut") === 0) { total++; if (on) cuts++; } else if (on) adds++;
+      });
+      noise.textContent = total - cuts; help.textContent = adds;
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () { b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true")); sync(); });
+    });
+    $("[data-lab-reset]", el).addEventListener("click", function () { buttons.forEach(function (b) { b.setAttribute("aria-pressed", "false"); }); sync(); });
+    sync();
   }
 
   // ----------------------------------------------------------------- contact

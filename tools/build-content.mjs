@@ -73,6 +73,9 @@ function markdown(src) {
       while (++i < lines.length && lines[i].trim() !== ":::") inner.push(lines[i]);
       const [, name, arg] = fence;
       if (name === "canvas") { flush(); parts.push({ block: canvas(arg, inner) }); }
+      else if (name === "thread") { flush(); parts.push({ block: thread(inner) }); }
+      else if (name === "phones") { flush(); parts.push({ block: phones(inner) }); }
+      else if (name === "lab") { flush(); parts.push({ block: lab(inner) }); }
       else if (name === "video" || name === "image") { flush(); parts.push({ block: framed(name, arg, inner) }); }
       else html += `<div class="hk-note c-${{ note: "yellow", decision: "cyan", learned: "green" }[name] || "yellow"}" data-label="${esc(arg || name)}">${markdown(inner.join("\n")).map((p) => p.html).join("")}</div>`;
       continue;
@@ -119,6 +122,50 @@ function framed(kind, src, inner) {
   const caption = inner.join(" ").trim();
   const tag = kind === "video" ? `<video src="${esc(src)}" controls muted loop playsinline preload="metadata"></video>` : `<img src="${esc(src)}" alt="${esc(caption)}" loading="lazy">`;
   return `<figure class="hk-framed" data-rise>${HANDLES}${tag}${caption ? `<figcaption>${inline(caption)}</figcaption>` : ""}</figure>`;
+}
+
+// :::thread            A text-message thread that plays as it scrolls into view.
+// > a grey bubble from the other side
+// < a blue bubble from the reader
+// :::
+function thread(inner) {
+  const lines = inner.map((l) => l.match(/^\s*([<>])\s*(.*)$/)).filter(Boolean);
+  return `<div class="hk-thread" data-thread role="group" aria-label="Text thread"><span class="hk-thread-top">Text thread</span>${lines.map((m) => `<p class="hk-b ${m[1] === ">" ? "in" : "out"}">${inline(m[2])}</p>`).join("")}<span class="hk-typing" aria-hidden="true"><i></i><i></i><i></i></span></div>`;
+}
+
+// :::phones            Phone screenshots side by side, each with a caption.
+// /media/file.jpg | Caption
+// :::
+function phones(inner) {
+  const items = inner.filter((l) => l.trim()).map((l) => l.split("|").map((s) => s.trim()));
+  return `<div class="hk-phones" data-rise>${items.map(([src, cap]) => `<figure><span class="hk-phone-shot">${HANDLES}<img src="${esc(src)}" alt="${esc(cap || "")}" loading="lazy"></span>${cap ? `<figcaption>${inline(cap)}</figcaption>` : ""}</figure>`).join("")}</div>`;
+}
+
+// :::lab               A sketch of a cluttered app tour that the reader fixes.
+// cut: steps | Title | Why      cuts: steps, deco, labels, house, motion
+// add: ghost | Title | Why      additions: ghost, ring, contrast, reply
+// :::
+// Each line is a switch. Its key picks which part of the sketch changes
+// (the .cut-<key> and .add-<key> rules in hk.css).
+function lab(inner) {
+  const rows = inner.map((l) => l.match(/^\s*(cut|add):\s*(.*)$/)).filter(Boolean).map((m) => { const f = m[2].split("|").map((s) => s.trim()); return { kind: m[1], key: f[0], title: f[1], why: f.slice(2).join(" | ") }; });
+  const group = (kind, label) => `<div class="hk-lab-group"><h4>${label}</h4>${rows.filter((r) => r.kind === kind).map((r) => `<div class="hk-lab-item"><button type="button" data-lab-toggle="${r.kind}-${esc(r.key)}" aria-pressed="false"><i>${kind === "cut" ? "✂" : "+"}</i><b>${inline(r.title)}</b></button><p>${inline(r.why)}</p></div>`).join("")}</div>`;
+  const tiles = ["#7a3b2e", "#1f3a5f", "#111212", "#d9d2c5", "#2b2b2b", "#b23a48", "#1b4332"].map((c, i) => `<i class="ph-tile${i === 2 ? " target" : ""}" style="background:${c}"></i>`).join("");
+  const dots = Array.from({ length: 11 }, (_, i) => `<i${i === 2 ? ' class="on"' : ""}></i>`).join("");
+  return `<div class="hk-lab" data-lab data-rise>
+<div class="hk-lab-stage"><div class="ph" aria-hidden="true">
+<div class="ph-head"><b>Welcome back</b><span>Jump right in</span></div>
+<div class="ph-hive">${tiles}<span class="ph-ring"></span><span class="ph-tap">Tap this show</span><span class="ph-ghost"></span></div>
+<div class="ph-cards"><i></i><i></i><i></i></div>
+<div class="ph-scrim"></div>
+<div class="ph-tour"><span class="ph-label">App tour <span class="ph-dots">${dots}</span></span><span class="ph-bar"><i></i></span><span class="ph-count">Step 3 of <em>11</em><em>7</em></span>
+<p class="ph-out">Done</p>
+<p class="ph-bubble"><span class="ph-nice">Nice! </span>Now tap the glowing show.<span class="ph-house"> But first, swipe the sheet down.</span></p>
+<span class="ph-btns"><span><em>Skip tour</em><em>Skip</em></span><span class="ph-next"><em>Next</em><em>→</em></span></span></div>
+</div>
+<div class="hk-lab-meters"><span>Noise <b data-noise>5</b></span><span>Help <b data-help>0</b></span><button type="button" data-lab-reset>Reset</button></div></div>
+<div class="hk-lab-side">${group("cut", "What I cut")}${group("add", "What I added")}</div>
+</div>`;
 }
 
 // :::canvas Board title

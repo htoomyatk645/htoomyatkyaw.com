@@ -62,6 +62,8 @@ Markdown: ## headings, lists, > quotes, **bold**, [links](https://…), and
 :::note Label … ::: for a callout.
 ```
 
+Three more blocks work in posts: `:::thread` (lines starting `>` are grey bubbles, `<` blue ones; it plays as a text thread), `:::phones` (`/media/file.jpg | caption` per line, phone screenshots side by side) and `:::lab` (a sketch of an app tour with `cut:` and `add:` switches; see `one-screen-one-decision.md`).
+
 Posts with `draft: true` are left out of the site. Set it to `false` (or delete the line) and run `npm run content` to publish. `npm run content:drafts` builds drafts too, for a local look with `npm run dev`; run `npm run content` again before deploying. `[TODO: …]` marks a spot that still needs your own detail. Categories and the intro line are in `content/site.json`.
 
 **Case studies.** One Markdown file per write-up in `content/case-studies/`, served at `/case-study/<file name>`. `example-canvas.md` is a draft that uses every block; copy it to start a new one. Put videos and images in `content/media/` (they are copied to `/media/`).
