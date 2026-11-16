@@ -4,10 +4,108 @@
     "emptyTitle": "first posts are on the way",
     "emptyText": "I'm editing the first few now. Here is what I'll be writing about.",
     "categories": {
-      "building-briefly": { "name": "Building Briefly", "color": "cyan" },
-      "cognitive-science": { "name": "Cognitive Science + Design", "color": "yellow" },
-      "business-ethics": { "name": "Business + Ethics", "color": "green" },
-      "personal": { "name": "Personal", "color": "pink" }
+      "building-briefly": {
+        "name": "Building Briefly",
+        "color": "cyan"
+      },
+      "cognitive-science": {
+        "name": "Cognitive Science + Design",
+        "color": "yellow"
+      },
+      "business-ethics": {
+        "name": "Business + Ethics",
+        "color": "green"
+      },
+      "personal": {
+        "name": "Personal",
+        "color": "pink"
+      }
     }
+  },
+  "contact": {
+    "startersTitle": "not sure where to start?",
+    "starters": [
+      {
+        "label": "I have a project",
+        "color": "cyan",
+        "text": "Hi Htoo, I'm working on [what it is] for [who it's for]. It's currently [an idea / a prototype / live]. I'd like help with "
+      },
+      {
+        "label": "It's about Briefly",
+        "color": "pink",
+        "text": "Hi Htoo, I'm reaching out about Briefly. I'm a [podcaster / journalist / partner] and "
+      },
+      {
+        "label": "College admissions help",
+        "color": "green",
+        "href": "/services#admissions"
+      },
+      {
+        "label": "Just saying hi",
+        "color": "yellow",
+        "text": "Hi Htoo, I came across your site and wanted to say "
+      }
+    ],
+    "nextTitle": "what happens next",
+    "next": [
+      "You leave a note. A few lines is plenty.",
+      "A confirmation lands in your inbox right away, so you know it arrived.",
+      "I read it myself and reply, usually within a few days."
+    ],
+    "clockLabel": "Boston, MA",
+    "status": [
+      [
+        0,
+        "Probably asleep. Your note will be waiting."
+      ],
+      [
+        7,
+        "Morning. Coffee first, then the inbox."
+      ],
+      [
+        9,
+        "Probably in class or building Briefly."
+      ],
+      [
+        17,
+        "Probably at Jiu-Jitsu or dinner."
+      ],
+      [
+        20,
+        "Probably building late. A good time to write."
+      ]
+    ]
+  },
+  "playground": {
+    "jump": "Mind games",
+    "kicker": "three tiny experiments",
+    "heading": [
+      "Mind",
+      "games"
+    ],
+    "intro": "I study how attention and memory work, and I design around their limits. Try them on yourself. Each one takes under a minute.",
+    "games": [
+      {
+        "id": "stroop",
+        "color": "pink",
+        "name": "Say the color",
+        "rule": "Pick the color of the ink. Ignore what the word says.",
+        "lesson": "Reading is automatic, so it gets in the way. This is why a screen should never make two signals disagree."
+      },
+      {
+        "id": "span",
+        "color": "cyan",
+        "name": "Hold that number",
+        "rule": "Watch the digits, then type them back. It gets longer each round.",
+        "lesson": "Working memory is small. Most adults hold about seven digits, which is why I give each screen one decision."
+      },
+      {
+        "id": "react",
+        "color": "green",
+        "name": "Quick draw",
+        "rule": "Wait for green, then click as fast as you can. Five tries.",
+        "lesson": "A quarter of a second is typical. Feedback that arrives slower than that starts to feel broken."
+      }
+    ]
   }
 }

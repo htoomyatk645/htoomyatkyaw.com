@@ -46,7 +46,7 @@ The case studies and journal posts come from Framer's CMS, stored in binary file
 
 ## Journal, case studies and services
 
-`/blog`, `/case-study` and `/services` are Framer pages with content added by `npm run content`. Each page keeps its nav, heading and footer; the script adds one block to the HTML and `hk.js` moves it into the layout once the page has loaded. Links to these three sections do a full page load (the site script in `tools/build-rebrand.py` handles that), because the added content is not part of the Framer bundle.
+`/blog`, `/case-study`, `/services`, `/contact` and `/play-ground` are Framer pages with content added by `npm run content`. Each page keeps its nav, heading and footer; the script adds one block to the HTML and `hk.js` moves it into the layout once the page has loaded. Links to these three sections do a full page load (the site script in `tools/build-rebrand.py` handles that), because the added content is not part of the Framer bundle.
 
 **Journal.** One Markdown file per post in `content/journal/`. The file name is the URL (`why-briefly-stays-audio.md` becomes `/blog/why-briefly-stays-audio`).
 
@@ -62,6 +62,8 @@ Markdown: ## headings, lists, > quotes, **bold**, [links](https://…), and
 :::note Label … ::: for a callout.
 ```
 
+Three more blocks work in posts: `:::thread` (lines starting `>` are grey bubbles, `<` blue ones; it plays as a text thread), `:::phones` (`/media/file.jpg | caption` per line, phone screenshots side by side) and `:::lab` (a sketch of an app tour with `cut:` and `add:` switches; see `one-screen-one-decision.md`).
+
 Posts with `draft: true` are left out of the site. Set it to `false` (or delete the line) and run `npm run content` to publish. `npm run content:drafts` builds drafts too, for a local look with `npm run dev`; run `npm run content` again before deploying. `[TODO: …]` marks a spot that still needs your own detail. Categories and the intro line are in `content/site.json`.
 
 **Case studies.** One Markdown file per write-up in `content/case-studies/`, served at `/case-study/<file name>`. `example-canvas.md` is a draft that uses every block; copy it to start a new one. Put videos and images in `content/media/` (they are copied to `/media/`).
@@ -71,6 +73,8 @@ Posts with `draft: true` are left out of the site. Set it to `false` (or delete 
 - `:::decision Label` and `:::learned Label` are coloured callouts.
 
 The four cards on `/case-study` still open the standalone write-ups (the `LIVE` map in `tools/build-rebrand.py` and `src/worker.js`). To point a card at a new write-up instead, change its entry in both.
+
+**Contact and Playground.** `npm run content` also adds a section under the contact form (message starters, what happens next, a Boston clock) and three small experiments under the Playground photo board. Their wording is in `content/site.json` under `contact` and `playground`.
 
 **Services.** The four services, the process steps and the FAQ are Framer text, edited in `tools/build-rebrand.py`. The "Free college admissions help" section and its survey come from `content/services/admissions.json`: edit the copy and the `questions` list there. Answers are emailed through `/api/contact` with the subject "College admissions help request".
 

@@ -73,6 +73,10 @@ function markdown(src) {
       while (++i < lines.length && lines[i].trim() !== ":::") inner.push(lines[i]);
       const [, name, arg] = fence;
       if (name === "canvas") { flush(); parts.push({ block: canvas(arg, inner) }); }
+      else if (name === "thread") { flush(); parts.push({ block: thread(inner) }); }
+      else if (name === "phones") { flush(); parts.push({ block: phones(inner, arg) }); }
+      else if (name === "flow") { flush(); parts.push({ block: flow(inner, arg) }); }
+      else if (name === "lab") { flush(); parts.push({ block: lab(inner) }); }
       else if (name === "video" || name === "image") { flush(); parts.push({ block: framed(name, arg, inner) }); }
       else html += `<div class="hk-note c-${{ note: "yellow", decision: "cyan", learned: "green" }[name] || "yellow"}" data-label="${esc(arg || name)}">${markdown(inner.join("\n")).map((p) => p.html).join("")}</div>`;
       continue;
@@ -119,6 +123,58 @@ function framed(kind, src, inner) {
   const caption = inner.join(" ").trim();
   const tag = kind === "video" ? `<video src="${esc(src)}" controls muted loop playsinline preload="metadata"></video>` : `<img src="${esc(src)}" alt="${esc(caption)}" loading="lazy">`;
   return `<figure class="hk-framed" data-rise>${HANDLES}${tag}${caption ? `<figcaption>${inline(caption)}</figcaption>` : ""}</figure>`;
+}
+
+// :::thread            A text-message thread that plays as it scrolls into view.
+// > a grey bubble from the other side
+// < a blue bubble from the reader
+// :::
+function thread(inner) {
+  const lines = inner.map((l) => l.match(/^\s*([<>])\s*(.*)$/)).filter(Boolean);
+  return `<div class="hk-thread" data-thread role="group" aria-label="Text thread"><span class="hk-thread-top">Text thread</span>${lines.map((m) => `<p class="hk-b ${m[1] === ">" ? "in" : "out"}">${inline(m[2])}</p>`).join("")}<span class="hk-typing" aria-hidden="true"><i></i><i></i><i></i></span></div>`;
+}
+
+// :::phones            Phone screenshots side by side, each with a caption.
+// /media/file.jpg | Caption
+// :::
+function phones(inner, credit) {
+  const items = inner.filter((l) => l.trim()).map((l) => l.split("|").map((s) => s.trim()));
+  return `<div class="hk-phones" data-rise>${items.map(([src, cap]) => `<figure><span class="hk-phone-shot">${HANDLES}${/\.(mp4|webm)$/i.test(src) ? `<video src="${esc(src)}" poster="${esc(src.replace(/\.\w+$/, "-poster.jpg"))}" muted loop playsinline controls preload="none" data-autoplay aria-label="${esc(cap || "")}"></video>` : `<img src="${esc(src)}" alt="${esc(cap || "")}" loading="lazy">`}</span>${cap ? `<figcaption>${inline(cap)}</figcaption>` : ""}</figure>`).join("")}${credit ? `<p class="hk-credit">${inline(credit)}</p>` : ""}</div>`;
+}
+
+// :::flow Text for the way back to the start (optional)
+// One step per line; start a line with * to highlight it.
+// :::
+function flow(inner, loop) {
+  const steps = inner.filter((l) => l.trim()).map((l) => l.trim());
+  return `<div class="hk-flow" data-rise><ol>${steps.map((s, i) => `<li${s.startsWith("*") ? ' class="key"' : ""} style="--i:${i}" data-rise><b>${String(i + 1).padStart(2, "0")}</b>${inline(s.replace(/^\*\s*/, ""))}</li>`).join("")}</ol>${loop ? `<p class="hk-flow-loop"><i>↺</i> ${inline(loop)}</p>` : ""}</div>`;
+}
+
+// :::lab               A sketch of a cluttered app tour that the reader fixes.
+// cut: steps | Title | Why      cuts: steps, deco, labels, house, motion
+// add: ghost | Title | Why      additions: ghost, ring, contrast, reply
+// :::
+// Each line is a switch. Its key picks which part of the sketch changes
+// (the .cut-<key> and .add-<key> rules in hk.css).
+function lab(inner) {
+  const rows = inner.map((l) => l.match(/^\s*(cut|add):\s*(.*)$/)).filter(Boolean).map((m) => { const f = m[2].split("|").map((s) => s.trim()); return { kind: m[1], key: f[0], title: f[1], why: f.slice(2).join(" | ") }; });
+  const group = (kind, label) => `<div class="hk-lab-group"><h4>${label}</h4>${rows.filter((r) => r.kind === kind).map((r) => `<div class="hk-lab-item"><button type="button" data-lab-toggle="${r.kind}-${esc(r.key)}" aria-pressed="false"><i>${kind === "cut" ? "✂" : "+"}</i><b>${inline(r.title)}</b></button><p>${inline(r.why)}</p></div>`).join("")}</div>`;
+  const tiles = ["#7a3b2e", "#1f3a5f", "#111212", "#d9d2c5", "#2b2b2b", "#b23a48", "#1b4332"].map((c, i) => `<i class="ph-tile${i === 2 ? " target" : ""}" style="background:${c}"></i>`).join("");
+  const dots = Array.from({ length: 11 }, (_, i) => `<i${i === 2 ? ' class="on"' : ""}></i>`).join("");
+  return `<div class="hk-lab" data-lab data-rise>
+<div class="hk-lab-stage"><div class="ph" aria-hidden="true">
+<div class="ph-head"><b>Welcome back</b><span>Jump right in</span></div>
+<div class="ph-hive">${tiles}<span class="ph-ring"></span><span class="ph-tap">Tap this show</span><span class="ph-ghost"></span></div>
+<div class="ph-cards"><i></i><i></i><i></i></div>
+<div class="ph-scrim"></div>
+<div class="ph-tour"><span class="ph-label">App tour <span class="ph-dots">${dots}</span></span><span class="ph-bar"><i></i></span><span class="ph-count">Step 3 of <em>11</em><em>7</em></span>
+<p class="ph-out">Done</p>
+<p class="ph-bubble"><span class="ph-nice">Nice! </span>Now tap the glowing show.<span class="ph-house"> But first, swipe the sheet down.</span></p>
+<span class="ph-btns"><span><em>Skip tour</em><em>Skip</em></span><span class="ph-next"><em>Next</em><em>→</em></span></span></div>
+</div>
+<div class="hk-lab-meters"><span>Noise <b data-noise>5</b></span><span>Help <b data-help>0</b></span><button type="button" data-lab-reset>Reset</button></div></div>
+<div class="hk-lab-side">${group("cut", "What I cut")}${group("add", "What I added")}</div>
+</div>`;
 }
 
 // :::canvas Board title
@@ -227,7 +283,7 @@ posts.forEach((p, i) => {
   const others = posts.filter((o) => o !== p).sort((a, b) => (b.category === p.category) - (a.category === p.category)).slice(0, 3);
   const block = `<div class="hk">${draftBar(p)}<div class="hk-progress" data-progress></div>
 <article class="hk-post">
-<header class="hk-post-side" data-rise><a class="hk-back" href="/blog"><i>←</i> Journal</a><span class="hk-date">${fmtDate(p.date)}</span><span class="hk-tag c-${cat.color}">${esc(cat.name)}</span><h1>${esc(p.title)}</h1><span class="hk-label">Summary</span><p class="hk-summary">${esc(p.summary)}</p><span class="hk-mono">${minutes(p.body)} min read</span></header>
+<header class="hk-post-side" data-rise><a class="hk-back" href="/blog"><i>←</i> Journal</a><span class="hk-date">${fmtDate(p.date)}</span><span class="hk-tag c-${cat.color}">${esc(cat.name)}</span><h1>${esc(p.title)}</h1>${p.deck ? `<p class="hk-deck">${esc(p.deck)}</p>` : ""}<span class="hk-label">Summary</span><p class="hk-summary">${esc(p.summary)}</p><span class="hk-mono">${minutes(p.body)} min read</span></header>
 <div class="hk-post-body" data-article data-rise style="--i:1"><div class="hk-prose">${markdown(p.body).map((x) => x.html || x.block).join("")}</div></div>
 </article>
 ${others.length ? `<aside class="hk-more"><p class="hk-hand hk-more-h" data-rise><span>other articles</span></p><ol class="hk-posts">${others.map(card).join("")}</ol></aside>` : ""}</div>`;
@@ -267,5 +323,28 @@ const servicesBlock = `<section class="hk hk-adm" id="admissions"><div class="hk
 <noscript><p style="padding:24px">This survey needs JavaScript. You can also email <a href="mailto:${esc(adm.email)}">${esc(adm.email)}</a>.</p></noscript></div>
 </div></section>`;
 write("services.html", page(shell("services.html"), { slot: ".framer-3srzoz", place: "before", block: servicesBlock }));
+
+// ---------------------------------------------------------------- contact
+const ct = config.contact;
+const contactBlock = `<section class="hk hk-contact" data-contact>
+<div class="hk-ct-row" data-rise><p class="hk-hand">${esc(ct.startersTitle)}</p><div class="hk-ct-chips">${ct.starters.map((c) => c.href
+    ? `<a class="hk-chip c-${c.color}" href="${esc(c.href)}">${esc(c.label)} <i>→</i></a>`
+    : `<button type="button" class="hk-chip c-${c.color}" data-starter="${esc(c.text)}">${esc(c.label)}</button>`).join("")}</div></div>
+<div class="hk-ct-grid">
+<div data-rise><p class="hk-hand">${esc(ct.nextTitle)}</p><ol class="hk-ct-next">${ct.next.map((t, i) => `<li class="c-${["yellow", "pink", "cyan"][i % 3]}" style="--r:${[-2.5, 1.8, -1.2][i % 3]}deg;--i:${i}" data-rise><b>${String(i + 1).padStart(2, "0")}</b>${esc(t)}</li>`).join("")}</ol></div>
+<div class="hk-ct-clock" data-rise style="--i:2" data-clock='${esc(JSON.stringify(ct.status))}'>${HANDLES}<span class="hk-mono">${esc(ct.clockLabel)}</span><span class="hk-ct-time" data-time>--:--</span><span class="hk-ct-status" data-status></span></div>
+</div></section>`;
+write("contact.html", page(shell("contact.html"), { slot: ".framer-1smnmk7", place: "before", block: contactBlock }));
+
+// ---------------------------------------------------------------- playground
+const pg = config.playground;
+const playBlock = `<a class="hk hk-pg-jump" href="#mind-games" data-jump>${esc(pg.jump)} <i>↓</i></a>
+<section class="hk hk-play" id="mind-games">
+<header data-rise><span class="hk-hand">${esc(pg.kicker)}</span><h2>${pg.heading.map(esc).join("<br>")}</h2><p>${esc(pg.intro)}</p></header>
+<div class="hk-games">${pg.games.map((g, i) => `<article class="hk-game c-${g.color}" data-game="${g.id}" data-rise style="--i:${i}">${HANDLES}
+<h3><span class="hk-mono">0${i + 1}</span>${esc(g.name)}</h3><p class="hk-game-rule">${esc(g.rule)}</p>
+<div class="hk-game-stage" data-stage aria-live="polite"><button type="button" class="hk-game-go" data-go>Play</button></div>
+<p class="hk-game-lesson" data-lesson hidden>${esc(g.lesson)}</p></article>`).join("")}</div></section>`;
+write("play-ground.html", page(shell("play-ground.html"), { slot: ".framer-1smnmk7", place: "before", block: playBlock }));
 
 console.log(`journal: ${posts.length} post(s)${DRAFTS ? " (drafts included)" : ""}; case studies: ${cases.length}; services: admissions survey with ${adm.survey.questions.length} questions`);

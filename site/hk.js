@@ -46,6 +46,173 @@
     $$("[data-progress]").forEach(progress);
     $$("[data-canvas]").forEach(canvas);
     $$("[data-survey]").forEach(survey);
+    // Videos marked data-autoplay play while on screen and pause when they leave.
+    if (!reduce && "IntersectionObserver" in window) {
+      var vio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { var p = e.target.play(); if (p && p.catch) p.catch(function () {}); } else e.target.pause(); });
+      }, { threshold: 0.5 });
+      $$("video[data-autoplay]").forEach(function (v) { vio.observe(v); });
+    }
+    $$("[data-thread]").forEach(threadBlock);
+    $$("[data-lab]").forEach(labBlock);
+    $$("[data-contact]").forEach(contact);
+    $$("[data-game]").forEach(game);
+    $$("[data-jump]").forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); $("#mind-games").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); });
+      // The button is only useful while the games are off screen.
+      if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { a.classList.toggle("gone", es[0].isIntersecting); }, { threshold: 0.05 }).observe($("#mind-games"));
+    });
+  }
+
+  // ------------------------------------------------------------ text thread
+  // Bubbles arrive one at a time, with typing dots before each grey one, the
+  // first time the thread scrolls into view.
+  function threadBlock(el) {
+    var bubbles = $$(".hk-b", el), typing = $(".hk-typing", el);
+    if (reduce || !("IntersectionObserver" in window)) return;
+    el.classList.add("play");
+    function show(i) {
+      if (i >= bubbles.length) { el.classList.remove("typing"); return; }
+      var b = bubbles[i], incoming = b.classList.contains("in");
+      el.insertBefore(typing, b);
+      el.classList.toggle("typing", incoming);
+      setTimeout(function () {
+        el.classList.remove("typing"); b.classList.add("shown");
+        setTimeout(function () { show(i + 1); }, incoming ? 380 : 620);
+      }, incoming ? Math.min(1500, 420 + b.textContent.length * 9) : 520);
+    }
+    var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); show(0); } }, { threshold: 0.35 });
+    io.observe(el);
+  }
+
+  // -------------------------------------------------------- cut-and-add lab
+  function labBlock(el) {
+    var buttons = $$("[data-lab-toggle]", el), noise = $("[data-noise]", el), help = $("[data-help]", el);
+    function sync() {
+      var cuts = 0, adds = 0, total = 0;
+      buttons.forEach(function (b) {
+        var on = b.getAttribute("aria-pressed") === "true", key = b.dataset.labToggle;
+        el.classList.toggle(key, on);
+        if (key.indexOf("cut") === 0) { total++; if (on) cuts++; } else if (on) adds++;
+      });
+      noise.textContent = total - cuts; help.textContent = adds;
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () { b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true")); sync(); });
+    });
+    $("[data-lab-reset]", el).addEventListener("click", function () { buttons.forEach(function (b) { b.setAttribute("aria-pressed", "false"); }); sync(); });
+    sync();
+  }
+
+  // ----------------------------------------------------------------- contact
+  // Starter chips write an opening line into the Framer form's note field, and
+  // the clock shows the time in Boston with a guess at what Htoo is doing.
+  function contact(el) {
+    $$("[data-starter]", el).forEach(function (b) {
+      b.addEventListener("click", function () {
+        var box = document.querySelector("#main textarea");
+        if (!box) return;
+        // The field belongs to React: set the value through the native setter
+        // and fire an input event so its state follows.
+        Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "value").set.call(box, b.dataset.starter);
+        box.dispatchEvent(new Event("input", { bubbles: true }));
+        box.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+        setTimeout(function () { box.focus({ preventScroll: true }); box.setSelectionRange(box.value.length, box.value.length); }, reduce ? 0 : 450);
+      });
+    });
+    var clock = $("[data-clock]", el);
+    if (!clock) return;
+    var states = JSON.parse(clock.dataset.clock), time = $("[data-time]", clock), status = $("[data-status]", clock);
+    function tick() {
+      var now = new Date(), text = "";
+      time.textContent = now.toLocaleTimeString("en-US", { timeZone: "America/New_York", hour: "numeric", minute: "2-digit" });
+      var hour = +now.toLocaleString("en-US", { timeZone: "America/New_York", hour: "numeric", hour12: false }) % 24;
+      states.forEach(function (s) { if (hour >= s[0]) text = s[1]; });
+      status.textContent = text;
+    }
+    tick(); setInterval(tick, 20000);
+  }
+
+  // ------------------------------------------------------------------- games
+  // Three one-minute experiments on the Playground page.
+  function game(card) {
+    var stage = $("[data-stage]", card), lesson = $("[data-lesson]", card), kind = card.dataset.game, timers = [];
+    function h(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+    function clear() { timers.forEach(clearTimeout); timers = []; stage.textContent = ""; }
+    function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+    function finish(big, small) {
+      clear();
+      stage.appendChild(h("strong", "hk-game-score", big)); stage.appendChild(h("span", "hk-game-note", small));
+      var again = h("button", "hk-game-go ghost", "Play again"); again.type = "button"; again.addEventListener("click", start);
+      stage.appendChild(again); lesson.hidden = false;
+      if (!reduce && stage.animate) stage.firstChild.animate([{ transform: "scale(.6)", opacity: 0 }, { transform: "scale(1)", opacity: 1 }], { duration: 480, easing: "cubic-bezier(.34,1.56,.64,1)" });
+    }
+    function avg(a) { return a.length ? Math.round(a.reduce(function (x, y) { return x + y; }, 0) / a.length) : 0; }
+
+    function stroop() {
+      var names = ["PINK", "BLUE", "GREEN", "YELLOW"], inks = ["var(--hk-pink)", "var(--hk-cyan)", "var(--hk-green)", "var(--hk-yellow)"];
+      var trial = 0, total = 10, same = [], diff = [], wrong = 0;
+      function next() {
+        clear();
+        var gap = avg(diff) - avg(same);
+        if (trial === total) return finish((gap > 0 ? "+" : "") + Math.abs(gap) + " ms", (gap > 0 ? "slower when the word and the ink disagreed" : "no slowdown when they disagreed. That is rare.") + (wrong ? " · " + wrong + " wrong" : ""));
+        var w = Math.floor(Math.random() * 4), match = trial % 2 === 0, c = match ? w : (w + 1 + Math.floor(Math.random() * 3)) % 4, t0 = performance.now();
+        trial++;
+        stage.appendChild(h("span", "hk-game-note", trial + " / " + total));
+        var word = h("strong", "hk-game-word", names[w]); word.style.color = inks[c]; stage.appendChild(word);
+        var row = h("div", "hk-game-keys");
+        names.forEach(function (n, i) {
+          var b = h("button", "", n.charAt(0) + n.slice(1).toLowerCase()); b.type = "button"; b.style.setProperty("--k", inks[i]);
+          b.addEventListener("click", function () { if (i === c) (match ? same : diff).push(performance.now() - t0); else wrong++; next(); });
+          row.appendChild(b);
+        });
+        stage.appendChild(row);
+      }
+      next();
+    }
+
+    function span() {
+      var len = 3;
+      function round() {
+        clear();
+        var digits = []; for (var i = 0; i < len; i++) digits.push(Math.floor(Math.random() * 10));
+        var show = h("strong", "hk-game-word", ""); stage.appendChild(h("span", "hk-game-note", len + " digits")); stage.appendChild(show);
+        digits.forEach(function (d, i) {
+          later(function () { show.textContent = d; if (!reduce && show.animate) show.animate([{ transform: "scale(1.5)", opacity: 0 }, { transform: "scale(1)", opacity: 1 }], { duration: 220 }); }, 500 + i * 850);
+          later(function () { show.textContent = ""; }, 500 + i * 850 + 650);
+        });
+        later(function () {
+          clear();
+          var form = h("form", "hk-game-form"), input = h("input"); input.inputMode = "numeric"; input.autocomplete = "off"; input.setAttribute("aria-label", "Type the digits"); input.placeholder = "Type them back";
+          var ok = h("button", "hk-game-go", "Check"); form.appendChild(input); form.appendChild(ok); stage.appendChild(form); input.focus({ preventScroll: true });
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            if (input.value.replace(/\D/g, "") === digits.join("")) { len++; round(); }
+            else finish((len - 1) + " digits", len - 1 < 3 ? "it was " + digits.join("") + ". Try once more." : "is your span today. The one you missed was " + digits.join(""));
+          });
+        }, 500 + len * 850 + 200);
+      }
+      round();
+    }
+
+    function react() {
+      var times = [], tries = 5;
+      function round() {
+        clear();
+        var pad = h("button", "hk-game-pad", "Wait for green…"); pad.type = "button"; stage.appendChild(pad);
+        var t0 = 0;
+        later(function () { pad.classList.add("go"); pad.textContent = "Click!"; t0 = performance.now(); }, 1200 + Math.random() * 2600);
+        pad.addEventListener("pointerdown", function () {
+          if (!t0) { clear(); var early = h("button", "hk-game-pad", "Too soon. Click to try again."); early.type = "button"; early.addEventListener("click", round); stage.appendChild(early); return; }
+          times.push(performance.now() - t0);
+          if (times.length === tries) return finish(avg(times) + " ms", "average over " + tries + " tries · best " + Math.round(Math.min.apply(null, times)) + " ms");
+          round();
+        });
+      }
+      round();
+    }
+    function start() { lesson.hidden = true; ({ stroop: stroop, span: span, react: react })[kind](); }
+    $("[data-go]", card).addEventListener("click", start);
   }
 
   // ------------------------------------------------------------ scroll reveal
