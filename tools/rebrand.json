@@ -1112,7 +1112,7 @@
     },
     {
       "find": "North Light",
-      "replace": "Under the Hood",
+      "replace": "Bionic Redr",
       "only": [
         "site/index.html",
         "site/case-study.html",
@@ -1152,7 +1152,7 @@
     },
     {
       "find": "Getting seven stakeholders to agree on what they're actually building.",
-      "replace": "The AI pipeline and recommendation engine behind the highlights.",
+      "replace": "A Chrome extension that makes any web page easier to read, on device.",
       "only": [
         "site/index.html",
         "site/case-study.html",

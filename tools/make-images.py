@@ -85,6 +85,33 @@ def fit_card(src, scale, size=(1200, 1357)):
     return card
 
 
+def bleed_card(src, art=1800, size=(2100, 1900), left=300, top=50, grid=50):
+    """The Bionic Redr cover (a square on dotted paper, with a panel bleeding
+    off its right and bottom edges) set into a wider card.
+
+    The home page cover-crops cards to about 0.88:1 and the case-study grid to
+    about 1.38:1. The art sits against the card's right edge, so the panel
+    still bleeds off it; the paper on the left and top gets the same dot grid
+    (one dot every `grid` px at this size), and the panel's last row is
+    stretched down to the bottom edge. Both crops keep the logo, title and
+    tags; the portrait one trims a little off the panel."""
+    im = Image.open(ROOT / "brand" / src).convert("RGB").resize((art, art), Image.LANCZOS)
+    W, H = size
+    assert left + art == W and top % grid == 0 and left % grid == 0
+    bg = im.getpixel((5, 5))
+    card = Image.new("RGB", size, bg)
+    card.paste(im.crop((0, art - 1, art, art)).resize((art, H - top - art)), (left, top + art))
+    card.paste(im, (left, top))
+    dot = im.crop((grid // 2 - 7, grid // 2 - 7, grid // 2 + 8, grid // 2 + 8))
+    near = lambda c: max(abs(a - b) for a, b in zip(c, bg)) <= 3
+    for y in range(grid // 2 - 7, H - 15, grid):
+        for x in range(grid // 2 - 7, W - 15, grid):
+            if x > left - 15 and top - 15 < y < top + art:
+                continue
+            if all(near(card.getpixel((x + dx, y + dy))) for dx in (0, 7, 14) for dy in (0, 7, 14)):
+                card.paste(dot, (x, y))
+    return card
+
 def fan_card(src, size=(2000, 1700), height=0.84, bg=(250, 248, 247)):
     """A transparent graphic (with its shadows) centred on a paper-coloured card.
 
@@ -122,7 +149,7 @@ save(crop("IMG_4383.jpg", (1269, 1270), 0.40, 0.50, 0.56), "BpemFTgeHqmOEbavaTet
 save(logo_card("briefly-dark.png", (2400, 1603), 0.46), "veyOMFLFvf4bfZJKXrpyPNzQWiw.jpg")  # Briefly: All Things Podcasts
 save(fit_card("briefly/app-icon-tags.png", 0.88), "Hp4sdb6mgJqCAExV0ytS7gljgkA.jpg")  # The Briefly Look
 save(fan_card("briefly/seven-slides-fan.png"), "lRamgmULf2QHd5nO7cNT2LpLR5M.jpg")  # Seven Slides a Day: three example slides
-save(fit_card("briefly/wordmark.png", 0.8), "77vnsoqQ0X6oMVSzYgh7nMkdh0.jpg")  # Under the Hood
+save(bleed_card("bionic-redr/cover.webp"), "77vnsoqQ0X6oMVSzYgh7nMkdh0.jpg")  # Bionic Redr (Under the Hood)
 
 # "my app" polaroid on the home page: the Briefly app screenshot, full height
 # (the card is made taller with CSS in tools/rebrand.json).
