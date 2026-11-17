@@ -1,0 +1,14 @@
+Subject: Could we find another time?
+
+Hi {{first_name}},
+
+Thank you for asking to meet. I can't make {{when}} after all, and I'm sorry for the back and forth.
+
+Pick another time: https://htoomyatkyaw.com/contact#book
+
+You can also reply to this email with a few times that suit you.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

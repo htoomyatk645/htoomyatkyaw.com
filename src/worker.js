@@ -6,6 +6,7 @@
 
 import { EmailMessage } from "cloudflare:email";
 import { replies, topics } from "./auto-replies.js";
+import { handleBooking } from "./booking.js";
 
 const ASSET_PREFIX = "/_v2/";
 const MAX_BODY_BYTES = 32 * 1024;
@@ -41,6 +42,11 @@ export default {
       if (request.method === "OPTIONS") return new Response(null, { status: 204 });
       if (request.method !== "POST") return json({ success: false, error: "Method not allowed" }, 405);
       return handleContact(request, env, url, ctx);
+    }
+
+    // Meeting requests from the Contact page (src/booking.js).
+    if (url.pathname.startsWith("/api/booking/")) {
+      return handleBooking(request, env, url, ctx, { allowed: isAllowedOrigin, owner: sendOwnerTemplate, visitor: sendVisitorTemplate });
     }
 
     // Framer's CMS client asks for byte ranges via ?range=a-b,c-d and expects
@@ -159,19 +165,19 @@ async function handleContact(request, env, url, ctx) {
   return json({ success: true });
 }
 
-// Automatic reply to the person who wrote in (emails/templates.json, the two
+// Automatic reply to the person who wrote in (emails/templates.json, the
 // templates marked "auto"). Only two things from the visitor go into it: a
 // first name reduced to letters, and survey topics that match the survey's own
 // options. Nothing else they typed is echoed back, so the form can't be used
 // to send someone a message of the sender's choosing.
 async function sendAutoReply(env, { to, name, form, entries }) {
-  const reply = /admissions/i.test(form) ? replies.admissions : replies.contact;
+  const reply = /admissions/i.test(form) ? replies.admissions : /project inquiry/i.test(form) ? replies.clients : replies.contact;
   const own = [env.CONTACT_TO, env.CONTACT_FROM, env.AUTO_REPLY_REPLY_TO].map((a) => (a || "").toLowerCase());
   if (!reply || own.includes(to.toLowerCase())) return;
 
   const first = ((name.split(/\s+/)[0] || "").match(/^[\p{L}][\p{L}'-]{0,29}$/u) || ["there"])[0];
   const asked = (findField(entries, /^needs help with$/i) || "").split(",").map((s) => s.trim());
-  const picked = topics.filter((t) => asked.includes(t) && !/^I /.test(t))
+  const picked = topics.filter((t) => asked.includes(t) && !/^(I |Not sure)/.test(t))
     .map((t) => t.replace(/^My /, "your ").replace(/^[A-Z](?=[a-z])/, (c) => c.toLowerCase()));
   const topicLine = picked.length ? `You asked for help with: ${picked.join(", ")}.` : "";
   const fill = (s, escape) => s
@@ -185,23 +191,62 @@ async function sendAutoReply(env, { to, name, form, entries }) {
     text: fill(reply.text, (s) => s), html: fill(reply.html, escapeHtml),
   };
 
+  await deliver(env, message);
+}
+
+// Sends a message to someone outside the account: through Resend when its API
+// key is set as a secret, otherwise through Cloudflare Email Sending.
+async function deliver(env, message) {
   try {
     if (env.RESEND_API_KEY) {
-      // Optional: Resend (resend.com), if its API key is set as a secret.
-      const res = await fetch("https://api.resend.com/emails", {
+      const res = await fetch((env.RESEND_API_BASE || "https://api.resend.com") + "/emails", {
         method: "POST",
         headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, "content-type": "application/json" },
         body: JSON.stringify({
-          from: `${message.fromName} <${message.from}>`, to: [to], reply_to: message.replyTo,
+          from: `${message.fromName} <${message.from}>`, to: [message.to], reply_to: message.replyTo,
           subject: message.subject, html: message.html, text: message.text, headers: { "Auto-Submitted": "auto-replied" },
         }),
       });
       if (!res.ok) throw new Error(`Resend ${res.status}: ${(await res.text()).slice(0, 200)}`);
-    } else if (env.AUTO_REPLY) {
-      await env.AUTO_REPLY.send(new EmailMessage(env.CONTACT_FROM, to, buildMime(message)));
+      return true;
+    }
+    if (env.AUTO_REPLY) {
+      await env.AUTO_REPLY.send(new EmailMessage(env.CONTACT_FROM, message.to, buildMime(message)));
+      return true;
     }
   } catch (err) {
     console.error("auto-reply failed:", err && err.message);
+  }
+  return false;
+}
+
+// The booking emails (emails/templates.json, "auto": "booking..."). Every
+// {{blank}} is filled from `vars`; a paragraph that is only an empty blank is
+// dropped.
+function fillTemplate(template, vars) {
+  const escapeHtml = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const fill = (s, escape) => s
+    .replace(/<p[^>]*>\{\{(\w+)\}\}<\/p>\n?/g, (m, k) => (vars[k] ? m : ""))
+    .replace(/^\{\{(\w+)\}\}\n\n/gm, (m, k) => (vars[k] ? m : ""))
+    .replace(/\{\{(\w+)\}\}/g, (m, k) => (k in vars ? escape(String(vars[k])) : m));
+  return { subject: fill(template.subject, (v) => v.replace(/[\r\n]+/g, " ")), text: fill(template.text, (v) => v), html: fill(template.html, escapeHtml) };
+}
+
+async function sendVisitorTemplate(env, key, to, vars) {
+  if (!replies[key]) return false;
+  return deliver(env, { from: env.CONTACT_FROM, fromName: "Htoo Myat Kyaw", to, replyTo: env.AUTO_REPLY_REPLY_TO || env.CONTACT_TO, ...fillTemplate(replies[key], vars) });
+}
+
+// To Htoo's own inbox, through the same binding as the contact form.
+async function sendOwnerTemplate(env, key, vars, replyTo) {
+  if (!replies[key]) return false;
+  const raw = buildMime({ from: env.CONTACT_FROM, fromName: "htoomyatkyaw.com meetings", to: env.CONTACT_TO, replyTo, ...fillTemplate(replies[key], vars) });
+  try {
+    await env.CONTACT_EMAIL.send(new EmailMessage(env.CONTACT_FROM, env.CONTACT_TO, raw));
+    return true;
+  } catch (err) {
+    console.error("send_email failed:", err && err.message);
+    return false;
   }
 }
 

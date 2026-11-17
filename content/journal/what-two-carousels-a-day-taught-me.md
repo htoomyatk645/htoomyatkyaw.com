@@ -3,7 +3,6 @@ title: What two carousels a day taught me
 date: 2026-11-04
 category: building-briefly
 summary: Before Briefly launched, we posted seven-slide Instagram carousels twice a day. Three lessons from a summer of doing it with a team of three.
-draft: true
 ---
 Before Briefly launched, we had a waitlist and no app in the store. Our job over the summer was to build an audience that already trusted us by the time the product arrived. We did it with one format: a seven-slide Instagram carousel, posted twice a day.
 
@@ -21,17 +20,13 @@ Two carousels a day is too much for three people to design by hand. But we still
 
 Once we knew the rules, we wrote them down as instructions an AI could follow: a copywriter, a layout generator, an exporter, and an illustration style guide. After that the AI could draft a complete carousel in our format and voice, and our time went into the ideas.
 
-:::note The order matters
-Hand first, then instructions. You can only teach taste that you have already worked out yourself.
-:::
+> **The order matters:** Hand first, then instructions. You can only teach taste that you have already worked out yourself.
 
 ## Teach something real
 
 Every carousel belonged to one of three pillars: memory science, podcast recommendations, and Briefly's own features. My favorite was memory science: why hearing an idea helps you keep it, and why short clips fit the way attention works.
 
 That happens to be what I study. People can tell when an account cares about its subject.
-
-[TODO: name the single carousel that performed best and say why you think it did.]
 
 ## If you're starting from zero
 

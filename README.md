@@ -62,7 +62,7 @@ Markdown: ## headings, lists, > quotes, **bold**, [links](https://…), and
 :::note Label … ::: for a callout.
 ```
 
-Three more blocks work in posts: `:::thread` (lines starting `>` are grey bubbles, `<` blue ones; it plays as a text thread), `:::phones` (`/media/file.jpg | caption` per line, phone screenshots side by side) and `:::lab` (a sketch of an app tour with `cut:` and `add:` switches; see `one-screen-one-decision.md`).
+Three more blocks work in posts: `:::thread` (lines starting `>` are grey bubbles, `<` blue ones; it plays as a text thread), `:::phones` (`/media/file.jpg | caption` per line, phone screenshots side by side) and `:::lab /media/first.jpg | caption` (a list of changes, one per line as `cut: /media/shot.jpg | Title | Why` or `add: …`; opening a change shows its screenshot, so use real screenshots; see `one-screen-one-decision.md`).
 
 Posts with `draft: true` are left out of the site. Set it to `false` (or delete the line) and run `npm run content` to publish. `npm run content:drafts` builds drafts too, for a local look with `npm run dev`; run `npm run content` again before deploying. `[TODO: …]` marks a spot that still needs your own detail. Categories and the intro line are in `content/site.json`.
 
@@ -74,9 +74,11 @@ Posts with `draft: true` are left out of the site. Set it to `false` (or delete 
 
 The four cards on `/case-study` still open the standalone write-ups (the `LIVE` map in `tools/build-rebrand.py` and `src/worker.js`). To point a card at a new write-up instead, change its entry in both.
 
-**Contact and Playground.** `npm run content` also adds a section under the contact form (message starters, what happens next, a Boston clock) and three small experiments under the Playground photo board. Their wording is in `content/site.json` under `contact` and `playground`.
+**Top bar.** The Resume button and the LinkedIn icon in the top bar are added by the site script in `tools/build-rebrand.py` (`RESUME`, `LINKEDIN`). To change the resume, replace `site/Htoo_Myat_Kyaw_Resume.pdf`.
 
-**Services.** The four services, the process steps and the FAQ are Framer text, edited in `tools/build-rebrand.py`. The "Free college admissions help" section and its survey come from `content/services/admissions.json`: edit the copy and the `questions` list there. Answers are emailed through `/api/contact` with the subject "College admissions help request".
+**Contact and Playground.** `npm run content` also adds a section under the contact form (message starters, what happens next, a Boston clock) and six small experiments (colour naming, digit span, reaction time, flanker, 2-back, go/no-go) under the Playground photo board. Their wording is in `content/site.json` under `contact` and `playground`.
+
+**Services.** The four services, the process steps and the FAQ are Framer text, edited in `tools/build-rebrand.py`. The "Free college admissions help" section and its survey come from `content/services/admissions.json`: edit the copy and the `questions` list there. Answers are emailed through `/api/contact` with the subject "College admissions help request". The "Start a project" form that sits after "How I work" comes from `content/services/clients.json`; it uses the same one-question-at-a-time survey, emails you the answers, and sends the person the `auto-clients` confirmation.
 
 The template's own blog posts and case-study pages are removed from `site/` by `npm run content`, so `npm run compare` no longer has those pages to compare.
 
@@ -87,9 +89,9 @@ The template's own blog posts and case-study pages are removed from `site/` by `
 - `emails/out/<id>.html` and `.txt`: each email as mail-safe HTML and plain text.
 - `site/email/*.png`: the pixel-font headings as pictures (mail apps don't load web fonts), served from the live site.
 - `emails/gallery.html`: a page to pick a template, fill in the `{{blanks}}` and copy it into Gmail.
-- `src/auto-replies.js`: the two templates marked `"auto"`, which the Worker sends by itself.
+- `src/auto-replies.js`: the templates marked `"auto"`, which the Worker sends by itself.
 
-**Automatic replies.** When someone uses the contact form or finishes the admissions survey, the Worker emails you as before and then sends that person a confirmation: `auto-contact` or `auto-admissions`. It adds their first name and, for the survey, the topics they picked. Nothing else they typed is repeated back. Replies to it go to the address in `AUTO_REPLY_REPLY_TO` (`wrangler.jsonc`).
+**Automatic replies.** When someone uses the contact form or finishes the admissions survey or the Start a project form, the Worker emails you as before and then sends that person a confirmation: `auto-contact`, `auto-admissions` or `auto-clients`. It adds their first name and, for the survey, the topics they picked. Nothing else they typed is repeated back. Replies to it go to the address in `AUTO_REPLY_REPLY_TO` (`wrangler.jsonc`).
 
 Delivery to visitors needs one of these, set up once:
 
@@ -97,6 +99,26 @@ Delivery to visitors needs one of these, set up once:
 2. Or a [Resend](https://resend.com) account with `htoomyatkyaw.com` verified, and its key saved with `npx wrangler secret put RESEND_API_KEY`. When that secret exists the Worker uses Resend.
 
 Until one of them is in place the forms keep working and you still get every submission; the confirmation is skipped and `npx wrangler tail` shows "auto-reply failed".
+
+## Booking
+
+The Contact page has a "Book a call" section. A visitor picks a kind of meeting, a day and a time; times are shown in their own time zone.
+
+1. The site emails you the request with a **Review and confirm** button. The visitor gets a "request received" email. Nothing is booked yet.
+2. The button opens a page that shows the request and whether your calendar is still free. Press **Confirm** or **Decline**.
+3. Confirm creates the event on your Google Calendar with a Google Meet link, Google invites the visitor, and the site emails them "Your meeting with Htoo is confirmed" with the link. Decline emails them a link to pick another time.
+
+Your hours, the meeting types and their lengths are in `content/site.json` under `booking` (`hours` are in the `timezone` given there; `noticeHours` is the shortest notice; `daysAhead` is how far ahead people can book). The emails are the five templates in the "Meetings" group of `emails/templates.json`. The code is `src/booking.js`. Nothing is stored: the review link carries the request, signed so it cannot be altered.
+
+**Connect Google Calendar (once).** Until this is done the section still works, but it offers your listed hours without checking your calendar, and the confirmation email says the Meet link will follow.
+
+1. In [Google Cloud Console](https://console.cloud.google.com/), create a project and enable the **Google Calendar API**.
+2. Under **Google Auth Platform**, set up the consent screen (External), add yourself as a user, then set the publishing status to **In production** so the connection does not expire after seven days.
+3. Create an **OAuth client ID** of type **Desktop app**.
+4. On your computer run `npm run google-auth`, paste the client ID and secret, and sign in. It saves the three secrets on the Worker.
+5. `npm run deploy`.
+
+Optional: `GOOGLE_CALENDAR_IDS` (a var, comma-separated; the first one receives the events, all are checked for busy times; default `primary`) and `MEET_LINK` (a fixed Meet address to use if Google Calendar is not connected).
 
 ## Contact form
 

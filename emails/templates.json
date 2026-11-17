@@ -349,6 +349,30 @@
       ]
     },
     {
+      "id": "auto-clients",
+      "auto": "clients",
+      "group": "Automatic",
+      "name": "Project inquiry reply",
+      "when": "Sent by the site itself, right after someone finishes the Start a project form on Services.",
+      "banner": "Received",
+      "color": "yellow",
+      "subject": "I received your project details",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for telling me about your project. This is an automatic note to confirm that your answers reached me. I'll read them myself and reply within a few days.",
+        "{{topic_line}}",
+        "Here is what happens next:",
+        {
+          "list": [
+            "I read what you sent and note any questions.",
+            "I reply with first thoughts and a time for a short call.",
+            "After we talk, I send a scope and a price that fit the project."
+          ]
+        },
+        "If you have a deck, a link, or screenshots, reply to this email and attach them. They help."
+      ]
+    },
+    {
       "id": "auto-admissions",
       "auto": "admissions",
       "group": "Automatic",
@@ -370,6 +394,122 @@
           ]
         },
         "You've already done the hard part by asking. Talk soon."
+      ]
+    },
+    {
+      "id": "booking-owner",
+      "auto": "bookingOwner",
+      "group": "Meetings",
+      "name": "Meeting request (to you)",
+      "when": "Sent to you by the site when someone asks for a meeting time on the Contact page.",
+      "banner": "Request",
+      "color": "pink",
+      "subject": "Meeting request: {{visitor_name}}, {{when_owner}}",
+      "body": [
+        "{{visitor_name}} asked to meet with you.",
+        {
+          "list": [
+            "**What:** {{meeting_type}}, {{duration}} minutes",
+            "**When:** {{when_owner}} ({{owner_zone}})",
+            "**Their time:** {{when}} ({{timezone}})",
+            "**Email:** {{visitor_email}}"
+          ]
+        },
+        "{{note_line}}",
+        {
+          "button": {
+            "label": "Review and confirm",
+            "url": "{{review_url}}"
+          }
+        },
+        "Nothing is booked until you press Confirm on that page. Replying to this email writes to them directly."
+      ]
+    },
+    {
+      "id": "booking-request",
+      "auto": "bookingRequest",
+      "group": "Meetings",
+      "name": "Meeting request received",
+      "when": "Sent by the site itself, right after someone asks for a meeting time.",
+      "banner": "Requested",
+      "color": "cyan",
+      "subject": "I got your meeting request for {{when}}",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for asking to meet. I have your request for a **{{meeting_type}}** on **{{when}}** ({{timezone}}).",
+        "This time is not confirmed yet. I look at each request myself, and you'll get a second email with the Google Meet link as soon as I confirm it.",
+        "If that time stops working for you, reply to this email."
+      ]
+    },
+    {
+      "id": "booking-confirmed",
+      "auto": "bookingConfirmed",
+      "group": "Meetings",
+      "name": "Meeting confirmed",
+      "when": "Sent by the site when you press Confirm on a meeting request.",
+      "banner": "Confirmed",
+      "color": "green",
+      "subject": "Confirmed: our meeting on {{when}}",
+      "body": [
+        "Hi {{first_name}},",
+        "Your meeting with Htoo is confirmed. I hope to meet you soon.",
+        {
+          "list": [
+            "**What:** {{meeting_type}}, {{duration}} minutes",
+            "**When:** {{when}} ({{timezone}})",
+            "**Where:** Google Meet"
+          ]
+        },
+        {
+          "button": {
+            "label": "Join Google Meet",
+            "url": "{{meet_url}}"
+          }
+        },
+        "The same link works from any browser. If you need to move the time, reply to this email."
+      ]
+    },
+    {
+      "id": "booking-confirmed-no-link",
+      "auto": "bookingConfirmedNoLink",
+      "group": "Meetings",
+      "name": "Meeting confirmed (link to follow)",
+      "when": "Sent instead of the one above if Google Calendar is not connected, so there is no Meet link yet.",
+      "banner": "Confirmed",
+      "color": "green",
+      "subject": "Confirmed: our meeting on {{when}}",
+      "body": [
+        "Hi {{first_name}},",
+        "Your meeting with Htoo is confirmed. I hope to meet you soon.",
+        {
+          "list": [
+            "**What:** {{meeting_type}}, {{duration}} minutes",
+            "**When:** {{when}} ({{timezone}})",
+            "**Where:** Google Meet"
+          ]
+        },
+        "I'll send the Google Meet link in a separate email before we meet. If you need to move the time, reply to this one."
+      ]
+    },
+    {
+      "id": "booking-declined",
+      "auto": "bookingDeclined",
+      "group": "Meetings",
+      "name": "Meeting time not available",
+      "when": "Sent by the site when you press Decline on a meeting request.",
+      "banner": "New time",
+      "color": "yellow",
+      "subject": "Could we find another time?",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for asking to meet. I can't make {{when}} after all, and I'm sorry for the back and forth.",
+        {
+          "button": {
+            "label": "Pick another time",
+            "url": "https://htoomyatkyaw.com/contact#book"
+          }
+        },
+        "You can also reply to this email with a few times that suit you."
       ]
     }
   ]

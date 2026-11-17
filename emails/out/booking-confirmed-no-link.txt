@@ -1,0 +1,16 @@
+Subject: Confirmed: our meeting on {{when}}
+
+Hi {{first_name}},
+
+Your meeting with Htoo is confirmed. I hope to meet you soon.
+
+- What: {{meeting_type}}, {{duration}} minutes
+- When: {{when}} ({{timezone}})
+- Where: Google Meet
+
+I'll send the Google Meet link in a separate email before we meet. If you need to move the time, reply to this one.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

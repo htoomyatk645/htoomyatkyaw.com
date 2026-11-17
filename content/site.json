@@ -26,6 +26,11 @@
     "startersTitle": "not sure where to start?",
     "starters": [
       {
+        "label": "Book a call",
+        "color": "cyan",
+        "href": "#book"
+      },
+      {
         "label": "I have a project",
         "color": "cyan",
         "text": "Hi Htoo, I'm working on [what it is] for [who it's for]. It's currently [an idea / a prototype / live]. I'd like help with "
@@ -78,34 +83,152 @@
   },
   "playground": {
     "jump": "Mind games",
-    "kicker": "three tiny experiments",
+    "kicker": "six tiny experiments",
     "heading": [
       "Mind",
       "games"
     ],
-    "intro": "I study how attention and memory work, and I design around their limits. Try them on yourself. Each one takes under a minute.",
+    "intro": "These are small versions of tasks that neuroscience labs use to study attention, memory and self-control. I study how those systems work, and I design around their limits. Try them on yourself. Each one takes under a minute.",
     "games": [
       {
         "id": "stroop",
         "color": "pink",
         "name": "Say the color",
         "rule": "Pick the color of the ink. Ignore what the word says.",
-        "lesson": "Reading is automatic, so it gets in the way. This is why a screen should never make two signals disagree."
+        "lesson": "Reading is automatic, so the word competes with the ink. The anterior cingulate notices the conflict and the prefrontal cortex settles it, which costs time. A screen should never make two signals disagree.",
+        "brain": "Anterior cingulate cortex · conflict"
       },
       {
         "id": "span",
         "color": "cyan",
         "name": "Hold that number",
         "rule": "Watch the digits, then type them back. It gets longer each round.",
-        "lesson": "Working memory is small. Most adults hold about seven digits, which is why I give each screen one decision."
+        "lesson": "Working memory is small. Most adults hold about seven digits, and only by rehearsing them silently. This is why I give each screen one decision.",
+        "brain": "Prefrontal and parietal cortex · working memory"
       },
       {
         "id": "react",
         "color": "green",
         "name": "Quick draw",
-        "rule": "Wait for green, then click as fast as you can. Five tries.",
-        "lesson": "A quarter of a second is typical. Feedback that arrives slower than that starts to feel broken."
+        "rule": "Wait for green, then tap as fast as you can. Five tries.",
+        "lesson": "The signal has to travel from the eye to the visual cortex, then to the motor cortex, then down to the hand. About a quarter of a second is typical. Feedback that arrives slower than that starts to feel broken.",
+        "brain": "Visual cortex to motor cortex · processing speed"
+      },
+      {
+        "id": "flanker",
+        "color": "yellow",
+        "name": "Eyes on the middle",
+        "rule": "Which way does the middle arrow point? Ignore its neighbours. Twelve rounds.",
+        "brain": "Anterior cingulate cortex · selective attention",
+        "lesson": "This is the Eriksen flanker task. Attention is not a perfect spotlight: neighbours leak in, and when they disagree with the target your brain needs extra time to suppress them. Clutter beside a button slows the tap."
+      },
+      {
+        "id": "nback",
+        "color": "cyan",
+        "name": "Two back",
+        "rule": "Letters appear one at a time. Tap Match when a letter is the same as the one two steps before it.",
+        "brain": "Dorsolateral prefrontal cortex · updating memory",
+        "lesson": "This is the 2-back task. You have to hold two letters, compare, then drop the oldest and take in a new one, over and over. The dorsolateral prefrontal cortex does that updating, and it tires quickly. An interface should never ask people to carry something from two screens ago."
+      },
+      {
+        "id": "gonogo",
+        "color": "pink",
+        "name": "Hold back",
+        "rule": "Tap when the pad turns green and says GO. When it turns pink and says STOP, do nothing.",
+        "brain": "Right inferior frontal cortex · inhibition",
+        "lesson": "This is a go/no-go task. Most rounds say go, so tapping becomes a habit, and stopping means cancelling a movement that is already on its way. The right inferior frontal cortex applies that brake. It is why a destructive button should never sit where the usual button sits."
       }
     ]
+  },
+  "booking": {
+    "kicker": "or skip the back and forth",
+    "heading": [
+      "Book",
+      "a call"
+    ],
+    "intro": "Pick the kind of meeting, then a day and a time that suit you. I confirm each request myself, and the confirmation email carries the Google Meet link.",
+    "timezone": "America/New_York",
+    "hours": {
+      "mon": [
+        [
+          "10:00",
+          "18:00"
+        ]
+      ],
+      "tue": [
+        [
+          "10:00",
+          "18:00"
+        ]
+      ],
+      "wed": [
+        [
+          "10:00",
+          "18:00"
+        ]
+      ],
+      "thu": [
+        [
+          "10:00",
+          "18:00"
+        ]
+      ],
+      "fri": [
+        [
+          "10:00",
+          "18:00"
+        ]
+      ],
+      "sat": [
+        [
+          "11:00",
+          "15:00"
+        ]
+      ],
+      "sun": []
+    },
+    "slotMinutes": 30,
+    "noticeHours": 24,
+    "daysAhead": 21,
+    "bufferMinutes": 0,
+    "types": [
+      {
+        "id": "consult",
+        "color": "cyan",
+        "name": "Project consultation",
+        "minutes": 30,
+        "blurb": "Product design, a UI/UX redesign, or app and product consulting."
+      },
+      {
+        "id": "qa",
+        "color": "yellow",
+        "name": "Q&A",
+        "minutes": 30,
+        "blurb": "Ask me anything: design, building with AI agents, starting a company as a student."
+      },
+      {
+        "id": "admissions",
+        "color": "green",
+        "name": "College admissions help",
+        "minutes": 30,
+        "blurb": "Free, for first-generation and low-income students."
+      },
+      {
+        "id": "briefly",
+        "color": "pink",
+        "name": "About Briefly",
+        "minutes": 30,
+        "blurb": "For podcasters, press and partners."
+      },
+      {
+        "id": "hello",
+        "color": "cyan",
+        "name": "Quick hello",
+        "minutes": 15,
+        "blurb": "No agenda. Just to meet."
+      }
+    ],
+    "doneTitle": "request sent!",
+    "doneText": "I'll look at it myself and confirm by email. Once I do, you'll get a Google Meet link for the call. A copy of your request is on its way to your inbox now."
   }
 }
