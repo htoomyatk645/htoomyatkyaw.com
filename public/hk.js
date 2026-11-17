@@ -56,6 +56,7 @@
     $$("[data-thread]").forEach(threadBlock);
     $$("[data-lab]").forEach(labBlock);
     $$("[data-contact]").forEach(contact);
+    $$("[data-book]").forEach(book);
     $$("[data-game]").forEach(game);
     $$("[data-jump]").forEach(function (a) {
       a.addEventListener("click", function (e) { e.preventDefault(); $("#mind-games").scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); });
@@ -127,6 +128,117 @@
       status.textContent = text;
     }
     tick(); setInterval(tick, 20000);
+  }
+
+  // ----------------------------------------------------------------- booking
+  // Pick a kind of meeting, a day and a time. Open times come from
+  // /api/booking/slots (Htoo's hours minus his calendar) and are shown in the
+  // visitor's own time zone. Sending asks for the time; Htoo confirms by email.
+  function book(el) {
+    var cfg = JSON.parse($("script[type='application/json']", el).textContent);
+    var grid = $("[data-grid]", el), label = $("[data-month-label]", el), hint = $("[data-hint]", el), times = $("[data-times]", el);
+    var form = $("[data-form]", el), sum = $("[data-sum]", el), errBox = $("[data-err]", el), send = $(".hk-bk-send", el), done = $("[data-done]", el);
+    var tz = "local time"; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || tz; } catch (e) {}
+    var type = null, byDay = {}, days = [], day = null, slot = null, month = null, loadId = 0;
+    function h(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+    function key(d) { return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); }
+    function fmt(d, o) { return d.toLocaleString("en-US", o); }
+    function step(name, on) { $("[data-step=" + name + "]", el).classList.toggle("ready", on); }
+
+    function drawMonth() {
+      grid.textContent = "";
+      if (!month) { label.textContent = ""; return; }
+      var y = month[0], m = month[1], first = new Date(y, m, 1), count = new Date(y, m + 1, 0).getDate();
+      label.textContent = fmt(first, { month: "long", year: "numeric" });
+      for (var b = 0; b < first.getDay(); b++) grid.appendChild(h("span"));
+      for (var d = 1; d <= count; d++) (function (date) {
+        var k = key(date), open = byDay[k], btn = h("button", open ? "open" : "", String(date.getDate()));
+        btn.type = "button"; btn.disabled = !open;
+        btn.setAttribute("aria-label", fmt(date, { weekday: "long", month: "long", day: "numeric" }) + (open ? ", " + open.length + " times open" : ", no times"));
+        btn.setAttribute("aria-pressed", String(day === k));
+        if (open) btn.addEventListener("click", function () { pickDay(k); });
+        grid.appendChild(btn);
+      })(new Date(y, m, d));
+      var firstM = days.length ? days[0] : null, lastM = days.length ? days[days.length - 1] : null;
+      $("[data-month='-1']", el).disabled = !firstM || (y === firstM.getFullYear() && m === firstM.getMonth());
+      $("[data-month='1']", el).disabled = !lastM || (y === lastM.getFullYear() && m === lastM.getMonth());
+    }
+    function drawTimes() {
+      times.textContent = "";
+      var list = day ? byDay[day] : null;
+      if (!list) { times.appendChild(h("p", "hk-bk-hint", type ? "Pick a day to see its times." : "Times appear here.")); return; }
+      times.appendChild(h("p", "hk-bk-day", fmt(list[0], { weekday: "long", month: "long", day: "numeric" })));
+      var box = h("div", "hk-bk-slots");
+      list.forEach(function (d, i) {
+        var b = h("button", "", fmt(d, { hour: "numeric", minute: "2-digit" })); b.type = "button"; b.style.setProperty("--i", i);
+        b.setAttribute("aria-pressed", String(slot === d));
+        b.addEventListener("click", function () { slot = d; drawTimes(); showForm(true); });
+        box.appendChild(b);
+      });
+      times.appendChild(box);
+      times.appendChild(h("p", "hk-bk-tz", "Times are in your time zone: " + tz.replace(/_/g, " ")));
+    }
+    function summary() {
+      return type.name + " · " + type.minutes + " min · " + fmt(slot, { weekday: "short", month: "short", day: "numeric" }) + ", " + fmt(slot, { hour: "numeric", minute: "2-digit" });
+    }
+    function showForm(focus) {
+      form.hidden = !slot; errBox.textContent = "";
+      if (!slot) return;
+      sum.textContent = summary();
+      if (focus) { var f = form.elements.name; if (!f.value) setTimeout(function () { f.focus({ preventScroll: true }); form.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "nearest" }); }, 60); }
+    }
+    function pickDay(k) { day = k; slot = null; drawMonth(); drawTimes(); showForm(); step("time", true); }
+
+    function load(keep) {
+      var id = ++loadId;
+      byDay = {}; days = []; if (!keep) { day = null; month = null; } slot = null;
+      el.classList.add("loading"); hint.textContent = "Checking my calendar…"; drawMonth(); drawTimes(); showForm();
+      fetch("/api/booking/slots?type=" + encodeURIComponent(type.id))
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (id !== loadId) return;
+          if (!j.success) throw new Error("failed");
+          j.slots.forEach(function (iso) { var d = new Date(iso), k = key(d); if (!byDay[k]) { byDay[k] = []; days.push(new Date(d.getFullYear(), d.getMonth(), 1)); } byDay[k].push(d); });
+          el.classList.remove("loading");
+          if (!days.length) { hint.textContent = "No open times in the next few weeks. Please use the form above."; step("day", false); return; }
+          var firstKey = Object.keys(byDay)[0];
+          if (!day || !byDay[day]) day = firstKey;
+          var dd = byDay[day][0]; month = [dd.getFullYear(), dd.getMonth()];
+          hint.textContent = j.calendar ? "Highlighted days are open on my calendar." : "Highlighted days have open times.";
+          step("day", true); step("time", true); drawMonth(); drawTimes();
+        })
+        .catch(function () { if (id !== loadId) return; el.classList.remove("loading"); hint.textContent = "I couldn't load the open times. Please use the form above, or try again in a minute."; });
+    }
+
+    $$("[data-type]", el).forEach(function (b) {
+      b.addEventListener("click", function () {
+        type = cfg.types.filter(function (t) { return t.id === b.dataset.type; })[0];
+        $$("[data-type]", el).forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+        load(true);
+      });
+    });
+    $$("[data-month]", el).forEach(function (b) {
+      b.addEventListener("click", function () { if (!month) return; var d = new Date(month[0], month[1] + +b.dataset.month, 1); month = [d.getFullYear(), d.getMonth()]; drawMonth(); });
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = form.elements.name.value.trim(), email = form.elements.email.value.trim();
+      if (!name) { errBox.textContent = "Please add your name."; form.elements.name.focus(); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errBox.textContent = "That email doesn't look right."; form.elements.email.focus(); return; }
+      errBox.textContent = ""; send.disabled = true; send.textContent = "Sending";
+      var text = summary();
+      fetch("/api/booking/request", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ type: type.id, start: slot.toISOString(), name: name, email: email, note: form.elements.note.value, website: form.elements.website.value, timezone: tz }) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j.success, j: j }; }); })
+        .then(function (res) {
+          if (!res.ok) { errBox.textContent = res.j.error || "That didn't send. Please try again."; if (res.j.taken) load(true); return; }
+          $("[data-done-sum]", el).textContent = text;
+          el.classList.add("sent"); done.hidden = false;
+          done.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+        })
+        .catch(function () { errBox.textContent = "That didn't send. Please check your connection and try again."; })
+        .then(function () { send.disabled = false; send.textContent = "Request this time"; });
+    });
+    drawTimes();
   }
 
   // ------------------------------------------------------------------- games

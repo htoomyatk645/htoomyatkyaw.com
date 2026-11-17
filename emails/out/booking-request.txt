@@ -1,0 +1,14 @@
+Subject: I got your meeting request for {{when}}
+
+Hi {{first_name}},
+
+Thank you for asking to meet. I have your request for a {{meeting_type}} on {{when}} ({{timezone}}).
+
+This time is not confirmed yet. I look at each request myself, and you'll get a second email with the Google Meet link as soon as I confirm it.
+
+If that time stops working for you, reply to this email.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

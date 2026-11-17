@@ -11,7 +11,8 @@
     "deploy": "git pull && npm run content && npm run emails && npm run check && wrangler deploy",
     "content": "node tools/build-content.mjs",
     "content:drafts": "node tools/build-content.mjs --drafts",
-    "emails": "node tools/build-emails.mjs"
+    "emails": "node tools/build-emails.mjs",
+    "google-auth": "node tools/google-auth.mjs"
   },
   "repository": {
     "type": "git",

@@ -26,6 +26,11 @@
     "startersTitle": "not sure where to start?",
     "starters": [
       {
+        "label": "Book a call",
+        "color": "cyan",
+        "href": "#book"
+      },
+      {
         "label": "I have a project",
         "color": "cyan",
         "text": "Hi Htoo, I'm working on [what it is] for [who it's for]. It's currently [an idea / a prototype / live]. I'd like help with "
@@ -134,5 +139,96 @@
         "lesson": "This is a go/no-go task. Most rounds say go, so tapping becomes a habit, and stopping means cancelling a movement that is already on its way. The right inferior frontal cortex applies that brake. It is why a destructive button should never sit where the usual button sits."
       }
     ]
+  },
+  "booking": {
+    "kicker": "or skip the back and forth",
+    "heading": [
+      "Book",
+      "a call"
+    ],
+    "intro": "Pick the kind of meeting, then a day and a time that suit you. I confirm each request myself, and the confirmation email carries the Google Meet link.",
+    "timezone": "America/New_York",
+    "hours": {
+      "mon": [
+        [
+          "10:00",
+          "18:00"
+        ]
+      ],
+      "tue": [
+        [
+          "10:00",
+          "18:00"
+        ]
+      ],
+      "wed": [
+        [
+          "10:00",
+          "18:00"
+        ]
+      ],
+      "thu": [
+        [
+          "10:00",
+          "18:00"
+        ]
+      ],
+      "fri": [
+        [
+          "10:00",
+          "18:00"
+        ]
+      ],
+      "sat": [
+        [
+          "11:00",
+          "15:00"
+        ]
+      ],
+      "sun": []
+    },
+    "slotMinutes": 30,
+    "noticeHours": 24,
+    "daysAhead": 21,
+    "bufferMinutes": 0,
+    "types": [
+      {
+        "id": "consult",
+        "color": "cyan",
+        "name": "Project consultation",
+        "minutes": 30,
+        "blurb": "Product design, a UI/UX redesign, or app and product consulting."
+      },
+      {
+        "id": "qa",
+        "color": "yellow",
+        "name": "Q&A",
+        "minutes": 30,
+        "blurb": "Ask me anything: design, building with AI agents, starting a company as a student."
+      },
+      {
+        "id": "admissions",
+        "color": "green",
+        "name": "College admissions help",
+        "minutes": 30,
+        "blurb": "Free, for first-generation and low-income students."
+      },
+      {
+        "id": "briefly",
+        "color": "pink",
+        "name": "About Briefly",
+        "minutes": 30,
+        "blurb": "For podcasters, press and partners."
+      },
+      {
+        "id": "hello",
+        "color": "cyan",
+        "name": "Quick hello",
+        "minutes": 15,
+        "blurb": "No agenda. Just to meet."
+      }
+    ],
+    "doneTitle": "request sent!",
+    "doneText": "I'll look at it myself and confirm by email. Once I do, you'll get a Google Meet link for the call. A copy of your request is on its way to your inbox now."
   }
 }

@@ -1,0 +1,19 @@
+Subject: Meeting request: {{visitor_name}}, {{when_owner}}
+
+{{visitor_name}} asked to meet with you.
+
+- What: {{meeting_type}}, {{duration}} minutes
+- When: {{when_owner}} ({{owner_zone}})
+- Their time: {{when}} ({{timezone}})
+- Email: {{visitor_email}}
+
+{{note_line}}
+
+Review and confirm: {{review_url}}
+
+Nothing is booked until you press Confirm on that page. Replying to this email writes to them directly.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

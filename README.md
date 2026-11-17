@@ -100,6 +100,26 @@ Delivery to visitors needs one of these, set up once:
 
 Until one of them is in place the forms keep working and you still get every submission; the confirmation is skipped and `npx wrangler tail` shows "auto-reply failed".
 
+## Booking
+
+The Contact page has a "Book a call" section. A visitor picks a kind of meeting, a day and a time; times are shown in their own time zone.
+
+1. The site emails you the request with a **Review and confirm** button. The visitor gets a "request received" email. Nothing is booked yet.
+2. The button opens a page that shows the request and whether your calendar is still free. Press **Confirm** or **Decline**.
+3. Confirm creates the event on your Google Calendar with a Google Meet link, Google invites the visitor, and the site emails them "Your meeting with Htoo is confirmed" with the link. Decline emails them a link to pick another time.
+
+Your hours, the meeting types and their lengths are in `content/site.json` under `booking` (`hours` are in the `timezone` given there; `noticeHours` is the shortest notice; `daysAhead` is how far ahead people can book). The emails are the five templates in the "Meetings" group of `emails/templates.json`. The code is `src/booking.js`. Nothing is stored: the review link carries the request, signed so it cannot be altered.
+
+**Connect Google Calendar (once).** Until this is done the section still works, but it offers your listed hours without checking your calendar, and the confirmation email says the Meet link will follow.
+
+1. In [Google Cloud Console](https://console.cloud.google.com/), create a project and enable the **Google Calendar API**.
+2. Under **Google Auth Platform**, set up the consent screen (External), add yourself as a user, then set the publishing status to **In production** so the connection does not expire after seven days.
+3. Create an **OAuth client ID** of type **Desktop app**.
+4. On your computer run `npm run google-auth`, paste the client ID and secret, and sign in. It saves the three secrets on the Worker.
+5. `npm run deploy`.
+
+Optional: `GOOGLE_CALENDAR_IDS` (a var, comma-separated; the first one receives the events, all are checked for busy times; default `primary`) and `MEET_LINK` (a fixed Meet address to use if Google Calendar is not connected).
+
 ## Contact form
 
 The mirrored Framer form (Message, then Email) posts multipart form data to Framer's forms API. The mirror rewrites that URL to `/api/forms/…`, and `public/contact-bridge.js` also catches any form request that was missed. The Worker checks the request (allowed origin, honeypot fields including the hidden ones Framer's form adds, 32 KB size limit, 5 requests per minute per IP) and strips Framer's `__framer_*` bot-check fields. It then sends a plain-text email through Cloudflare Email Routing:
