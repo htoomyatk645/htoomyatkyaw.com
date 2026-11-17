@@ -86,22 +86,18 @@
   }
 
   // -------------------------------------------------------- cut-and-add lab
+  // A list of changes; opening one shows its screenshot in the phone.
   function labBlock(el) {
-    var buttons = $$("[data-lab-toggle]", el), noise = $("[data-noise]", el), help = $("[data-help]", el);
-    function sync() {
-      var cuts = 0, adds = 0, total = 0;
-      buttons.forEach(function (b) {
-        var on = b.getAttribute("aria-pressed") === "true", key = b.dataset.labToggle;
-        el.classList.toggle(key, on);
-        if (key.indexOf("cut") === 0) { total++; if (on) cuts++; } else if (on) adds++;
-      });
-      noise.textContent = total - cuts; help.textContent = adds;
+    var buttons = $$("[data-lab-open]", el), imgs = $$("[data-lab-img]", el), cap = $("[data-lab-cap]", el);
+    function open(id) {
+      buttons.forEach(function (b) { b.setAttribute("aria-expanded", String(b.dataset.labOpen === id)); });
+      imgs.forEach(function (im) { var on = im.dataset.labImg === id; if (on) im.loading = "eager"; im.classList.toggle("on", on); });
+      var b = id === "-1" ? null : buttons.filter(function (x) { return x.dataset.labOpen === id; })[0];
+      cap.textContent = b ? "The tour today: " + b.querySelector("b").textContent : cap.dataset.first;
     }
     buttons.forEach(function (b) {
-      b.addEventListener("click", function () { b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true")); sync(); });
+      b.addEventListener("click", function () { open(b.getAttribute("aria-expanded") === "true" ? "-1" : b.dataset.labOpen); });
     });
-    $("[data-lab-reset]", el).addEventListener("click", function () { buttons.forEach(function (b) { b.setAttribute("aria-pressed", "false"); }); sync(); });
-    sync();
   }
 
   // ----------------------------------------------------------------- contact
@@ -134,7 +130,7 @@
   }
 
   // ------------------------------------------------------------------- games
-  // Three one-minute experiments on the Playground page.
+  // One-minute experiments on the Playground page.
   function game(card) {
     var stage = $("[data-stage]", card), lesson = $("[data-lesson]", card), kind = card.dataset.game, timers = [];
     function h(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
@@ -201,9 +197,9 @@
         clear();
         var pad = h("button", "hk-game-pad", "Wait for green…"); pad.type = "button"; stage.appendChild(pad);
         var t0 = 0;
-        later(function () { pad.classList.add("go"); pad.textContent = "Click!"; t0 = performance.now(); }, 1200 + Math.random() * 2600);
+        later(function () { pad.classList.add("go"); pad.textContent = "Tap!"; t0 = performance.now(); }, 1200 + Math.random() * 2600);
         pad.addEventListener("pointerdown", function () {
-          if (!t0) { clear(); var early = h("button", "hk-game-pad", "Too soon. Click to try again."); early.type = "button"; early.addEventListener("click", round); stage.appendChild(early); return; }
+          if (!t0) { clear(); var early = h("button", "hk-game-pad", "Too soon. Tap to try again."); early.type = "button"; early.addEventListener("click", round); stage.appendChild(early); return; }
           times.push(performance.now() - t0);
           if (times.length === tries) return finish(avg(times) + " ms", "average over " + tries + " tries · best " + Math.round(Math.min.apply(null, times)) + " ms");
           round();
@@ -211,7 +207,88 @@
       }
       round();
     }
-    function start() { lesson.hidden = true; ({ stroop: stroop, span: span, react: react })[kind](); }
+    // Eriksen flanker: answer for the middle arrow while its neighbours agree or disagree.
+    function flanker() {
+      var trial = 0, total = 12, same = [], diff = [], wrong = 0;
+      function next() {
+        clear();
+        var gap = avg(diff) - avg(same);
+        if (trial === total) return finish((gap > 0 ? "+" : "-") + Math.abs(gap) + " ms", (gap > 0 ? "slower when the neighbours pointed the other way" : "no slowdown from the neighbours. That is rare.") + (wrong ? " · " + wrong + " wrong" : ""));
+        var right = Math.random() < 0.5, match = trial % 2 === 0, t0 = performance.now();
+        if (Math.random() < 0.5 && trial < total - 1) match = !match;
+        trial++;
+        var mid = right ? "›" : "‹", side = (match ? right : !right) ? "›" : "‹";
+        stage.appendChild(h("span", "hk-game-note", trial + " / " + total));
+        var row = h("strong", "hk-game-arrows", side + side + mid + side + side); row.setAttribute("aria-label", "Middle arrow points " + (right ? "right" : "left")); stage.appendChild(row);
+        var keys = h("div", "hk-game-keys");
+        [["‹ Left", false], ["Right ›", true]].forEach(function (k) {
+          var b = h("button", "", k[0]); b.type = "button"; b.style.setProperty("--k", "var(--hk-ink)");
+          b.addEventListener("click", function () { if (k[1] === right) (match ? same : diff).push(performance.now() - t0); else wrong++; next(); });
+          keys.appendChild(b);
+        });
+        stage.appendChild(keys);
+      }
+      next();
+    }
+
+    // 2-back: say when the letter matches the one two steps earlier.
+    function nback() {
+      var letters = "BCDFGHKL", seq = [], total = 16, i = -1, pressed = false, hits = 0, targets = 0, falseAlarms = 0;
+      for (var n = 0; n < total; n++) {
+        var same = n >= 2 && Math.random() < 0.34, c;
+        if (same) c = seq[n - 2]; else do { c = letters.charAt(Math.floor(Math.random() * letters.length)); } while (n >= 2 && c === seq[n - 2]);
+        seq.push(c);
+      }
+      clear();
+      var note = h("span", "hk-game-note", "Get ready"), word = h("strong", "hk-game-word", ""), btn = h("button", "hk-game-go", "Match"); btn.type = "button";
+      stage.appendChild(note); stage.appendChild(word); stage.appendChild(btn);
+      function isTarget(k) { return k >= 2 && seq[k] === seq[k - 2]; }
+      btn.addEventListener("click", function () {
+        if (i < 0 || pressed) return;
+        pressed = true; btn.classList.add(isTarget(i) ? "right" : "wrong");
+        if (isTarget(i)) hits++; else falseAlarms++;
+      });
+      function step() {
+        i++;
+        if (i === total) return finish(hits + " / " + targets, "matches caught" + (falseAlarms ? " · " + falseAlarms + " false alarm" + (falseAlarms > 1 ? "s" : "") : " · no false alarms"));
+        pressed = false; btn.classList.remove("right", "wrong");
+        if (isTarget(i)) targets++;
+        note.textContent = (i + 1) + " / " + total; word.textContent = seq[i];
+        if (!reduce && word.animate) word.animate([{ transform: "scale(1.4)", opacity: 0 }, { transform: "scale(1)", opacity: 1 }], { duration: 200 });
+        later(function () { word.textContent = ""; }, 1300);
+        later(step, 1900);
+      }
+      later(step, 900);
+    }
+
+    // Go / no-go: tap on green, hold back on pink.
+    function gonogo() {
+      var total = 16, plan = [], i = 0, times = [], slips = 0, misses = 0, stops = 0;
+      for (var n = 0; n < total; n++) plan.push(n % 4 === 3 ? "stop" : "go");
+      for (var k = plan.length - 1; k > 2; k--) { var j = 2 + Math.floor(Math.random() * (k - 1)), tmp = plan[k]; plan[k] = plan[j]; plan[j] = tmp; }
+      clear();
+      var note = h("span", "hk-game-note", "Get ready"), pad = h("button", "hk-game-pad idle", "…"); pad.type = "button";
+      stage.appendChild(note); stage.appendChild(pad);
+      var state = "", t0 = 0, answered = false;
+      pad.addEventListener("pointerdown", function () {
+        if (!state || answered) return;
+        answered = true;
+        if (state === "go") { times.push(performance.now() - t0); pad.textContent = "✓"; }
+        else { slips++; pad.textContent = "Oops"; }
+      });
+      function round() {
+        if (i === total) return finish(avg(times) + " ms", (stops - slips) + " of " + stops + " stops held" + (misses ? " · " + misses + " missed" : ""));
+        state = ""; pad.className = "hk-game-pad idle"; pad.textContent = "…"; note.textContent = (i + 1) + " / " + total;
+        later(function () {
+          state = plan[i]; answered = false; t0 = performance.now();
+          if (state === "stop") stops++;
+          pad.className = "hk-game-pad " + (state === "go" ? "go" : "stop"); pad.textContent = state === "go" ? "GO" : "STOP";
+          later(function () { if (state === "go" && !answered) misses++; i++; round(); }, 850);
+        }, 500 + Math.random() * 700);
+      }
+      round();
+    }
+    function start() { lesson.hidden = true; ({ stroop: stroop, span: span, react: react, flanker: flanker, nback: nback, gonogo: gonogo })[kind](); }
     $("[data-go]", card).addEventListener("click", start);
   }
 
@@ -265,8 +342,10 @@
       bar.style.transform = "scaleX(" + done + ")";
       bar.style.display = document.body.contains(node) ? "" : "none";
     }
-    addEventListener("scroll", update, { passive: true });
-    addEventListener("resize", update);
+    var tick = 0;
+    function queue() { if (tick) return; tick = requestAnimationFrame(function () { tick = 0; update(); }); }
+    addEventListener("scroll", queue, { passive: true });
+    addEventListener("resize", queue);
     update();
   }
 
@@ -389,7 +468,8 @@
     });
 
     overview(false);
-    addEventListener("resize", function () { if (at < 0) overview(false); else go(at, false); });
+    var lastW = innerWidth;
+    addEventListener("resize", function () { if (innerWidth === lastW) return; lastW = innerWidth; if (at < 0) overview(false); else go(at, false); });
     // First time the board scrolls into view, fly to the first frame.
     if ("IntersectionObserver" in window) {
       var io = new IntersectionObserver(function (es) {

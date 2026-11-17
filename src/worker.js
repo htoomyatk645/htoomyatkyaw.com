@@ -159,19 +159,19 @@ async function handleContact(request, env, url, ctx) {
   return json({ success: true });
 }
 
-// Automatic reply to the person who wrote in (emails/templates.json, the two
+// Automatic reply to the person who wrote in (emails/templates.json, the
 // templates marked "auto"). Only two things from the visitor go into it: a
 // first name reduced to letters, and survey topics that match the survey's own
 // options. Nothing else they typed is echoed back, so the form can't be used
 // to send someone a message of the sender's choosing.
 async function sendAutoReply(env, { to, name, form, entries }) {
-  const reply = /admissions/i.test(form) ? replies.admissions : replies.contact;
+  const reply = /admissions/i.test(form) ? replies.admissions : /project inquiry/i.test(form) ? replies.clients : replies.contact;
   const own = [env.CONTACT_TO, env.CONTACT_FROM, env.AUTO_REPLY_REPLY_TO].map((a) => (a || "").toLowerCase());
   if (!reply || own.includes(to.toLowerCase())) return;
 
   const first = ((name.split(/\s+/)[0] || "").match(/^[\p{L}][\p{L}'-]{0,29}$/u) || ["there"])[0];
   const asked = (findField(entries, /^needs help with$/i) || "").split(",").map((s) => s.trim());
-  const picked = topics.filter((t) => asked.includes(t) && !/^I /.test(t))
+  const picked = topics.filter((t) => asked.includes(t) && !/^(I |Not sure)/.test(t))
     .map((t) => t.replace(/^My /, "your ").replace(/^[A-Z](?=[a-z])/, (c) => c.toLowerCase()));
   const topicLine = picked.length ? `You asked for help with: ${picked.join(", ")}.` : "";
   const fill = (s, escape) => s

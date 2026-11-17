@@ -62,7 +62,7 @@ Markdown: ## headings, lists, > quotes, **bold**, [links](https://…), and
 :::note Label … ::: for a callout.
 ```
 
-Three more blocks work in posts: `:::thread` (lines starting `>` are grey bubbles, `<` blue ones; it plays as a text thread), `:::phones` (`/media/file.jpg | caption` per line, phone screenshots side by side) and `:::lab` (a sketch of an app tour with `cut:` and `add:` switches; see `one-screen-one-decision.md`).
+Three more blocks work in posts: `:::thread` (lines starting `>` are grey bubbles, `<` blue ones; it plays as a text thread), `:::phones` (`/media/file.jpg | caption` per line, phone screenshots side by side) and `:::lab /media/first.jpg | caption` (a list of changes, one per line as `cut: /media/shot.jpg | Title | Why` or `add: …`; opening a change shows its screenshot, so use real screenshots; see `one-screen-one-decision.md`).
 
 Posts with `draft: true` are left out of the site. Set it to `false` (or delete the line) and run `npm run content` to publish. `npm run content:drafts` builds drafts too, for a local look with `npm run dev`; run `npm run content` again before deploying. `[TODO: …]` marks a spot that still needs your own detail. Categories and the intro line are in `content/site.json`.
 
@@ -74,9 +74,11 @@ Posts with `draft: true` are left out of the site. Set it to `false` (or delete 
 
 The four cards on `/case-study` still open the standalone write-ups (the `LIVE` map in `tools/build-rebrand.py` and `src/worker.js`). To point a card at a new write-up instead, change its entry in both.
 
-**Contact and Playground.** `npm run content` also adds a section under the contact form (message starters, what happens next, a Boston clock) and three small experiments under the Playground photo board. Their wording is in `content/site.json` under `contact` and `playground`.
+**Top bar.** The Resume button and the LinkedIn icon in the top bar are added by the site script in `tools/build-rebrand.py` (`RESUME`, `LINKEDIN`). To change the resume, replace `site/Htoo_Myat_Kyaw_Resume.pdf`.
 
-**Services.** The four services, the process steps and the FAQ are Framer text, edited in `tools/build-rebrand.py`. The "Free college admissions help" section and its survey come from `content/services/admissions.json`: edit the copy and the `questions` list there. Answers are emailed through `/api/contact` with the subject "College admissions help request".
+**Contact and Playground.** `npm run content` also adds a section under the contact form (message starters, what happens next, a Boston clock) and six small experiments (colour naming, digit span, reaction time, flanker, 2-back, go/no-go) under the Playground photo board. Their wording is in `content/site.json` under `contact` and `playground`.
+
+**Services.** The four services, the process steps and the FAQ are Framer text, edited in `tools/build-rebrand.py`. The "Free college admissions help" section and its survey come from `content/services/admissions.json`: edit the copy and the `questions` list there. Answers are emailed through `/api/contact` with the subject "College admissions help request". The "Start a project" form that sits after "How I work" comes from `content/services/clients.json`; it uses the same one-question-at-a-time survey, emails you the answers, and sends the person the `auto-clients` confirmation.
 
 The template's own blog posts and case-study pages are removed from `site/` by `npm run content`, so `npm run compare` no longer has those pages to compare.
 
@@ -87,9 +89,9 @@ The template's own blog posts and case-study pages are removed from `site/` by `
 - `emails/out/<id>.html` and `.txt`: each email as mail-safe HTML and plain text.
 - `site/email/*.png`: the pixel-font headings as pictures (mail apps don't load web fonts), served from the live site.
 - `emails/gallery.html`: a page to pick a template, fill in the `{{blanks}}` and copy it into Gmail.
-- `src/auto-replies.js`: the two templates marked `"auto"`, which the Worker sends by itself.
+- `src/auto-replies.js`: the templates marked `"auto"`, which the Worker sends by itself.
 
-**Automatic replies.** When someone uses the contact form or finishes the admissions survey, the Worker emails you as before and then sends that person a confirmation: `auto-contact` or `auto-admissions`. It adds their first name and, for the survey, the topics they picked. Nothing else they typed is repeated back. Replies to it go to the address in `AUTO_REPLY_REPLY_TO` (`wrangler.jsonc`).
+**Automatic replies.** When someone uses the contact form or finishes the admissions survey or the Start a project form, the Worker emails you as before and then sends that person a confirmation: `auto-contact`, `auto-admissions` or `auto-clients`. It adds their first name and, for the survey, the topics they picked. Nothing else they typed is repeated back. Replies to it go to the address in `AUTO_REPLY_REPLY_TO` (`wrangler.jsonc`).
 
 Delivery to visitors needs one of these, set up once:
 

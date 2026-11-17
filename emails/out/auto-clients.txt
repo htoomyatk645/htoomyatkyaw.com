@@ -1,0 +1,20 @@
+Subject: I received your project details
+
+Hi {{first_name}},
+
+Thank you for telling me about your project. This is an automatic note to confirm that your answers reached me. I'll read them myself and reply within a few days.
+
+{{topic_line}}
+
+Here is what happens next:
+
+- I read what you sent and note any questions.
+- I reply with first thoughts and a time for a short call.
+- After we talk, I send a scope and a price that fit the project.
+
+If you have a deck, a link, or screenshots, reply to this email and attach them. They help.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com

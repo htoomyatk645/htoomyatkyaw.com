@@ -247,6 +247,11 @@ rep("`Linkedin`", "`LinkedIn`"); rep(">Linkedin<", ">LinkedIn<")
 rep("M12 2.04004C6.5 2.04004 2 6.53004 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85004C10.44 7.34004 11.93 5.96004 14.22 5.96004C15.31 5.96004 16.45 6.15004 16.45 6.15004V8.62004H15.19C13.95 8.62004 13.56 9.39004 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5879 18.0622 20.3856 19.6099 18.5701C21.1576 16.7546 22.0053 14.4457 22 12.06C22 6.53004 17.5 2.04004 12 2.04004Z",
     "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z")
 
+# Services, "How I work": the template pins the section and scrubs it sideways
+# with the scroll. On a phone the cards are already stacked, so the pin only
+# makes the page judder; leave phones to scroll normally.
+rep("if(!t||!ut()){", "if(!t||!ut()||globalThis.matchMedia(`(max-width:809.98px)`).matches){", ["VIGVWIlQjzb1djAyRJmH49B9oW6pb13oxHnQJngdpOE"])
+
 # ---------------------------------------------------------------- site script
 # Every page except Home carries content or a script that is in its own HTML
 # and not in the Framer bundle (tools/build-content.mjs, journey.js on About),
@@ -289,14 +294,38 @@ document.addEventListener("click",e=>{
 },true);
 const relabel=()=>document.querySelectorAll('a[href$="case-study/meridian-health"]').forEach(a=>{const w=document.createTreeWalker(a,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()==="View Project")n.nodeValue=n.nodeValue.replace("View Project","View Product")});
 const swap=(el,a,b)=>{const w=document.createTreeWalker(el,4);for(let n;n=w.nextNode();)if(n.nodeValue.trim()===a)n.nodeValue=n.nodeValue.replace(a,b)};
-const framework=()=>document.querySelectorAll('a[href$="case-study/stylebook"]').forEach(a=>{const c=a.closest(".framer-1nmyz7r-container")||a;if(c.nextElementSibling&&c.nextElementSibling.dataset.framework)return;const n=c.cloneNode(true);n.dataset.framework="1";const l=n.matches("a")?n:n.querySelector("a");l.setAttribute("href",FRAMEWORK);l.removeAttribute("target");swap(n,"View Project","View My Framework");c.after(n)});
-const patch=()=>{relabel();framework()};
-addEventListener("load",()=>setTimeout(()=>{patch();new MutationObserver(patch).observe(document.body,{subtree:true,childList:true,characterData:true})},300));
+const framework=()=>document.querySelectorAll('a[href$="case-study/stylebook"]').forEach(a=>{const c=a.closest(".framer-1nmyz7r-container");if(!c)return;if(c.nextElementSibling&&c.nextElementSibling.dataset.framework)return;const n=c.cloneNode(true);n.dataset.framework="1";const l=n.matches("a")?n:n.querySelector("a");l.setAttribute("href",FRAMEWORK);l.removeAttribute("target");swap(n,"View Project","View My Framework");c.after(n)});
+const RESUME="/Htoo_Myat_Kyaw_Resume.pdf",LINKEDIN="https://www.linkedin.com/in/htoo-myat-kyaw-ny/";
+let top;
+const topbar=()=>{
+  if(!top){top=document.createElement("div");top.id="hk-top";top.innerHTML='<a class="cv" href="'+RESUME+'" target="_blank" rel="noopener">Resume</a><a class="in" href="'+LINKEDIN+'" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>';document.body.appendChild(top)}
+  const vis=s=>[...document.querySelectorAll(s)].find(e=>e.getBoundingClientRect().width>0);
+  const anchor=vis(".framer-119y192-container")||vis(".framer-16ahjtk"),nav=vis("nav");
+  const r=anchor&&anchor.getBoundingClientRect();
+  if(!r||r.top>24||(nav&&nav.getBoundingClientRect().height>80)){top.classList.remove("on");return}
+  top.style.right=Math.round(innerWidth-r.left+12)+"px";top.style.top=Math.round(r.top+(r.height-32)/2)+"px";top.classList.add("on");
+};
+const pill=()=>{const w=document.querySelector(".framer-1ukjnmv"),p=document.querySelector(".framer-rmz83s");if(!w||!p)return;const r=w.getBoundingClientRect();p.classList.toggle("hk-away",r.bottom<innerHeight-40||r.top>innerHeight*.6)};
+const patch=()=>{relabel();framework();topbar();pill()};
+let pq=0;const soon=()=>{if(pq)return;pq=1;setTimeout(()=>{pq=0;patch()},150)};
+let sq=0;addEventListener("scroll",()=>{if(sq)return;sq=1;requestAnimationFrame(()=>{sq=0;pill()})},{passive:true});
+addEventListener("resize",soon);
+addEventListener("load",()=>setTimeout(()=>{patch();new MutationObserver(soon).observe(document.body,{subtree:true,childList:true})},300));
 })()"""
 SITE_CSS = ("#coming-soon{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:2147483647;"
             "background:#111212;color:#fff;font:500 14px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;padding:12px 18px;border-radius:999px;"
             "transition:opacity .2s,transform .2s}#coming-soon.on{opacity:1;transform:translate(-50%,0)}"
-            ".framer-119y192-container,.framer-1yzdk2p-container{cursor:pointer}")
+            ".framer-119y192-container,.framer-1yzdk2p-container{cursor:pointer}"
+            "#hk-top{position:fixed;top:8px;right:16px;z-index:12;display:none;align-items:center;gap:8px}#hk-top.on{display:flex}"
+            "#hk-top a{box-sizing:border-box;height:32px;display:inline-flex;align-items:center;justify-content:center;color:#111212;text-decoration:none;transition:transform .2s}"
+            "#hk-top a:active{transform:scale(.94)}"
+            "#hk-top .cv{padding:0 10px;border:1px solid #111212;background:#fff;font:500 13px/1 'DM Mono',ui-monospace,monospace;letter-spacing:-.02em;text-transform:uppercase}"
+            "#hk-top .cv:hover{background:#111212;color:#fff}"
+            "#hk-top .in{width:32px}#hk-top .in svg{width:26px;height:26px;fill:#111212}#hk-top .in:hover svg{fill:#444}"
+            "@media (max-width:809.98px){"
+            ".framer-qu7yco{position:static!important;height:0!important;min-height:0!important}"
+            ".framer-rmz83s{position:fixed!important;left:50%!important;top:auto!important;bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%)!important;z-index:9!important;transition:opacity .25s,visibility .25s}"
+            ".framer-rmz83s.hk-away{opacity:0!important;visibility:hidden;pointer-events:none}}")
 SITE_SCRIPT = "<style>" + SITE_CSS + "</style><script>" + "".join(l.strip() for l in SITE_JS.splitlines()) + "</script>"
 # Anchor on Framer's bodyEnd marker so standalone pages in site/ are left alone.
 rep("<!-- End of bodyEnd -->", "<!-- End of bodyEnd -->" + SITE_SCRIPT, [".html"])

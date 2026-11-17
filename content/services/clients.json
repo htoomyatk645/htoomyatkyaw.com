@@ -1,0 +1,33 @@
+{
+  "kicker": "ready when you are",
+  "heading": ["Start", "a project"],
+  "copy": [
+    "Every project is priced to fit, so the first step is a short conversation. Answer a few questions and I'll come back with thoughts, a rough scope, and a time to talk.",
+    "It takes about two minutes."
+  ],
+  "next": [
+    "You answer a few questions.",
+    "A confirmation email arrives right away, so you know I received it.",
+    "I reply myself within a few days."
+  ],
+  "smallPrint": "Your answers are emailed only to me. Nothing here commits you to anything.",
+  "email": "Htoo.Kyaw@tufts.edu",
+  "survey": {
+    "id": "clients",
+    "title": "Start a project",
+    "subject": "New project inquiry",
+    "doneTitle": "received, thank you!",
+    "doneText": "Your answers are in my inbox, and a confirmation email is on its way to you. I'll read everything and reply personally within a few days.",
+    "errorText": "That didn't send. Please try again, or email me at Htoo.Kyaw@tufts.edu.",
+    "questions": [
+      { "id": "name", "short": "Name", "type": "text", "required": true, "label": "First, what's your name?", "placeholder": "Your name", "autocomplete": "name" },
+      { "id": "email", "short": "Email", "type": "email", "required": true, "label": "Where should I reply?", "placeholder": "name@company.com", "autocomplete": "email" },
+      { "id": "company", "short": "Company or project", "type": "text", "required": false, "label": "What's the company or project called?", "placeholder": "Name, and a link if there is one", "autocomplete": "organization" },
+      { "id": "service", "short": "Needs help with", "type": "multi", "required": true, "label": "What can I help with?", "help": "Pick any that fit.", "options": ["Product design", "UI/UX redesign", "App development consulting", "Product development consulting", "Not sure yet"] },
+      { "id": "stage", "short": "Stage", "type": "choice", "required": true, "label": "Where does it stand today?", "options": ["Just an idea", "Designs or a prototype", "A live product", "Something else"] },
+      { "id": "about", "short": "About the project", "type": "long", "required": true, "label": "Tell me about it.", "help": "What you're building, who it's for, and what you'd like to be different when we're done.", "placeholder": "A few sentences is plenty" },
+      { "id": "timeline", "short": "Timeline", "type": "choice", "required": true, "label": "When would you like to start?", "options": ["As soon as possible", "Within a month", "In one to three months", "I'm flexible"] },
+      { "id": "budget", "short": "Budget", "type": "choice", "required": false, "label": "Do you have a budget in mind?", "help": "A rough range helps me suggest the right scope. Skip it if you'd rather talk first.", "options": ["Under $1,000", "$1,000 to $5,000", "Over $5,000", "Not sure yet"] }
+    ]
+  }
+}

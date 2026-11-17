@@ -76,7 +76,7 @@ function markdown(src) {
       else if (name === "thread") { flush(); parts.push({ block: thread(inner) }); }
       else if (name === "phones") { flush(); parts.push({ block: phones(inner, arg) }); }
       else if (name === "flow") { flush(); parts.push({ block: flow(inner, arg) }); }
-      else if (name === "lab") { flush(); parts.push({ block: lab(inner) }); }
+      else if (name === "lab") { flush(); parts.push({ block: lab(inner, arg) }); }
       else if (name === "video" || name === "image") { flush(); parts.push({ block: framed(name, arg, inner) }); }
       else html += `<div class="hk-note c-${{ note: "yellow", decision: "cyan", learned: "green" }[name] || "yellow"}" data-label="${esc(arg || name)}">${markdown(inner.join("\n")).map((p) => p.html).join("")}</div>`;
       continue;
@@ -150,29 +150,19 @@ function flow(inner, loop) {
   return `<div class="hk-flow" data-rise><ol>${steps.map((s, i) => `<li${s.startsWith("*") ? ' class="key"' : ""} style="--i:${i}" data-rise><b>${String(i + 1).padStart(2, "0")}</b>${inline(s.replace(/^\*\s*/, ""))}</li>`).join("")}</ol>${loop ? `<p class="hk-flow-loop"><i>↺</i> ${inline(loop)}</p>` : ""}</div>`;
 }
 
-// :::lab               A sketch of a cluttered app tour that the reader fixes.
-// cut: steps | Title | Why      cuts: steps, deco, labels, house, motion
-// add: ghost | Title | Why      additions: ghost, ring, contrast, reply
+// :::lab /media/first.jpg | Caption for the starting screenshot
+// cut: /media/shot.jpg | Title | Why
+// add: /media/shot.jpg | Title | Why
 // :::
-// Each line is a switch. Its key picks which part of the sketch changes
-// (the .cut-<key> and .add-<key> rules in hk.css).
-function lab(inner) {
-  const rows = inner.map((l) => l.match(/^\s*(cut|add):\s*(.*)$/)).filter(Boolean).map((m) => { const f = m[2].split("|").map((s) => s.trim()); return { kind: m[1], key: f[0], title: f[1], why: f.slice(2).join(" | ") }; });
-  const group = (kind, label) => `<div class="hk-lab-group"><h4>${label}</h4>${rows.filter((r) => r.kind === kind).map((r) => `<div class="hk-lab-item"><button type="button" data-lab-toggle="${r.kind}-${esc(r.key)}" aria-pressed="false"><i>${kind === "cut" ? "✂" : "+"}</i><b>${inline(r.title)}</b></button><p>${inline(r.why)}</p></div>`).join("")}</div>`;
-  const tiles = ["#7a3b2e", "#1f3a5f", "#111212", "#d9d2c5", "#2b2b2b", "#b23a48", "#1b4332"].map((c, i) => `<i class="ph-tile${i === 2 ? " target" : ""}" style="background:${c}"></i>`).join("");
-  const dots = Array.from({ length: 11 }, (_, i) => `<i${i === 2 ? ' class="on"' : ""}></i>`).join("");
+// A list of changes. Opening one shows its screenshot in the phone beside the
+// list (inside the item on a phone) with the reason under the title.
+function lab(inner, arg) {
+  const [first, firstCap] = (arg || "").split("|").map((x) => x.trim());
+  const rows = inner.map((l) => l.match(/^\s*(cut|add):\s*(.*)$/)).filter(Boolean).map((m, i) => { const f = m[2].split("|").map((x) => x.trim()); return { i, kind: m[1], src: f[0], title: f[1], why: f.slice(2).join(" | ") }; });
+  const group = (kind, label) => `<div class="hk-lab-group"><h4>${label}</h4>${rows.filter((r) => r.kind === kind).map((r) => `<div class="hk-lab-item ${r.kind}"><button type="button" data-lab-open="${r.i}" aria-expanded="false"><i>${kind === "cut" ? "✂" : "+"}</i><b>${inline(r.title)}</b></button><div class="hk-lab-panel"><div><img class="hk-lab-shot" src="${esc(r.src)}" alt="Screenshot of the current tour: ${esc(r.title)}" loading="lazy" width="600" height="1304"><p>${inline(r.why)}</p></div></div></div>`).join("")}</div>`;
   return `<div class="hk-lab" data-lab data-rise>
-<div class="hk-lab-stage"><div class="ph" aria-hidden="true">
-<div class="ph-head"><b>Welcome back</b><span>Jump right in</span></div>
-<div class="ph-hive">${tiles}<span class="ph-ring"></span><span class="ph-tap">Tap this show</span><span class="ph-ghost"></span></div>
-<div class="ph-cards"><i></i><i></i><i></i></div>
-<div class="ph-scrim"></div>
-<div class="ph-tour"><span class="ph-label">App tour <span class="ph-dots">${dots}</span></span><span class="ph-bar"><i></i></span><span class="ph-count">Step 3 of <em>11</em><em>7</em></span>
-<p class="ph-out">Done</p>
-<p class="ph-bubble"><span class="ph-nice">Nice! </span>Now tap the glowing show.<span class="ph-house"> But first, swipe the sheet down.</span></p>
-<span class="ph-btns"><span><em>Skip tour</em><em>Skip</em></span><span class="ph-next"><em>Next</em><em>→</em></span></span></div>
-</div>
-<div class="hk-lab-meters"><span>Noise <b data-noise>5</b></span><span>Help <b data-help>0</b></span><button type="button" data-lab-reset>Reset</button></div></div>
+<div class="hk-lab-stage"><div class="hk-lab-phone">${HANDLES}<img class="on" data-lab-img="-1" src="${esc(first)}" alt="${esc(firstCap || "")}" width="600" height="1304">${rows.map((r) => `<img data-lab-img="${r.i}" src="${esc(r.src)}" alt="" loading="lazy" width="600" height="1304">`).join("")}</div>
+<p class="hk-lab-cap" data-lab-cap data-first="${esc(firstCap || "")}">${esc(firstCap || "")}</p></div>
 <div class="hk-lab-side">${group("cut", "What I cut")}${group("add", "What I added")}</div>
 </div>`;
 }
@@ -314,13 +304,19 @@ prune("case-study", cases.map((c) => c.slug));
 
 // ---------------------------------------------------------------- services
 const adm = JSON.parse(read(path.join(CONTENT, "services", "admissions.json")));
-const servicesBlock = `<section class="hk hk-adm" id="admissions"><div class="hk-adm-in">
-<div class="hk-adm-copy" data-rise><span class="hk-adm-no">${esc(adm.number)}</span><h2>${adm.heading.map((l, i) => i === 0 ? `<em>${esc(l)}</em>` : esc(l)).join("<br>")}</h2><span class="hk-hand">${esc(adm.kicker)}</span>${adm.copy.map((t) => `<p>${inline(t)}</p>`).join("")}<small>${inline(adm.smallPrint)}</small></div>
-<div class="hk-survey" data-survey data-rise style="--i:1">${HANDLES}<script type="application/json">${JSON.stringify(adm.survey).replace(/</g, "\\u003c")}</script>
-<div class="hk-sv-top"><span>${esc(adm.survey.title)}</span><span class="hk-sv-bar"><i></i></span><span data-sv="count"></span></div>
+const cli = JSON.parse(read(path.join(CONTENT, "services", "clients.json")));
+const surveyBox = (sv, email) => `<div class="hk-survey" data-survey data-rise style="--i:1">${HANDLES}<script type="application/json">${JSON.stringify(sv).replace(/</g, "\\u003c")}</script>
+<div class="hk-sv-top"><span>${esc(sv.title)}</span><span class="hk-sv-bar"><i></i></span><span data-sv="count"></span></div>
 <div class="hk-sv-stage"></div>
 <div class="hk-sv-nav"><button type="button" class="hk-sv-btn ghost" data-sv="back" hidden>← Back</button><span data-sv="hint"></span><button type="button" class="hk-sv-btn" data-sv="next">OK</button></div>
-<noscript><p style="padding:24px">This survey needs JavaScript. You can also email <a href="mailto:${esc(adm.email)}">${esc(adm.email)}</a>.</p></noscript></div>
+<noscript><p style="padding:24px">This form needs JavaScript. You can also email <a href="mailto:${esc(email)}">${esc(email)}</a>.</p></noscript></div>`;
+const servicesBlock = `<section class="hk hk-cli" id="start-a-project"><div class="hk-adm-in">
+<div class="hk-adm-copy" data-rise><span class="hk-hand">${esc(cli.kicker)}</span><h2>${cli.heading.map((l, i) => i === 0 ? `<em>${esc(l)}</em>` : esc(l)).join("<br>")}</h2>${cli.copy.map((t) => `<p>${inline(t)}</p>`).join("")}<ol class="hk-cli-next">${cli.next.map((t, i) => `<li><b>${String(i + 1).padStart(2, "0")}</b>${esc(t)}</li>`).join("")}</ol><small>${inline(cli.smallPrint)}</small></div>
+${surveyBox(cli.survey, cli.email)}
+</div></section>
+<section class="hk hk-adm" id="admissions"><div class="hk-adm-in">
+<div class="hk-adm-copy" data-rise><span class="hk-adm-no">${esc(adm.number)}</span><h2>${adm.heading.map((l, i) => i === 0 ? `<em>${esc(l)}</em>` : esc(l)).join("<br>")}</h2><span class="hk-hand">${esc(adm.kicker)}</span>${adm.copy.map((t) => `<p>${inline(t)}</p>`).join("")}<small>${inline(adm.smallPrint)}</small></div>
+${surveyBox(adm.survey, adm.email)}
 </div></section>`;
 write("services.html", page(shell("services.html"), { slot: ".framer-3srzoz", place: "before", block: servicesBlock }));
 
@@ -342,9 +338,9 @@ const playBlock = `<a class="hk hk-pg-jump" href="#mind-games" data-jump>${esc(p
 <section class="hk hk-play" id="mind-games">
 <header data-rise><span class="hk-hand">${esc(pg.kicker)}</span><h2>${pg.heading.map(esc).join("<br>")}</h2><p>${esc(pg.intro)}</p></header>
 <div class="hk-games">${pg.games.map((g, i) => `<article class="hk-game c-${g.color}" data-game="${g.id}" data-rise style="--i:${i}">${HANDLES}
-<h3><span class="hk-mono">0${i + 1}</span>${esc(g.name)}</h3><p class="hk-game-rule">${esc(g.rule)}</p>
+<h3><span class="hk-mono">${String(i + 1).padStart(2, "0")}</span>${esc(g.name)}</h3><p class="hk-game-rule">${esc(g.rule)}</p>
 <div class="hk-game-stage" data-stage aria-live="polite"><button type="button" class="hk-game-go" data-go>Play</button></div>
-<p class="hk-game-lesson" data-lesson hidden>${esc(g.lesson)}</p></article>`).join("")}</div></section>`;
+<p class="hk-game-lesson" data-lesson hidden>${g.brain ? `<span class="hk-game-brain">${esc(g.brain)}</span>` : ""}${esc(g.lesson)}</p></article>`).join("")}</div></section>`;
 write("play-ground.html", page(shell("play-ground.html"), { slot: ".framer-1smnmk7", place: "before", block: playBlock }));
 
-console.log(`journal: ${posts.length} post(s)${DRAFTS ? " (drafts included)" : ""}; case studies: ${cases.length}; services: admissions survey with ${adm.survey.questions.length} questions`);
+console.log(`journal: ${posts.length} post(s)${DRAFTS ? " (drafts included)" : ""}; case studies: ${cases.length}; services: client form (${cli.survey.questions.length} questions), admissions survey (${adm.survey.questions.length})`);

@@ -349,6 +349,30 @@
       ]
     },
     {
+      "id": "auto-clients",
+      "auto": "clients",
+      "group": "Automatic",
+      "name": "Project inquiry reply",
+      "when": "Sent by the site itself, right after someone finishes the Start a project form on Services.",
+      "banner": "Received",
+      "color": "yellow",
+      "subject": "I received your project details",
+      "body": [
+        "Hi {{first_name}},",
+        "Thank you for telling me about your project. This is an automatic note to confirm that your answers reached me. I'll read them myself and reply within a few days.",
+        "{{topic_line}}",
+        "Here is what happens next:",
+        {
+          "list": [
+            "I read what you sent and note any questions.",
+            "I reply with first thoughts and a time for a short call.",
+            "After we talk, I send a scope and a price that fit the project."
+          ]
+        },
+        "If you have a deck, a link, or screenshots, reply to this email and attach them. They help."
+      ]
+    },
+    {
       "id": "auto-admissions",
       "auto": "admissions",
       "group": "Automatic",
