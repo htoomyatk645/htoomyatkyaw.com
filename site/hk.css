@@ -394,10 +394,11 @@
 .hk-cli h2 em{font-style:normal;color:var(--hk-pink)}
 .hk-cli .hk-adm-copy .hk-hand{color:var(--hk-ink)}
 .hk-cli .hk-adm-copy small{color:rgba(17,18,18,.66)}
+.hk-cli + .hk-adm{margin-top:-64px}
 .hk-cli-next{list-style:none;margin:22px 0 0;padding:0;max-width:460px;display:flex;flex-direction:column;gap:8px}
 .hk-cli-next li{display:flex;gap:12px;align-items:baseline;padding:10px 12px;background:#fff;border:1px solid var(--hk-ink);font-size:15px;line-height:1.35}
 .hk-cli-next b{font-family:var(--hk-mono);font-weight:500;font-size:13px}
-@media (max-width:809.98px){.hk-cli{padding:80px 16px 90px}}
+@media (max-width:809.98px){.hk-cli{padding:80px 16px 90px}.hk-cli + .hk-adm{margin-top:-34px}}
 
 /* ------------------------------------------------------- playground: more games */
 .hk-game-arrows{font-family:var(--hk-mono);font-weight:500;font-size:60px;line-height:1;letter-spacing:.08em;min-height:60px}
