@@ -206,11 +206,11 @@ for o, n in FAQ: rep(o, n)
 # ---------------------------------------------------------------- case-study cards (HTML side; CMS edited by cms-edit.mjs)
 rep("dateStyle:`medium`,timeZone:`UTC`", "year:`numeric`,timeZone:`UTC`", DATE_MODULES)
 for o in ["Mar 19, 2026", "Mar 2, 2026", "Jan 2, 2025"]: rep(f">{o}<", ">2026<", CARDS_HTML)
-CARD_TEXT = [("Meridian Health", "Briefly: All Things Podcasts"), ("StyleBook", "The Briefly Look"), ("Homestead", "Seven Slides a Day"), ("North Light", "Under the Hood"),
+CARD_TEXT = [("Meridian Health", "Briefly: All Things Podcasts"), ("StyleBook", "The Briefly Look"), ("Homestead", "Seven Slides a Day"), ("North Light",  "Bionic Redr"),
              ("When therapists spend less time clicking, they have more time for patients.", "Podcasts briefs that stay audio."),
              ("From 'I hate this system' to 'Can we show other salons?", "Dark, minimal, and quiet enough to let the voice lead."),
              ("Helping first-time homebuyers actually understand what they're looking at.", "How a small team builds an audience on Instagram, one carousel at a time."),
-             ("Getting seven stakeholders to agree on what they're actually building.", "The AI pipeline and recommendation engine behind the highlights.")]
+             ("Getting seven stakeholders to agree on what they're actually building.", "A Chrome extension that makes any web page easier to read, on device.")]
 for o, n in CARD_TEXT: rep(o, n, CARDS_HTML + ["searchIndex"])
 for o, n in [("Healthcare", "Product"), ("Workflow Design", "Audio"), ("SaaS", "Brand"), ("Transformation", "UI/UX"), ("Proptech", "Content"), ("0 -&gt; 1", "Growth"), ("Strategy", "Engineering"), ("Enterprise", "AI"), ("Product Designer", "Co-founder")]:
     rep(f">{o}<", f">{n}<", CARDS_HTML)
