@@ -6,6 +6,10 @@ summary: An emergency call to the OB floor, my first epidural, and the first cry
 ---
 One afternoon in June, just as I got to work, an emergency was called over the intercom. My mentor told me to drop whatever I was holding and follow the anesthesia team.
 
+:::image /media/medicine/supply-room.jpg
+At work, between the shelves
+:::
+
 We ran from the OR floor to the OB/GYN floor. People were moving faster than I had ever seen, faster even than in trauma cases. When we walked into the OB operating room, I realized what was about to happen. A new life was about to come into the world right in front of me.
 
 The surgeons and nurses got ready for the delivery while anesthesia got consent from the mother, who chose not to be put fully asleep. It was the first time I saw an epidural. The anesthesia residents explained what it does while they placed it: it numbs the lower body and lets the mother stay awake. I'm still grateful they took the time to teach me in the middle of all that.

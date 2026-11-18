@@ -6,6 +6,10 @@ summary: Today I quit my job as an anesthesia technician. Why I'm leaving medici
 ---
 Today I quit my job.
 
+:::image /media/medicine/locker-room.jpg
+The locker room
+:::
+
 The reason is simple: I'm no longer pursuing medicine. There's a saying that the longer you stay on the wrong train, the more expensive the ride home, and I've come to believe it.
 
 I became an anesthesia technician at seventeen, chasing the thrill of code blues alongside some of the best doctors in the country. I sweated through my scrub caps the first time I didn't know how to run a machine during a trauma. I left those ORs with a lasting sense of how fragile life is. It has been a full, memorable two years.

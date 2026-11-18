@@ -6,6 +6,10 @@ summary: Seventeen, the youngest anesthesia tech in the ORs, and three weeks int
 ---
 I was seventeen and the youngest anesthesia technician in the ORs, three weeks into my training, when we had a code. The patient was bleeding heavily from several places, the blood loss had taken their pulse, and CPR had started. My trainer, a seasoned anesthesia tech on his way to becoming a CRNA who had seen this many times, turned to me and told me to gown up, glove up, and grab a mask with a face shield.
 
+:::image /media/medicine/scrubs.jpg
+In my scrubs
+:::
+
 I hesitated and said something like "I'm not ready for this." He said, more or less, "You're solid. It's now or never." So I gowned up. My hands were shaking so badly I could barely get the gloves on.
 
 I was trembling to the point that I could feel my heart shaking. The only CPR I had ever done was on dummies, never in a real hospital code. Then my trainer told the nurses rotating on compressions to step aside, pointed at me, and said, "You're up next. Get ready."

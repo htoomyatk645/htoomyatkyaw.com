@@ -6,6 +6,10 @@ summary: My first weekend shift as the youngest anesthesia tech in the ORs, a pu
 ---
 I started in the ORs at seventeen, the youngest anesthesia technician there. It was my first weekend shift, and my trainer and I were asked to bring a pulse oximeter into an OR. We masked up, he handed me the device, and I walked in with him close behind me.
 
+:::image /media/medicine/cap-and-mask.jpg
+Cap and mask on
+:::
+
 The anesthesia attending was on the far side of the drapes. My job sounded simple: get the device to them without disturbing the sterile field. The trouble was that I didn't really understand what that meant yet.
 
 I moved as carefully as I could. Then I caught a look from one of the surgical technologists, the kind of look you don't need explained. I was an arm's length from the sterile field. My trainer quietly told me from behind that one more step and the team would have had to restart the case.
