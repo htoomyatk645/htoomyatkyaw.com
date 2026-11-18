@@ -1,10 +1,10 @@
 ---
 title: Sterility Is Everything
-date:
-category: personal
-summary: My first weekend shift in the OR, a pulse oximeter, and the glare from a surgical tech that taught me what a sterile field really means.
+date: 2025-06-09
+category: medicine
+summary: My first weekend shift as the youngest anesthesia tech in the ORs, a pulse oximeter, and the glare from a surgical tech that taught me what a sterile field really means.
 ---
-It was my first weekend shift. I was seventeen, and my trainer and I were asked to bring a pulse oximeter into an OR. We masked up, he handed me the device, and I walked in with him close behind me.
+I started in the ORs at seventeen, the youngest anesthesia technician there. It was my first weekend shift, and my trainer and I were asked to bring a pulse oximeter into an OR. We masked up, he handed me the device, and I walked in with him close behind me.
 
 The anesthesia attending was on the far side of the drapes. My job sounded simple: get the device to them without disturbing the sterile field. The trouble was that I didn't really understand what that meant yet.
 

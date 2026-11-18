@@ -8,6 +8,7 @@
   --hk-yellow:rgb(236,178,46);--hk-yellow-t:rgb(245,221,161);
   --hk-pink:rgb(224,30,90);--hk-pink-t:rgb(250,190,209);
   --hk-green:rgb(47,188,129);--hk-green-t:rgb(161,223,197);
+  --hk-violet:rgb(124,92,230);--hk-violet-t:rgb(207,196,247);
   --hk-brown:rgb(82,46,41);
   --hk-flux:"Flux Variable",sans-serif;--hk-mono:"DM Mono",ui-monospace,monospace;
   --hk-sans:"Inter Display","Inter Display Placeholder",Inter,system-ui,sans-serif;
@@ -24,7 +25,7 @@
 .hk-mono{font-family:var(--hk-mono);font-size:14px;line-height:1;letter-spacing:-.03em;text-transform:uppercase}
 .hk-hand{font-family:var(--hk-hand);font-weight:400;font-size:32px;line-height:1.2;letter-spacing:-.03em}
 .c-cyan{--c:var(--hk-cyan);--ct:var(--hk-cyan-t)}.c-yellow{--c:var(--hk-yellow);--ct:var(--hk-yellow-t)}
-.c-pink{--c:var(--hk-pink);--ct:var(--hk-pink-t)}.c-green{--c:var(--hk-green);--ct:var(--hk-green-t)}
+.c-pink{--c:var(--hk-pink);--ct:var(--hk-pink-t)}.c-green{--c:var(--hk-green);--ct:var(--hk-green-t)}.c-violet{--c:var(--hk-violet);--ct:var(--hk-violet-t)}
 
 /* Scroll reveal: elements rise and fade in once, staggered by --i. */
 .hk-js [data-rise]{opacity:0;transform:translateY(22px)}

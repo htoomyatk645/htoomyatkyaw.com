@@ -1,7 +1,7 @@
 ---
 title: A Heart at Seventeen
-date:
-category: personal
+date: 2025-08-18
+category: medicine
 summary: I was seventeen the first time I saw a human heart beating inside someone's chest.
 ---
 I was seventeen the first time I saw a human heart beating inside someone's chest.

@@ -16,6 +16,10 @@
         "name": "Business + Ethics",
         "color": "green"
       },
+      "medicine": {
+        "name": "Medicine",
+        "color": "violet"
+      },
       "personal": {
         "name": "Personal",
         "color": "pink"

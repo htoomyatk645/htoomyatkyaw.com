@@ -1,10 +1,10 @@
 ---
 title: My First Code
-date:
-category: personal
-summary: Three weeks into training as an anesthesia tech, I was handed a gown and told I was next on compressions.
+date: 2025-06-23
+category: medicine
+summary: Seventeen, the youngest anesthesia tech in the ORs, and three weeks into training, I was handed a gown and told I was next on compressions.
 ---
-We had a code. The patient was bleeding heavily from several places, the blood loss had taken their pulse, and CPR had started. My trainer, a seasoned anesthesia tech on his way to becoming a CRNA who had seen this many times, turned to me, three weeks into training, and told me to gown up, glove up, and grab a mask with a face shield.
+I was seventeen and the youngest anesthesia technician in the ORs, three weeks into my training, when we had a code. The patient was bleeding heavily from several places, the blood loss had taken their pulse, and CPR had started. My trainer, a seasoned anesthesia tech on his way to becoming a CRNA who had seen this many times, turned to me and told me to gown up, glove up, and grab a mask with a face shield.
 
 I hesitated and said something like "I'm not ready for this." He said, more or less, "You're solid. It's now or never." So I gowned up. My hands were shaking so badly I could barely get the gloves on.
 

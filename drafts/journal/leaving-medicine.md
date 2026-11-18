@@ -1,7 +1,7 @@
 ---
 title: Leaving Medicine
-date:
-category: personal
+date: 2026-08-14
+category: medicine
 summary: Today I quit my job as an anesthesia technician. Why I'm leaving medicine, and what comes next.
 ---
 Today I quit my job.

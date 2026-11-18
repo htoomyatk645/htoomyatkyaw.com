@@ -1,7 +1,7 @@
 ---
 title: My First Loss in the OR
-date:
-category: personal
+date: 2025-07-28
+category: medicine
 summary: Not every code ends with "we saved a life." The first time I saw a patient die, and what it taught me about medicine.
 ---
 The first time I saw someone die in the OR, it changed how I see medicine.

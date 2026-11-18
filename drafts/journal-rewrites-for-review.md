@@ -4,7 +4,9 @@
 
 ## Sterility Is Everything
 
-It was my first weekend shift. I was seventeen, and my trainer and I were asked to bring a pulse oximeter into an OR. We masked up, he handed me the device, and I walked in with him close behind me.
+*medicine · 2025-06-09*
+
+I started in the ORs at seventeen, the youngest anesthesia technician there. It was my first weekend shift, and my trainer and I were asked to bring a pulse oximeter into an OR. We masked up, he handed me the device, and I walked in with him close behind me.
 
 The anesthesia attending was on the far side of the drapes. My job sounded simple: get the device to them without disturbing the sterile field. The trouble was that I didn't really understand what that meant yet.
 
@@ -22,7 +24,9 @@ That was my first real lesson in the OR. Sterility is everything.
 
 ## My First Code
 
-We had a code. The patient was bleeding heavily from several places, the blood loss had taken their pulse, and CPR had started. My trainer, a seasoned anesthesia tech on his way to becoming a CRNA who had seen this many times, turned to me, three weeks into training, and told me to gown up, glove up, and grab a mask with a face shield.
+*medicine · 2025-06-23*
+
+I was seventeen and the youngest anesthesia technician in the ORs, three weeks into my training, when we had a code. The patient was bleeding heavily from several places, the blood loss had taken their pulse, and CPR had started. My trainer, a seasoned anesthesia tech on his way to becoming a CRNA who had seen this many times, turned to me and told me to gown up, glove up, and grab a mask with a face shield.
 
 I hesitated and said something like "I'm not ready for this." He said, more or less, "You're solid. It's now or never." So I gowned up. My hands were shaking so badly I could barely get the gloves on.
 
@@ -46,6 +50,8 @@ This job is unpredictable, intense and humbling. Every day at a Level 1 trauma c
 
 ## The Beginning of a Life
 
+*medicine · 2025-07-14*
+
 One afternoon in June, just as I got to work, an emergency was called over the intercom. My mentor told me to drop whatever I was holding and follow the anesthesia team.
 
 We ran from the OR floor to the OB/GYN floor. People were moving faster than I had ever seen, faster even than in trauma cases. When we walked into the OB operating room, I realized what was about to happen. A new life was about to come into the world right in front of me.
@@ -66,6 +72,8 @@ It wasn't just another shift. It reminded me why I started down this road.
 
 ## My First Loss in the OR
 
+*medicine · 2025-07-28*
+
 The first time I saw someone die in the OR, it changed how I see medicine.
 
 It was a normal shift until an alert went off: code blue. My mentor and I ran to the scene, but other techs had already arrived. Instead of heading back, my mentor told me to stay in case an extra pair of hands was needed.
@@ -85,6 +93,8 @@ It reminded me how fragile life is, how quickly things can change, and how much 
 ---
 
 ## A Heart at Seventeen
+
+*medicine · 2025-08-18*
 
 I was seventeen the first time I saw a human heart beating inside someone's chest.
 
@@ -108,6 +118,8 @@ I think back to that day whenever I need reminding how much is at stake in a sin
 
 ## Leaving Medicine
 
+*medicine · 2026-08-14*
+
 Today I quit my job.
 
 The reason is simple: I'm no longer pursuing medicine. There's a saying that the longer you stay on the wrong train, the more expensive the ride home, and I've come to believe it.
@@ -128,6 +140,8 @@ It's been an especially busy summer, and it only gets busier from here. I love i
 
 ## Notes from Muslims in Business
 
+*business-ethics*
+
 Assalamu alaikum (peace be upon you).
 
 Yesterday I attended the first Muslims in Business Conference at Harvard Business School with Suleiman Abuaqel. It was the largest gathering HBS has on record: thousands of Muslim entrepreneurs, students, and leaders from business and startups. I met people who want to solve modern problems while building Islamic principles and values into what they make, and it felt good to be in a room full of them.
@@ -146,6 +160,8 @@ I'm hoping to put these lessons to work in my own ventures, in sha Allah.
 
 ## Who Will Thrive
 
+*personal*
+
 I have a hypothesis about what the people who do well in the coming years will have in common.
 
 **Artists.** Since I started working, I've spent a lot of time around artists, and I think believing AI will replace them is a mistake. Artists see things and understand reality in ways the rest of us often can't. That's what will keep them sharp, and what lets them find the angle nobody else is looking at.
@@ -157,6 +173,8 @@ I have a hypothesis about what the people who do well in the coming years will h
 ---
 
 ## The Decisive Moment
+
+*building-briefly*
 
 I've been thinking about Henri Cartier-Bresson, and about the idea that the best founders don't predict the future. They learn to see it coming.
 
@@ -176,6 +194,8 @@ For me, the founding moment was two industries colliding. When Avi and I looked 
 
 ## Caviar and White Chocolate
 
+*building-briefly*
+
 Caviar and white chocolate. On paper it sounds awful. At a Michelin-starred restaurant, it's a revelation.
 
 Heston Blumenthal built a whole culinary philosophy around the idea that two ingredients taste good together when they share flavor compounds. It's called the food pairing hypothesis. Then researchers tested it across about 56,000 recipes and found something more interesting: it holds up in Western cooking, but some of the most celebrated dishes in East Asian cuisine, dishes refined over centuries, pair ingredients that share almost nothing chemically. The contrast is the point.
@@ -191,6 +211,8 @@ Caviar and white chocolate works precisely because it sounds wrong. I think a te
 ---
 
 ## Wrapping the New in the Familiar
+
+*cognitive-science*
 
 Humans are, quite literally, afraid of new food. It's called neophobia, a fear of the unfamiliar that our brains developed to keep us from eating something that might kill us.
 

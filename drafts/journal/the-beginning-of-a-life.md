@@ -1,7 +1,7 @@
 ---
 title: The Beginning of a Life
-date:
-category: personal
+date: 2025-07-14
+category: medicine
 summary: An emergency call to the OB floor, my first epidural, and the first cry of a baby born a few feet away from me.
 ---
 One afternoon in June, just as I got to work, an emergency was called over the intercom. My mentor told me to drop whatever I was holding and follow the anesthesia team.
