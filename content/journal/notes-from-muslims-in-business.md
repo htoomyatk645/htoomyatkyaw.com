@@ -1,6 +1,6 @@
 ---
 title: Notes from Muslims in Business
-date:
+date: 2026-11-06
 category: business-ethics
 summary: What I took away from the first Muslims in Business Conference at Harvard Business School.
 ---

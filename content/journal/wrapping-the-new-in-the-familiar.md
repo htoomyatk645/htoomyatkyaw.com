@@ -1,6 +1,6 @@
 ---
 title: Wrapping the New in the Familiar
-date:
+date: 2026-11-18
 category: cognitive-science
 summary: People are wired to fear unfamiliar food. What that taught me about launching something new.
 ---

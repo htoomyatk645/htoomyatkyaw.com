@@ -1,6 +1,6 @@
 ---
 title: Who Will Thrive
-date:
+date: 2026-11-02
 category: personal
 summary: A hypothesis about the kinds of people I think will do well in the years ahead.
 ---

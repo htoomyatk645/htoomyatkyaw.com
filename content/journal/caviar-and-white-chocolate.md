@@ -1,6 +1,6 @@
 ---
 title: Caviar and White Chocolate
-date:
+date: 2026-11-14
 category: building-briefly
 summary: An unlikely lesson from food science on choosing a co-founder, and why the best one isn't the person who agrees with you fastest.
 ---

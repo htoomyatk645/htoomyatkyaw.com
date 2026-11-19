@@ -1,6 +1,6 @@
 ---
 title: The Decisive Moment
-date:
+date: 2026-11-10
 category: building-briefly
 summary: What Henri Cartier-Bresson's photography taught me about seeing opportunities before they're obvious.
 ---
