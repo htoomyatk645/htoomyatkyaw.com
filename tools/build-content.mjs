@@ -30,7 +30,7 @@ const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const read = (file) => fs.readFileSync(file, "utf8");
 
 // Copy the shared stylesheet, script and media into the site.
-for (const f of ["hk.css", "hk.js"]) fs.copyFileSync(path.join("public", f), path.join(SITE, f));
+for (const f of ["hk.css", "hk.js", "contact-bridge.js"]) fs.copyFileSync(path.join("public", f), path.join(SITE, f));
 if (fs.existsSync(path.join(CONTENT, "media"))) fs.cpSync(path.join(CONTENT, "media"), path.join(SITE, "media"), { recursive: true });
 const version = crypto.createHash("sha1").update(read("public/hk.css") + read("public/hk.js")).digest("hex").slice(0, 8);
 

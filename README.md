@@ -120,6 +120,22 @@ Your hours, the meeting types and their lengths are in `content/site.json` under
 
 Optional: `GOOGLE_CALENDAR_IDS` (a var, comma-separated; the first one receives the events, all are checked for busy times; default `primary`) and `MEET_LINK` (a fixed Meet address to use if Google Calendar is not connected).
 
+### Invite links (owner only)
+
+For a time you've already agreed with someone (for example a "Quick hello"), send them a link instead of asking them to pick a slot.
+
+1. On the site, click your profile photo at the top right of the nav (on a phone, open the menu first). Enter your access code. The browser stays signed in for 30 days.
+2. Pick the meeting type, day, time and time zone, optionally their name, and press **Create link**. Copy the link and send it.
+3. They open it, see the time in their own time zone, and enter their name and email. From there it is the normal flow: you get the "Meeting request" email (marked as from your invite link), press **Confirm**, and they get the confirmation with the Meet link.
+
+The link works until the meeting time and skips your open-hours check. The access code is a Worker secret, never in this repository. Set or change it with (changing it signs out every browser):
+
+```sh
+npx wrangler secret put BOOKING_ADMIN_KEY
+```
+
+The code is `src/invite.js`; the profile-photo prompt is at the end of `public/contact-bridge.js`. For `wrangler dev`, put `BOOKING_ADMIN_KEY=...` in `.dev.vars`.
+
 ## Contact form
 
 The mirrored Framer form (Message, then Email) posts multipart form data to Framer's forms API. The mirror rewrites that URL to `/api/forms/…`, and `public/contact-bridge.js` also catches any form request that was missed. The Worker checks the request (allowed origin, honeypot fields including the hidden ones Framer's form adds, 32 KB size limit, 5 requests per minute per IP) and strips Framer's `__framer_*` bot-check fields. It then sends a plain-text email through Cloudflare Email Routing:

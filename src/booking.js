@@ -4,6 +4,9 @@
 //   POST /api/booking/request           a visitor asks for a time
 //   GET  /api/booking/review?t=<token>  Htoo's page: the request, Confirm / Decline
 //   POST /api/booking/review            what Htoo chose
+//   /api/booking/owner, /api/booking/invite, /meet
+//                                       invite links for a time already agreed
+//                                       (src/invite.js)
 //
 // Open times are the weekly hours in content/site.json ("booking") minus
 // whatever is busy on Google Calendar. A request books nothing: it emails
@@ -18,6 +21,7 @@
 // the hours in site.json are offered as they are and no event is created.
 
 import { booking as cfg } from "./booking-config.js";
+import { handleInvite } from "./invite.js";
 
 const enc = new TextEncoder();
 const DAY = 86400000;
@@ -30,6 +34,8 @@ export async function handleBooking(request, env, url, ctx, mail) {
     if (path === "/api/booking/request" && request.method === "POST") return await requestMeeting(request, env, url, ctx, mail);
     if (path === "/api/booking/review" && request.method === "GET") return await reviewPage(env, url);
     if (path === "/api/booking/review" && request.method === "POST") return await reviewAction(request, env, url, mail);
+    const invite = await handleInvite(request, env, url, ctx, mail, path);
+    if (invite) return invite;
   } catch (err) {
     console.error("booking failed:", err && err.message);
     return json({ success: false, error: "Something went wrong" }, 500);
@@ -45,25 +51,25 @@ function zoneOffset(ms, tz) {
   return Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second) - Math.floor(ms / 1000) * 1000;
 }
 // The instant at which a wall clock in `tz` reads the given date and time.
-function zonedTime(y, m, d, h, min, tz) {
+export function zonedTime(y, m, d, h, min, tz) {
   const wall = Date.UTC(y, m - 1, d, h, min);
   let ms = wall - zoneOffset(wall, tz);
   ms = wall - zoneOffset(ms, tz);
   return ms;
 }
-function validZone(tz) {
+export function validZone(tz) {
   try { new Intl.DateTimeFormat("en-US", { timeZone: tz }); return true; } catch { return false; }
 }
-function formatWhen(ms, tz) {
+export function formatWhen(ms, tz) {
   return new Intl.DateTimeFormat("en-US", { timeZone: tz, weekday: "long", month: "long", day: "numeric", hour: "numeric", minute: "2-digit" }).format(new Date(ms)).replace(/ at /, ", ");
 }
-function zoneName(ms, tz) {
+export function zoneName(ms, tz) {
   const part = new Intl.DateTimeFormat("en-US", { timeZone: tz, timeZoneName: "short" }).formatToParts(new Date(ms)).find((p) => p.type === "timeZoneName");
   return part ? `${part.value}, ${tz.replace(/_/g, " ")}` : tz;
 }
 
 // ---------------------------------------------------------------- open times
-const typeOf = (id) => cfg.types.find((t) => t.id === id);
+export const typeOf = (id) => cfg.types.find((t) => t.id === id);
 
 async function openSlots(env, type, now = Date.now()) {
   const tz = cfg.timezone, step = cfg.slotMinutes * 60000, length = type.minutes * 60000;
@@ -156,19 +162,23 @@ const fromB64url = (s) => Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g
 async function sha256Hex(s) {
   return [...new Uint8Array(await crypto.subtle.digest("SHA-256", enc.encode(s)))].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
-async function hmacKey(env) {
-  const secret = env.BOOKING_SECRET || env.RESEND_API_KEY || env.GOOGLE_CLIENT_SECRET;
+// Each kind of link has its own key, so one kind can never pass for another.
+// The owner's sign-in also depends on the access code: changing the code signs
+// out every browser.
+export async function hmacKey(env, purpose = "booking") {
+  const base = env.BOOKING_SECRET || env.RESEND_API_KEY || env.GOOGLE_CLIENT_SECRET || "";
+  const secret = purpose === "owner" ? (env.BOOKING_ADMIN_KEY ? env.BOOKING_ADMIN_KEY + "|" + base : "") : base;
   if (!secret) return null;
-  return crypto.subtle.importKey("raw", enc.encode("booking:" + secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign", "verify"]);
+  return crypto.subtle.importKey("raw", enc.encode(purpose + ":" + secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign", "verify"]);
 }
-async function sign(env, payload) {
-  const key = await hmacKey(env);
+export async function sign(env, payload, purpose) {
+  const key = await hmacKey(env, purpose);
   if (!key) return null;
   const body = b64url(enc.encode(JSON.stringify(payload)));
   return body + "." + b64url(new Uint8Array(await crypto.subtle.sign("HMAC", key, enc.encode(body))));
 }
-async function verify(env, token) {
-  const key = await hmacKey(env);
+export async function verify(env, token, purpose) {
+  const key = await hmacKey(env, purpose);
   const [body, mac] = String(token || "").split(".");
   if (!key || !body || !mac) return null;
   try {
@@ -178,7 +188,7 @@ async function verify(env, token) {
 }
 
 // ---------------------------------------------------------------- a visitor asks
-const clean = (v, max) => String(v == null ? "" : v).replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g, "").trim().slice(0, max);
+export const clean = (v, max) => String(v == null ? "" : v).replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g, "").trim().slice(0, max);
 
 async function requestMeeting(request, env, url, ctx, mail) {
   if (!mail.allowed(request, env, url)) return json({ success: false, error: "Forbidden" }, 403);
@@ -219,15 +229,15 @@ async function requestMeeting(request, env, url, ctx, mail) {
   return json({ success: true });
 }
 
-function visitorVars(req, type, extra = {}) {
+export function visitorVars(req, type, extra = {}) {
   const first = ((req.n.split(/\s+/)[0] || "").match(/^[\p{L}][\p{L}'-]{0,29}$/u) || ["there"])[0];
   return { first_name: first, meeting_type: type.name, duration: String(type.minutes), when: formatWhen(req.s, req.z), timezone: zoneName(req.s, req.z), ...extra };
 }
 
 // ---------------------------------------------------------------- Htoo reviews
-const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+export const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-function page(title, color, inner) {
+export function page(title, color, inner, extra = "", headers = {}) {
   const C = { cyan: ["#36c5f0", "#a4e5f8"], yellow: ["#ecb22e", "#f5dda1"], pink: ["#e01e5a", "#fabed1"], green: ["#2fbc81", "#a1dfc5"] }[color];
   return new Response(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${esc(title)} | Htoo Myat Kyaw</title>
 <link rel="icon" href="/brand/favicon-dark.png">
@@ -254,11 +264,20 @@ button:active{transform:scale(.97)}
 form{margin:0}
 footer{display:flex;height:8px}footer i{flex:1}
 a{color:inherit}
-</style></head><body><main><header><small>htoomyatkyaw.com · meetings</small><h1>${esc(title)}</h1></header><section>${inner}</section><footer><i style="background:#36c5f0"></i><i style="background:#ecb22e"></i><i style="background:#e01e5a"></i><i style="background:#2fbc81"></i></footer></main></body></html>`,
-    { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "referrer-policy": "no-referrer" } });
+label{display:block;margin:0 0 14px;font:500 12px/1.9 "DM Mono",ui-monospace,Menlo,monospace;text-transform:uppercase;color:#767777}
+input,select,textarea{display:block;width:100%;margin-top:4px;padding:12px 14px;border:2px solid #111212;border-radius:0;background:#fff;color:#111212;font:500 16px/1.4 "Inter Display",Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;text-transform:none}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:3px solid #36c5f0;outline-offset:0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+hr{border:0;border-top:2px dashed #d6d6d6;margin:26px 0}
+.muted{color:#767777;font-size:14px}
+button.link{min-height:0;padding:0;border:0;background:none;color:#767777;text-decoration:underline;text-transform:none;font:500 14px/1.4 "Inter Display",Inter,sans-serif}
+</style></head><body><main><header><small>htoomyatkyaw.com · meetings</small><h1>${esc(title)}</h1></header><section>${inner}</section><footer><i style="background:#36c5f0"></i><i style="background:#ecb22e"></i><i style="background:#e01e5a"></i><i style="background:#2fbc81"></i></footer></main>${extra}</body></html>`,
+    { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "referrer-policy": "no-referrer", "x-frame-options": "DENY", ...headers } });
 }
 
-function details(req, type) {
+export function details(req, type) {
   return `<dl><dt>Who</dt><dd>${esc(req.n)}<br><a href="mailto:${esc(req.e)}">${esc(req.e)}</a></dd>
 <dt>What</dt><dd>${esc(type.name)}, ${type.minutes} minutes</dd>
 <dt>When</dt><dd>${esc(formatWhen(req.s, cfg.timezone))}<br><span style="color:#767777">${esc(zoneName(req.s, cfg.timezone))}</span></dd>
@@ -280,6 +299,7 @@ async function reviewPage(env, url) {
     } catch { status = '<p class="status off">I could not reach Google Calendar just now.</p>'; }
   }
   const form = (action, label, cls) => `<form method="post" action="/api/booking/review"><input type="hidden" name="t" value="${esc(token)}"><input type="hidden" name="action" value="${action}"><button class="${cls}" type="submit">${label}</button></form>`;
+  if (req.i) status = '<p class="status ok">They booked this through your invite link, for the time you agreed.</p>' + status;
   return page("Meeting request", "cyan", details(req, type) + status + `<div class="row">${form("confirm", "Confirm", "")}${form("decline", "Decline", "ghost")}</div>
 <p style="margin:18px 0 0;font-size:14px;color:#767777">Confirm adds it to your calendar with a Google Meet link and emails ${esc(req.n.split(/\s+/)[0])} the confirmation. Decline emails them a link to pick another time.</p>`);
 }
@@ -318,6 +338,6 @@ async function reviewAction(request, env, url, mail) {
     + `<div class="row">${meet ? `<a class="btn" href="${esc(meet)}">Open Google Meet</a>` : ""}${eventLink ? `<a class="btn ghost" href="${esc(eventLink)}">Open in Calendar</a>` : `<a class="btn ghost" href="${esc(addLink)}">Add to my calendar</a>`}</div>`);
 }
 
-function json(body, status = 200) {
+export function json(body, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json", "cache-control": "no-store" } });
 }
