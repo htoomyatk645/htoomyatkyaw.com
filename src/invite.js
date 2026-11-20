@@ -250,7 +250,7 @@ async function guestSubmit(request, env, url, ctx, mail) {
   }, v.email);
   if (!sent) return again("The request did not go through. Please try again, or email me directly.");
 
-  ctx.waitUntil(mail.visitor(env, "bookingRequest", v.email, visitorVars(req, type)));
+  ctx.waitUntil(mail.visitor(env, "bookingInviteReceived", v.email, visitorVars(req, type)));
   return page("Request sent", "green", `<dl><dt>What</dt><dd>${esc(type.name)}, ${type.minutes} minutes</dd>
 <dt>When</dt><dd>${esc(formatWhen(inv.s, tz))}<span class="muted" style="display:block">${esc(zoneName(inv.s, tz))}</span></dd></dl>`
     + `<p>Thanks, ${esc(v.name.split(/\s+/)[0])}. I'll confirm shortly, and you'll get an email at ${esc(v.email)} with the Google Meet link.</p>`);
