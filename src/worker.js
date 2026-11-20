@@ -46,7 +46,7 @@ export default {
 
     // Meeting requests from the Contact page (src/booking.js).
     // /meet is the page behind an invite link (src/invite.js).
-    if (url.pathname.startsWith("/api/booking/") || url.pathname === "/meet" || url.pathname === "/meet/") {
+    if (url.pathname.startsWith("/api/booking/") || url.pathname === "/meet" || url.pathname.startsWith("/meet/")) {
       return handleBooking(request, env, url, ctx, { allowed: isAllowedOrigin, owner: sendOwnerTemplate, visitor: sendVisitorTemplate });
     }
 
