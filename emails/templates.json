@@ -433,12 +433,28 @@
       "when": "Sent by the site itself, right after someone asks for a meeting time.",
       "banner": "Requested",
       "color": "cyan",
-      "subject": "I got your meeting request for {{when}}",
+      "subject": "I got your request for {{when}}",
       "body": [
         "Hi {{first_name}},",
-        "Thank you for asking to meet. I have your request for a **{{meeting_type}}** on **{{when}}** ({{timezone}}).",
-        "This time is not confirmed yet. I look at each request myself, and you'll get a second email with the Google Meet link as soon as I confirm it.",
-        "If that time stops working for you, reply to this email."
+        "Thank you for wanting to meet. I've got your request for a **{{meeting_type}}** on **{{when}}** ({{timezone}}).",
+        "I read every request myself, so it isn't confirmed just yet. As soon as I confirm it, I'll send you a second email with the Google Meet link.",
+        "If that time stops working for you, just reply to this email and let me know."
+      ]
+    },
+    {
+      "id": "booking-invite-received",
+      "auto": "bookingInviteReceived",
+      "group": "Meetings",
+      "name": "Invite details received (automatic)",
+      "when": "Sent automatically when someone fills in their details on an invite link you sent them.",
+      "banner": "Requested",
+      "color": "cyan",
+      "subject": "Our {{meeting_type}} on {{when}}",
+      "body": [
+        "Hi {{first_name}},",
+        "Thanks for sending your details. I have us down for a **{{meeting_type}}** on **{{when}}** ({{timezone}}), the time we agreed on.",
+        "I'll confirm it shortly and send you the Google Meet link in a second email.",
+        "If anything changes on your end, just reply to this email and let me know."
       ]
     },
     {
@@ -449,10 +465,10 @@
       "when": "Sent by the site when you press Confirm on a meeting request.",
       "banner": "Confirmed",
       "color": "green",
-      "subject": "Confirmed: our meeting on {{when}}",
+      "subject": "Confirmed: our {{meeting_type}} on {{when}}",
       "body": [
         "Hi {{first_name}},",
-        "Your meeting with Htoo is confirmed. I hope to meet you soon.",
+        "We're all set. I've confirmed our meeting, and I'm looking forward to talking with you.",
         {
           "list": [
             "**What:** {{meeting_type}}, {{duration}} minutes",
@@ -466,7 +482,7 @@
             "url": "{{meet_url}}"
           }
         },
-        "The same link works from any browser. If you need to move the time, reply to this email."
+        "The link works from any browser. If something comes up and you need to move the time, just reply to this email."
       ]
     },
     {
@@ -477,10 +493,10 @@
       "when": "Sent instead of the one above if Google Calendar is not connected, so there is no Meet link yet.",
       "banner": "Confirmed",
       "color": "green",
-      "subject": "Confirmed: our meeting on {{when}}",
+      "subject": "Confirmed: our {{meeting_type}} on {{when}}",
       "body": [
         "Hi {{first_name}},",
-        "Your meeting with Htoo is confirmed. I hope to meet you soon.",
+        "We're all set. I've confirmed our meeting, and I'm looking forward to talking with you.",
         {
           "list": [
             "**What:** {{meeting_type}}, {{duration}} minutes",
@@ -488,7 +504,7 @@
             "**Where:** Google Meet"
           ]
         },
-        "I'll send the Google Meet link in a separate email before we meet. If you need to move the time, reply to this one."
+        "I'll send you the Google Meet link in a separate email before we meet. If something comes up and you need to move the time, just reply to this one."
       ]
     },
     {
@@ -502,14 +518,14 @@
       "subject": "Could we find another time?",
       "body": [
         "Hi {{first_name}},",
-        "Thank you for asking to meet. I can't make {{when}} after all, and I'm sorry for the back and forth.",
+        "Thank you for wanting to meet. I'm sorry, but I can't make {{when}} after all.",
         {
           "button": {
             "label": "Pick another time",
             "url": "https://htoomyatkyaw.com/contact#book"
           }
         },
-        "You can also reply to this email with a few times that suit you."
+        "Or just reply to this email with a few times that work for you, and I'll make one of them happen."
       ]
     }
   ]

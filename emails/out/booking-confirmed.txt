@@ -1,8 +1,8 @@
-Subject: Confirmed: our meeting on {{when}}
+Subject: Confirmed: our {{meeting_type}} on {{when}}
 
 Hi {{first_name}},
 
-Your meeting with Htoo is confirmed. I hope to meet you soon.
+We're all set. I've confirmed our meeting, and I'm looking forward to talking with you.
 
 - What: {{meeting_type}}, {{duration}} minutes
 - When: {{when}} ({{timezone}})
@@ -10,7 +10,7 @@ Your meeting with Htoo is confirmed. I hope to meet you soon.
 
 Join Google Meet: {{meet_url}}
 
-The same link works from any browser. If you need to move the time, reply to this email.
+The link works from any browser. If something comes up and you need to move the time, just reply to this email.
 
 --
 Htoo Myat Kyaw

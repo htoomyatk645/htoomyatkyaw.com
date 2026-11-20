@@ -2,11 +2,11 @@ Subject: Could we find another time?
 
 Hi {{first_name}},
 
-Thank you for asking to meet. I can't make {{when}} after all, and I'm sorry for the back and forth.
+Thank you for wanting to meet. I'm sorry, but I can't make {{when}} after all.
 
 Pick another time: https://htoomyatkyaw.com/contact#book
 
-You can also reply to this email with a few times that suit you.
+Or just reply to this email with a few times that work for you, and I'll make one of them happen.
 
 --
 Htoo Myat Kyaw

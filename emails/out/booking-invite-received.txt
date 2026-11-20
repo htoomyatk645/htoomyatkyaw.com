@@ -1,0 +1,14 @@
+Subject: Our {{meeting_type}} on {{when}}
+
+Hi {{first_name}},
+
+Thanks for sending your details. I have us down for a {{meeting_type}} on {{when}} ({{timezone}}), the time we agreed on.
+
+I'll confirm it shortly and send you the Google Meet link in a second email.
+
+If anything changes on your end, just reply to this email and let me know.
+
+--
+Htoo Myat Kyaw
+Co-founder of Briefly · Product design and consulting
+Htoo.Kyaw@tufts.edu · htoomyatkyaw.com
