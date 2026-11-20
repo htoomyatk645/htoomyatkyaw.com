@@ -125,10 +125,10 @@ Optional: `GOOGLE_CALENDAR_IDS` (a var, comma-separated; the first one receives 
 For a time you've already agreed with someone (for example a "Quick hello"), send them a link instead of asking them to pick a slot.
 
 1. On the site, click your profile photo at the top right of the nav (on a phone, open the menu first). Enter your access code. The browser stays signed in for 30 days.
-2. Pick the meeting type, day, time and time zone, optionally their name, and press **Create link**. Copy the link and send it.
+2. Pick the meeting type, day, time and time zone, and press **Create link**. You get a short link like `htoomyatkyaw.com/meet/BAc5zqCJ9KiQog`; copy it and send it.
 3. They open it, see the time in their own time zone, and enter their name and email. From there it is the normal flow: you get the "Meeting request" email (marked as from your invite link), press **Confirm**, and they get the confirmation with the Meet link.
 
-The link works until the meeting time and skips your open-hours check. The access code is a Worker secret, never in this repository. Set or change it with (changing it signs out every browser):
+The link works until the meeting time and skips your open-hours check. The code in it refers to the meeting type by its position in `booking.types` in `content/site.json`, so add new types at the end rather than reordering them, or links already sent will show the wrong type. The access code is a Worker secret, never in this repository. Set or change it with (changing it signs out every browser):
 
 ```sh
 npx wrangler secret put BOOKING_ADMIN_KEY

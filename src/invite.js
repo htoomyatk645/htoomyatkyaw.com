@@ -5,8 +5,10 @@
 //                                    prompt; signs this browser in
 //   GET  /api/booking/invite         Htoo's tool: pick a meeting type, day and
 //   POST /api/booking/invite         time, get a link (sign in, create, sign out)
-//   GET  /meet?i=<invite>            the guest's page: the agreed time and a
+//   GET  /meet/<code>                the guest's page: the agreed time and a
 //   POST /meet                       form for their name and email
+//                                    (/meet?i=<token> is the older, longer form
+//                                    of the same link and still works)
 //
 // The guest's details go through the same review step as a normal booking:
 // Htoo gets the "Meeting request" email, presses Confirm, and the guest gets
@@ -17,9 +19,13 @@
 // Worker secret BOOKING_ADMIN_KEY (never in this repository), and then keeps
 // the browser signed in for 30 days with an HttpOnly cookie. Nothing is
 // stored: invite links and the cookie are signed, so they cannot be forged.
+//
+// A link's code is 14 characters: 10 bytes, base64url. Byte 0 is the meeting
+// type, bytes 1-3 the start in minutes since 2026-01-01 UTC, and bytes 4-9 the
+// first six bytes of an HMAC over those four.
 
 import { booking as cfg } from "./booking-config.js";
-import { clean, esc, formatWhen, json, page as basePage, sign, typeOf, validZone, verify, visitorVars, zonedTime, zoneName } from "./booking.js";
+import { clean, esc, formatWhen, hmacKey, json, page as basePage, sign, typeOf, validZone, verify, visitorVars, zonedTime, zoneName } from "./booking.js";
 
 const COOKIE = "hk_owner";
 // "same-origin" rather than the review page's "no-referrer": with no referrer
@@ -33,7 +39,8 @@ export async function handleInvite(request, env, url, ctx, mail, path) {
   if (path === "/api/booking/owner" && m === "GET") return json({ owner: await isOwner(request, env) });
   if (path === "/api/booking/owner" && m === "POST") return ownerLogin(request, env, url, mail);
   if (path === "/api/booking/invite" && (m === "GET" || m === "POST")) return inviteTool(request, env, url, mail);
-  if (path === "/meet" && m === "GET") return guestPage(env, url);
+  if (path === "/meet" && m === "GET") return guestPage(env, url.searchParams.get("i"));
+  if (path.startsWith("/meet/") && m === "GET") return guestPage(env, decodeURIComponent(path.slice(6)));
   if (path === "/meet" && m === "POST") return guestSubmit(request, env, url, ctx, mail);
   return null;
 }
@@ -106,7 +113,6 @@ function createForm(v = {}) {
 <label>Time<input name="time" type="time" step="300" value="${esc(v.time || "")}" required></label></div>
 <label>Time zone of that time<input name="zone" list="zones" value="${esc(zone)}" required></label>
 <datalist id="zones">${ZONES.map((z) => `<option value="${z}">`).join("")}</datalist>
-<label>Their name (optional)<input name="guest" maxlength="80" value="${esc(v.guest || "")}" autocomplete="off"></label>
 <div class="row"><button type="submit">Create link</button></div></form>
 <form method="post" action="/api/booking/invite" style="margin-top:18px"><input type="hidden" name="action" value="logout"><button class="link" type="submit">Sign out of this browser</button></form>`;
 }
@@ -132,7 +138,7 @@ async function inviteTool(request, env, url, mail) {
   if (!owner) return page("Owner only", "pink", codeForm());
   if (action !== "create") return page("Invite link", "cyan", createForm());
 
-  const v = { type: String(form.get("type") || ""), date: String(form.get("date") || ""), time: String(form.get("time") || ""), zone: clean(form.get("zone"), 60), guest: clean(form.get("guest"), 80).replace(/[\r\n]+/g, " ") };
+  const v = { type: String(form.get("type") || ""), date: String(form.get("date") || ""), time: String(form.get("time") || ""), zone: clean(form.get("zone"), 60) };
   const type = typeOf(v.type);
   const d = v.date.match(/^(\d{4})-(\d{2})-(\d{2})$/), t = v.time.match(/^(\d{2}):(\d{2})/);
   const fail = (msg) => page("Invite link", "cyan", `<p class="status warn">${esc(msg)}</p>` + createForm(v));
@@ -142,13 +148,11 @@ async function inviteTool(request, env, url, mail) {
   const start = zonedTime(+d[1], +d[2], +d[3], +t[1], +t[2], v.zone);
   if (!(start > Date.now())) return fail("That time has already passed.");
 
-  const invite = { k: "invite", t: type.id, s: start, z: v.zone };
-  if (v.guest) invite.n = v.guest;
-  const token = await sign(env, invite, "invite");
-  if (!token) return fail("Signing is not set up (BOOKING_SECRET is missing).");
-  const link = `${url.origin}/meet?i=${token}`;
+  const code = await shortCode(env, type, start);
+  if (!code) return fail(start >= EPOCH + 0xffffff * 60000 ? "That date is too far ahead." : "Signing is not set up (BOOKING_SECRET is missing).");
+  const link = `${url.origin}/meet/${code}`;
 
-  const result = `<p class="status ok">Link ready. Send it to ${v.guest ? esc(v.guest) : "them"}; it works until the meeting time.</p>
+  const result = `<p class="status ok">Link ready. Send it to them; it works until the meeting time.</p>
 <dl><dt>What</dt><dd>${esc(type.name)}, ${type.minutes} minutes</dd>
 <dt>When</dt><dd>${esc(formatWhen(start, cfg.timezone))}<br><span class="muted">${esc(zoneName(start, cfg.timezone))}</span></dd>
 ${v.zone !== cfg.timezone ? `<dt>For them</dt><dd>${esc(formatWhen(start, v.zone))}<br><span class="muted">${esc(zoneName(start, v.zone))}</span></dd>` : ""}</dl>
@@ -159,8 +163,32 @@ ${v.zone !== cfg.timezone ? `<dt>For them</dt><dd>${esc(formatWhen(start, v.zone
 }
 
 // ---------------------------------------------------------------- the guest
+const EPOCH = Date.UTC(2026, 0, 1);
+const b64url = (bytes) => btoa(String.fromCharCode(...bytes)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+async function mac6(env, bytes) {
+  const key = await hmacKey(env, "invite");
+  return key && new Uint8Array(await crypto.subtle.sign("HMAC", key, bytes)).slice(0, 6);
+}
+async function shortCode(env, type, start) {
+  const n = Math.round((start - EPOCH) / 60000), t = cfg.types.indexOf(type);
+  if (n < 0 || n > 0xffffff || t < 0 || t > 255) return null;
+  const body = new Uint8Array([t, n >> 16, (n >> 8) & 255, n & 255]), mac = await mac6(env, body);
+  return mac && b64url([...body, ...mac]);
+}
+async function readShort(env, code) {
+  if (!/^[A-Za-z0-9_-]{14}$/.test(code || "")) return null;
+  const bytes = Uint8Array.from(atob(code.replace(/-/g, "+").replace(/_/g, "/")), (c) => c.charCodeAt(0));
+  const mac = await mac6(env, bytes.slice(0, 4));
+  if (!mac) return null;
+  let diff = 0;
+  for (let i = 0; i < 6; i++) diff |= mac[i] ^ bytes[4 + i];
+  const type = cfg.types[bytes[0]];
+  if (diff || !type) return null;
+  return { k: "invite", t: type.id, s: EPOCH + ((bytes[1] << 16) | (bytes[2] << 8) | bytes[3]) * 60000, z: cfg.timezone };
+}
+
 async function readInvite(env, token) {
-  const inv = await verify(env, token, "invite");
+  const inv = String(token || "").includes(".") ? await verify(env, token, "invite") : await readShort(env, token);
   const type = inv && inv.k === "invite" && typeOf(inv.t);
   return type ? { inv, type } : null;
 }
@@ -181,8 +209,7 @@ function guestForm(token, inv, type, v = {}, error = "") {
 <div class="row"><button type="submit">Request this time</button></div></form>`;
 }
 
-async function guestPage(env, url) {
-  const token = url.searchParams.get("i");
+async function guestPage(env, token) {
   const got = await readInvite(env, token);
   if (!got) return page("Link not valid", "pink", "<p>This link is incomplete or has been changed. Please ask me for a new one.</p>");
   const { inv, type } = got;
