@@ -65,6 +65,12 @@ rep("children:`download resume`", "children:`السلام عليكم`")
 # Welcome bubbles type "Mingalaba" in Burmese; split by grapheme cluster so the marks stay attached.
 rep("text:`Hey there!`", "text:`မင်္ဂလာပါ`"); rep("text:`Welcome!`", "text:`မင်္ဂလာပါ`")
 rep("d.current.innerHTML=t,e=new at(d.current,{types:`chars`});let o=e.chars||[]", "d.current.innerHTML=``,e={revert(){}};let o=(t.match(/[\\u1000-\\u102A\\u103F-\\u1049\\u104C-\\u109F](?:\\u1039[\\u1000-\\u1021]|[\\u102B-\\u103E\\u1056-\\u1059\\u105E-\\u1060\\u1062-\\u1064\\u1067-\\u106D\\u1071-\\u1074\\u1082-\\u108D\\u108F\\u109A-\\u109D])*|\\P{M}\\p{M}*|\\p{M}+/gu)||[]).map(x=>{let s=document.createElement(`span`);s.textContent=x;s.style.display=`inline-block`;d.current.appendChild(s);return s})")
+# Hero name, ruler and tags appear only once the ruler is 100% in view; after a reload that
+# restores a scrolled position that never happens and the name stays blank. Trigger on any
+# visibility, and always open the home page at the top.
+rep("__framer__targets:[{ref:T,target:`animate`}],__framer__threshold:1,", "__framer__targets:[{ref:T,target:`animate`}],__framer__threshold:.01,", HOME[1:])
+rep("target:{ref:e},threshold:1,tokenization:`character`", "target:{ref:e},threshold:.01,tokenization:`character`", HOME[1:])
+rep("</head>", '<script>try{history.scrollRestoration="manual"}catch(e){}addEventListener("load",()=>{const t=()=>{if(scrollY)scrollTo(0,0)};t();setTimeout(t,150);setTimeout(t,500)})</script></head>', ["site/index.html"])
 rep("tel:+123456789", "https://briefly.briefa.net")
 
 # Services hero intro shares its text with the footer; change it first.
