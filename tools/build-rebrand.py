@@ -64,7 +64,7 @@ rep("file:`/_ext/framerusercontent.com/assets/5D0eDc95VXdjgoSNI5fR7NpyX0k.jpg`,f
 rep("children:`download resume`", "children:`السلام عليكم`")
 # Welcome bubbles type "Mingalaba" in Burmese; split by grapheme cluster so the marks stay attached.
 rep("text:`Hey there!`", "text:`မင်္ဂလာပါ`"); rep("text:`Welcome!`", "text:`မင်္ဂလာပါ`")
-rep("d.current.innerHTML=t,e=new at(d.current,{types:`chars`});let o=e.chars||[]", "d.current.innerHTML=``,e={revert(){}};let o=[...(Intl.Segmenter?new Intl.Segmenter(void 0,{granularity:`grapheme`}).segment(t):t)].map(x=>{let s=document.createElement(`span`);s.textContent=x.segment||x;s.style.display=`inline-block`;d.current.appendChild(s);return s})")
+rep("d.current.innerHTML=t,e=new at(d.current,{types:`chars`});let o=e.chars||[]", "d.current.innerHTML=``,e={revert(){}};let o=(t.match(/[\\u1000-\\u102A\\u103F-\\u1049\\u104C-\\u109F](?:\\u1039[\\u1000-\\u1021]|[\\u102B-\\u103E\\u1056-\\u1059\\u105E-\\u1060\\u1062-\\u1064\\u1067-\\u106D\\u1071-\\u1074\\u1082-\\u108D\\u108F\\u109A-\\u109D])*|\\P{M}\\p{M}*|\\p{M}+/gu)||[]).map(x=>{let s=document.createElement(`span`);s.textContent=x;s.style.display=`inline-block`;d.current.appendChild(s);return s})")
 rep("tel:+123456789", "https://briefly.briefa.net")
 
 # Services hero intro shares its text with the footer; change it first.
