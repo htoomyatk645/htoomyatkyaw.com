@@ -63,8 +63,15 @@ rep("file:`/_ext/framerusercontent.com/assets/5D0eDc95VXdjgoSNI5fR7NpyX0k.jpg`,f
     "file:`/Htoo_Myat_Kyaw_Resume.pdf`,fileName:`Htoo_Myat_Kyaw_Resume.pdf`")
 rep("children:`download resume`", "children:`السلام عليكم`")
 # Welcome bubbles type "Mingalaba" in Burmese; split by grapheme cluster so the marks stay attached.
-rep("text:`Hey there!`", "text:`မင်္ဂလာပါ`"); rep("text:`Welcome!`", "text:`မင်္ဂလာပါ`")
-rep("d.current.innerHTML=t,e=new at(d.current,{types:`chars`});let o=e.chars||[]", "d.current.innerHTML=``,e={revert(){}};let o=(t.match(/[\\u1000-\\u102A\\u103F-\\u1049\\u104C-\\u109F](?:\\u1039[\\u1000-\\u1021]|[\\u102B-\\u103E\\u1056-\\u1059\\u105E-\\u1060\\u1062-\\u1064\\u1067-\\u106D\\u1071-\\u1074\\u1082-\\u108D\\u108F\\u109A-\\u109D])*|\\P{M}\\p{M}*|\\p{M}+/gu)||[]).map(x=>{let s=document.createElement(`span`);s.textContent=x;s.style.display=`inline-block`;d.current.appendChild(s);return s})")
+rep("text:`Hey there!`", "text:`မင်္ဂလာပါ`"); rep("text:`Welcome!`", "text:`السلام عليكم`")
+# Arabic bubble types right to left; it starts right after the Burmese one and runs until the name appears.
+rep("layoutId:`jIU_ycYJ_`,startDelay:2.4,text:", "layoutId:`jIU_ycYJ_`,startDelay:2,text:")
+rep("text:`السلام عليكم`,totalDuration:.8", "text:`السلام عليكم`,totalDuration:1.2")
+rep("children:p(Ut,{closeDelay:.6,design", "children:p(Ut,{closeDelay:.3,design")
+rep("d.current.innerHTML=t,e=new at(d.current,{types:`chars`});let o=e.chars||[]", "d.current.innerHTML=``,e={revert(){}};let o=(t.match(/\\u0644[\\u0622\\u0623\\u0625\\u0627]\\p{M}*|[\\u1000-\\u102A\\u103F-\\u1049\\u104C-\\u109F](?:\\u1039[\\u1000-\\u1021]|[\\u102B-\\u103E\\u1056-\\u1059\\u105E-\\u1060\\u1062-\\u1064\\u1067-\\u106D\\u1071-\\u1074\\u1082-\\u108D\\u108F\\u109A-\\u109D])*|\\P{M}\\p{M}*|\\p{M}+/gu)||[]).map((x,k,A)=>{let hkR=/[\\u0600-\\u06FF]/.test(t);if(hkR){d.current.style.direction=`rtl`;let J=z=>/[\\u0626\\u0628\\u062A-\\u062E\\u0633-\\u063A\\u0640-\\u0647\\u064A]/.test(z),L=z=>/[\\u0620-\\u064A]/.test(z),P=A[k-1],N=A[k+1];P&&J(P[P.length-1])&&L(x[0])&&(x=`\\u200D`+x),N&&J(x[x.length-1])&&L(N[0])&&(x+=`\\u200D`)}let s=document.createElement(`span`);s.textContent=x;s.style.display=hkR?`inline`:`inline-block`;d.current.appendChild(s);return s})")
+rep("h.set(e,{display:`inline-block`,opacity:1,color:a.textColor},t*f)", "h.set(e,{display:d.current.style.direction===`rtl`?`inline`:`inline-block`,opacity:1,color:a.textColor},t*f)", HOME[1:])
+rep("R.set(p,{x:t.right-n.left,y:t.top-n.top+t.height*.12})", "R.set(p,{x:d.current.style.direction===`rtl`?t.left-n.left-12:t.right-n.left,y:t.top-n.top+t.height*.12})", HOME[1:])
+rep("R.set(p,{x:e.right-n.left,y:e.top-n.top+e.height*.12})", "R.set(p,{x:d.current.style.direction===`rtl`?e.left-n.left-12:e.right-n.left,y:e.top-n.top+e.height*.12})", HOME[1:])
 # Hero name, ruler and tags appear only once the ruler is 100% in view; after a reload that
 # restores a scrolled position that never happens and the name stays blank. Trigger on any
 # visibility, and always open the home page at the top.
