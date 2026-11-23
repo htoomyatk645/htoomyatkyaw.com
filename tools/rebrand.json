@@ -159,20 +159,6 @@
       ]
     },
     {
-      "find": "__framer__targets:[{ref:T,target:`animate`}],__framer__threshold:1,",
-      "replace": "__framer__targets:[{ref:T,target:`animate`}],__framer__threshold:.01,",
-      "only": [
-        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
-      ]
-    },
-    {
-      "find": "target:{ref:e},threshold:1,tokenization:`character`",
-      "replace": "target:{ref:e},threshold:.01,tokenization:`character`",
-      "only": [
-        "tKk4BI1IeMOMfz2OeE9Rm5Ng3bq8SlLJDVdOtS2wD04"
-      ]
-    },
-    {
       "find": "</head>",
       "replace": "<script>try{history.scrollRestoration=\"manual\"}catch(e){}addEventListener(\"load\",()=>{const t=()=>{if(scrollY)scrollTo(0,0)};t();setTimeout(t,150);setTimeout(t,500)})</script></head>",
       "only": [

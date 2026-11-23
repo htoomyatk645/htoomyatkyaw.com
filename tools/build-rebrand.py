@@ -72,11 +72,9 @@ rep("d.current.innerHTML=t,e=new at(d.current,{types:`chars`});let o=e.chars||[]
 rep("h.set(e,{display:`inline-block`,opacity:1,color:a.textColor},t*f)", "h.set(e,{display:d.current.style.direction===`rtl`?`inline`:`inline-block`,opacity:1,color:a.textColor},t*f)", HOME[1:])
 rep("R.set(p,{x:t.right-n.left,y:t.top-n.top+t.height*.12})", "R.set(p,{x:d.current.style.direction===`rtl`?t.left-n.left-12:t.right-n.left,y:t.top-n.top+t.height*.12})", HOME[1:])
 rep("R.set(p,{x:e.right-n.left,y:e.top-n.top+e.height*.12})", "R.set(p,{x:d.current.style.direction===`rtl`?e.left-n.left-12:e.right-n.left,y:e.top-n.top+e.height*.12})", HOME[1:])
-# Hero name, ruler and tags appear only once the ruler is 100% in view; after a reload that
-# restores a scrolled position that never happens and the name stays blank. Trigger on any
-# visibility, and always open the home page at the top.
-rep("__framer__targets:[{ref:T,target:`animate`}],__framer__threshold:1,", "__framer__targets:[{ref:T,target:`animate`}],__framer__threshold:.01,", HOME[1:])
-rep("target:{ref:e},threshold:1,tokenization:`character`", "target:{ref:e},threshold:.01,tokenization:`character`", HOME[1:])
+# Hero name, ruler and tags only appear once the ruler is fully in view at load. Framer restores
+# a scrolled position after a reload, which kept the name blank, so the home page always opens
+# at the top. (Don't lower the threshold: the white loader overlay's fade-out depends on it.)
 rep("</head>", '<script>try{history.scrollRestoration="manual"}catch(e){}addEventListener("load",()=>{const t=()=>{if(scrollY)scrollTo(0,0)};t();setTimeout(t,150);setTimeout(t,500)})</script></head>', ["site/index.html"])
 rep("tel:+123456789", "https://briefly.briefa.net")
 
