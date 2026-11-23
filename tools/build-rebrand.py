@@ -61,6 +61,7 @@ rep("href:`mailto:Htoo.Kyaw@tufts.edu`,motionChild:!0,nodeId:`TZH86zigh`", "href
 # Clicking that hover card downloads a file: the template's sample resume image.
 rep("file:`/_ext/framerusercontent.com/assets/5D0eDc95VXdjgoSNI5fR7NpyX0k.jpg`,fileName:`Bejamin's Resume`",
     "file:`/Htoo_Myat_Kyaw_Resume.pdf`,fileName:`Htoo_Myat_Kyaw_Resume.pdf`")
+rep("children:`download resume`", "children:`السلام عليكم`")
 rep("tel:+123456789", "https://briefly.briefa.net")
 
 # Services hero intro shares its text with the footer; change it first.
@@ -227,7 +228,7 @@ rep("random shot", "on my way to reply", ["site/contact.html", "BtP3pvF_fYTo_Pg8
 # ---------------------------------------------------------------- playground
 for o, n in [("nothing big, still feels nice", "Picture Before Getting Promoted"), ("Brain’s messy, but it’s okay", "Tabling to Cure Bone Cancer"), 
              ("Good weather", "Thank You!"), ("Random shot", "random shot"), ("Tiny moments", "First Time Training with a Former UFC Fighter"),
-             ("Not sure what I’m doing", "Muslims in Business Conference"), ("bus bus bus", "on the green line, thinking"), ("flower!", "First Day Working in the OR at 17")]:
+             ("Not sure what I’m doing", "Muslims in Business Conference"), ("bus bus bus", "at the Pakistan conference @ HBS"), ("flower!", "First Day Working in the OR at 17")]:
     rep(o, n)
 
 # Playground's tab title (all pages share one metadata function).
@@ -300,7 +301,7 @@ let top;
 const topbar=()=>{
   if(!top){top=document.createElement("div");top.id="hk-top";top.innerHTML='<a class="cv" href="'+RESUME+'" target="_blank" rel="noopener">Resume</a><a class="in" href="'+LINKEDIN+'" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>';document.body.appendChild(top)}
   const vis=s=>[...document.querySelectorAll(s)].find(e=>e.getBoundingClientRect().width>0);
-  const anchor=vis(".framer-119y192-container")||vis(".framer-16ahjtk"),nav=vis("nav");
+  const anchor=vis(".framer-ns3vo2")||vis(".framer-1v43z4j-container"),nav=vis("nav");
   const r=anchor&&anchor.getBoundingClientRect();
   if(!r||r.top>24||(nav&&nav.getBoundingClientRect().height>80)){top.classList.remove("on");return}
   top.style.right=Math.round(innerWidth-r.left+12)+"px";top.style.top=Math.round(r.top+(r.height-32)/2)+"px";top.classList.add("on");
@@ -315,7 +316,7 @@ addEventListener("load",()=>setTimeout(()=>{patch();new MutationObserver(soon).o
 SITE_CSS = ("#coming-soon{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:2147483647;"
             "background:#111212;color:#fff;font:500 14px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;padding:12px 18px;border-radius:999px;"
             "transition:opacity .2s,transform .2s}#coming-soon.on{opacity:1;transform:translate(-50%,0)}"
-            ".framer-119y192-container,.framer-1yzdk2p-container{cursor:pointer}"
+            ".framer-119y192-container,.framer-1yzdk2p-container{display:none!important}"
             "#hk-top{position:fixed;top:8px;right:16px;z-index:12;display:none;align-items:center;gap:8px}#hk-top.on{display:flex}"
             "#hk-top a{box-sizing:border-box;height:32px;display:inline-flex;align-items:center;justify-content:center;color:#111212;text-decoration:none;transition:transform .2s}"
             "#hk-top a:active{transform:scale(.94)}"
