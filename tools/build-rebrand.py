@@ -62,6 +62,9 @@ rep("href:`mailto:Htoo.Kyaw@tufts.edu`,motionChild:!0,nodeId:`TZH86zigh`", "href
 rep("file:`/_ext/framerusercontent.com/assets/5D0eDc95VXdjgoSNI5fR7NpyX0k.jpg`,fileName:`Bejamin's Resume`",
     "file:`/Htoo_Myat_Kyaw_Resume.pdf`,fileName:`Htoo_Myat_Kyaw_Resume.pdf`")
 rep("children:`download resume`", "children:`السلام عليكم`")
+# Welcome bubbles type "Mingalaba" in Burmese; split by grapheme cluster so the marks stay attached.
+rep("text:`Hey there!`", "text:`မင်္ဂလာပါ`"); rep("text:`Welcome!`", "text:`မင်္ဂလာပါ`")
+rep("d.current.innerHTML=t,e=new at(d.current,{types:`chars`});let o=e.chars||[]", "d.current.innerHTML=``,e={revert(){}};let o=[...(Intl.Segmenter?new Intl.Segmenter(void 0,{granularity:`grapheme`}).segment(t):t)].map(x=>{let s=document.createElement(`span`);s.textContent=x.segment||x;s.style.display=`inline-block`;d.current.appendChild(s);return s})")
 rep("tel:+123456789", "https://briefly.briefa.net")
 
 # Services hero intro shares its text with the footer; change it first.
@@ -329,7 +332,7 @@ SITE_CSS = ("#coming-soon{position:fixed;left:50%;bottom:32px;transform:translat
             ".framer-rmz83s.hk-away{opacity:0!important;visibility:hidden;pointer-events:none}}")
 SITE_SCRIPT = "<style>" + SITE_CSS + "</style><script>" + "".join(l.strip() for l in SITE_JS.splitlines()) + "</script>"
 # Anchor on Framer's bodyEnd marker so standalone pages in site/ are left alone.
-rep("<!-- End of bodyEnd -->", "<!-- End of bodyEnd -->" + SITE_SCRIPT, [".html"])
+rep("<!-- End of bodyEnd -->", "<!-- End of bodyEnd --><script src=\"/hk-greet.js\" defer></script>" + SITE_SCRIPT, [".html"])
 # About: collapsible experience list (site/journey.js replaces the template timeline).
 rep("<!-- End of bodyEnd -->", "<!-- End of bodyEnd --><script src=\"/journey.js\" defer></script>", ["site/about.html"])
 
